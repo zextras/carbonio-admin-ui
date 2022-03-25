@@ -54,6 +54,7 @@ export function injectSharedLibraries(): void {
 				throw new Error('Apps must use the store given by the Shell.');
 			}
 		},
+		// DO NOT RENAME THIS
 		'@zextras/carbonio-shell-ui': {},
 		'@zextras/carbonio-design-system': ZappUI
 	};

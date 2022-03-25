@@ -4,16 +4,16 @@ SPDX-FileCopyrightText: 2021 Zextras <https://www.zextras.com>
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 <div align="center">
-  <h1>Carbonio Shell UI</h1>
+  <h1>Carbonio Admin UI</h1>
 </div>
 
-The main Carbonio Web Client interface
+The main Carbonio Web Admin interface
 
 <p align="center">
-  <a href="https://github.com/zextras/carbonio-shell-ui/graphs/contributors" alt="Contributors">
-  <img src="https://img.shields.io/github/contributors/zextras/carbonio-shell-ui" /></a>
-  <a href="https://github.com/zextras/carbonio-shell-ui/pulse" alt="Activity">
-  <img src="https://img.shields.io/github/commit-activity/m/zextras/carbonio-shell-ui" /></a>
+  <a href="https://github.com/zextras/carbonio-admin-ui/graphs/contributors" alt="Contributors">
+  <img src="https://img.shields.io/github/contributors/zextras/carbonio-admin-ui" /></a>
+  <a href="https://github.com/zextras/carbonio-admin-ui/pulse" alt="Activity">
+  <img src="https://img.shields.io/github/commit-activity/m/zextras/carbonio-admin-ui" /></a>
   <img src="https://img.shields.io/badge/license-AGPL%203-green" alt="License AGPL 3">
   <img src="https://img.shields.io/badge/project-carbonio-informational" alt="Project Carbonio">
   <a href="https://twitter.com/intent/follow?screen_name=zextras">
@@ -28,7 +28,6 @@ The main Carbonio Web Client interface
 - install the dependencies:
 ```
 npm install
-npm run sdk-setup
 ```
 
 <h4>Watch Mode</h4>

@@ -40,7 +40,7 @@ export const FOLDERS = {
 	BRIEFCASE: '16'
 };
 
-export const SHELL_APP_ID = 'carbonio-shell-ui';
+export const SHELL_APP_ID = 'carbonio-admin-ui';
 export const SETTINGS_APP_ID = 'settings';
 export const ACCOUNTS_APP_ID = 'accounts';
 export const SEARCH_APP_ID = 'search';

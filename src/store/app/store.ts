@@ -35,7 +35,7 @@ export const useAppStore = create<AppState>((set) => ({
 		commit: '',
 		description: '',
 		js_entrypoint: '',
-		name: 'carbonio-shell-ui',
+		name: 'carbonio-admin-ui',
 		priority: -1,
 		version: '',
 		type: 'shell',

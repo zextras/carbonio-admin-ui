@@ -117,23 +117,23 @@ const devModeTrigger = {
 export const registerDefaultViews = (t: TFunction): void => {
 	useAppStore.setState(
 		produce((s: AppState) => {
-			// @@ #admin-removal
-			// if (isAdmin()) {
-			// 	s.routes = {
-			// 		[SETTINGS_APP_ID]: settingsRoute
-			// 	};
-			// 	s.views.primaryBar = [settingsPrimaryBar(t)];
-			// 	s.views.secondaryBar = [settingsSecondaryBar];
-			// 	s.views.appView = [settingsAppView];
-			// }
 			s.routes = {
-				[SEARCH_APP_ID]: searchRoute,
+				// [SEARCH_APP_ID]: searchRoute,
 				[SETTINGS_APP_ID]: settingsRoute
 			};
-			s.views.primaryBar = [searchPrimaryBar(t), settingsPrimaryBar(t)];
+			s.views.primaryBar = [
+				// searchPrimaryBar(t),
+				settingsPrimaryBar(t)
+			];
 			s.views.secondaryBar = [settingsSecondaryBar];
-			s.views.appView = [searchAppView, settingsAppView];
-			s.views.settings = [settingsGeneralView(t), settingsAccountsView(t)];
+			s.views.appView = [
+				// searchAppView,
+				settingsAppView
+			];
+			s.views.settings = [
+				settingsGeneralView(t)
+				// settingsAccountsView(t)
+			];
 			s.views.board = [feedbackBoardView];
 			if (__CARBONIO_DEV__) {
 				s.views.board.push(devModeBoardView);
