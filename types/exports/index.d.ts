@@ -52,7 +52,7 @@ export const ZIMBRA_STANDARD_COLORS: Array<{ zValue: number; hex: string; zLabel
 export const FOLDERS: {
 	[name: string]: string;
 };
-export const SHELL_APP_ID = 'carbonio-shell-ui';
+export const SHELL_APP_ID = 'carbonio-admin-ui';
 export const SETTINGS_APP_ID = 'settings';
 export const SEARCH_APP_ID = 'search';
 export const ACTION_TYPES: {

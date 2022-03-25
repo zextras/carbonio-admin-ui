@@ -13,7 +13,7 @@ const { DefinePlugin } = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 const commitHash = require('child_process').execSync('git rev-parse HEAD').toString().trim();
 
-const baseStaticPath = `/static/iris/carbonio-shell-ui/${commitHash}/`;
+const baseStaticPath = `/static/iris/carbonio-admin-ui/${commitHash}/`;
 
 module.exports = (conf, pkg, options, mode) => {
 	const server = `https://${options.host}`;
@@ -83,7 +83,7 @@ module.exports = (conf, pkg, options, mode) => {
 				}
 			},
 			{
-				context: ['!/static/iris/carbonio-shell-ui/**/*', `!/${root}/`, `!/${root}/**/*`],
+				context: ['!/static/iris/carbonio-admin-ui/**/*', `!/${root}/`, `!/${root}/**/*`],
 				target: server,
 				secure: false,
 				logLevel: 'debug',

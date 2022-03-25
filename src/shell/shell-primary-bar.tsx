@@ -67,7 +67,8 @@ type PrimaryBarItemProps = {
 type PrimaryBarAccessoryItemProps = {
 	view: PrimaryAccessoryView;
 };
-// @@ #admin-removal
+
+// Alternative layout for the primary bar
 // const AdminPrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, onClick }) => (
 // 	<PrimaryContainer
 // 		orientation="horizontal"
@@ -107,26 +108,6 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, onClick }) =
 );
 
 const PrimaryBarAccessoryElement: FC<PrimaryBarAccessoryItemProps> = ({ view }) => (
-	// @@ #admin-removal
-	// <AppContextProvider key={view.id} pkg={view.app}>
-	// 	<PrimaryContainer
-	// 		orientation="horizontal"
-	// 		mainAlignment="flex-start"
-	// 		height="48px"
-	// 		onClick={view.onClick}
-	// 	>
-	// 		<Container width={48} height={48} style={{ position: 'relative' }}>
-	// 			{typeof view.component === 'string' ? (
-	// 				<Icon icon={view.component} size="large" />
-	// 			) : (
-	// 				<view.component />
-	// 			)}
-	// 		</Container>
-	// 		<Padding right="large">
-	// 			<Text>{view.label}</Text>
-	// 		</Padding>
-	// 	</PrimaryContainer>
-	// </AppContextProvider>
 	<Tooltip label={view.label} placement="right" key={view.id}>
 		<AppContextProvider key={view.id} pkg={view.app}>
 			{typeof view.component === 'string' ? (
@@ -190,22 +171,7 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 				wrap="nowrap"
 				style={{ minHeight: '1px', overflowY: 'overlay' }}
 			>
-				{/*  @@ #admin-removal
-				<ShellMode include={[SHELL_MODES.ADMIN]}>
-					{map(primaryBarViews, (view) =>
-						// eslint-disable-next-line no-nested-ternary
-						view.visible ? (
-							<AdminPrimaryBarElement
-								key={view.id}
-								onClick={(): void => history.push(`/${routes[view.id]}`)}
-								view={view}
-								active={activeRoute?.id === view.id}
-							/>
-						) : null
-					)}
-				</ShellMode> */}
 				{map(primaryBarViews, (view) =>
-					// eslint-disable-next-line no-nested-ternary
 					view.visible ? (
 						<PrimaryBarElement
 							key={view.id}
