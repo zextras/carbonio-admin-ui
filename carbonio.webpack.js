@@ -17,7 +17,7 @@ const baseStaticPath = `/static/iris/carbonio-admin-ui/${commitHash}/`;
 
 module.exports = (conf, pkg, options, mode) => {
 	const server = `https://${options.host}`;
-	const root = 'carbonio';
+	const root = 'carbonioAdmin';
 	conf.entry = {
 		index: path.resolve(process.cwd(), 'src', 'index.tsx')
 	};
@@ -94,5 +94,6 @@ module.exports = (conf, pkg, options, mode) => {
 			}
 		]
 	};
+	conf.externals = {};
 	return conf;
 };
