@@ -51,7 +51,7 @@ export const getInfo = (): Promise<void> =>
 		.then(({ components }: { components: Array<CarbonioModule> }) => {
 			useAppStore.getState().setters.addApps(
 				filter(components, ({ type }) => {
-					if (type === 'shell' || type === 'carbonio') return true;
+					if (type === 'shell' || type === 'carbonioAdmin') return true;
 					return false;
 				})
 			);

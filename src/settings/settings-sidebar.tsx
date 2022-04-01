@@ -48,7 +48,9 @@ export const SettingsSidebar: FC<{ expanded: boolean }> = ({ expanded }) => {
 						icon={v.icon}
 						onClick={(): void => history.push(`/${SETTINGS_APP_ID}/${v.route}`)}
 						size="large"
-						iconColor={startsWith(location.pathname, `/${SETTINGS_APP_ID}/${v.route}`)}
+						iconColor={
+							startsWith(location.pathname, `/${SETTINGS_APP_ID}/${v.route}`) ? 'primary' : 'text'
+						}
 					/>
 				</Tooltip>
 			)),

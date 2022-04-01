@@ -134,7 +134,7 @@ export const getSoapFetch =
 	<Request, Response>(api: string, body: Request, otherAccount?: string): Promise<Response> => {
 		const { zimbraVersion, account } = useAccountStore.getState();
 		const { context } = useNetworkStore.getState();
-		return fetch(`/service/soap/${api}Request`, {
+		return fetch(`/service/admin/soap/${api}Request`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -174,7 +174,7 @@ export const getXmlSoapFetch =
 	<Request, Response>(api: string, body: Request, otherAccount?: string): Promise<Response> => {
 		const { zimbraVersion, account } = useAccountStore.getState();
 		const { context } = useNetworkStore.getState();
-		return fetch(`/service/soap/${api}Request`, {
+		return fetch(`/service/admin/soap/${api}Request`, {
 			method: 'POST',
 			headers: {
 				'content-type': 'application/soap+xml'
