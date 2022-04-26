@@ -106,6 +106,9 @@
         "when_composing": "When composing, replying to or forwarding messages in folder(s):",
         "when_replying": "When replying or forwarding messages sent to:"
     },
+    "labels": {
+        "help_center": "Help Center"
+    },
     "locale": {
         "English": "English",
         "chinese_china": "Chinese (China)",
