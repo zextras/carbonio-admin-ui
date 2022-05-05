@@ -10,8 +10,12 @@ import {
 	IconButton,
 	Padding,
 	Responsive,
-	useScreenMode
+	useScreenMode,
+	Input,
+	Icon,
+	Text
 } from '@zextras/carbonio-design-system';
+import { useTranslation } from 'react-i18next';
 import Logo from '../svg/carbonio-admin-panel.svg';
 import { SearchBar } from '../search/search-bar';
 import { CreationButton } from './creation-button';
@@ -24,6 +28,7 @@ const ShellHeader: FC<{
 	onMobileMenuClick: () => void;
 }> = ({ activeRoute, mobileNavIsOpen, onMobileMenuClick, children }) => {
 	const screenMode = useScreenMode();
+	const [t] = useTranslation();
 	const searchEnabled = useAppStore((s) => s.views.search.length > 0);
 	return (
 		<Container
@@ -39,18 +44,62 @@ const ShellHeader: FC<{
 				vertical: 'small'
 			}}
 		>
-			<Container orientation="horizontal" width="75%" maxWidth="75%" mainAlignment="space-between">
+			<Container
+				orientation="horizontal"
+				width="75%"
+				maxWidth="75%"
+				mainAlignment="space-between"
+				crossAlignment="center"
+			>
 				<Responsive mode="mobile">
 					<Padding right="small">
 						<IconButton icon={mobileNavIsOpen ? 'Close' : 'Menu'} onClick={onMobileMenuClick} />
 					</Padding>
 				</Responsive>
-				<Container width={320} height={32} crossAlignment="flex-start">
-					<Logo height="32px" />
+				<Container
+					orientation="horizontal"
+					mainAlignment="flex-start"
+					crossAlignment="center"
+					width="auto"
+				>
+					<Container width="auto" height={32} crossAlignment="flex-start">
+						<Logo height="32px" />
+					</Container>
+
+					<Padding horizontal="extralarge">
+						<CreationButton activeRoute={activeRoute} />
+					</Padding>
 				</Container>
-				<Padding horizontal="large">
-					<CreationButton activeRoute={activeRoute} />
-				</Padding>
+
+				<Container
+					orientation="horizontal"
+					mainAlignment="flex-start"
+					crossAlignment="center"
+					width="100%"
+				>
+					<Container width="100%">
+						<Input
+							label={t('search.app', 'Search')}
+							CustomIcon={(): any => <Icon icon="SearchOutline" size="large" color="text" />}
+						/>
+					</Container>
+					<Container
+						orientation="horizontal"
+						mainAlignment="flex-start"
+						crossAlignment="center"
+						width="100%"
+						padding={{
+							all: 'large'
+						}}
+					>
+						<Text color="primary" size="regular">
+							{t('labels.help_center', 'Help Center')}
+						</Text>
+						<Padding left="medium">
+							<Icon icon="QuestionMarkCircleOutline" size="medium" color="primary" />
+						</Padding>
+					</Container>
+				</Container>
 				<Responsive mode="desktop">
 					{searchEnabled && (
 						<SearchBar
