@@ -74,7 +74,7 @@ export const CreationButton: FC<{ activeRoute?: AppRoute }> = ({ activeRoute }) 
 				style={{ height: '42px' }}
 				background="primary"
 				items={secondaryActions}
-				label={t('new', 'New')}
+				label={t('create', 'Create')}
 				icon={open ? 'ChevronUp' : 'ChevronDown'}
 			/>
 		</Dropdown>
