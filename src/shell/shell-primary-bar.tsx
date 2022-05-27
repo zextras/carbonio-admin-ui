@@ -14,7 +14,7 @@ import {
 	Icon
 } from '@zextras/carbonio-design-system';
 import { map, isEmpty, trim, filter, sortBy } from 'lodash';
-import React, { useContext, FC, useState, useEffect, useMemo } from 'react';
+import React, { useContext, FC, useState, useEffect, useMemo, useCallback } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 // TODO: convert boards management to ts (and maybe a zustand store)
@@ -26,6 +26,8 @@ import { AppRoute, PrimaryAccessoryView, PrimaryBarView } from '../../types';
 import BadgeWrap from './badge-wrap';
 import AppContextProvider from '../boot/app/app-context-provider';
 import { checkRoute } from '../utility-bar/utils';
+import { useUtilityBarStore } from '../utility-bar';
+import { Collapser } from './collapser';
 
 const PrimaryContainer = styled(Container)<{ active: boolean }>`
 	background: ${({ theme, active }): string => theme.palette[active ? 'gray4' : 'gray6'].regular};
@@ -41,6 +43,21 @@ const PrimaryContainer = styled(Container)<{ active: boolean }>`
 
 const ContainerWithDivider = styled(Container)`
 	border-right: 1px solid ${({ theme }): string => theme.palette.gray3.regular};
+`;
+
+const PrimaryBarContainer = styled(Container)`
+	min-width: 48px;
+	max-width: 192px;
+	width: ${({ sidebarIsOpen }): number => (sidebarIsOpen ? 192 : 48)}px;
+	transition: width 300ms;
+	overflow-x: hidden;
+`;
+
+const PrimaryBarRow = styled(Row)<{ active: boolean }>`
+	backgroundcolor: ${({ active }): string => (active ? 'gray4' : 'gray6')};
+	&:hover {
+		background: ${({ theme, active }): string => theme.palette[active ? 'gray4' : 'gray6'].hover};
+	}
 `;
 
 const ToggleBoardIcon: FC = () => {
@@ -93,17 +110,37 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, onClick }) =
 	<Tooltip label={view.label} placement="right" key={view.id}>
 		<BadgeWrap badge={view.badge}>
 			{typeof view.component === 'string' ? (
-				<IconButton
-					icon={view.component}
-					backgroundColor={active ? 'gray4' : 'gray6'}
-					iconColor={active ? 'primary' : 'text'}
-					onClick={onClick}
-					size="large"
-				/>
+				<Row>
+					<IconButton
+						icon={view.component}
+						backgroundColor={active ? 'gray4' : 'gray6'}
+						iconColor={active ? 'primary' : 'text'}
+						onClick={onClick}
+						size="large"
+					/>
+					<Text>{view.label}</Text>
+				</Row>
 			) : (
 				<view.component active={active} />
 			)}
 		</BadgeWrap>
+	</Tooltip>
+);
+
+const PrimaryBarExpandElement: FC<PrimaryBarItemProps> = ({ view, active, onClick }) => (
+	<Tooltip label={view.label} placement="right" key={view.id}>
+		{typeof view.component === 'string' ? (
+			<PrimaryBarRow width="fill" mainAlignment="flex-start" active={active} onClick={onClick}>
+				<BadgeWrap badge={view.badge}>
+					<IconButton icon={view.component} iconColor={active ? 'primary' : 'text'} size="large" />
+				</BadgeWrap>
+				<Text>{view.label}</Text>
+			</PrimaryBarRow>
+		) : (
+			<BadgeWrap badge={view.badge}>
+				<view.component active={active} />
+			</BadgeWrap>
+		)}
 	</Tooltip>
 );
 
@@ -126,6 +163,9 @@ const PrimaryBarAccessoryElement: FC<PrimaryBarAccessoryItemProps> = ({ view }) 
 );
 
 const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
+	const isOpen = useUtilityBarStore((s) => s.primaryBarState);
+	const setIsOpen = useUtilityBarStore((s) => s.setPrimaryBarState);
+	const onCollapserClick = useCallback(() => setIsOpen(!isOpen), [isOpen, setIsOpen]);
 	const primaryBarViews = useAppStore((s) => s.views.primaryBar);
 	const primarybarSections = useAppStore((s) => s.views.primarybarSections);
 	console.log('primaryBarViews =>', primaryBarViews);
@@ -157,45 +197,51 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 		[activeRoute, primaryBarAccessoryViews]
 	);
 	return (
-		<ContainerWithDivider
-			width={49}
-			height="fill"
-			background="gray6"
-			orientation="vertical"
-			mainAlignment="flex-start"
-			crossAlignment="flex-start"
-		>
-			<Row
-				mainAlignment="flex-start"
-				crossAlignment="flex-start"
+		<>
+			<PrimaryBarContainer
+				sidebarIsOpen={isOpen}
+				role="menu"
+				height="fill"
+				background="gray6"
 				orientation="vertical"
-				takeAvailableSpace
-				wrap="nowrap"
-				style={{ minHeight: '1px', overflowY: 'overlay' }}
+				mainAlignment="space-between"
+				onClick={isOpen ? undefined : onCollapserClick}
+				style={{
+					maxHeight: 'calc(100vh - 48px)',
+					overflowY: 'auto'
+				}}
 			>
-				{map(primaryBarViews, (view) =>
-					view.visible ? (
-						<PrimaryBarElement
-							key={view.id}
-							onClick={(): void => history.push(`/${routes[view.id]}`)}
-							view={view}
-							active={activeRoute?.id === view.id}
-						/>
-					) : null
-				)}
-			</Row>
-			<Row
-				mainAlignment="flex-end"
-				orientation="vertical"
-				wrap="nowrap"
-				style={{ minHeight: '1px', overflowY: 'overlay' }}
-			>
-				{accessories.map((v) => (
-					<PrimaryBarAccessoryElement view={v} key={v.id} />
-				))}
-				<ToggleBoardIcon />
-			</Row>
-		</ContainerWithDivider>
+				<Container mainAlignment="flex-start">
+					{map(primaryBarViews, (view) =>
+						// eslint-disable-next-line no-nested-ternary
+						view.visible ? (
+							!isOpen ? (
+								<PrimaryBarElement
+									key={view.id}
+									onClick={(): void => history.push(`/${routes[view.id]}`)}
+									view={view}
+									active={activeRoute?.id === view.id}
+								/>
+							) : (
+								<PrimaryBarExpandElement
+									key={view.id}
+									onClick={(): void => history.push(`/${routes[view.id]}`)}
+									view={view}
+									active={activeRoute?.id === view.id}
+								/>
+							)
+						) : null
+					)}
+				</Container>
+				<Container mainAlignment="flex-end" height="fit">
+					{accessories.map((v) => (
+						<PrimaryBarAccessoryElement view={v} key={v.id} />
+					))}
+					<ToggleBoardIcon />
+				</Container>
+			</PrimaryBarContainer>
+			<Collapser onClick={onCollapserClick} open={isOpen} />
+		</>
 	);
 };
 
