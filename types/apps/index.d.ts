@@ -79,6 +79,7 @@ export type PrimaryBarView = Omit<CarbonioView<PrimaryBarComponentProps>, 'compo
 	position: number;
 	visible: boolean;
 	label: string;
+	section?: PrimarybarSection;
 };
 
 export type SecondaryBarView = CarbonioView<SecondaryBarComponentProps>;
@@ -126,6 +127,7 @@ export type AppRouteDescriptor = {
 	label: string;
 	secondaryBar?: ComponentType<SecondaryBarComponentProps>;
 	appView: ComponentType<AppViewComponentProps>;
+	primarybarSection: PrimarybarSection | undefined;
 };
 export type AppSetters = {
 	addApps: (apps: Array<Partial<CarbonioModule>>) => void;
@@ -185,7 +187,14 @@ export type AppState = {
 		search: Array<SearchView>;
 		primaryBarAccessories: Array<PrimaryAccessoryView>;
 		secondaryBarAccessories: Array<SecondaryAccessoryView>;
+		primarybarSections: Array<PrimarybarSection>;
 	};
 	setters: AppSetters;
 	shell: CarbonioModule;
+};
+
+export type PrimarybarSection = {
+	id: string;
+	label: string;
+	position: number;
 };

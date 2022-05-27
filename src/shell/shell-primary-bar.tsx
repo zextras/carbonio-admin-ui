@@ -127,7 +127,9 @@ const PrimaryBarAccessoryElement: FC<PrimaryBarAccessoryItemProps> = ({ view }) 
 
 const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 	const primaryBarViews = useAppStore((s) => s.views.primaryBar);
-
+	const primarybarSections = useAppStore((s) => s.views.primarybarSections);
+	console.log('primaryBarViews =>', primaryBarViews);
+	console.log('primarybarSections =>', primarybarSections);
 	const [routes, setRoutes] = useState<Record<string, string>>({});
 	const history = useHistory();
 

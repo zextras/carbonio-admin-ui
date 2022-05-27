@@ -15,6 +15,7 @@ import {
 	BoardView,
 	CarbonioModule,
 	PrimaryAccessoryView,
+	PrimarybarSection,
 	PrimaryBarView,
 	SearchView,
 	SecondaryAccessoryView,
@@ -54,7 +55,8 @@ export const useAppStore = create<AppState>((set) => ({
 		settings: [],
 		search: [],
 		primaryBarAccessories: [],
-		secondaryBarAccessories: []
+		secondaryBarAccessories: [],
+		primarybarSections: []
 	},
 	setters: {
 		addApps: (apps: Array<Partial<CarbonioModule>>): void => {
@@ -103,10 +105,27 @@ export const useAppStore = create<AppState>((set) => ({
 										badge: routeData.badge,
 										position: routeData.position,
 										visible: routeData.visible,
-										label: routeData.label
+										label: routeData.label,
+										section: routeData.primarybarSection
 									}
 								],
 								state.views.primaryBar,
+								(a, b): boolean => a.id === b.id
+							),
+							'position'
+						);
+						state.views.primarybarSections = sortBy(
+							unionWith<PrimarybarSection>(
+								routeData?.primarybarSection
+									? [
+											{
+												id: routeData?.primarybarSection.id,
+												position: routeData?.primarybarSection.position,
+												label: routeData?.primarybarSection.label
+											}
+									  ]
+									: [],
+								state.views.primarybarSections,
 								(a, b): boolean => a.id === b.id
 							),
 							'position'
