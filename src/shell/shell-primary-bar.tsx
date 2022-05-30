@@ -11,7 +11,7 @@ import {
 	Tooltip,
 	Text,
 	Padding,
-	Icon,
+	Divider,
 	Popper
 } from '@zextras/carbonio-design-system';
 import { map, isEmpty, trim, filter, sortBy } from 'lodash';
@@ -120,6 +120,7 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, isExpanded, 
 				onMouseEnter={() => setOpen(true)}
 				// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 				onMouseLeave={() => setOpen(false)}
+				height="52px"
 			>
 				{typeof view.component === 'string' ? (
 					<PrimaryBarRow width="fill" mainAlignment="flex-start" active={active} onClick={onClick}>
@@ -217,6 +218,7 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 	const onCollapserClick = useCallback(() => setIsOpen(!isOpen), [isOpen, setIsOpen]);
 	const primaryBarViews = useAppStore((s) => s.views.primaryBar);
 	const primarybarSections = useAppStore((s) => s.views.primarybarSections);
+	const [primaryBarViewWithSection, setPrimaryBarViewWithSection] = useState<any[]>([]);
 	console.log('primaryBarViews =>', primaryBarViews);
 	console.log('primarybarSections =>', primarybarSections);
 	const [routes, setRoutes] = useState<Record<string, string>>({});
@@ -245,6 +247,39 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 			),
 		[activeRoute, primaryBarAccessoryViews]
 	);
+
+	useEffect(() => {
+		let allPrimaryBarView: any = [];
+		if (primaryBarViews.length > 0) {
+			allPrimaryBarView = primaryBarViews.filter(
+				(item) => item.section === undefined || !item.section
+			);
+			if (primarybarSections.length > 0) {
+				primarybarSections.forEach((item) => {
+					const section: any = {
+						id: item?.id,
+						position: item?.position,
+						label: item?.label
+					};
+					const parimaryBarItems: any = [];
+					primaryBarViews.forEach((primaryBarItem) => {
+						if (item?.id === primaryBarItem?.section?.id) {
+							parimaryBarItems.push(primaryBarItem);
+						}
+					});
+					allPrimaryBarView.push({
+						position: item?.position,
+						badge: { show: false, count: 0, showCount: false, color: 'primary' },
+						visible: true,
+						section,
+						children: parimaryBarItems
+					});
+				});
+			}
+			setPrimaryBarViewWithSection(sortBy(allPrimaryBarView, 'position'));
+		}
+	}, [primarybarSections, primaryBarViews]);
+
 	return (
 		<>
 			<PrimaryBarContainer
@@ -261,16 +296,48 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 				}}
 			>
 				<Container mainAlignment="flex-start">
-					{map(primaryBarViews, (view) =>
+					{map(primaryBarViewWithSection, (view) =>
 						// eslint-disable-next-line no-nested-ternary
 						view.visible ? (
-							<PrimaryBarElement
-								key={view.id}
-								onClick={(): void => history.push(`/${routes[view.id]}`)}
-								view={view}
-								isExpanded={isOpen}
-								active={activeRoute?.id === view.id}
-							/>
+							<>
+								{view?.section === undefined && (
+									<PrimaryBarElement
+										key={view.id}
+										onClick={(): void => history.push(`/${routes[view.id]}`)}
+										view={view}
+										isExpanded={isOpen}
+										active={activeRoute?.id === view.id}
+									/>
+								)}
+								{view?.section && isOpen && (
+									<>
+										<Row
+											mainAlignment="flex-start"
+											crossAlignment="flex-start"
+											width="100%"
+											padding={{ left: 'large', right: 'large' }}
+										>
+											<Text size="small" weight="bold" color="#CFD5DC">
+												<Padding top="large" bottom="small">
+													{view?.section?.label}
+												</Padding>
+											</Text>
+											<Divider></Divider>
+										</Row>
+									</>
+								)}
+								{view?.children &&
+									view?.children.length > 0 &&
+									map(view?.children, (item) => (
+										<PrimaryBarElement
+											key={item.id}
+											onClick={(): void => history.push(`/${routes[item.id]}`)}
+											view={item}
+											isExpanded={isOpen}
+											active={activeRoute?.id === item.id}
+										/>
+									))}
+							</>
 						) : null
 					)}
 				</Container>
