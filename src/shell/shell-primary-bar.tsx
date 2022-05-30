@@ -11,10 +11,11 @@ import {
 	Tooltip,
 	Text,
 	Padding,
-	Icon
+	Icon,
+	Popper
 } from '@zextras/carbonio-design-system';
 import { map, isEmpty, trim, filter, sortBy } from 'lodash';
-import React, { useContext, FC, useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useContext, FC, useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 // TODO: convert boards management to ts (and maybe a zustand store)
@@ -54,7 +55,8 @@ const PrimaryBarContainer = styled(Container)`
 `;
 
 const PrimaryBarRow = styled(Row)<{ active: boolean }>`
-	backgroundcolor: ${({ active }): string => (active ? 'gray4' : 'gray6')};
+	background-color: ${({ theme, active }): string =>
+		active ? theme.palette.highlight.regular : 'gray6'};
 	&:hover {
 		background: ${({ theme, active }): string => theme.palette[active ? 'gray4' : 'gray6'].hover};
 	}
@@ -78,6 +80,7 @@ const ToggleBoardIcon: FC = () => {
 type PrimaryBarItemProps = {
 	view: PrimaryBarView;
 	active: boolean;
+	isExpanded: boolean;
 	onClick: () => void;
 };
 
@@ -106,43 +109,89 @@ type PrimaryBarAccessoryItemProps = {
 // 	</PrimaryContainer>
 // );
 
-const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, onClick }) => (
-	<Tooltip label={view.label} placement="right" key={view.id}>
-		<BadgeWrap badge={view.badge}>
-			{typeof view.component === 'string' ? (
-				<Row>
-					<IconButton
-						icon={view.component}
-						backgroundColor={active ? 'gray4' : 'gray6'}
-						iconColor={active ? 'primary' : 'text'}
-						onClick={onClick}
-						size="large"
-					/>
-					<Text>{view.label}</Text>
-				</Row>
-			) : (
-				<view.component active={active} />
-			)}
-		</BadgeWrap>
-	</Tooltip>
-);
+const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, isExpanded, onClick }) => {
+	const [open, setOpen] = useState(false);
+	const containerRef = useRef(undefined);
+	return (
+		<>
+			<Container
+				ref={containerRef}
+				// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+				onMouseEnter={() => setOpen(true)}
+				// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+				onMouseLeave={() => setOpen(false)}
+			>
+				{typeof view.component === 'string' ? (
+					<PrimaryBarRow width="fill" mainAlignment="flex-start" active={active} onClick={onClick}>
+						<BadgeWrap badge={view.badge}>
+							<IconButton icon={view.component} size="large" />
+						</BadgeWrap>
+						{isExpanded && (
+							<Text color="text" weight="bold">
+								{view.label}
+							</Text>
+						)}
+					</PrimaryBarRow>
+				) : (
+					<BadgeWrap badge={view.badge}>
+						<view.component active={active} />
+					</BadgeWrap>
+				)}
+			</Container>
 
-const PrimaryBarExpandElement: FC<PrimaryBarItemProps> = ({ view, active, onClick }) => (
-	<Tooltip label={view.label} placement="right" key={view.id}>
-		{typeof view.component === 'string' ? (
-			<PrimaryBarRow width="fill" mainAlignment="flex-start" active={active} onClick={onClick}>
-				<BadgeWrap badge={view.badge}>
-					<IconButton icon={view.component} iconColor={active ? 'primary' : 'text'} size="large" />
-				</BadgeWrap>
-				<Text>{view.label}</Text>
-			</PrimaryBarRow>
-		) : (
-			<BadgeWrap badge={view.badge}>
-				<view.component active={active} />
-			</BadgeWrap>
-		)}
-	</Tooltip>
-);
+			<Popper
+				open={open}
+				anchorEl={containerRef}
+				placement="right"
+				// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+				onClose={() => setOpen(false)}
+				disableRestoreFocus
+			>
+				<Container
+					orientation="horizontal"
+					mainAlignment="flex-start"
+					background="gray3"
+					width="140px"
+					height="fit"
+					crossAlignment="flex-start"
+				>
+					<Padding value="8px">
+						<Padding>
+							<Text size="small" color="text" weight="bold">
+								BACKUP
+							</Text>
+							<Text size="extrasmall" color="text">
+								Here you will find
+							</Text>
+						</Padding>
+						<Padding top="large">
+							<Text size="small" color="text" weight="bold">
+								Global
+							</Text>
+							<Text size="extrasmall" color="text">
+								Service Status
+							</Text>
+							<Text size="extrasmall" color="text">
+								Server Config
+							</Text>
+						</Padding>
+						<Padding top="large">
+							<Text size="small" color="text" weight="bold">
+								Services
+							</Text>
+							<Text size="extrasmall" color="text">
+								Service Status
+							</Text>
+							<Text size="extrasmall" color="text">
+								Server Config
+							</Text>
+						</Padding>
+					</Padding>
+				</Container>
+			</Popper>
+		</>
+	);
+};
 
 const PrimaryBarAccessoryElement: FC<PrimaryBarAccessoryItemProps> = ({ view }) => (
 	<Tooltip label={view.label} placement="right" key={view.id}>
@@ -215,21 +264,13 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 					{map(primaryBarViews, (view) =>
 						// eslint-disable-next-line no-nested-ternary
 						view.visible ? (
-							!isOpen ? (
-								<PrimaryBarElement
-									key={view.id}
-									onClick={(): void => history.push(`/${routes[view.id]}`)}
-									view={view}
-									active={activeRoute?.id === view.id}
-								/>
-							) : (
-								<PrimaryBarExpandElement
-									key={view.id}
-									onClick={(): void => history.push(`/${routes[view.id]}`)}
-									view={view}
-									active={activeRoute?.id === view.id}
-								/>
-							)
+							<PrimaryBarElement
+								key={view.id}
+								onClick={(): void => history.push(`/${routes[view.id]}`)}
+								view={view}
+								isExpanded={isOpen}
+								active={activeRoute?.id === view.id}
+							/>
 						) : null
 					)}
 				</Container>
