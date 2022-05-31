@@ -219,8 +219,6 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 	const primaryBarViews = useAppStore((s) => s.views.primaryBar);
 	const primarybarSections = useAppStore((s) => s.views.primarybarSections);
 	const [primaryBarViewWithSection, setPrimaryBarViewWithSection] = useState<any[]>([]);
-	console.log('primaryBarViews =>', primaryBarViews);
-	console.log('primarybarSections =>', primarybarSections);
 	const [routes, setRoutes] = useState<Record<string, string>>({});
 	const history = useHistory();
 
@@ -331,7 +329,7 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 									map(view?.children, (item) => (
 										<PrimaryBarElement
 											key={item.id}
-											onClick={(): void => history.push(`/${routes[item.id]}`)}
+											onClick={(): void => history.push(`/${view?.section?.id}/${routes[item.id]}`)}
 											view={item}
 											isExpanded={isOpen}
 											active={activeRoute?.id === item.id}
