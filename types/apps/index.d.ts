@@ -80,6 +80,7 @@ export type PrimaryBarView = Omit<CarbonioView<PrimaryBarComponentProps>, 'compo
 	visible: boolean;
 	label: string;
 	section?: PrimarybarSection;
+	tooltip?: ComponentType<{}>;
 };
 
 export type SecondaryBarView = CarbonioView<SecondaryBarComponentProps>;
@@ -128,6 +129,7 @@ export type AppRouteDescriptor = {
 	secondaryBar?: ComponentType<SecondaryBarComponentProps>;
 	appView: ComponentType<AppViewComponentProps>;
 	primarybarSection: PrimarybarSection | undefined;
+	tooltip?: ComponentType<{}> | undefined;
 };
 export type AppSetters = {
 	addApps: (apps: Array<Partial<CarbonioModule>>) => void;

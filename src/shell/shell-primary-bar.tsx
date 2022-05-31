@@ -148,47 +148,21 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, isExpanded, 
 				onClose={() => setOpen(false)}
 				disableRestoreFocus
 			>
-				<Container
-					orientation="horizontal"
-					mainAlignment="flex-start"
-					background="gray3"
-					width="140px"
-					height="fit"
-					crossAlignment="flex-start"
-				>
-					<Padding value="8px">
-						<Padding>
-							<Text size="small" color="text" weight="bold">
-								BACKUP
-							</Text>
-							<Text size="extrasmall" color="text">
-								Here you will find
-							</Text>
+				{!view?.tooltip ? (
+					<Container
+						orientation="horizontal"
+						mainAlignment="flex-start"
+						background="gray3"
+						height="fit"
+						crossAlignment="flex-start"
+					>
+						<Padding value="8px">
+							<Text>{view.label}</Text>
 						</Padding>
-						<Padding top="large">
-							<Text size="small" color="text" weight="bold">
-								Global
-							</Text>
-							<Text size="extrasmall" color="text">
-								Service Status
-							</Text>
-							<Text size="extrasmall" color="text">
-								Server Config
-							</Text>
-						</Padding>
-						<Padding top="large">
-							<Text size="small" color="text" weight="bold">
-								Services
-							</Text>
-							<Text size="extrasmall" color="text">
-								Service Status
-							</Text>
-							<Text size="extrasmall" color="text">
-								Server Config
-							</Text>
-						</Padding>
-					</Padding>
-				</Container>
+					</Container>
+				) : (
+					<view.tooltip />
+				)}
 			</Popper>
 		</>
 	);
