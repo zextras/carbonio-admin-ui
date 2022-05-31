@@ -303,7 +303,7 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 									map(view?.children, (item) => (
 										<PrimaryBarElement
 											key={item.id}
-											onClick={(): void => history.push(`/${view?.section?.id}/${routes[item.id]}`)}
+											onClick={(): void => history.push(`/${routes[item.id]}`)}
 											view={item}
 											isExpanded={isOpen}
 											active={activeRoute?.id === item.id}
