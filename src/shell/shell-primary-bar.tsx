@@ -30,22 +30,6 @@ import { checkRoute } from '../utility-bar/utils';
 import { useUtilityBarStore } from '../utility-bar';
 import { Collapser } from './collapser';
 
-const PrimaryContainer = styled(Container)<{ active: boolean }>`
-	background: ${({ theme, active }): string => theme.palette[active ? 'gray4' : 'gray6'].regular};
-	cursor: pointer;
-	transition: background 0.2s ease-out;
-	&:hover {
-		background: ${({ theme, active }): string => theme.palette[active ? 'gray4' : 'gray6'].hover};
-	}
-	&:focus {
-		background: ${({ theme, active }): string => theme.palette[active ? 'gray4' : 'gray6'].focus};
-	}
-`;
-
-const ContainerWithDivider = styled(Container)`
-	border-right: 1px solid ${({ theme }): string => theme.palette.gray3.regular};
-`;
-
 const PrimaryBarContainer = styled(Container)`
 	min-width: 48px;
 	max-width: 192px;
@@ -117,9 +101,9 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, isExpanded, 
 			<Container
 				ref={containerRef}
 				// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-				onMouseEnter={() => setOpen(true)}
+				onMouseEnter={(): void => setOpen(true)}
 				// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-				onMouseLeave={() => setOpen(false)}
+				onMouseLeave={(): void => setOpen(false)}
 				height="52px"
 			>
 				{typeof view.component === 'string' ? (
@@ -145,7 +129,7 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, isExpanded, 
 				anchorEl={containerRef}
 				placement="right"
 				// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-				onClose={() => setOpen(false)}
+				onClose={(): void => setOpen(false)}
 				disableRestoreFocus
 			>
 				{!view?.tooltip ? (
@@ -261,7 +245,6 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 				background="gray6"
 				orientation="vertical"
 				mainAlignment="space-between"
-				onClick={isOpen ? undefined : onCollapserClick}
 				style={{
 					maxHeight: 'calc(100vh - 48px)',
 					overflowY: 'auto'
