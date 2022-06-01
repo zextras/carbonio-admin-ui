@@ -41,8 +41,15 @@ const PrimaryBarContainer = styled(Container)`
 const PrimaryBarRow = styled(Row)<{ active: boolean }>`
 	background-color: ${({ theme, active }): string =>
 		active ? theme.palette.highlight.regular : 'gray6'};
+	cursor: pointer;
 	&:hover {
 		background: ${({ theme, active }): string => theme.palette[active ? 'gray4' : 'gray6'].hover};
+	}
+`;
+
+const PrimaryBarIconButton = styled(IconButton)`
+	&:hover {
+		background: transparent;
 	}
 `;
 
@@ -109,7 +116,7 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, isExpanded, 
 				{typeof view.component === 'string' ? (
 					<PrimaryBarRow width="fill" mainAlignment="flex-start" active={active} onClick={onClick}>
 						<BadgeWrap badge={view.badge}>
-							<IconButton icon={view.component} size="large" />
+							<PrimaryBarIconButton icon={view.component} size="large" />
 						</BadgeWrap>
 						{isExpanded && (
 							<Text color="text" weight="bold">
