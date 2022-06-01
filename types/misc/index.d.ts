@@ -62,6 +62,8 @@ export type UtilityBarStore = {
 	setCurrent: (current: string) => void;
 	secondaryBarState: boolean;
 	setSecondaryBarState: (state: boolean) => void;
+	primaryBarState: boolean;
+	setPrimaryBarState: (state: boolean) => void;
 };
 
 export type AccountProps = {

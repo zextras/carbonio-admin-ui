@@ -15,6 +15,7 @@ import {
 	BoardView,
 	CarbonioModule,
 	PrimaryAccessoryView,
+	PrimarybarSection,
 	PrimaryBarView,
 	SearchView,
 	SecondaryAccessoryView,
@@ -54,7 +55,8 @@ export const useAppStore = create<AppState>((set) => ({
 		settings: [],
 		search: [],
 		primaryBarAccessories: [],
-		secondaryBarAccessories: []
+		secondaryBarAccessories: [],
+		primarybarSections: []
 	},
 	setters: {
 		addApps: (apps: Array<Partial<CarbonioModule>>): void => {
@@ -90,7 +92,12 @@ export const useAppStore = create<AppState>((set) => ({
 		addRoute: (routeData: AppRouteDescriptor): string => {
 			set(
 				produce((state: AppState) => {
-					state.routes[routeData.id] = routeData;
+					state.routes[routeData.id] = {
+						...routeData,
+						route: routeData.primarybarSection
+							? `${routeData.primarybarSection.id}/${routeData.route}`
+							: routeData.route
+					};
 					if (routeData.primaryBar) {
 						state.views.primaryBar = sortBy(
 							unionWith<PrimaryBarView>(
@@ -98,15 +105,35 @@ export const useAppStore = create<AppState>((set) => ({
 									{
 										app: routeData.app,
 										id: routeData.id,
-										route: routeData.route,
+										route: routeData.primarybarSection
+											? `${routeData.primarybarSection.id}/${routeData.route}`
+											: routeData.route,
 										component: routeData.primaryBar,
 										badge: routeData.badge,
 										position: routeData.position,
 										visible: routeData.visible,
-										label: routeData.label
+										label: routeData.label,
+										section: routeData.primarybarSection,
+										tooltip: routeData.tooltip
 									}
 								],
 								state.views.primaryBar,
+								(a, b): boolean => a.id === b.id
+							),
+							'position'
+						);
+						state.views.primarybarSections = sortBy(
+							unionWith<PrimarybarSection>(
+								routeData?.primarybarSection
+									? [
+											{
+												id: routeData?.primarybarSection.id,
+												position: routeData?.primarybarSection.position,
+												label: routeData?.primarybarSection.label
+											}
+									  ]
+									: [],
+								state.views.primarybarSections,
 								(a, b): boolean => a.id === b.id
 							),
 							'position'
@@ -132,7 +159,9 @@ export const useAppStore = create<AppState>((set) => ({
 								{
 									app: routeData.app,
 									id: routeData.id,
-									route: routeData.route,
+									route: routeData.primarybarSection
+										? `${routeData.primarybarSection.id}/${routeData.route}`
+										: routeData.route,
 									component: routeData.appView
 								}
 							],

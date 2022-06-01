@@ -123,7 +123,7 @@ export const registerDefaultViews = (t: TFunction): void => {
 			};
 			s.views.primaryBar = [
 				// searchPrimaryBar(t),
-				settingsPrimaryBar(t)
+				// settingsPrimaryBar(t)
 			];
 			s.views.secondaryBar = [settingsSecondaryBar];
 			s.views.appView = [
