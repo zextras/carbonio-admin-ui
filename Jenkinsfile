@@ -11,4 +11,6 @@ library(
     ])
 )
 
-zappPipeline()
+zappPipeline(
+  publishOnNpm: true
+)
