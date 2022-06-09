@@ -288,6 +288,11 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 										</Row>
 									</>
 								)}
+								{view?.section && !isOpen && view?.children && (
+									<Container height="auto" padding={{ left: 'medium', right: 'medium' }}>
+										<Divider></Divider>
+									</Container>
+								)}
 								{view?.children &&
 									view?.children.length > 0 &&
 									map(view?.children, (item) => (
