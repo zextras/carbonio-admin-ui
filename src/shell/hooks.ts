@@ -6,7 +6,8 @@
 
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import { useContext, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
+import { useUtilityBarStore } from '../utility-bar';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -38,3 +39,8 @@ export function useLocalStorage<T>(key: string, initialValue: T): any {
 	};
 	return [storedValue, setValue] as const;
 }
+
+export const usePrimaryBarState = (): boolean => {
+	const isOpen = useUtilityBarStore((s) => s.primaryBarState);
+	return isOpen;
+};

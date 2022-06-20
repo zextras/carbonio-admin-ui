@@ -185,3 +185,4 @@ export const replaceHistory: (params: HistoryParams) => void;
 export const goBackHistory: () => void;
 export const useCurrentRoute: () => AppRoute | undefined;
 export const getCurrentRoute: () => AppRoute | undefined;
+export const usePrimaryBarState: () => boolean;
