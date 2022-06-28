@@ -116,7 +116,7 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, isExpanded, 
 				{typeof view.component === 'string' ? (
 					<PrimaryBarRow width="fill" mainAlignment="flex-start" active={active} onClick={onClick}>
 						<BadgeWrap badge={view.badge}>
-							<PrimaryBarIconButton icon={view.component} size="large" />
+							<PrimaryBarIconButton icon={view.component} size="large" onClick={onClick} />
 						</BadgeWrap>
 						{isExpanded && (
 							<Text color="text" weight="bold">
@@ -258,10 +258,10 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 				}}
 			>
 				<Container mainAlignment="flex-start">
-					{map(primaryBarViewWithSection, (view) =>
+					{map(primaryBarViewWithSection, (view, index) =>
 						// eslint-disable-next-line no-nested-ternary
 						view.visible ? (
-							<>
+							<React.Fragment key={index}>
 								{view?.section === undefined && (
 									<PrimaryBarElement
 										key={view.id}
@@ -304,7 +304,7 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 											active={activeRoute?.id === item.id}
 										/>
 									))}
-							</>
+							</React.Fragment>
 						) : null
 					)}
 				</Container>
