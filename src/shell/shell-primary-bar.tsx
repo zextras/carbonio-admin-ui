@@ -116,7 +116,7 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, isExpanded, 
 				{typeof view.component === 'string' ? (
 					<PrimaryBarRow width="fill" mainAlignment="flex-start" active={active} onClick={onClick}>
 						<BadgeWrap badge={view.badge}>
-							<PrimaryBarIconButton icon={view.component} size="large" />
+							<PrimaryBarIconButton icon={view.component} size="large" onClick={onClick} />
 						</BadgeWrap>
 						{isExpanded && (
 							<Text color="text" weight="bold">
