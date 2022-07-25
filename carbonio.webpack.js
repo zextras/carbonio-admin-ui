@@ -21,20 +21,12 @@ module.exports = (conf, pkg, options, mode) => {
 	conf.entry = {
 		index: path.resolve(process.cwd(), 'src', 'index.tsx')
 	};
-	conf.module.rules.unshift({
-		test: /\.svg$/,
-		use: ['@svgr/webpack']
-	});
 	conf.output.filename =
 		mode === 'development' ? 'zapp-shell.bundle.js' : '[name].[chunkhash:8].js';
 	conf.resolve.extensions.push('.d.ts');
 	conf.plugins.push(
 		new CopyPlugin({
 			patterns: [
-				{
-					from: 'node_modules/@zextras/carbonio-design-system/dist/tinymce/skins',
-					to: 'tinymce/skins/'
-				},
 				{
 					from: 'assets/',
 					to: ''
