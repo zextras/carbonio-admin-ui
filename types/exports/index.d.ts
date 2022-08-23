@@ -186,3 +186,4 @@ export const goBackHistory: () => void;
 export const useCurrentRoute: () => AppRoute | undefined;
 export const getCurrentRoute: () => AppRoute | undefined;
 export const usePrimaryBarState: () => boolean;
+export const useNetworkState: () => any;
