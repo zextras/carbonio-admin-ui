@@ -122,6 +122,8 @@ export const useBoardConfig: <T>() => T;
 
 export const useIsMobile: () => boolean;
 export const soapFetch: SoapFetch;
+export const getSoapFetchRequest: SoapFetch;
+export const postSoapFetchRequest: SoapFetch;
 export const xmlSoapFetch: SoapFetch;
 export const report: (error: Error, hint?: unknown) => void;
 export const setAppContext: <T>(obj: T) => void;

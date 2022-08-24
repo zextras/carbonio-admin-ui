@@ -194,3 +194,192 @@ export const getXmlSoapFetch =
 				throw e;
 			}) as Promise<Response>;
 	};
+
+/* POST and GET Soap */
+
+const handleSoapResponse = <R>(res: SoapResponse<R>): any => {
+	const { pollingInterval, context, noOpTimeout } = useNetworkStore.getState();
+	const { usedQuota } = useAccountStore.getState();
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
+	clearTimeout(noOpTimeout);
+	if (res?.Body?.Fault) {
+		if (
+			find(
+				['service.AUTH_REQUIRED', 'service.AUTH_EXPIRED'],
+				(code) => code === (<ErrorSoapResponse>res).Body.Fault.Detail?.Error?.Code
+			)
+		) {
+			goToLogin();
+		}
+		throw new Error(
+			`${(<ErrorSoapResponse>res)?.Body.Fault.Detail?.Error?.Detail}: ${
+				(<ErrorSoapResponse>res).Body.Fault.Reason?.Text
+			}`
+		);
+	}
+	if (res?.Header?.context) {
+		const responseUsedQuota =
+			res.Header.context?.refresh?.mbx?.[0]?.s ?? res.Header.context?.notify?.[0]?.mbx?.[0]?.s;
+		const _context = normalizeContext(res.Header.context);
+		handleTagSync(_context);
+		useAccountStore.setState({
+			usedQuota: responseUsedQuota ?? usedQuota
+		});
+		useNetworkStore.setState({
+			noOpTimeout: setTimeout(() => noOp(), pollingInterval),
+			context: {
+				...context,
+				...res?.Header?.context
+			}
+		});
+	}
+	return <SuccessSoapResponse<R>>res;
+};
+
+const fetchAccount = (
+	acc?: Account,
+	otherAccount?: string
+): { by: string; _content: string } | undefined => {
+	if (otherAccount) {
+		return {
+			by: 'id',
+			_content: otherAccount
+		};
+	}
+	if (acc) {
+		if (acc.name) {
+			return {
+				by: 'name',
+				_content: acc.name
+			};
+		}
+		if (acc.id) {
+			return {
+				by: 'id',
+				_content: acc.id
+			};
+		}
+	}
+	return undefined;
+};
+
+export const getSoapFetchRequest =
+	(app: string) =>
+	<Request, Response>(apiURL: string): Promise<Response> =>
+		fetch(`${apiURL}`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}) // TODO proper error handling
+			.then((res) => res?.json())
+			.then((res: SoapResponse<Response>) => handleSoapResponse(res))
+			.catch((e) => {
+				report(app)(e);
+				throw e;
+			}) as Promise<Response>;
+
+export const postSoapFetchRequest =
+	(app: string) =>
+	<Request, Response>(
+		apiURL: string,
+		body: Request,
+		api?: string,
+		otherAccount?: string
+	): Promise<Response> => {
+		const { zimbraVersion, account } = useAccountStore.getState();
+		const { context } = useNetworkStore.getState();
+		let bodyItem: any = {};
+		if (api) {
+			bodyItem = {
+				[`${api}`]: body
+			};
+		} else {
+			bodyItem = body;
+		}
+		return fetch(`${apiURL}`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				Body: {
+					...bodyItem
+				},
+				Header: {
+					context: {
+						_jsns: 'urn:zimbra',
+						notify: context?.notify?.[0]?.seq
+							? {
+									seq: context?.notify?.[0]?.seq
+							  }
+							: undefined,
+						session: context?.session ?? {},
+						account: fetchAccount(account as Account, otherAccount),
+						userAgent: {
+							name: userAgent,
+							version: zimbraVersion
+						}
+					}
+				}
+			})
+		}) // TODO proper error handling
+			.then((res) => res?.json())
+			.then((res: SoapResponse<Response>) => handleSoapResponse(res))
+			.catch((e) => {
+				report(app)(e);
+				throw e;
+			}) as Promise<Response>;
+	};
+
+export const postSoapWithoutBodyFetchRequest =
+	(app: string) =>
+	<Request, Response>(
+		apiURL: string,
+		body: Request,
+		api?: string,
+		otherAccount?: string
+	): Promise<Response> => {
+		const { zimbraVersion, account } = useAccountStore.getState();
+		const { context } = useNetworkStore.getState();
+		let bodyItem: any = {};
+		if (api) {
+			bodyItem = {
+				[`${api}`]: body
+			};
+		} else {
+			bodyItem = body;
+		}
+		return fetch(`${apiURL}`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				...bodyItem,
+				Header: {
+					context: {
+						_jsns: 'urn:zimbra',
+						notify: context?.notify?.[0]?.seq
+							? {
+									seq: context?.notify?.[0]?.seq
+							  }
+							: undefined,
+						session: context?.session ?? {},
+						account: fetchAccount(account as Account, otherAccount),
+						userAgent: {
+							name: userAgent,
+							version: zimbraVersion
+						}
+					}
+				}
+			})
+		}) // TODO proper error handling
+			.then((res) => res?.json())
+			.then((res: SoapResponse<Response>) => handleSoapResponse(res))
+			.catch((e) => {
+				report(app)(e);
+				throw e;
+			}) as Promise<Response>;
+	};
