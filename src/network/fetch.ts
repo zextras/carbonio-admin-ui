@@ -90,7 +90,7 @@ const normalizeContext = (context: any): SoapContext => {
 	return context;
 };
 
-const handleResponse = <R>(api: string, res: SoapResponse<R>): R => {
+const handleResponse = (api: string, res: SoapResponse<any>): any => {
 	const { pollingInterval, context, noOpTimeout } = useNetworkStore.getState();
 	const { usedQuota } = useAccountStore.getState();
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -105,10 +105,13 @@ const handleResponse = <R>(api: string, res: SoapResponse<R>): R => {
 		) {
 			goToLogin();
 		}
+		const errMessage = res?.Body?.Fault?.Reason?.Text
+			? res?.Body?.Fault?.Reason?.Text
+			: res?.Body?.Fault?.Detail?.Error?.Detail;
+
 		throw new Error(
-			`${(<ErrorSoapResponse>res)?.Body.Fault.Detail?.Error?.Detail}: ${
-				(<ErrorSoapResponse>res).Body.Fault.Reason?.Text
-			}`
+			`${errMessage}
+			`
 		);
 	}
 	if (res?.Header?.context) {
@@ -127,7 +130,7 @@ const handleResponse = <R>(api: string, res: SoapResponse<R>): R => {
 			}
 		});
 	}
-	return (<SuccessSoapResponse<R>>res).Body[`${api}Response`] as R;
+	return (<SuccessSoapResponse<any>>res).Body[`${api}Response`] as any;
 };
 export const getSoapFetch =
 	(app: string) =>
