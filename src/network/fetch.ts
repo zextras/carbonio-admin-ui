@@ -200,7 +200,7 @@ export const getXmlSoapFetch =
 
 /* POST and GET Soap */
 
-const handleSoapResponse = <R>(res: SoapResponse<R>): any => {
+const handleSoapResponse = (res: SoapResponse<any>): any => {
 	const { pollingInterval, context, noOpTimeout } = useNetworkStore.getState();
 	const { usedQuota } = useAccountStore.getState();
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -215,10 +215,10 @@ const handleSoapResponse = <R>(res: SoapResponse<R>): any => {
 		) {
 			goToLogin();
 		}
+		const errMessage = res?.Body?.Fault?.Reason?.Text ? res?.Body?.Fault?.Reason?.Text : res;
 		throw new Error(
-			`${(<ErrorSoapResponse>res)?.Body.Fault.Detail?.Error?.Detail}: ${
-				(<ErrorSoapResponse>res).Body.Fault.Reason?.Text
-			}`
+			`${errMessage}
+		`
 		);
 	}
 	if (res?.Header?.context) {
@@ -237,7 +237,7 @@ const handleSoapResponse = <R>(res: SoapResponse<R>): any => {
 			}
 		});
 	}
-	return <SuccessSoapResponse<R>>res;
+	return <SuccessSoapResponse<any>>res;
 };
 
 const fetchAccount = (
