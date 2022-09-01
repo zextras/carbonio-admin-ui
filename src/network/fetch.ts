@@ -200,42 +200,24 @@ export const getXmlSoapFetch =
 
 /* POST and GET Soap */
 
-const handleSoapResponse = (res: SoapResponse<any>): any => {
-	const { pollingInterval, context, noOpTimeout } = useNetworkStore.getState();
-	const { usedQuota } = useAccountStore.getState();
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	// @ts-ignore
-	clearTimeout(noOpTimeout);
+const handleSoapResponse = (res: any): any => {
 	if (res?.Body?.Fault) {
 		if (
 			find(
 				['service.AUTH_REQUIRED', 'service.AUTH_EXPIRED'],
-				(code) => code === (<ErrorSoapResponse>res).Body.Fault.Detail?.Error?.Code
+				(code) => code === (<any>res).Body.Fault.Detail?.Error?.Code
 			)
 		) {
 			goToLogin();
 		}
-		const errMessage = res?.Body?.Fault?.Reason?.Text ? res?.Body?.Fault?.Reason?.Text : res;
+		let errMessage = res?.Body?.Fault?.Reason?.Text ? res?.Body?.Fault?.Reason?.Text : res;
+		if (res?.error) {
+			errMessage = res?.error?.message;
+		}
 		throw new Error(
 			`${errMessage}
 		`
 		);
-	}
-	if (res?.Header?.context) {
-		const responseUsedQuota =
-			res.Header.context?.refresh?.mbx?.[0]?.s ?? res.Header.context?.notify?.[0]?.mbx?.[0]?.s;
-		const _context = normalizeContext(res.Header.context);
-		handleTagSync(_context);
-		useAccountStore.setState({
-			usedQuota: responseUsedQuota ?? usedQuota
-		});
-		useNetworkStore.setState({
-			noOpTimeout: setTimeout(() => noOp(), pollingInterval),
-			context: {
-				...context,
-				...res?.Header?.context
-			}
-		});
 	}
 	return <SuccessSoapResponse<any>>res;
 };
