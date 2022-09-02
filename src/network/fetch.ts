@@ -90,7 +90,7 @@ const normalizeContext = (context: any): SoapContext => {
 	return context;
 };
 
-const handleResponse = <R>(api: string, res: SoapResponse<R>): R => {
+const handleResponse = (api: string, res: SoapResponse<any>): any => {
 	const { pollingInterval, context, noOpTimeout } = useNetworkStore.getState();
 	const { usedQuota } = useAccountStore.getState();
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -105,10 +105,13 @@ const handleResponse = <R>(api: string, res: SoapResponse<R>): R => {
 		) {
 			goToLogin();
 		}
+		const errMessage = res?.Body?.Fault?.Reason?.Text
+			? res?.Body?.Fault?.Reason?.Text
+			: res?.Body?.Fault?.Detail?.Error?.Detail;
+
 		throw new Error(
-			`${(<ErrorSoapResponse>res)?.Body.Fault.Detail?.Error?.Detail}: ${
-				(<ErrorSoapResponse>res).Body.Fault.Reason?.Text
-			}`
+			`${errMessage}
+			`
 		);
 	}
 	if (res?.Header?.context) {
@@ -127,7 +130,7 @@ const handleResponse = <R>(api: string, res: SoapResponse<R>): R => {
 			}
 		});
 	}
-	return (<SuccessSoapResponse<R>>res).Body[`${api}Response`] as R;
+	return (<SuccessSoapResponse<any>>res).Body[`${api}Response`] as any;
 };
 export const getSoapFetch =
 	(app: string) =>
@@ -189,6 +192,161 @@ export const getXmlSoapFetch =
 		}) // TODO proper error handling
 			.then((res) => res?.json())
 			.then((res: SoapResponse<Response>) => handleResponse(api, res))
+			.catch((e) => {
+				report(app)(e);
+				throw e;
+			}) as Promise<Response>;
+	};
+
+/* POST and GET Soap */
+
+const handleSoapResponse = (res: any): any => {
+	if (res?.Body?.Fault) {
+		if (
+			find(
+				['service.AUTH_REQUIRED', 'service.AUTH_EXPIRED'],
+				(code) => code === (<any>res).Body.Fault.Detail?.Error?.Code
+			)
+		) {
+			goToLogin();
+		}
+		let errMessage = res?.Body?.Fault?.Reason?.Text ? res?.Body?.Fault?.Reason?.Text : res;
+		if (res?.error) {
+			errMessage = res?.error?.message;
+		}
+		throw new Error(
+			`${errMessage}
+		`
+		);
+	}
+	return <SuccessSoapResponse<any>>res;
+};
+
+const fetchAccount = (
+	acc?: Account,
+	otherAccount?: string
+): { by: string; _content: string } | undefined => {
+	if (otherAccount) {
+		return {
+			by: 'id',
+			_content: otherAccount
+		};
+	}
+	if (acc) {
+		if (acc.name) {
+			return {
+				by: 'name',
+				_content: acc.name
+			};
+		}
+		if (acc.id) {
+			return {
+				by: 'id',
+				_content: acc.id
+			};
+		}
+	}
+	return undefined;
+};
+
+export const getSoapFetchRequest =
+	(app: string) =>
+	<Request, Response>(apiURL: string): Promise<Response> =>
+		fetch(`${apiURL}`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}) // TODO proper error handling
+			.then((res) => res?.json())
+			.then((res: SoapResponse<Response>) => handleSoapResponse(res))
+			.catch((e) => {
+				report(app)(e);
+				throw e;
+			}) as Promise<Response>;
+
+export const postSoapFetchRequest =
+	(app: string) =>
+	<Request, Response>(
+		apiURL: string,
+		body: Request,
+		api?: string,
+		otherAccount?: string
+	): Promise<Response> => {
+		const { zimbraVersion, account } = useAccountStore.getState();
+		const { context } = useNetworkStore.getState();
+		let bodyItem: any = {};
+		if (api) {
+			bodyItem = {
+				[`${api}`]: body
+			};
+		} else {
+			bodyItem = body;
+		}
+		return fetch(`${apiURL}`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				Body: {
+					...bodyItem
+				},
+				Header: {
+					context: {
+						_jsns: 'urn:zimbra',
+						notify: context?.notify?.[0]?.seq
+							? {
+									seq: context?.notify?.[0]?.seq
+							  }
+							: undefined,
+						session: context?.session ?? {},
+						account: fetchAccount(account as Account, otherAccount),
+						userAgent: {
+							name: userAgent,
+							version: zimbraVersion
+						}
+					}
+				}
+			})
+		}) // TODO proper error handling
+			.then((res) => res?.json())
+			.then((res: SoapResponse<Response>) => handleSoapResponse(res))
+			.catch((e) => {
+				report(app)(e);
+				throw e;
+			}) as Promise<Response>;
+	};
+
+export const fetchExternalSoap =
+	(app: string) =>
+	<Request, Response>(
+		apiURL: string,
+		body: Request,
+		api?: string,
+		otherAccount?: string
+	): Promise<Response> => {
+		const { zimbraVersion, account } = useAccountStore.getState();
+		const { context } = useNetworkStore.getState();
+		let bodyItem: any = {};
+		if (api) {
+			bodyItem = {
+				[`${api}`]: body
+			};
+		} else {
+			bodyItem = body;
+		}
+		return fetch(`${apiURL}`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				...bodyItem
+			})
+		}) // TODO proper error handling
+			.then((res) => (res?.headers.get('content-length') === null ? res : res?.json()))
+			.then((res: any) => handleSoapResponse(res))
 			.catch((e) => {
 				report(app)(e);
 				throw e;

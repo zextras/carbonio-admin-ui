@@ -7,6 +7,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
 import { useContext, useMemo, useState } from 'react';
+import { useNetworkStore } from '../store/network';
 import { useUtilityBarStore } from '../utility-bar';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -44,3 +45,5 @@ export const usePrimaryBarState = (): boolean => {
 	const isOpen = useUtilityBarStore((s) => s.primaryBarState);
 	return isOpen;
 };
+
+export const useNetworkState = (): any => useNetworkStore.getState();

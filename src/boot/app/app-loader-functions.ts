@@ -30,7 +30,7 @@ import {
 	getUserRight,
 	getUserRights
 } from '../../store/account';
-import { useIsMobile, usePrimaryBarState } from '../../shell/hooks';
+import { useIsMobile, usePrimaryBarState, useNetworkState } from '../../shell/hooks';
 import {
 	useAction,
 	useActions,
@@ -57,7 +57,13 @@ import {
 	useRemoveCurrentBoard,
 	useUpdateCurrentBoard
 } from '../../shell/boards/board-hooks';
-import { getSoapFetch, getXmlSoapFetch } from '../../network/fetch';
+import {
+	getSoapFetch,
+	getSoapFetchRequest,
+	getXmlSoapFetch,
+	postSoapFetchRequest,
+	fetchExternalSoap
+} from '../../network/fetch';
 import { getTag, getTags, useTag, useTags } from '../../store/tags';
 import { useNotify, useRefresh } from '../../store/network';
 import { changeTagColor, createTag, deleteTag, renameTag, updateTag } from '../../network/tags';
@@ -65,6 +71,9 @@ import { changeTagColor, createTag, deleteTag, renameTag, updateTag } from '../.
 // eslint-disable-next-line @typescript-eslint/ban-types
 export const getAppFunctions = (pkg: CarbonioModule): Record<string, Function> => ({
 	soapFetch: getSoapFetch(pkg.name),
+	getSoapFetchRequest: getSoapFetchRequest(pkg.name),
+	postSoapFetchRequest: postSoapFetchRequest(pkg.name),
+	fetchExternalSoap: fetchExternalSoap(pkg.name),
 	xmlSoapFetch: getXmlSoapFetch(pkg.name),
 
 	// APP STORE FUNCTIONS
@@ -128,6 +137,7 @@ export const getAppFunctions = (pkg: CarbonioModule): Record<string, Function> =
 	// STUFF
 	useIsMobile,
 	usePrimaryBarState,
+	useNetworkState,
 	getBridgedFunctions: (): unknown => {
 		const { packageDependentFunctions, functions } = useContextBridge.getState();
 		return {
