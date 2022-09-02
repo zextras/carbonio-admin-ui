@@ -62,7 +62,7 @@ import {
 	getSoapFetchRequest,
 	getXmlSoapFetch,
 	postSoapFetchRequest,
-	postSoapWithoutBodyFetchRequest
+	fetchExternalSoap
 } from '../../network/fetch';
 import { getTag, getTags, useTag, useTags } from '../../store/tags';
 import { useNotify, useRefresh } from '../../store/network';
@@ -73,7 +73,7 @@ export const getAppFunctions = (pkg: CarbonioModule): Record<string, Function> =
 	soapFetch: getSoapFetch(pkg.name),
 	getSoapFetchRequest: getSoapFetchRequest(pkg.name),
 	postSoapFetchRequest: postSoapFetchRequest(pkg.name),
-	postSoapWithoutBodyFetchRequest: postSoapWithoutBodyFetchRequest(pkg.name),
+	fetchExternalSoap: fetchExternalSoap(pkg.name),
 	xmlSoapFetch: getXmlSoapFetch(pkg.name),
 
 	// APP STORE FUNCTIONS

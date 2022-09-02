@@ -318,7 +318,7 @@ export const postSoapFetchRequest =
 			}) as Promise<Response>;
 	};
 
-export const postSoapWithoutBodyFetchRequest =
+export const fetchExternalSoap =
 	(app: string) =>
 	<Request, Response>(
 		apiURL: string,
@@ -342,27 +342,11 @@ export const postSoapWithoutBodyFetchRequest =
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
-				...bodyItem,
-				Header: {
-					context: {
-						_jsns: 'urn:zimbra',
-						notify: context?.notify?.[0]?.seq
-							? {
-									seq: context?.notify?.[0]?.seq
-							  }
-							: undefined,
-						session: context?.session ?? {},
-						account: fetchAccount(account as Account, otherAccount),
-						userAgent: {
-							name: userAgent,
-							version: zimbraVersion
-						}
-					}
-				}
+				...bodyItem
 			})
 		}) // TODO proper error handling
-			.then((res) => res?.json())
-			.then((res: SoapResponse<Response>) => handleSoapResponse(res))
+			.then((res) => (res?.headers.get('content-length') === null ? res : res?.json()))
+			.then((res: any) => handleSoapResponse(res))
 			.catch((e) => {
 				report(app)(e);
 				throw e;
