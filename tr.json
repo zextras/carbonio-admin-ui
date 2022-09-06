@@ -1,7 +1,4 @@
 {
-    "logout_modal": {
-        "warning": "Oturumunuz kapatılacak"
-    },
     "message": {
         "snackbar": {
             "settings_saved": "Değişiklikler başarıyla kaydedildi",
@@ -191,12 +188,12 @@
     "locale": {
         "label_italian": "Italian - {{value}}",
         "label_turkish": "Türkçe - {{value}}",
-        "chinese_china": "Chinese (China)",
+        "chinese_china": "Çince (Çin)",
         "dutch": "Dutch",
         "german": "German",
-        "hindi": "Hindi",
-        "italian": "Italian",
-        "japanese": "Japanese",
+        "hindi": "Hintçe",
+        "italian": "İtalyanca",
+        "japanese": "Japonca",
         "label_chinese": "Chinese (China) - {{value}}",
         "label_dutch": "Dutch - {{value}}",
         "label_english": "English - {{value}}",
@@ -215,7 +212,7 @@
         "romanian": "Romanian",
         "russian": "Russian",
         "spanish": "Spanish",
-        "thai": "Thai",
+        "thai": "Tay dili",
         "turkish": "Türkçe",
         "french": "Fransızca",
         "label_french": "Fransızca - {{value}}",
@@ -223,11 +220,8 @@
         "polish": "Polish"
     },
     "timezone": {
-        "baku": "{{value}} Baku",
         "coordinated_universal_time": "{{value}} Coordinated Universal Time",
-        "helsinki_kyiv_riga_sofia_tallinn_vilnius": "{{value}} Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius",
         "mid_atlantic": "{{value}} Mid-Atlantic",
-        "tehran": "{{value}} Tehran",
         "africa_cairo": "{{value}} Egypt",
         "africa_casablanca": "{{value}} Casablanca",
         "africa_harare": "{{value}} Harare, Pretoria",
