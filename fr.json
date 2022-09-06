@@ -166,15 +166,10 @@
         "error": "Quelque chose s'est mal passé, veuillez recommencer"
     },
     "timezone": {
-        "atlantic_time_canada": "{{value}} Heure de l'Atlantique (Canada)",
         "britain_ireland_portugal": "{{value}} Grande-Bretagne, Irlande, Portugal",
-        "chita": "{{value}} Tchita",
         "egypt": "{{value}} Egypte",
-        "hawaii": "{{value}} Hawaii",
         "kabul": "{{value}} Kabul",
-        "manaus": "{{value}} Manaus",
         "pacific_south_america": "{{value}} Pacifique Amérique du Sud",
-        "tehran": "{{value}} Téhéran",
         "beijing_chongqing_hong_kong_urumqi": "{{value}} Pékin, Chongqing, Hong Kong, Urumqi",
         "africa_cairo": "{{value}} Égypte",
         "africa_harare": "{{value}} Harare, Pretoria",
@@ -353,7 +348,8 @@
         "turkish": "Turc",
         "french": "Français",
         "label_french": "Français - {{value}}",
-        "vietnamese": "Vietnamienne"
+        "vietnamese": "Vietnamienne",
+        "polish": "Polonais"
     },
     "module": {
         "app": {
@@ -387,7 +383,7 @@
         "permanent_delete_body": "Si vous supprimez définitivement cette identité, vous ne pourrez pas la récupérer. Continuer ?"
     },
     "share": {
-        "is_contained_in": "Est contenu dans"
+        "is_contained_in": "Dans le dossier"
     },
     "passwords_recovery_settings": {
         "title": "Paramètres du compte de récupération de mot de passe"
