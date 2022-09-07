@@ -1,7 +1,4 @@
 {
-    "logout_modal": {
-        "confirm": "Disconnettimi"
-    },
     "new": "Nuovo",
     "new_tab": "Nuova tab",
     "settings": {
@@ -130,7 +127,7 @@
         "delete_permanently": "Elimina definitivamente",
         "delete_after_download": "Elimina il messaggio dal server dopo che è stato scaricato",
         "documentation": "Documentazione",
-        "email_address": "Indirizzo e-mailInidirizzi e-mail {{count}}",
+        "email_address": "Indirizzo e-mail",
         "filter_folders": "Filtra cartelle",
         "folders": "Cartelle",
         "go_back": "Indietro",
@@ -223,11 +220,8 @@
         "polish": "Polacco"
     },
     "timezone": {
-        "cape_verde_is": "{{value}} Capo Verde.",
         "gmt_02": "{{value}} GMT-02",
-        "la_paz": "{{value}} La Paz",
         "sri_jayawardenepura_kotte": "{{value}} Sri Jayawardenepura Kotte",
-        "egypt": "{{value}} Egitto",
         "africa_juba": "{{value}} Juba",
         "africa_khartoum": "{{value}} Khartoum",
         "africa_windhoek": "{{value}} Namibia",
