@@ -11,4 +11,7 @@ library(
     ])
 )
 
-zappPipeline()
+zappPipeline(
+    publishOnNpm: true,
+    disableAutoTranslationsSync: true
+)
