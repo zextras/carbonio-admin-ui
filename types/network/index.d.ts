@@ -186,3 +186,16 @@ export type TagActionResponse = {
 	action: { op: string; id: string };
 	_jsns: string;
 };
+
+export type Attribute = {
+	n: string;
+	_content: any;
+};
+
+export type GetAllConfigResponse = {
+	a: Array<Attribute>;
+};
+
+export type ConfigState = {
+	a: Array<Attribute>;
+};
