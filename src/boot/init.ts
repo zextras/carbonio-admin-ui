@@ -11,6 +11,8 @@ import { loadApps } from './app/load-apps';
 import I18nFactory from '../i18n/i18n-factory';
 import StoreFactory from '../redux/store-factory';
 import { getInfo } from '../network/get-info';
+import { getAllConfig } from '../network/get-all-config';
+import { useAllConfig, useAllConfigStore } from '../store/config';
 
 export const init = (_i18nFactory: I18nFactory, _storeFactory: StoreFactory): void => {
 	getInfo().then(() => {
@@ -22,4 +24,6 @@ export const init = (_i18nFactory: I18nFactory, _storeFactory: StoreFactory): vo
 		);
 		loadApps(_storeFactory, Object.values(useAppStore.getState().apps));
 	});
+
+	getAllConfig().then();
 };

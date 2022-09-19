@@ -30,7 +30,14 @@ import {
 	AccountRightTarget,
 	SoapFetch
 } from '../account';
-import { Mods, TagActionResponse, CreateTagResponse, SoapNotify, SoapRefresh } from '../network';
+import {
+	Mods,
+	TagActionResponse,
+	CreateTagResponse,
+	SoapNotify,
+	SoapRefresh,
+	Attribute
+} from '../network';
 import { HistoryParams, ShellModes } from '../misc';
 import { Tag, Tags } from '../tags';
 
@@ -189,3 +196,4 @@ export const useCurrentRoute: () => AppRoute | undefined;
 export const getCurrentRoute: () => AppRoute | undefined;
 export const usePrimaryBarState: () => boolean;
 export const useNetworkState: () => any;
+export const useAllConfig: () => Array<Attribute>;
