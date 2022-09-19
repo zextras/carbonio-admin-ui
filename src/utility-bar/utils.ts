@@ -31,3 +31,6 @@ export const useUtilityViews = (): Array<UtilityView> => {
 		[activeRoute, utilityViews]
 	);
 };
+export const openLink = (link: string): void => {
+	window.open(link, '_blank');
+};

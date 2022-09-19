@@ -15,7 +15,7 @@ export const getAllConfig = (): Promise<void> =>
 	})
 		.then((res: any): void => {
 			if (res && res?.a && Array.isArray(res?.a)) {
-				useAllConfigStore.setState(res?.a);
+				useAllConfigStore.setState({ a: res?.a });
 			}
 		})
 		.catch((err: unknown) => {

@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import React, { FC } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 import {
 	Container,
 	IconButton,
@@ -21,6 +21,8 @@ import { SearchBar } from '../search/search-bar';
 import { CreationButton } from './creation-button';
 import { useAppStore } from '../store/app';
 import { AppRoute } from '../../types';
+import { useAllConfigStore } from '../store/config/store';
+import { openLink } from '../utility-bar/utils';
 
 const ShellHeader: FC<{
 	activeRoute: AppRoute;
@@ -30,6 +32,21 @@ const ShellHeader: FC<{
 	const screenMode = useScreenMode();
 	const [t] = useTranslation();
 	const searchEnabled = useAppStore((s) => s.views.search.length > 0);
+	const configs = useAllConfigStore((c) => c.a);
+	const [helpCenterURL, setHelpCenterURL] = useState<string>('https://docs.zextras.com');
+	useEffect(() => {
+		if (configs && configs.length > 0) {
+			const zimbraHelpAdminURLattribute = configs.find(
+				(item: any) => item?.n === 'zimbraHelpAdminURLattribute'
+			);
+			if (zimbraHelpAdminURLattribute) {
+				setHelpCenterURL(zimbraHelpAdminURLattribute?._content);
+			}
+		}
+	}, [configs]);
+	const onHelpCenterClick = useCallback(() => {
+		openLink(helpCenterURL);
+	}, [helpCenterURL]);
 	return (
 		<Container
 			orientation="horizontal"
@@ -77,12 +94,12 @@ const ShellHeader: FC<{
 					crossAlignment="center"
 					width="100%"
 				>
-					<Container width="100%">
+					{/* <Container width="100%">
 						<Input
 							label={t('search.app', 'Search')}
 							CustomIcon={(): any => <Icon icon="SearchOutline" size="large" color="text" />}
 						/>
-					</Container>
+					</Container> */}
 					<Container
 						orientation="horizontal"
 						mainAlignment="flex-start"
@@ -92,11 +109,21 @@ const ShellHeader: FC<{
 							all: 'large'
 						}}
 					>
-						<Text color="primary" size="regular">
+						<Text
+							color="primary"
+							size="regular"
+							onClick={onHelpCenterClick}
+							style={{ cursor: 'pointer' }}
+						>
 							{t('labels.help_center', 'Help Center')}
 						</Text>
-						<Padding left="medium">
-							<Icon icon="QuestionMarkCircleOutline" size="medium" color="primary" />
+						<Padding left="medium" onClick={onHelpCenterClick}>
+							<Icon
+								icon="QuestionMarkCircleOutline"
+								size="medium"
+								color="primary"
+								style={{ cursor: 'pointer' }}
+							/>
 						</Padding>
 					</Container>
 				</Container>
