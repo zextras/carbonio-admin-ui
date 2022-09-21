@@ -70,9 +70,6 @@
             }
         }
     },
-    "login": {
-        "verify_caps_lock": "Comprueba que BLOQUEAR MAYÚSCULAS no esté activado, luego vuelve a introducir el nombre de usuario y la contraseña actuales"
-    },
     "new": "Nuevo",
     "message": {
         "snackbar": {
@@ -181,15 +178,10 @@
         "update_view": "Actualizar vista"
     },
     "timezone": {
-        "coordinated_universal_time": "{{value}} Tiempo universal coordinado",
         "argentina": "{{value}} Argentina",
-        "beirut": "{{value}} Beirut",
         "central_america": "{{value}} América Central",
-        "darwin": "{{value}} Darwin",
         "harare_pretoria": "{{value}} Harare, Pretoria",
-        "kabul": "{{value}} Kabul",
         "manaus": "{{value}} Manaos",
-        "pacific_south_america": "{{value}} Pacífico América del Sur",
         "us_canada_central": "{{value}} US/Canada Central",
         "africa_cairo": "{{value}} Egipto",
         "africa_casablanca": "{{value}} Casablanca",
@@ -360,7 +352,8 @@
         "turkish": "Turco",
         "french": "Francés",
         "label_french": "Francés - {{value}}",
-        "vietnamese": "Vietnamita"
+        "vietnamese": "Vietnamita",
+        "polish": "Polaco"
     },
     "board": {
         "close_tab": "Cerrar pestaña",
