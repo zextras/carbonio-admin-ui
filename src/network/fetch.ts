@@ -134,7 +134,12 @@ const handleResponse = (api: string, res: SoapResponse<any>): any => {
 };
 export const getSoapFetch =
 	(app: string) =>
-	<Request, Response>(api: string, body: Request, otherAccount?: string): Promise<Response> => {
+	<Request, Response>(
+		api: string,
+		body: Request,
+		otherAccount?: string,
+		targetServer?: string
+	): Promise<Response> => {
 		const { zimbraVersion, account } = useAccountStore.getState();
 		const { context } = useNetworkStore.getState();
 		return fetch(`/service/admin/soap/${api}Request`, {
@@ -159,7 +164,8 @@ export const getSoapFetch =
 						userAgent: {
 							name: userAgent,
 							version: zimbraVersion
-						}
+						},
+						targetServer: targetServer || undefined
 					}
 				}
 			})
