@@ -21,24 +21,24 @@
     "settings": {
         "search_settings": {
             "labels": {
-                "include_search_in_shared_folder": "Zawrzyj Udostępniony folder w wynikach wyszukiwań",
-                "include_search_in_spam_folder": "Zawrzyj folder Spamu w wynikach wyszukiwań",
-                "include_search_in_trash_folder": "Zawrzyj Kosz w wynikach wyszukiwań"
+                "include_search_in_shared_folder": "Uwzględniony udostępniony folder w wynikach wyszukiwań",
+                "include_search_in_spam_folder": "Uwzględnij folder Spamu w wynikach wyszukiwań",
+                "include_search_in_trash_folder": "Uwzględnij Kosz w wynikach wyszukiwań"
             }
         },
         "out_of_office": {
             "labels": {
                 "start_date": "Data rozpoczęcia",
                 "start_time": "Czas rozpoczęcia:",
-                "all_day": "Cały dzień:",
+                "all_day": "Cały dzień",
                 "auto_reply_message": "Automatyczna Odpowiedź:",
-                "create_appointment": "Stwórz Spotkanie:",
+                "create_appointment": "Utwórz termin i wyświetlaj jako:",
                 "end_date": "Data zakończenia",
                 "end_time": "Czas zakończenia:",
                 "auto_reply_message_external": "Automatyczna odpowiedź dla nadawców spoza mojej domeny:",
                 "external_senders": "Nadawcy spoza mojej domeny",
                 "out_of_office_status": "Status Poza biurem:",
-                "send_auto_reply_period": "Wysyłaj automatyczne odpowiedzi w ciągu tego okresu:"
+                "send_auto_reply_period": "Wysyłaj automatyczne odpowiedzi w następującym okresie:"
             },
             "do_not_send_auto_replies": "Nie wysyłaj automatycznych odpowiedzi",
             "external_senders": {
@@ -48,8 +48,8 @@
                 "send_standard_auto_reply": "Wysyłaj domyślną automatyczną odpowiedź"
             },
             "headings": {
-                "create_appointment": "Spotkanie - Kalendarz",
-                "settings_label": "Ustawienia Poza Biurem",
+                "create_appointment": "Termin kalendarzowy",
+                "settings_label": "Powiadomienie o nieobecności",
                 "time_period": "Okres czasu"
             },
             "send_auto_replies": "Wysyłaj automatyczne odpowiedzi",
@@ -111,7 +111,7 @@
         "go_back": "Powrót",
         "imap": "IMAP",
         "logout": "Wyloguj się",
-        "new_folder": "Nowy Folder",
+        "new_folder": "Nowy folder",
         "leave_anyway": "Opuść mimo to",
         "permanent_delete_title": "Czy na pewno chcesz usunąć tą Personę?",
         "persona": "Persona",
@@ -205,11 +205,8 @@
     },
     "new_tab": "Nowa Karta",
     "timezone": {
-        "harare_pretoria": "{{value}} Harare, Pretoria",
         "beirut": "{{value}} Bejrut",
-        "egypt": "{{value}} Egipt",
         "monrovia": "{{value}} Monrovia",
-        "us_canada_central": "{{value}} USA/Centralna Kanada",
         "africa_algiers": "{{value}} Zachodnio-środkowa Afryka",
         "africa_cairo": "{{value}} Egipt",
         "africa_casablanca": "{{value}} Casablanca",
