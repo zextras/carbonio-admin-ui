@@ -17,6 +17,13 @@ export type SoapFetch = <Request, Response>(
 	account?: string
 ) => Promise<Response>;
 
+export type SoapFetchPost = <Request, Response>(
+	apiURL: string,
+	body: Request,
+	api?: string,
+	otherAccount?: string
+) => Promise<Response>;
+
 export type AccountState = {
 	account?: Account;
 	settings: AccountSettings;
