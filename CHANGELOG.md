@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.2](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.1...v0.9.2) (2022-09-28)
+
+
+### Bug Fixes
+
+* change type return of soap api ([#26](https://github.com/zextras/carbonio-admin-ui/issues/26)) ([9a9d1bd](https://github.com/zextras/carbonio-admin-ui/commit/9a9d1bdc1b056364340e17b702e6768e57e64b91))
+
 ### [0.9.1](https://github.com/zextras/carbonio-admin-ui/compare/v0.4.3-rc.0...v0.9.1) (2022-09-22)
 
 
