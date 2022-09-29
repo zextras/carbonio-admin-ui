@@ -16,7 +16,7 @@ import {
 	Text
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
-import Logo from '../svg/carbonio-admin-panel.svg';
+import Logo from '../svg/carbonio-adminpanel-beta.svg';
 import { SearchBar } from '../search/search-bar';
 import { CreationButton } from './creation-button';
 import { useAppStore } from '../store/app';
