@@ -191,7 +191,7 @@
         "chinese_china": "Çince (Çin)",
         "dutch": "Dutch",
         "german": "German",
-        "hindi": "Hintçe",
+        "hindi": "Hindi",
         "italian": "İtalyanca",
         "japanese": "Japonca",
         "label_chinese": "Chinese (China) - {{value}}",
@@ -220,7 +220,6 @@
         "polish": "Polish"
     },
     "timezone": {
-        "coordinated_universal_time": "{{value}} Coordinated Universal Time",
         "mid_atlantic": "{{value}} Mid-Atlantic",
         "africa_cairo": "{{value}} Egypt",
         "africa_casablanca": "{{value}} Casablanca",
