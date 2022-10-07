@@ -164,9 +164,9 @@
     "board": {
         "close_tab": "Zamknij Kartę",
         "close_tabs": "Zamknij wszystkie karty",
-        "enlarge": "Powiększ tablicę",
-        "hide": "Ukryj tablicę",
-        "reduce": "Zmniejsz tablicę",
+        "enlarge": "Powiększ okienko",
+        "hide": "Ukryj okienko",
+        "reduce": "Zmniejsz okienko",
         "show_tabs": "Pokaż inne karty"
     },
     "locale": {
@@ -205,7 +205,6 @@
     },
     "new_tab": "Nowa Karta",
     "timezone": {
-        "beirut": "{{value}} Bejrut",
         "monrovia": "{{value}} Monrovia",
         "africa_algiers": "{{value}} Zachodnio-środkowa Afryka",
         "africa_cairo": "{{value}} Egipt",

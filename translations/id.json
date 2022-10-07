@@ -1,7 +1,4 @@
 {
-    "login": {
-        "username": "Nama Pengguna"
-    },
     "search": {
         "module": "Modul",
         "app": "Cari",
@@ -211,18 +208,14 @@
         "turkish": "Turki",
         "french": "Prancis",
         "label_french": "Prancis - {{value}}",
-        "vietnamese": "Vietnam"
+        "vietnamese": "Vietnam",
+        "polish": "Polandia"
     },
     "timezone": {
-        "west_central_africa": "{{value}} Afrika Tengah Barat",
         "athens_beirut_bucharest_istanbul": "{{value}} Athena, Beirut, Bukares, Istanbul",
-        "britain_ireland_portugal": "{{value}} Britain, Ireland, Portugal",
         "chita": "{{value}} Chita",
-        "egypt": "{{value}} Mesir",
         "hawaii": "{{value}} Hawaii",
-        "kaliningrad_rtz_1": "{{value}} Kaliningrad (RTZ 1)",
         "mid_atlantic": "{{value}} Atlantik Tengah",
-        "port_louis": "{{value}} Port Louis",
         "us_canada_mountain": "{{value}} AS/Kanada Pegunungan",
         "america_cayenne": "{{value}} Cayenne, Fortaleza",
         "america_regina": "{{value}} Saskatchewan",
