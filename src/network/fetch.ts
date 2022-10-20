@@ -138,7 +138,8 @@ export const getSoapFetch =
 		api: string,
 		body: Request,
 		otherAccount?: string,
-		targetServer?: string
+		targetServer?: string,
+		authToken?: string
 	): Promise<Response> => {
 		const { zimbraVersion, account } = useAccountStore.getState();
 		const { context } = useNetworkStore.getState();
@@ -165,7 +166,8 @@ export const getSoapFetch =
 							name: userAgent,
 							version: zimbraVersion
 						},
-						targetServer: targetServer || undefined
+						targetServer: targetServer || undefined,
+						authToken: [{ _content: authToken }] || undefined
 					}
 				}
 			})
