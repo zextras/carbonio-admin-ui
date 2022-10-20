@@ -3,12 +3,14 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
+import { SHELL_APP_ID } from '../constants';
 import { useAdvanceStore } from '../store/advance';
+import { getSoapFetchRequest } from './fetch';
 
 export const getIsAdvancedSupported = (): Promise<void> =>
-	fetch('/zx/auth/supported')
+	getSoapFetchRequest(SHELL_APP_ID)('/zx/auth/supported')
 		// eslint-disable-next-line consistent-return
-		.then((res) => {
+		.then((res: any) => {
 			if (res.status === 200) {
 				useAdvanceStore.setState({ isAdvanced: true });
 				return res.json();
