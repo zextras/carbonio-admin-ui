@@ -10,12 +10,12 @@ import { getSoapFetchRequest } from './fetch';
 export const getIsAdvancedSupported = (): Promise<void> =>
 	getSoapFetchRequest(SHELL_APP_ID)('/zx/auth/supported')
 		// eslint-disable-next-line consistent-return
-		.then((res: any) => {
-			if (res.status === 200) {
+		.then((data: any) => {
+			if (data?.domain) {
 				useAdvanceStore.setState({ isAdvanced: true });
-				return res.json();
+			} else {
+				useAdvanceStore.setState({ isAdvanced: false });
 			}
-			useAdvanceStore.setState({ isAdvanced: false });
 		})
 		.catch((err: unknown) => {
 			useAdvanceStore.setState({ isAdvanced: false });
