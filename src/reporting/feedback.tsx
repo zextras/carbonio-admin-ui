@@ -33,7 +33,7 @@ import { useAppList } from '../store/app';
 
 const TextArea = styled.textarea<{ size?: string }>`
 	width: 100%;
-	min-height: 128px;
+	min-height: 200px;
 	box-sizing: border-box;
 	outline: none;
 	border: none;
@@ -66,7 +66,7 @@ const TAContainer = styled(Container)`
 	padding: 8px;
 	transition: height 0.4s ease;
 	height: auto;
-	max-height: 50%;
+	max-height: 80%;
 	&:focus-within {
 		background: ${({ theme }): string => theme.palette.gray4.regular};
 		outline: none;
@@ -125,87 +125,6 @@ const getTopics = (t: TFunction): Array<{ label: string; value: string }> => [
 	{ label: t('feedback.missing_features', 'Missing features'), value: 'MissingFeatures' },
 	{ label: t('feedback.other', 'Other'), value: 'Other' }
 ];
-
-const ModuleLabelFactory: FC<{
-	selected: Array<{ label: string; value: string }>;
-	label: string;
-	open: boolean;
-	focus: boolean;
-}> = ({ selected, label, open, focus }) => (
-	<LabelContainer
-		orientation="horizontal"
-		width="fill"
-		crossAlignment="center"
-		mainAlignment="space-between"
-		borderRadius="half"
-		background="gray5"
-		padding={{
-			all: 'small'
-		}}
-	>
-		<Row takeAvailableSpace mainAlignment="unset">
-			<Text size="medium" color={open || focus ? 'primary' : 'secondary'}>
-				{selected.length > 0 ? selected[0].label : label}
-			</Text>
-		</Row>
-		<Icon
-			size="large"
-			icon={open ? 'ChevronUpOutline' : 'ChevronDownOutline'}
-			color={open || focus ? 'primary' : 'secondary'}
-			style={{ alignSelf: 'center' }}
-		/>
-	</LabelContainer>
-);
-
-const _LabelFactory: FC<{
-	selected: Array<{ label: string; value: string }>;
-	label: string;
-	open: boolean;
-	focus: boolean;
-	showErr: boolean;
-}> = ({ selected, label, open, focus, showErr }) => (
-	<LabelContainer
-		disabled={showErr}
-		orientation="horizontal"
-		width="fill"
-		crossAlignment="center"
-		mainAlignment="space-between"
-		borderRadius="half"
-		background="gray5"
-		padding={{
-			all: 'small'
-		}}
-	>
-		<Row takeAvailableSpace mainAlignment="unset">
-			{showErr ? (
-				<Text size="medium" color={(open && showErr) || focus ? 'primary' : 'error'}>
-					{' '}
-					{selected.length > 0 ? selected[0].label : label}
-				</Text>
-			) : (
-				<Text size="medium" color={open || focus ? 'primary' : 'secondary'}>
-					{selected.length > 0 ? selected[0].label : label}
-				</Text>
-			)}
-		</Row>
-
-		{showErr ? (
-			<Icon
-				size="large"
-				icon={open ? 'ChevronUpOutline' : 'ChevronDownOutline'}
-				color={(open && showErr) || focus ? 'primary' : 'error'}
-				style={{ alignSelf: 'center' }}
-			/>
-		) : (
-			<Icon
-				size="large"
-				icon={open ? 'ChevronUpOutline' : 'ChevronDownOutline'}
-				color={open || focus ? 'primary' : 'secondary'}
-				style={{ alignSelf: 'center' }}
-			/>
-		)}
-	</LabelContainer>
-);
 
 const Feedback: FC = () => {
 	const [t] = useTranslation();
@@ -284,8 +203,8 @@ const Feedback: FC = () => {
 						label: t('feedback.error', 'There was an error while sending your feedback')
 				  }
 		);
-		closeBoard();
-	}, [event, createSnackbar, t, closeBoard]);
+		// closeBoard();
+	}, [event, createSnackbar, t]);
 
 	useEffect(() => {
 		dispatch({
@@ -294,82 +213,10 @@ const Feedback: FC = () => {
 		});
 	}, [acct]);
 
-	const disabledSend = useMemo(
-		() =>
-			(event?.message?.length ?? 0) <= 0 || event.extra?.topic === '0' || event.extra?.app === '0',
-		[event.message, event.extra?.topic, event.extra?.app]
-	);
-
-	const LabelFactory = useCallback(
-		(props) => <_LabelFactory {...props} showErr={showErr} />,
-		[showErr]
-	);
+	const disabledSend = useMemo(() => (event?.message?.length ?? 0) <= 0, [event?.message]);
 
 	return (
 		<Container padding={{ all: 'large' }} mainAlignment="space-around">
-			<Container orientation="horizontal" height="fit">
-				<TextContainer mainAlignment="flex-start" crossAlignment="flex-start">
-					<Text weight="bold" size="18px">
-						{t('feedback.report_something', 'Do you want to report something?')}
-					</Text>
-					<SubHeadingText overflow="break-word" lineHeight="21px">
-						{t(
-							'feedback.explanation',
-							'Please send us your feedback about your new experience with Zextras Server. Your opinion is meaningful for us to improve our product. So tell us what’s on your mind.'
-						)}
-					</SubHeadingText>
-					<SubHeadingText overflow="break-word">
-						{t(
-							'feedback.hint',
-							'Remember: define the topic using module and macro area selectors before write your feedback. Thanks for your help.'
-						)}
-					</SubHeadingText>
-				</TextContainer>
-
-				<ButtonContainer crossAlignment="flex-end" mainAlignment="baseline">
-					<Button
-						label={t('feedback.send', 'SEND')}
-						onClick={confirmHandler}
-						disabled={disabledSend}
-					/>
-				</ButtonContainer>
-			</Container>
-			<Container
-				padding={{ bottom: 'medium' }}
-				height="fit"
-				mainAlignment="space-between"
-				crossAlignment="flex-start"
-				orientation="horizontal"
-			>
-				<Container mainAlignment="space-between" crossAlignment="flex-start" maxWidth="305px">
-					<Row padding={{ vertical: 'large' }}>
-						<Text weight="bold" size="14px">
-							Module
-						</Text>
-					</Row>
-					<Select
-						label={t('feedback.select_a_module', 'Select a module')}
-						items={appItems}
-						onChange={onAppSelect}
-						LabelFactory={ModuleLabelFactory}
-					/>
-				</Container>
-				<Container mainAlignment="space-between" crossAlignment="flex-start" maxWidth="305px">
-					<Row padding={{ vertical: 'large' }}>
-						<Text weight="bold" size="14px">
-							Topic
-						</Text>
-					</Row>
-					<Select
-						label={t('feedback.select_a_topic', 'Select a topic')}
-						selection={find(topics, ['value', event.extra?.topic])}
-						items={topics}
-						onChange={onTopicSelect}
-						LabelFactory={LabelFactory}
-						multiple={false}
-					/>
-				</Container>
-			</Container>
 			<TAContainer crossAlignment="flex-end">
 				<TextArea
 					value={event.message}
@@ -381,6 +228,15 @@ const Feedback: FC = () => {
 					{limit}/500
 				</Text>
 			</TAContainer>
+			<Container orientation="horizontal" height="fit">
+				<ButtonContainer crossAlignment="flex-end" mainAlignment="baseline">
+					<Button
+						label={t('feedback.send', 'SEND')}
+						onClick={confirmHandler}
+						disabled={disabledSend}
+					/>
+				</ButtonContainer>
+			</Container>
 		</Container>
 	);
 };
