@@ -10,6 +10,7 @@
     "create": "Create",
     "feedback": {
         "behaviors": "Behaviors",
+        "count_user_in_helper_button_text": "YES, COUNT ME IN!",
         "error": "There was an error while submitting your feedback",
         "explanation": "Please give us your feedback about your new experience with Zextras Server. Your opinion is meaningful for us to improve our product. Let us know your thoughts.",
         "hint": "Remember: define the topic using modules and macro area selectors before writing your feedback. Thanks for your help.",
@@ -19,9 +20,11 @@
         "select_a_module": "Select a module",
         "select_a_topic": "Select a topic",
         "send": "SEND",
+        "send_feedback": "SHARE YOUR FEEDBACK WITH US",
         "success": "Thank you for your feedback",
         "user_interface": "User interface",
-        "write_here": "Write your feedback here"
+        "write_here": "Write your feedback here",
+        "write_here_placeholder_text": "Hey! Start writing here your feedback :) \n\n\nThis will be sent anonymously so let us know what we did good \nor wrong with no filter"
     },
     "label": {
         "account_menu": "Account menu",
@@ -58,6 +61,7 @@
         "email_server": "E-mail server (e.g. “mail.example.com”)",
         "external_account_settings": "External Account Settings",
         "feedback": "Feedback",
+        "feedback_helper_text": "Would you like to participate?",
         "filter_folders": "Filter folders",
         "folder": "Folder: New External Account 3",
         "folders": "Folders",
@@ -80,6 +84,8 @@
         "persona_settings": "Persona Settings",
         "pop3": "POP3",
         "pop_port": "POP port",
+        "post_feedback_send_helper_text_line_2": "To improve Carbonio we’re running continuos testing sessions,",
+        "post_feedback_send_helper_text_line_3": "you can be the voice we’d love to hear right now!",
         "primary": "Primary",
         "recipents": "Recipients",
         "recovery_email": "Recovery E-mail",
@@ -95,6 +101,7 @@
         "set_reply_to_field": "Set the \"Reply-to\" field of e-mail message to:",
         "settings_sent_messages": "Settings for Sent Messages",
         "test_settings": "Test Settings",
+        "thank_you_for_feedback": "Thank you for the feedback!",
         "time_zone": "Time Zone",
         "unsaved_changes": "You have unsaved changes",
         "unsaved_changes_line1": "Are you sure you want to leave this page without saving?",
