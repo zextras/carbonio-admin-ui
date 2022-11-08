@@ -199,3 +199,7 @@ export type GetAllConfigResponse = {
 export type ConfigState = {
 	a: Array<Attribute>;
 };
+
+export type AdvanceState = {
+	isAdvanced: boolean;
+};
