@@ -38,10 +38,10 @@ function TabsList({ tabs, currentBoard, setCurrentBoard, largeView, t }) {
 		<Row wrap="nowrap" height="100%" mainAlignment="flex-start" takeAvailableSpace>
 			<Row
 				ref={tabContainerRef}
-				height="48px"
+				height="3rem"
 				mainAlignment="flex-start"
 				style={{ overflow: 'hidden' }}
-				width="calc(100% - 8px)"
+				width="calc(100% - 0.5rem)"
 			>
 				{tabs &&
 					map(tabs, (tab) => (
@@ -56,7 +56,7 @@ function TabsList({ tabs, currentBoard, setCurrentBoard, largeView, t }) {
 			{hiddenTabsCount > 0 && (
 				<>
 					<Container width="fit" padding={{ horizontal: 'extrasmall', vertical: 'extrasmall' }}>
-						<Container width="1px" heigth="fill" background="gray3" />
+						<Container width="0.063rem" heigth="fill" background="gray3" />
 					</Container>
 					<Tooltip label={t('board.show_tabs', 'Show other tabs')} placement="top">
 						<Dropdown
@@ -86,9 +86,9 @@ function TabsList({ tabs, currentBoard, setCurrentBoard, largeView, t }) {
 
 const BoardContainer = styled.div`
 	position: fixed;
-	top: 60px;
+	top: 3.75rem;
 	bottom: 0;
-	left: 48px;
+	left: 3rem;
 	right: 0;
 	background-color: rgba(0, 0, 0, 0);
 	pointer-events: none;
@@ -108,18 +108,18 @@ const BoardContainer = styled.div`
 const Board = styled(Container)`
 	z-index: 5;
 	position: absolute;
-	left: 24px;
+	left: 1.5rem;
 	bottom: 0;
-	width: 700px;
+	width: 25rem;
 	height: 70vh;
-	min-height: 400px;
-	box-shadow: 0 2px 5px 0 rgba(125, 125, 125, 0.5);
+	min-height: 25rem;
+	box-shadow: 0 0.125rem 0.313rem 0 rgba(125, 125, 125, 0.5);
 	pointer-events: auto;
 	${({ largeView }) =>
 		largeView &&
 		css`
-			height: calc(100% - 24px);
-			width: calc(100% - 24px * 2);
+			height: calc(100% - 1.5rem);
+			width: calc(100% - 1.5rem * 2);
 			min-height: auto;
 		`}
 `;
@@ -201,7 +201,7 @@ export default function AppBoardWindow() {
 						</Tooltip>
 					</Actions>
 				</BoardHeader>
-				<Divider style={{ height: '2px' }} />
+				<Divider style={{ height: '0.125rem' }} />
 				<BoardDetailContainer takeAvailableSpace>{boards}</BoardDetailContainer>
 			</Board>
 		</BoardContainer>

@@ -31,7 +31,7 @@ import { QueryChip, SearchBarProps, SelectLabelFactoryProps } from '../../types'
 import { handleKeyboardShortcuts } from '../keyboard-shortcuts/keyboard-shortcuts';
 
 const OutlinedIconButton = styled(IconButton)`
-	border: 1px solid
+	border: 0.063rem solid
 		${({ theme, disabled }): string =>
 			disabled ? theme.palette.primary.disabled : theme.palette.primary.regular};
 	display: 'block';
@@ -49,10 +49,10 @@ const StyledChipInput = styled(ChipInput)`
 `;
 
 const StyledContainer = styled(Container)`
-	height: 42px;
+	height: 2.625rem;
 	overflow-y: hidden;
 	&:first-child {
-		transform: translateY(-2px);
+		transform: translateY(-0.125rem);
 	}
 `;
 
@@ -70,12 +70,12 @@ const SelectLabelFactory: FC<SelectLabelFactoryProps> = ({ selected, open, focus
 			background={disabled ? 'gray5' : 'gray6'}
 			height={42}
 			width="fit"
-			minWidth="150px"
+			minWidth="9.375rem"
 			crossAlignment="center"
 			mainAlignment="space-between"
 			borderRadius="half"
 			style={{
-				borderRight: `1px solid ${theme.palette.gray4.regular}`,
+				borderRight: `0.063rem solid ${theme.palette.gray4.regular}`,
 				cursor: disabled ? 'default' : 'pointer'
 			}}
 		>
@@ -455,7 +455,7 @@ export const SearchBar: FC<SearchBarProps> = ({
 				)}
 			>
 				<Container orientation="horizontal" width="fill">
-					<Container minWidth="512px" width="fill">
+					<Container minWidth="32rem" width="fill">
 						<Container orientation="horizontal" width="fill">
 							<Container width="fit">
 								<Select
@@ -467,7 +467,7 @@ export const SearchBar: FC<SearchBarProps> = ({
 									selection={moduleSelection}
 									onChange={onSelectionChange}
 									LabelFactory={SelectLabelFactory}
-									style={{ fontSize: '14px' }}
+									style={{ fontSize: '0.875rem' }}
 									color="text"
 									fontSize="small"
 								/>

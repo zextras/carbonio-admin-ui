@@ -60,7 +60,7 @@ const LanguageAndTimeZone: FC<{
 	return (
 		<FormSubSection
 			label={sectionTitle.label}
-			minWidth="calc(min(100%, 512px))"
+			minWidth="calc(min(100%, 32rem))"
 			width="50%"
 			id={sectionTitle.id}
 		>
@@ -75,7 +75,7 @@ const LanguageAndTimeZone: FC<{
 						}}
 						defaultSelection={defaultSelection}
 						showCheckbox={false}
-						dropdownMaxHeight="200px"
+						dropdownMaxHeight="12.5rem"
 						selectedBackgroundColor="highlight"
 					/>
 				)}
@@ -90,7 +90,7 @@ const LanguageAndTimeZone: FC<{
 							}}
 							defaultSelection={defaultTimeZone}
 							showCheckbox={false}
-							dropdownMaxHeight="200px"
+							dropdownMaxHeight="12.5rem"
 							selectedBackgroundColor="highlight"
 						/>
 					)}

@@ -92,9 +92,9 @@ const ShellHeader: FC<{
 			orientation="horizontal"
 			background="gray3"
 			width="fill"
-			height="60px"
-			minHeight="60px"
-			maxHeight="60px"
+			height="3.75rem"
+			minHeight="3.75rem"
+			maxHeight="3.75rem"
 			mainAlignment="space-between"
 			padding={{
 				horizontal: screenMode === 'desktop' ? 'large' : 'extrasmall',
@@ -120,7 +120,7 @@ const ShellHeader: FC<{
 					width="auto"
 				>
 					<Container width="auto" height={32} crossAlignment="flex-start">
-						<Logo height="32px" />
+						<Logo height="2rem" />
 					</Container>
 
 					<Padding horizontal="extralarge">

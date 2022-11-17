@@ -31,9 +31,9 @@ import { useUtilityBarStore } from '../utility-bar';
 import { Collapser } from './collapser';
 
 const PrimaryBarContainer = styled(Container)`
-	min-width: 48px;
-	max-width: 192px;
-	width: ${({ sidebarIsOpen }): number => (sidebarIsOpen ? 192 : 48)}px;
+	min-width: 3rem;
+	max-width: 12rem;
+	width: ${({ sidebarIsOpen }): number => (sidebarIsOpen ? 12 : 3)}rem;
 	transition: width 300ms;
 	overflow-x: hidden;
 `;
@@ -84,7 +84,7 @@ type PrimaryBarAccessoryItemProps = {
 // 	<PrimaryContainer
 // 		orientation="horizontal"
 // 		mainAlignment="flex-start"
-// 		height="48px"
+// 		height="3rem"
 // 		onClick={onClick}
 // 	>
 // 		<BadgeWrap badge={view.badge}>
@@ -111,7 +111,7 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, isExpanded, 
 				onMouseEnter={(): void => setOpen(true)}
 				// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 				onMouseLeave={(): void => setOpen(false)}
-				height="52px"
+				height="3.25rem"
 			>
 				<PrimaryBarRow width="fill" mainAlignment="flex-start" active={active} onClick={onClick}>
 					<BadgeWrap badge={view.badge}>
@@ -145,7 +145,7 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, isExpanded, 
 						height="fit"
 						crossAlignment="flex-start"
 					>
-						<Padding value="8px">
+						<Padding value="0.5rem">
 							<Text>{view.label}</Text>
 						</Padding>
 					</Container>
@@ -251,7 +251,7 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 				orientation="vertical"
 				mainAlignment="space-between"
 				style={{
-					maxHeight: 'calc(100vh - 48px)',
+					maxHeight: 'calc(100vh - 3rem)',
 					overflowY: 'auto'
 				}}
 			>

@@ -82,7 +82,7 @@ const Delegates = ({
 	return (
 		<>
 			<Container
-				minWidth="calc(min(100%, 512px))"
+				minWidth="calc(min(100%, 32rem))"
 				width="fill"
 				padding={{ all: 'large' }}
 				height="fit"
@@ -126,7 +126,7 @@ const Delegates = ({
 				<Button label={t('label.remove', 'remove')} color="error" type="outlined" disabled />
 			</Row>
 			<Container
-				minWidth="calc(min(100%, 512px))"
+				minWidth="calc(min(100%, 32rem))"
 				width="100%"
 				padding={{ all: 'large' }}
 				height="fit"

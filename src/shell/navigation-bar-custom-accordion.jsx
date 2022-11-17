@@ -26,7 +26,7 @@ const AccordionContainerEl = styled(Container)`
 		${props.theme.sizes.padding.large}
 		${props.level === 0 ? props.theme.sizes.padding.large : props.theme.sizes.padding.medium}
 		calc(${props.theme.sizes.padding.large} + ${
-		props.level > 1 ? props.theme.sizes.padding.medium : '0px'
+		props.level > 1 ? props.theme.sizes.padding.medium : '0'
 	})
 	`};
 	${({ theme }) => pseudoClasses(theme, 'gray5')};

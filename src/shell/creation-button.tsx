@@ -61,7 +61,7 @@ export const CreationButton: FC<{ activeRoute?: AppRoute }> = ({ activeRoute }) 
 	}, []);
 	return primaryAction ? (
 		<MultiButton
-			style={{ height: '42px' }}
+			style={{ height: '2.625rem' }}
 			background="primary"
 			label={primaryAction?.label ?? t('new', 'New')}
 			onClick={primaryAction?.click}
@@ -71,7 +71,7 @@ export const CreationButton: FC<{ activeRoute?: AppRoute }> = ({ activeRoute }) 
 	) : (
 		<Dropdown items={secondaryActions} onClose={onClose} onOpen={onOpen}>
 			<Button
-				style={{ height: '42px' }}
+				style={{ height: '2.625rem' }}
 				background="primary"
 				items={secondaryActions}
 				label={t('create', 'Create')}

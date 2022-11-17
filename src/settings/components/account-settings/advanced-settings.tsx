@@ -25,7 +25,7 @@ interface AdvancedSettingsProps {
 const AdvancedSettings = ({ t }: AdvancedSettingsProps): ReactElement => (
 	<>
 		<Container
-			minWidth="calc(min(100%, 512px))"
+			minWidth="calc(min(100%, 32rem))"
 			width="fill"
 			padding={{ all: 'large' }}
 			height="fit"
@@ -51,7 +51,7 @@ const AdvancedSettings = ({ t }: AdvancedSettingsProps): ReactElement => (
 			/>
 			<Padding right="large" />
 			<Input
-				width="100px"
+				width="6.25rem"
 				label={t('label.pop_port', 'POP port')}
 				value="110"
 				onChange={(): void => {

@@ -26,7 +26,7 @@ export function loadApps(storeFactory: StoreFactory, apps: Array<CarbonioModule>
 	});
 	console.log(
 		'%cLOADING APPS',
-		'color: white; background: #2b73d2;padding: 4px 8px 2px 4px; font-family: sans-serif; border-radius: 12px; width: 100%'
+		'color: white; background: #2b73d2;padding: 0.25rem 0.5rem 0.125rem 0.25rem; font-family: sans-serif; border-radius: 0.75rem; width: 100%'
 	);
 	useReporter.getState().setClients(appsToLoad);
 	Promise.allSettled(map(appsToLoad, (app) => loadApp(app, storeFactory)));

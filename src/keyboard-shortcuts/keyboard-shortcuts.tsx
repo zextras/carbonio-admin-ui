@@ -35,7 +35,7 @@ export const handleKeyboardShortcuts = (props: handleKeyboardShortcutsProps): vo
 		// 	`keys pressed: %c  ${props.event.ctrlKey ? 'Ctrl/Cmd + ' : ''}${keySequence
 		// 		?.split('')
 		// 		.join(' + ')} `,
-		// 	'color: white; background: #39b654; border-radius: 5px; padding: 8px; width: 100%; font-size:18px; font-weight: 800'
+		// 	'color: white; background: #39b654; border-radius: 0.313rem; padding: 0.75rem; width: 100%; font-size:1.125rem; font-weight: 800'
 		// );
 		props.event.preventDefault();
 		props.event.stopImmediatePropagation();

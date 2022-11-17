@@ -70,7 +70,7 @@ export default function ShellMobileNav({ mobileNavIsOpen, menuTree }) {
 					orientation="vertical"
 					mainAlignment="space-between"
 					style={{
-						maxHeight: 'calc(100vh - 48px)',
+						maxHeight: 'calc(100vh - 3rem)',
 						overflowY: 'auto'
 					}}
 				>

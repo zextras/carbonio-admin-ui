@@ -79,7 +79,7 @@ function loadAppModule(appPkg: CarbonioModule, store: Store<any>): Promise<Carbo
 				}));
 				console.info(
 					`%c loaded ${appPkg.name}`,
-					'color: white; background: #539507;padding: 4px 8px 2px 4px; font-family: sans-serif; border-radius: 12px; width: 100%'
+					'color: white; background: #539507;padding: 0.25rem 0.5rem 0.125rem 0.25rem; font-family: sans-serif; border-radius: 0.75rem; width: 100%'
 				);
 				resolve(appPkg);
 			};

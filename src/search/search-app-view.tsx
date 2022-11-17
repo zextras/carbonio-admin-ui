@@ -42,8 +42,8 @@ const ResultsHeader: FC<{ label: string }> = ({ label }) => {
 				width="100%"
 				background="gray5"
 				height="fit"
-				minHeight="48px"
-				maxHeight="120px"
+				minHeight="3rem"
+				maxHeight="7.5rem"
 				style={{ overflow: 'hidden' }}
 				padding={{ horizontal: 'large', vertical: 'medium' }}
 			>

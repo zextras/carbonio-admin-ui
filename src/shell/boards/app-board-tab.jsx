@@ -20,17 +20,17 @@ import { BoardValueContext, BoardSetterContext } from './board-context';
 
 const TabContainer = styled(Row)`
 	cursor: pointer;
-	height: 28px;
+	height: 1.75rem;
 	width: fit-content;
 	user-select: none;
 	background-color: ${({ theme, active }) =>
 		active ? theme.palette.gray3.regular : theme.palette.gray5.regular};
-	border-radius: 2px;
-	padding: 2px 4px;
+	border-radius: 0.125rem;
+	padding: 0.125rem 0.25rem;
 `;
 
 const VerticalDivider = styled(Container)`
-	width: 1px;
+	width: 0.063rem;
 	height: 100%;
 	background: ${({ theme }) => theme.palette.gray3.regular};
 	margin: ${({ theme }) => theme.sizes.padding.extrasmall};
@@ -62,7 +62,7 @@ export default function AppBoardTab({ idx, icon, iconSize }) {
 				>
 					<Icon icon={icon} size={iconSize} />
 					<Padding right="small" />
-					<Tooltip label={boards[idx].title} placement="top" maxWidth="700px">
+					<Tooltip label={boards[idx].title} placement="top" maxWidth="43.75rem">
 						<Text
 							size="medium"
 							weight="regular"
@@ -80,7 +80,7 @@ export default function AppBoardTab({ idx, icon, iconSize }) {
 						iconColor="secondary"
 						icon="Close"
 						onClick={onRemove}
-						style={{ padding: '2px', width: '24px', height: '24px' }}
+						style={{ padding: '0.125rem', width: '1.5rem', height: '1.5rem' }}
 					/>
 				</Tooltip>
 			</TabContainer>

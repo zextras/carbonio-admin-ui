@@ -37,7 +37,7 @@ const ExternalAccount = ({ t }: ExternalAccountProps): ReactElement => {
 	return (
 		<>
 			<Container
-				minWidth="calc(min(100%, 512px))"
+				minWidth="calc(min(100%, 32rem))"
 				width="fill"
 				padding={{ all: 'large' }}
 				height="fit"
@@ -75,7 +75,7 @@ const ExternalAccount = ({ t }: ExternalAccountProps): ReactElement => {
 				</Padding>
 			</Row>
 			<Container
-				minWidth="calc(min(100%, 512px))"
+				minWidth="calc(min(100%, 32rem))"
 				width="100%"
 				padding={{ all: 'large' }}
 				height="fit"

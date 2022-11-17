@@ -33,7 +33,7 @@ import { useAppList } from '../store/app';
 
 const TextArea = styled.textarea<{ size?: string }>`
 	width: 100%;
-	min-height: 128px;
+	min-height: 8rem;
 	box-sizing: border-box;
 	outline: none;
 	border: none;
@@ -62,29 +62,29 @@ const ButtonContainer = styled(Container)`
 
 const TAContainer = styled(Container)`
 	background: ${({ theme }): string => theme.palette.gray5.regular};
-	border-radius: 2px 2px 0 0;
-	padding: 8px;
+	border-radius: 0.125rem 0.125rem 0 0;
+	padding: 0.5rem;
 	transition: height 0.4s ease;
 	height: auto;
 	max-height: 50%;
 	&:focus-within {
 		background: ${({ theme }): string => theme.palette.gray4.regular};
 		outline: none;
-		border-bottom: 1px solid ${({ theme }): string => theme.palette.primary.regular};
+		border-bottom: 0.063rem solid ${({ theme }): string => theme.palette.primary.regular};
 	}
 `;
 
 const SubHeadingText = styled(Text)`
-	border-radius: 2px 2px 0 0;
-	line-height: 21px;
-	font-size: 14px;
+	border-radius: 0.125rem 0.125rem 0 0;
+	line-height: 1.313rem;
+	font-size: 0.875rem;
 	font-weight: 300;
-	margin-top: 10px;
+	margin-top: 0.625rem;
 	line-height: ${(props): string => props.lineHeight};
 `;
 
 const LabelContainer = styled(Container)`
-	border-bottom: 1px solid ${(props): string => (props.disabled ? 'red' : '#cfd5dc')};
+	border-bottom: 0.063rem solid ${(props): string => (props.disabled ? 'red' : '#cfd5dc')};
 `;
 
 const emptyEvent: Event = {
@@ -250,7 +250,7 @@ const Feedback: FC = () => {
 		// eslint-disable-next-line no-param-reassign
 		ev.target.style.height = 'auto';
 		// eslint-disable-next-line no-param-reassign
-		ev.target.style.height = `${25 + ev.target.scrollHeight}px`;
+		ev.target.style.height = `${(25 + ev.target.scrollHeight) / 16}rem`;
 		if (ev.target.value.length <= 500) {
 			setLimit(ev.target.value.length);
 			dispatch({ type: 'set-message', payload: ev.target.value });
@@ -309,10 +309,10 @@ const Feedback: FC = () => {
 		<Container padding={{ all: 'large' }} mainAlignment="space-around">
 			<Container orientation="horizontal" height="fit">
 				<TextContainer mainAlignment="flex-start" crossAlignment="flex-start">
-					<Text weight="bold" size="18px">
+					<Text weight="bold" size="1.125rem">
 						{t('feedback.report_something', 'Do you want to report something?')}
 					</Text>
-					<SubHeadingText overflow="break-word" lineHeight="21px">
+					<SubHeadingText overflow="break-word" lineHeight="1.313rem">
 						{t(
 							'feedback.explanation',
 							'Please send us your feedback about your new experience with Zextras Server. Your opinion is meaningful for us to improve our product. So tell us what’s on your mind.'
@@ -341,9 +341,9 @@ const Feedback: FC = () => {
 				crossAlignment="flex-start"
 				orientation="horizontal"
 			>
-				<Container mainAlignment="space-between" crossAlignment="flex-start" maxWidth="305px">
+				<Container mainAlignment="space-between" crossAlignment="flex-start" maxWidth="19.063rem">
 					<Row padding={{ vertical: 'large' }}>
-						<Text weight="bold" size="14px">
+						<Text weight="bold" size="0.875rem">
 							Module
 						</Text>
 					</Row>
@@ -354,9 +354,9 @@ const Feedback: FC = () => {
 						LabelFactory={ModuleLabelFactory}
 					/>
 				</Container>
-				<Container mainAlignment="space-between" crossAlignment="flex-start" maxWidth="305px">
+				<Container mainAlignment="space-between" crossAlignment="flex-start" maxWidth="19.063rem">
 					<Row padding={{ vertical: 'large' }}>
-						<Text weight="bold" size="14px">
+						<Text weight="bold" size="0.875rem">
 							Topic
 						</Text>
 					</Row>
