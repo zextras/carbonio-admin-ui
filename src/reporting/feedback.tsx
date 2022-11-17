@@ -205,6 +205,16 @@ const Feedback: FC = () => {
 		// closeBoard();
 	}, [event]);
 
+	const confirmCountMeInHandler = useCallback(() => {
+		const eventObj: any = { ...event };
+		eventObj.email = acct.displayName;
+		eventObj.name = acct.name;
+		eventObj.comments = `Participate for testing : ${acct.name}`;
+		const feedbackId = feedback(eventObj);
+		setToggleFeedback(true);
+		closeBoard();
+	}, [event, closeBoard, acct]);
+
 	useEffect(() => {
 		dispatch({
 			type: 'set-user',
@@ -298,8 +308,7 @@ const Feedback: FC = () => {
 							<Button
 								width="fill"
 								label={t('feedback.count_user_in_helper_button_text', 'YES, COUNT ME IN!')}
-								onClick={confirmHandler}
-								disabled={disabledSend}
+								onClick={confirmCountMeInHandler}
 							/>
 						</ButtonContainer>
 					</Container>
