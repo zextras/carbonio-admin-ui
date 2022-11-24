@@ -40,6 +40,7 @@
         "add_recovery_email": "Add recovery e-mail",
         "address": "Address",
         "advanced_settings": "Advanced Settings",
+        "allow_permission_to_send_data_to_zextras": "Allow permission from privacy to Send full error data to Zextras",
         "button": "Button",
         "cancel": "Cancel",
         "change_pop": "Change POP port",

@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { Event, EventHint, Severity } from '@sentry/browser';
+import { Event, EventHint, Severity, setTag } from '@sentry/browser';
 import { useReporter } from './store';
 
 export const report =
@@ -19,7 +19,16 @@ export const report =
 
 export const feedback = (message: Event): string => {
 	const reporter = useReporter.getState();
-	const eventId = reporter.clients.feedbacks.captureEvent({ ...message, level: Severity.Info });
+	const eventId = reporter.clients.feedbacks.captureEvent({
+		...message,
+		level: Severity.Info,
+		tags: {
+			carbonio_ui_version: '',
+			carbonio_admin_version: '',
+			carbonio_backend_version: '',
+			carbonio_ce: false
+		}
+	});
 	if (eventId) {
 		console.info('Feedback ', eventId, ' sent, Thank you');
 	}

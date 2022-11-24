@@ -32,6 +32,7 @@ import { useRemoveCurrentBoard } from '../shell/boards/board-hooks';
 import { feedback } from './functions';
 import { useAppList } from '../store/app';
 import Logo from '../../assets/carbonio_feedback.svg';
+import { useAllConfigStore } from '../store/config/store';
 
 const TextArea = styled.textarea<{ size?: string }>`
 	width: 100%;
@@ -135,7 +136,19 @@ const Feedback: FC = () => {
 	const [t] = useTranslation();
 	const topics = useMemo(() => getTopics(t), [t]);
 	const allApps = useAppList();
+	const [feedbackPermission, setFeedbackPermission] = useState(false);
 	const [toggleFeedback, setToggleFeedback] = useState(false);
+	const configs = useAllConfigStore((c) => c.a);
+	useEffect(() => {
+		if (configs && configs.length > 0) {
+			const carbonioSendFullErrorStack = configs.find(
+				(item: any) => item?.n === 'carbonioSendFullErrorStack'
+			);
+			if (carbonioSendFullErrorStack?._content === 'TRUE') {
+				setFeedbackPermission(true);
+			}
+		}
+	}, [configs]);
 	const apps = useMemo(
 		() => filter(allApps, (app) => !!app.sentryDsn),
 
@@ -226,7 +239,43 @@ const Feedback: FC = () => {
 
 	return (
 		<>
-			{!toggleFeedback ? (
+			{!feedbackPermission ? (
+				<>
+					<Container
+						padding={{ top: 'extralarge' }}
+						mainAlignment="space-between"
+						crossAlignment="flex-start"
+					>
+						<Container>
+							<Text overflow="break-word" weight="normal" size="large">
+								<Padding top="small" />
+								<Logo />
+							</Text>
+							<Padding vertical="large" horizontal="medium" width="294px" />
+							<Text
+								color="gray1"
+								overflow="break-word"
+								weight="normal"
+								size="large"
+								width="60%"
+								style={{ whiteSpace: 'pre-line', textAlign: 'center', paddingBottom: '123px' }}
+							>
+								<Padding bottom="large" />
+								<Text>
+									{t(
+										'label.allow_permission_to_send_data_to_zextras',
+										`Allow permission from privacy to Send full error data to Zextras`
+									)}
+								</Text>
+								<Padding top="large" />
+							</Text>
+						</Container>
+					</Container>
+				</>
+			) : (
+				<></>
+			)}
+			{feedbackPermission && !toggleFeedback && (
 				<Container
 					padding={{ top: 'extralarge' }}
 					mainAlignment="space-between"
@@ -257,7 +306,8 @@ const Feedback: FC = () => {
 						</ButtonContainer>
 					</Container>
 				</Container>
-			) : (
+			)}
+			{feedbackPermission && toggleFeedback && (
 				<Container
 					padding={{ top: 'extralarge' }}
 					mainAlignment="space-between"
@@ -281,7 +331,7 @@ const Feedback: FC = () => {
 								{t('label.thank_you_for_feedback', `Thank you for the feedback!`)}
 							</Text>
 							<Padding bottom="large" />
-							<Text>
+							{/* <Text>
 								{t(
 									'label.post_feedback_send_helper_text_line_2',
 									`To improve Carbonio we’re running continuos testing sessions,`
@@ -292,13 +342,13 @@ const Feedback: FC = () => {
 									'label.post_feedback_send_helper_text_line_3',
 									`you can be the voice we’d love to hear right now!`
 								)}
-							</Text>
+							</Text> */}
 							<Padding top="large" />
-							<Text>{t('label.feedback_helper_text', `Would you like to participate?`)}</Text>
+							{/* <Text>{t('label.feedback_helper_text', `Would you like to participate?`)}</Text> */}
 						</Text>
 					</Container>
 
-					<Container
+					{/* <Container
 						orientation="horizontal"
 						height="fit"
 						padding={{ top: 'extralarge' }}
@@ -311,7 +361,7 @@ const Feedback: FC = () => {
 								onClick={confirmCountMeInHandler}
 							/>
 						</ButtonContainer>
-					</Container>
+					</Container> */}
 				</Container>
 			)}
 		</>

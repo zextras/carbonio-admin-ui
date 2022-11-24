@@ -323,7 +323,7 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 						}}
 					>
 						<BadgeWrap badge={{ show: false, count: 0 }}>
-							<PrimaryBarIconButton icon="BugOutline" size="large" onClick={null} />
+							<PrimaryBarIconButton icon="MessageSquareOutline" size="large" onClick={null} />
 						</BadgeWrap>
 					</PrimaryBarRow>
 					{accessories.map((v) => (
