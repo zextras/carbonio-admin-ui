@@ -115,22 +115,20 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, isExpanded, 
 				onMouseLeave={(): void => setOpen(false)}
 				height="52px"
 			>
-				{typeof view.component === 'string' ? (
-					<PrimaryBarRow width="fill" mainAlignment="flex-start" active={active} onClick={onClick}>
-						<BadgeWrap badge={view.badge}>
-							<PrimaryBarIconButton icon={view.component} size="large" onClick={onClick} />
-						</BadgeWrap>
-						{isExpanded && (
-							<Text color="text" weight="bold">
-								{view.label}
-							</Text>
-						)}
-					</PrimaryBarRow>
-				) : (
+				<PrimaryBarRow width="fill" mainAlignment="flex-start" active={active} onClick={onClick}>
 					<BadgeWrap badge={view.badge}>
-						<view.component active={active} />
+						{typeof view.component === 'string' ? (
+							<PrimaryBarIconButton icon={view.component} size="large" onClick={onClick} />
+						) : (
+							<view.component active={active} />
+						)}
 					</BadgeWrap>
-				)}
+					{isExpanded && (
+						<Text color="text" weight="bold">
+							{view.label}
+						</Text>
+					)}
+				</PrimaryBarRow>
 			</Container>
 
 			<Popper
