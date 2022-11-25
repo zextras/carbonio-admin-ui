@@ -42,29 +42,10 @@ export const ShellUtilityBar: FC = () => {
 	const accountItems = useMemo(
 		() => [
 			{
-				id: 'feedback',
-				label: t('label.feedback', 'Feedback'),
-				click: () =>
-					useContextBridge.getState().packageDependentFunctions?.addBoard(SHELL_APP_ID)(
-						'/feedback/',
-						{ title: t('label.feedback', 'Feedback') }
-					),
-				icon: 'MessageSquareOutline'
-			},
-			{
 				id: 'update',
 				label: t('label.update_view', 'Update view'),
 				click: (): void => noOp(),
 				icon: 'Refresh'
-			},
-			{
-				id: 'docs',
-				label: t('label.documentation', 'Documentation'),
-				// TODO: Replace when the correct link is available
-				// eslint-disable-next-line @typescript-eslint/no-empty-function
-				click: (): void => {},
-				disabled: true,
-				icon: 'InfoOutline'
 			},
 			{
 				id: 'logout',
