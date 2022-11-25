@@ -58,9 +58,6 @@
             }
         }
     },
-    "login": {
-        "username": "ชื่อผู้ใช้"
-    },
     "new": "ใหม่",
     "search": {
         "app": "ค้นหา",
@@ -219,18 +216,14 @@
         "turkish": "ภาษาตุรกี",
         "label_french": "ฝรั่งเศส - {{value}}",
         "french": "ภาษาฝรั่งเศส",
-        "vietnamese": "ภาษาเวียดนาม"
+        "vietnamese": "ภาษาเวียดนาม",
+        "polish": "กำจัดทิ้งอย่างรวดเร็ว"
     },
     "timezone": {
-        "baja_california": "{{value}} บาจาแคลิฟอร์เนีย",
         "caracas": "{{value}} การากัส",
-        "cuiaba": "{{value}} กูยาบา",
         "gmt_11": "{{value}} GMT-11",
-        "jerusalem": "{{value}} เยรูซาเลม",
         "magadan": "{{value}} มากาดาน",
-        "pacific_south_america": "{{value}} แปซิฟิก อเมริกาใต้",
         "tehran": "{{value}} เตหะราน",
-        "yerevan": "{{value}} เยเรวาน",
         "dateline": "{{value}} วันที่",
         "africa_algiers": "{{value}} แอฟริกากลางตะวันตก",
         "africa_cairo": "{{value}} อียิปต์",
