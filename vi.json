@@ -43,7 +43,7 @@
         "account_menu": "Menu tài khoản",
         "account_name": "Tên tài khoản",
         "account_type": "Kiểu tài khoản",
-        "accounts": "Các Tài khoản",
+        "accounts": "Tài khoản",
         "cancel": "Huỷ",
         "accounts_list": "Danh sách tài khoản",
         "add_delegate": "Thêm quyền",
@@ -113,7 +113,9 @@
         "thai": "Thái",
         "label_portuguese_brazil": "Tiếng Bồ - {{value}}",
         "label_japanese": "Tiếng Nhật - {{value}}",
-        "label_turkish": "Tiếng Thổ - {{value}}"
+        "label_turkish": "Tiếng Thổ - {{value}}",
+        "vietnamese": "Tiếng Việt",
+        "polish": "Tiếng Ba Lan"
     },
     "message": {
         "snackbar": {
@@ -327,7 +329,7 @@
         "indian_mauritius": "{{value}} Port Louis",
         "pacific_apia": "{{value}} Samoa",
         "pacific_auckland": "{{value}} New Zealand",
-        "pacific_bougainville": "{{value}} Bougainville Standard Time",
+        "pacific_bougainville": "{{value}} Múi giờ chuẩn Bougainville",
         "pacific_chatham": "{{value}} Chatham",
         "pacific_easter": "{{value}} Easter",
         "pacific_fiji": "{{value}} Fiji",
@@ -339,7 +341,7 @@
         "pacific_midway": "{{value}} Samoa",
         "pacific_norfolk": "{{value}} Norfolk",
         "pacific_tongatapu": "{{value}} Nuku’alofa",
-        "utc": "{{value}} Coordinated Universal Time",
+        "utc": "{{value}} Giờ phối hợp quốc tế",
         "asia_baku": "{{value}} Baku",
         "asia_jerusalem": "{{value}} Jerusalem",
         "asia_kuwait": "{{value}} Kuwait, Riyadh",
@@ -367,8 +369,8 @@
     },
     "feedback": {
         "behaviors": "Hành vi",
-        "hint": "Hãy nhớ: xác định chủ đề bằng cách sử dụng mô-đun và bộ chọn vùng macro trước khi viết phản hồi của bạn. Cảm ơn bạn đã giúp đỡ.",
-        "missing_features": "Các tính năng bị thiếu",
+        "hint": "Hãy nhớ: xác định chủ đề bằng cách sử dụng mô đun và bộ chọn vùng macro trước khi viết phản hồi của bạn. Cảm ơn bạn đã giúp đỡ.",
+        "missing_features": "Thiếu tính năng",
         "report_something": "Bạn có muốn báo cáo điều gì đó không?",
         "select_a_module": "Chọn một Mô-đun",
         "send": "GỬI",
@@ -376,7 +378,7 @@
         "user_interface": "Giao diện người dùng",
         "write_here": "Viết phản hồi của bạn ở đây",
         "other": "Khác",
-        "error": "Đã xảy ra lỗi khi gửi phản hồi của bạn",
+        "error": "Đã xảy ra một lỗi khi gửi phản hồi của bạn",
         "explanation": "Vui lòng cung cấp cho chúng tôi phản hồi của bạn về trải nghiệm mới của bạn với Zextras. Ý kiến của bạn rất có ý nghĩa để chúng tôi cải thiện sản phẩm của mình. Hãy để chúng tôi biết những suy nghĩ của bạn.",
         "select_a_topic": "Chọn một chủ đề"
     },
