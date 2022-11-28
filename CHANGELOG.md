@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.5](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.4...v0.9.5) (2022-11-25)
+
+
+### Bug Fixes
+
+* remove font download ([#36](https://github.com/zextras/carbonio-admin-ui/issues/36)) ([333b10d](https://github.com/zextras/carbonio-admin-ui/commit/333b10d02a245487a5d154f082c08eb84f1c2fe2))
+
 ### [0.9.4](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.3...v0.9.4) (2022-10-28)
 
 ### [0.9.3](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.2...v0.9.3) (2022-09-29)

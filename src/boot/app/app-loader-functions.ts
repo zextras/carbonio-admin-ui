@@ -68,6 +68,7 @@ import { getTag, getTags, useTag, useTags } from '../../store/tags';
 import { useNotify, useRefresh } from '../../store/network';
 import { changeTagColor, createTag, deleteTag, renameTag, updateTag } from '../../network/tags';
 import { useAllConfig } from '../../store/config';
+import { getIsAdvanced, useIsAdvanced } from '../../store/advance';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export const getAppFunctions = (pkg: CarbonioModule): Record<string, Function> => ({
@@ -146,5 +147,7 @@ export const getAppFunctions = (pkg: CarbonioModule): Record<string, Function> =
 			...reduce(packageDependentFunctions, (acc, f, name) => ({ ...acc, [name]: f(pkg.name) }), {})
 		};
 	},
-	useAllConfig
+	useAllConfig,
+	useIsAdvanced,
+	getIsAdvanced
 });

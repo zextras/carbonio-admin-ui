@@ -23,6 +23,10 @@ import { useAppStore } from '../store/app';
 import { AppRoute } from '../../types';
 import { useAllConfigStore } from '../store/config/store';
 import { openLink } from '../utility-bar/utils';
+import { useUserAccount, useUserSettings } from '../store/account';
+import { getDomainInformation } from '../network/get-domain-information';
+import { useIsAdvanced } from '../store/advance';
+import { CARBONIO_HELP_ADMIN_URL, CARBONIO_HELP_ADVANCED_URL } from '../constants';
 
 const ShellHeader: FC<{
 	activeRoute: AppRoute;
@@ -32,18 +36,54 @@ const ShellHeader: FC<{
 	const screenMode = useScreenMode();
 	const [t] = useTranslation();
 	const searchEnabled = useAppStore((s) => s.views.search.length > 0);
-	const configs = useAllConfigStore((c) => c.a);
-	const [helpCenterURL, setHelpCenterURL] = useState<string>('https://docs.zextras.com');
+	const [helpCenterURL, setHelpCenterURL] = useState<string>('');
+	const isGlobalAdmin = useUserSettings().attrs?.zimbraIsAdminAccount;
+	const isDelegatedAdmin = useUserSettings().attrs?.zimbraIsDelegatedAdminAccount;
+	const userName = useUserAccount()?.name;
+	const isAdvanced = useIsAdvanced();
+
+	const getDomainDetails = useCallback(
+		(name: any): any => {
+			getDomainInformation('name', name).then((data) => {
+				const domain = data?.domain[0];
+				if (domain) {
+					const domainInformation = domain?.a;
+					const obj: any = {};
+					domainInformation.map((item: any) => {
+						obj[item?.n] = item._content;
+						return '';
+					});
+					if (isAdvanced) {
+						if (isGlobalAdmin) {
+							const zimbraHelpAdvancedURL = obj?.zimbraHelpAdvancedURL
+								? obj?.zimbraHelpAdvancedURL
+								: CARBONIO_HELP_ADVANCED_URL;
+							setHelpCenterURL(zimbraHelpAdvancedURL);
+						}
+						if (isDelegatedAdmin) {
+							const zimbraHelpDelegatedURL = obj?.zimbraHelpDelegatedURL
+								? obj?.zimbraHelpDelegatedURL
+								: CARBONIO_HELP_ADVANCED_URL;
+							setHelpCenterURL(zimbraHelpDelegatedURL);
+						}
+					} else {
+						const zimbraHelpAdminURL = obj?.zimbraHelpAdminURL
+							? obj?.zimbraHelpAdminURL
+							: CARBONIO_HELP_ADMIN_URL;
+						setHelpCenterURL(zimbraHelpAdminURL);
+					}
+				}
+			});
+		},
+		[isAdvanced, isDelegatedAdmin, isGlobalAdmin]
+	);
+
 	useEffect(() => {
-		if (configs && configs.length > 0) {
-			const zimbraHelpAdminURLattribute = configs.find(
-				(item: any) => item?.n === 'zimbraHelpAdminURLattribute'
-			);
-			if (zimbraHelpAdminURLattribute) {
-				setHelpCenterURL(zimbraHelpAdminURLattribute?._content);
-			}
+		if (userName) {
+			getDomainDetails(userName?.split('@')[1]);
 		}
-	}, [configs]);
+	}, [getDomainDetails, userName]);
+
 	const onHelpCenterClick = useCallback(() => {
 		openLink(helpCenterURL);
 	}, [helpCenterURL]);

@@ -58,9 +58,6 @@
             }
         }
     },
-    "login": {
-        "verify_caps_lock": "Verifique se o CAPS LOCK não está ativado e digite novamente o nome do usuário e a senha"
-    },
     "new": "Nova",
     "search": {
         "app": "Buscar",

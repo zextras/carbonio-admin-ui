@@ -199,3 +199,5 @@ export const getCurrentRoute: () => AppRoute | undefined;
 export const usePrimaryBarState: () => boolean;
 export const useNetworkState: () => any;
 export const useAllConfig: () => Array<Attribute>;
+export const useIsAdvanced: () => boolean;
+export const getIsAdvanced: () => boolean;
