@@ -27,12 +27,13 @@ import { Severity, Event } from '@sentry/browser';
 import { filter, find, map } from 'lodash';
 import styled from 'styled-components';
 import { TFunction, useTranslation } from 'react-i18next';
-import { useUserAccount } from '../store/account';
+import { useUserAccount, useAccountStore } from '../store/account';
 import { useRemoveCurrentBoard } from '../shell/boards/board-hooks';
 import { feedback } from './functions';
 import { useAppList } from '../store/app';
 import Logo from '../../assets/carbonio_feedback.svg';
 import { useAllConfigStore } from '../store/config/store';
+import { getCarbonioBackendVersion } from '../network/fetch';
 
 const TextArea = styled.textarea<{ size?: string }>`
 	width: 100%;
@@ -137,14 +138,27 @@ const Feedback: FC = () => {
 	const topics = useMemo(() => getTopics(t), [t]);
 	const allApps = useAppList();
 	const [feedbackPermission, setFeedbackPermission] = useState(false);
+	const [feedbackSentData, setFeedbackSentData] = useState('');
 	const [toggleFeedback, setToggleFeedback] = useState(false);
+	const [carbonioBackendVersion, setCarbonioBackendVersion] = useState('');
 	const configs = useAllConfigStore((c) => c.a);
+
 	useEffect(() => {
 		if (configs && configs.length > 0) {
 			const carbonioSendFullErrorStack = configs.find(
 				(item: any) => item?.n === 'carbonioSendFullErrorStack'
 			);
-			if (carbonioSendFullErrorStack?._content === 'TRUE') {
+			const carbonioSendAnalytics = configs.find(
+				(item: any) => item?.n === 'carbonioSendAnalytics'
+			);
+			const carbonioAllowFeedback = configs.find(
+				(item: any) => item?.n === 'carbonioAllowFeedback'
+			);
+			if (
+				carbonioSendFullErrorStack?._content === 'TRUE' &&
+				carbonioSendAnalytics?._content === 'TRUE' &&
+				carbonioAllowFeedback?._content === 'TRUE'
+			) {
 				setFeedbackPermission(true);
 			}
 		}
@@ -163,6 +177,8 @@ const Feedback: FC = () => {
 		[apps]
 	);
 	const acct = useUserAccount();
+	const accountStore = useAccountStore();
+
 	const [event, dispatch] = useReducer(reducer, emptyEvent);
 	const [showErr, setShowErr] = useState(false);
 	const [limit, setLimit] = useState(0);
@@ -182,6 +198,15 @@ const Feedback: FC = () => {
 	const onTopicSelect = useCallback((ev) => {
 		setShowErr(false);
 		dispatch({ type: 'select-topic', payload: ev });
+	}, []);
+
+	const getBackendVersion = useCallback(() => {
+		getCarbonioBackendVersion().then((data) => {
+			if (data?.Body?.response?.content) {
+				const versionResponse = JSON.parse(data?.Body?.response?.content);
+				setCarbonioBackendVersion(versionResponse?.response?.currentVersion);
+			}
+		});
 	}, []);
 
 	const onInputChange = useCallback((ev) => {
@@ -213,8 +238,9 @@ const Feedback: FC = () => {
 	const createSnackbar = useContext(SnackbarManagerContext) as (snackbar: any) => void;
 
 	const confirmHandler = useCallback(() => {
-		const feedbackId = feedback(event);
+		const feedbackData = feedback(event, carbonioBackendVersion);
 		setToggleFeedback(true);
+		setFeedbackSentData(feedbackData);
 		// closeBoard();
 	}, [event]);
 
@@ -234,6 +260,10 @@ const Feedback: FC = () => {
 			payload: { id: acct.id, name: acct.displayName ?? acct.name }
 		});
 	}, [acct]);
+
+	useEffect(() => {
+		getBackendVersion();
+	}, [getBackendVersion]);
 
 	const disabledSend = useMemo(() => (event?.message?.length ?? 0) <= 0, [event?.message]);
 
@@ -264,7 +294,7 @@ const Feedback: FC = () => {
 								<Text>
 									{t(
 										'label.allow_permission_to_send_data_to_zextras',
-										`Allow permission from privacy to Send full error data to Zextras`
+										`Allow permission from privacy to send feedback`
 									)}
 								</Text>
 								<Padding top="large" />
@@ -329,6 +359,11 @@ const Feedback: FC = () => {
 						>
 							<Text weight="bold">
 								{t('label.thank_you_for_feedback', `Thank you for the feedback!`)}
+							</Text>
+							<Padding bottom="large" />
+							<Text>{t('label.feedback_request_data', `Feedback request data:`)}</Text>
+							<Text overflow="break-word" size="small">
+								{feedbackSentData}
 							</Text>
 							<Padding bottom="large" />
 							{/* <Text>
