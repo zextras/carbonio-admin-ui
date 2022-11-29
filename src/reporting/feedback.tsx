@@ -242,17 +242,17 @@ const Feedback: FC = () => {
 		setToggleFeedback(true);
 		setFeedbackSentData(feedbackData);
 		// closeBoard();
-	}, [event]);
+	}, [carbonioBackendVersion, event]);
 
-	const confirmCountMeInHandler = useCallback(() => {
-		const eventObj: any = { ...event };
-		eventObj.email = acct.displayName;
-		eventObj.name = acct.name;
-		eventObj.comments = `Participate for testing : ${acct.name}`;
-		const feedbackId = feedback(eventObj);
-		setToggleFeedback(true);
-		closeBoard();
-	}, [event, closeBoard, acct]);
+	// const confirmCountMeInHandler = useCallback(() => {
+	// 	const eventObj: any = { ...event };
+	// 	eventObj.email = acct.displayName;
+	// 	eventObj.name = acct.name;
+	// 	eventObj.comments = `Participate for testing : ${acct.name}`;
+	// 	const feedbackId = feedback(eventObj);
+	// 	setToggleFeedback(true);
+	// 	closeBoard();
+	// }, [event, closeBoard, acct]);
 
 	useEffect(() => {
 		dispatch({
