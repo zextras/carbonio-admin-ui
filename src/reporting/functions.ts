@@ -18,7 +18,7 @@ export const report =
 		return eventId;
 	};
 
-export const feedback = (message: Event, carbonioBackendVersion: string): string => {
+export const feedback = (message: Event, data: unknown): string => {
 	const reporter = useReporter.getState();
 	const isAdvanced = getIsAdvanced();
 
@@ -28,7 +28,21 @@ export const feedback = (message: Event, carbonioBackendVersion: string): string
 		tags: {
 			// carbonio_ui_version: '',
 			// carbonio_admin_version: '',
-			carbonio_backend_version: carbonioBackendVersion,
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			carbonio_backend_version: data?.carbonioBackendVersion || '',
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			carbonio_admin_UI_version: data?.carbonioAdminUIVersion || '',
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			total_accounts: data?.totalAccounts || '',
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			total_domains: data?.totalDomains || '',
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			total_servers: data?.totalServers || '',
 			carbonio_ce: !isAdvanced
 		}
 	});
@@ -40,7 +54,9 @@ export const feedback = (message: Event, carbonioBackendVersion: string): string
 		eventId,
 		// carbonio_ui_version: '',
 		// carbonio_admin_version: '',
-		carbonio_backend_version: carbonioBackendVersion,
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
+		carbonio_backend_version: data.carbonioBackendVersion,
 		carbonio_ce: !isAdvanced,
 		...message
 	});

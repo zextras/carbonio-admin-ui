@@ -33,7 +33,17 @@ import { feedback } from './functions';
 import { useAppList } from '../store/app';
 import Logo from '../../assets/carbonio_feedback.svg';
 import { useAllConfigStore } from '../store/config/store';
-import { getCarbonioBackendVersion } from '../network/fetch';
+import {
+	getCarbonioBackendVersion,
+	searchDirectoryListCount,
+	getAllServers
+} from '../network/fetch';
+import { getIsAdvanced } from '../store/advance';
+
+const CustomIcon = styled(Icon)`
+	width: 20px;
+	height: 20px;
+`;
 
 const TextArea = styled.textarea<{ size?: string }>`
 	width: 100%;
@@ -141,8 +151,12 @@ const Feedback: FC = () => {
 	const [feedbackSentData, setFeedbackSentData] = useState('');
 	const [toggleFeedback, setToggleFeedback] = useState(false);
 	const [carbonioBackendVersion, setCarbonioBackendVersion] = useState('');
+	const [totalAccounts, setTotalAccounts] = useState('');
+	const [totalDomains, setTotalDomains] = useState('');
+	const [totalServers, setTotalServers] = useState('');
 	const configs = useAllConfigStore((c) => c.a);
-
+	const isAdvanced = getIsAdvanced();
+	const carbonioAdminUIVersion = '0.9.4';
 	useEffect(() => {
 		if (configs && configs.length > 0) {
 			const carbonioSendFullErrorStack = configs.find(
@@ -207,6 +221,15 @@ const Feedback: FC = () => {
 				setCarbonioBackendVersion(versionResponse?.response?.currentVersion);
 			}
 		});
+		searchDirectoryListCount('accounts').then((data) => {
+			setTotalAccounts(data?.Body?.SearchDirectoryResponse?.searchTotal || '');
+		});
+		searchDirectoryListCount('domains').then((data) => {
+			setTotalDomains(data?.Body?.SearchDirectoryResponse?.searchTotal || '');
+		});
+		getAllServers().then((data) => {
+			setTotalServers(data?.servers?.length || '');
+		});
 	}, []);
 
 	const onInputChange = useCallback((ev) => {
@@ -238,11 +261,17 @@ const Feedback: FC = () => {
 	const createSnackbar = useContext(SnackbarManagerContext) as (snackbar: any) => void;
 
 	const confirmHandler = useCallback(() => {
-		const feedbackData = feedback(event, carbonioBackendVersion);
+		const feedbackData = feedback(event, {
+			carbonioBackendVersion,
+			totalAccounts,
+			totalDomains,
+			totalServers,
+			carbonioAdminUIVersion
+		});
 		setToggleFeedback(true);
 		setFeedbackSentData(feedbackData);
 		// closeBoard();
-	}, [carbonioBackendVersion, event]);
+	}, [carbonioBackendVersion, event, totalAccounts, totalDomains, totalServers]);
 
 	// const confirmCountMeInHandler = useCallback(() => {
 	// 	const eventObj: any = { ...event };
@@ -293,10 +322,31 @@ const Feedback: FC = () => {
 								<Padding bottom="large" />
 								<Text>
 									{t(
-										'label.allow_permission_to_send_data_to_zextras',
-										`Allow permission from privacy to send feedback`
+										'label.enable_all__following_permission_to_send_feedback_to_zextras',
+										`Enable all following permissions from the privacy section to send feedback`
 									)}
 								</Text>
+								<ul>
+									<li>
+										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+											{t(
+												'privacy.send_full_error_data_to_zextras',
+												'Send full error data to Zextras'
+											)}
+										</Text>
+									</li>
+									<li>
+										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+											{t('privacy.allow_data_analytics', 'Allow data analytics')}
+										</Text>
+									</li>
+									<li>
+										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+											{t('privacy.allow_live_survey_feedbacks', 'Allow live survey feedbacks')}
+										</Text>
+									</li>
+								</ul>
+
 								<Padding top="large" />
 							</Text>
 						</Container>
@@ -307,10 +357,74 @@ const Feedback: FC = () => {
 			)}
 			{feedbackPermission && !toggleFeedback && (
 				<Container
-					padding={{ top: 'extralarge' }}
+					// padding={{ top: 'extralarge' }}
 					mainAlignment="space-between"
 					crossAlignment="flex-start"
 				>
+					<Row>
+						<Container
+							orientation="horizontal"
+							width="99%"
+							// crossAlignment="center"
+							// mainAlignment="space-between"
+							background="#D3EBF8"
+						>
+							<Row takeAvwidth="fill" mainAlignment="flex-start">
+								<Padding horizontal="small">
+									<CustomIcon icon="InfoOutline"></CustomIcon>
+								</Padding>
+							</Row>
+							<Row
+								takeAvwidth="fill"
+								mainAlignment="flex-start"
+								width="100%"
+								padding={{
+									all: 'small'
+								}}
+							>
+								<Text overflow="break-word">
+									{t(
+										'label.details_feedback__collected_msg',
+										`Following details are collected along with feedback message`
+									)}
+								</Text>
+								<ul>
+									<li>
+										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+											{t('label.carbonio_backed_version', `Carbonio Backed Version`)} :{' '}
+											{carbonioBackendVersion} {isAdvanced ? '' : '(CE)'}
+										</Text>
+									</li>
+									<li>
+										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+											{t('label.carbonio_admin_ui_version', `Carbonio AdminUI Version`)} :{' '}
+											{carbonioAdminUIVersion}
+										</Text>
+									</li>
+									<li>
+										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+											{t('label.total_domains', `Total Domains`)} : {totalDomains || '-'}
+										</Text>
+									</li>
+									<li>
+										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+											{t('label.total_accounts', `Total Accounts`)} : {totalAccounts || '-'}
+										</Text>
+									</li>
+									<li>
+										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+											{t('label.total_servers', `Total Servers`)} : {totalServers || '-'}
+										</Text>
+									</li>
+								</ul>
+							</Row>
+						</Container>
+					</Row>
+					<Row
+						padding={{
+							all: 'small'
+						}}
+					></Row>
 					<TAContainer crossAlignment="flex-end">
 						<TextArea
 							value={event.message}
@@ -361,23 +475,6 @@ const Feedback: FC = () => {
 								{t('label.thank_you_for_feedback', `Thank you for the feedback!`)}
 							</Text>
 							<Padding bottom="large" />
-							<Text>{t('label.feedback_request_data', `Feedback request data:`)}</Text>
-							<Text overflow="break-word" size="small">
-								{feedbackSentData}
-							</Text>
-							<Padding bottom="large" />
-							{/* <Text>
-								{t(
-									'label.post_feedback_send_helper_text_line_2',
-									`To improve Carbonio we’re running continuos testing sessions,`
-								)}
-							</Text>
-							<Text>
-								{t(
-									'label.post_feedback_send_helper_text_line_3',
-									`you can be the voice we’d love to hear right now!`
-								)}
-							</Text> */}
 							<Padding top="large" />
 							{/* <Text>{t('label.feedback_helper_text', `Would you like to participate?`)}</Text> */}
 						</Text>

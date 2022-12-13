@@ -402,3 +402,66 @@ export const getCarbonioBackendVersion = async (): Promise<any> => {
 			throw e;
 		});
 };
+
+export const searchDirectoryListCount = async (types: string): Promise<any> => {
+	const { zimbraVersion, account } = useAccountStore.getState();
+	const { context } = useNetworkStore.getState();
+	const request: any = {
+		Body: {
+			SearchDirectoryRequest: {
+				_jsns: 'urn:zimbraAdmin',
+				offset: 0,
+				limit: 1,
+				sortAscending: '1',
+				applyCos: 'false',
+				applyConfig: 'false',
+				attrs: '',
+				types
+			}
+		},
+		Header: {
+			context: {
+				_jsns: 'urn:zimbra',
+				notify: context?.notify?.[0]?.seq
+					? {
+							seq: context?.notify?.[0]?.seq
+					  }
+					: undefined,
+				session: context?.session ?? {},
+				account: fetchAccount(account as Account),
+				userAgent: {
+					name: userAgent,
+					version: zimbraVersion
+				}
+			}
+		}
+	};
+
+	return fetch(`/service/admin/soap/SearchDirectoryRequest`, {
+		method: 'POST',
+		headers: {
+			Accept: '*/*',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(request)
+	})
+		.then((res) => (res?.headers.get('content-length') === null ? res : res?.json()))
+		.then((res: any) => handleSoapResponse(res))
+		.catch((e) => {
+			throw e;
+		});
+};
+
+export const getAllServers = async (): Promise<any> =>
+	fetch(`/service/extension/zextras_admin/core/getAllServers?module=zxpowerstore`, {
+		method: 'GET',
+		headers: {
+			Accept: '*/*',
+			'Content-Type': 'application/json'
+		}
+	})
+		.then((res) => (res?.headers.get('content-length') === null ? res : res?.json()))
+		.then((res: any) => handleSoapResponse(res))
+		.catch((e) => {
+			throw e;
+		});
