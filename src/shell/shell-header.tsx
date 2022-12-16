@@ -25,8 +25,10 @@ import { useAllConfigStore } from '../store/config/store';
 import { openLink } from '../utility-bar/utils';
 import { useUserAccount, useUserSettings } from '../store/account';
 import { getDomainInformation } from '../network/get-domain-information';
-import { useIsAdvanced } from '../store/advance';
+import { useAdvanceStore, useIsAdvanced } from '../store/advance';
 import { CARBONIO_HELP_ADMIN_URL, CARBONIO_HELP_ADVANCED_URL } from '../constants';
+import { getLoginConfig } from '../network/get-login-config';
+import { useThemeStore } from '../store/theme/store';
 
 const ShellHeader: FC<{
 	activeRoute: AppRoute;
@@ -41,6 +43,9 @@ const ShellHeader: FC<{
 	const isDelegatedAdmin = useUserSettings().attrs?.zimbraIsDelegatedAdminAccount;
 	const userName = useUserAccount()?.name;
 	const isAdvanced = useIsAdvanced();
+	const [logo, setLogo] = useState<any>({});
+	const setIsDarkMode = useThemeStore((state) => state.setIsDarkMode);
+	const maxApiVersion = useAdvanceStore((state) => state.maxApiVersion);
 
 	const getDomainDetails = useCallback(
 		(name: any): any => {
@@ -78,15 +83,52 @@ const ShellHeader: FC<{
 		[isAdvanced, isDelegatedAdmin, isGlobalAdmin]
 	);
 
+	const getThemeConfig = useCallback(
+		(version: any, domain: any): any => {
+			getLoginConfig(version, domain, domain).then((res) => {
+				// In case of v3 API response
+				const _logo: any = {};
+				if (res.carbonioAdminUiTitle) {
+					document.title = res.carbonioAdminUiTitle;
+				}
+				if (res.carbonioAdminUiFavicon) {
+					const link: any =
+						document.querySelector("link[rel*='icon']") || document.createElement('link');
+					link.type = 'image/x-icon';
+					link.rel = 'shortcut icon';
+					link.href = res.carbonioAdminUiFavicon;
+					document.getElementsByTagName('head')[0].appendChild(link);
+				}
+				if (res?.carbonioAdminUiAppLogo) {
+					_logo.image = res.carbonioAdminUiAppLogo;
+					_logo.width = '100%';
+				} else if (res?.carbonioAdminUiDarkAppLogo) {
+					_logo.image = res.carbonioAdminUiDarkAppLogo;
+					_logo.width = '100%';
+				}
+				setIsDarkMode(!!res?.carbonioWebUiDarkMode);
+				setLogo(_logo);
+			});
+		},
+		[setIsDarkMode]
+	);
+
 	useEffect(() => {
 		if (userName) {
 			getDomainDetails(userName?.split('@')[1]);
 		}
 	}, [getDomainDetails, userName]);
 
+	useEffect(() => {
+		if (userName && maxApiVersion) {
+			getThemeConfig(maxApiVersion, userName?.split('@')[1]);
+		}
+	}, [getThemeConfig, maxApiVersion, userName]);
+
 	const onHelpCenterClick = useCallback(() => {
 		openLink(helpCenterURL);
 	}, [helpCenterURL]);
+
 	return (
 		<Container
 			orientation="horizontal"
@@ -120,7 +162,20 @@ const ShellHeader: FC<{
 					width="auto"
 				>
 					<Container width="auto" height={32} crossAlignment="flex-start">
-						<Logo height="32px" />
+						{logo?.image ? (
+							<img
+								alt="Logo"
+								src={logo.image}
+								width={logo.width}
+								style={{
+									display: 'block',
+									marginLeft: 'auto',
+									marginRight: 'auto'
+								}}
+							/>
+						) : (
+							<Logo height="32px" />
+						)}
 					</Container>
 
 					<Padding horizontal="extralarge">
