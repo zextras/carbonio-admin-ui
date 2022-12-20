@@ -201,3 +201,4 @@ export const useNetworkState: () => any;
 export const useAllConfig: () => Array<Attribute>;
 export const useIsAdvanced: () => boolean;
 export const getIsAdvanced: () => boolean;
+export const useDomainInformation: () => any;

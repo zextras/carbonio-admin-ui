@@ -203,3 +203,9 @@ export type ConfigState = {
 export type AdvanceState = {
 	isAdvanced: boolean;
 };
+
+export type DomainInformationState = {
+	id: string;
+	name: string;
+	a: Array<Attribute>;
+};
