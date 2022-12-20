@@ -21,13 +21,15 @@ import { useHistory } from 'react-router-dom';
 // TODO: convert boards management to ts (and maybe a zustand store)
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
+import { useTranslation } from 'react-i18next';
 import { BoardValueContext, BoardSetterContext } from './boards/board-context';
 import { useAppStore } from '../store/app';
-import { AppRoute, PrimaryAccessoryView, PrimaryBarView } from '../../types';
+import { AppRoute, PrimaryAccessoryView, PrimaryBarView, SHELL_APP_ID } from '../../types';
 import BadgeWrap from './badge-wrap';
 import AppContextProvider from '../boot/app/app-context-provider';
 import { checkRoute } from '../utility-bar/utils';
 import { useUtilityBarStore } from '../utility-bar';
+import { useContextBridge } from '../store/context-bridge';
 import { Collapser } from './collapser';
 
 const PrimaryBarContainer = styled(Container)`
@@ -184,6 +186,7 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 	const [primaryBarViewWithSection, setPrimaryBarViewWithSection] = useState<any[]>([]);
 	const [routes, setRoutes] = useState<Record<string, string>>({});
 	const history = useHistory();
+	const [t] = useTranslation();
 
 	useEffect(() => {
 		setRoutes((r) =>
@@ -307,6 +310,26 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 					)}
 				</Container>
 				<Container mainAlignment="flex-end" height="fit">
+					<PrimaryBarRow
+						width="fill"
+						mainAlignment="flex-start"
+						onClick={(): void => {
+							useContextBridge.getState().packageDependentFunctions?.addBoard('feedbacks')(
+								'/feedback/',
+								{ title: t('label.feedback', 'Feedback') }
+							);
+						}}
+					>
+						<BadgeWrap badge={{ show: false, count: 0 }}>
+							<PrimaryBarIconButton
+								icon="MessageSquareOutline"
+								size="large"
+								onClick={(): void => {
+									null;
+								}}
+							/>
+						</BadgeWrap>
+					</PrimaryBarRow>
 					{accessories.map((v) => (
 						<PrimaryBarAccessoryElement view={v} key={v.id} />
 					))}

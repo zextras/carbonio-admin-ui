@@ -20,24 +20,39 @@ import {
 	Container,
 	Row,
 	Icon,
-	SnackbarManagerContext
+	SnackbarManagerContext,
+	Padding
 } from '@zextras/carbonio-design-system';
 import { Severity, Event } from '@sentry/browser';
 import { filter, find, map } from 'lodash';
 import styled from 'styled-components';
 import { TFunction, useTranslation } from 'react-i18next';
-import { useUserAccount } from '../store/account';
+import { useUserAccount, useAccountStore } from '../store/account';
 import { useRemoveCurrentBoard } from '../shell/boards/board-hooks';
 import { feedback } from './functions';
 import { useAppList } from '../store/app';
+import Logo from '../../assets/carbonio_feedback.svg';
+import { useAllConfigStore } from '../store/config/store';
+import {
+	getCarbonioBackendVersion,
+	searchDirectoryListCount,
+	getAllServers
+} from '../network/fetch';
+import { getIsAdvanced } from '../store/advance';
+
+const CustomIcon = styled(Icon)`
+	width: 20px;
+	height: 20px;
+`;
 
 const TextArea = styled.textarea<{ size?: string }>`
 	width: 100%;
-	min-height: 128px;
+	height: 96%;
+	min-height: 96%;
 	box-sizing: border-box;
 	outline: none;
 	border: none;
-	background: ${({ theme }): string => theme.palette.gray5.regular};
+	background: ${({ theme }): string => theme.palette.gray4.regular};
 	resize: none;
 	transition: height 0.4s ease;
 	color: ${({ theme }): string => theme.palette.text.regular};
@@ -56,17 +71,19 @@ const TextContainer = styled(Container)`
 `;
 
 const ButtonContainer = styled(Container)`
-	width: 20%;
+	width: 100%;
 	position: relative;
+	padding-bottom: 32px;
 `;
 
 const TAContainer = styled(Container)`
-	background: ${({ theme }): string => theme.palette.gray5.regular};
+	background: ${({ theme }): string => theme.palette.gray4.regular};
 	border-radius: 2px 2px 0 0;
 	padding: 8px;
+	width: 100%;
 	transition: height 0.4s ease;
-	height: auto;
-	max-height: 50%;
+	height: 100%;
+	max-height: 100%;
 	&:focus-within {
 		background: ${({ theme }): string => theme.palette.gray4.regular};
 		outline: none;
@@ -126,91 +143,40 @@ const getTopics = (t: TFunction): Array<{ label: string; value: string }> => [
 	{ label: t('feedback.other', 'Other'), value: 'Other' }
 ];
 
-const ModuleLabelFactory: FC<{
-	selected: Array<{ label: string; value: string }>;
-	label: string;
-	open: boolean;
-	focus: boolean;
-}> = ({ selected, label, open, focus }) => (
-	<LabelContainer
-		orientation="horizontal"
-		width="fill"
-		crossAlignment="center"
-		mainAlignment="space-between"
-		borderRadius="half"
-		background="gray5"
-		padding={{
-			all: 'small'
-		}}
-	>
-		<Row takeAvailableSpace mainAlignment="unset">
-			<Text size="medium" color={open || focus ? 'primary' : 'secondary'}>
-				{selected.length > 0 ? selected[0].label : label}
-			</Text>
-		</Row>
-		<Icon
-			size="large"
-			icon={open ? 'ChevronUpOutline' : 'ChevronDownOutline'}
-			color={open || focus ? 'primary' : 'secondary'}
-			style={{ alignSelf: 'center' }}
-		/>
-	</LabelContainer>
-);
-
-const _LabelFactory: FC<{
-	selected: Array<{ label: string; value: string }>;
-	label: string;
-	open: boolean;
-	focus: boolean;
-	showErr: boolean;
-}> = ({ selected, label, open, focus, showErr }) => (
-	<LabelContainer
-		disabled={showErr}
-		orientation="horizontal"
-		width="fill"
-		crossAlignment="center"
-		mainAlignment="space-between"
-		borderRadius="half"
-		background="gray5"
-		padding={{
-			all: 'small'
-		}}
-	>
-		<Row takeAvailableSpace mainAlignment="unset">
-			{showErr ? (
-				<Text size="medium" color={(open && showErr) || focus ? 'primary' : 'error'}>
-					{' '}
-					{selected.length > 0 ? selected[0].label : label}
-				</Text>
-			) : (
-				<Text size="medium" color={open || focus ? 'primary' : 'secondary'}>
-					{selected.length > 0 ? selected[0].label : label}
-				</Text>
-			)}
-		</Row>
-
-		{showErr ? (
-			<Icon
-				size="large"
-				icon={open ? 'ChevronUpOutline' : 'ChevronDownOutline'}
-				color={(open && showErr) || focus ? 'primary' : 'error'}
-				style={{ alignSelf: 'center' }}
-			/>
-		) : (
-			<Icon
-				size="large"
-				icon={open ? 'ChevronUpOutline' : 'ChevronDownOutline'}
-				color={open || focus ? 'primary' : 'secondary'}
-				style={{ alignSelf: 'center' }}
-			/>
-		)}
-	</LabelContainer>
-);
-
 const Feedback: FC = () => {
 	const [t] = useTranslation();
 	const topics = useMemo(() => getTopics(t), [t]);
 	const allApps = useAppList();
+	const [feedbackPermission, setFeedbackPermission] = useState(false);
+	const [feedbackSentData, setFeedbackSentData] = useState('');
+	const [toggleFeedback, setToggleFeedback] = useState(false);
+	const [carbonioBackendVersion, setCarbonioBackendVersion] = useState('');
+	const [totalAccounts, setTotalAccounts] = useState('');
+	const [totalDomains, setTotalDomains] = useState('');
+	const [totalServers, setTotalServers] = useState('');
+	const configs = useAllConfigStore((c) => c.a);
+	const isAdvanced = getIsAdvanced();
+	const carbonioAdminUIVersion = '0.9.4';
+	useEffect(() => {
+		if (configs && configs.length > 0) {
+			const carbonioSendFullErrorStack = configs.find(
+				(item: any) => item?.n === 'carbonioSendFullErrorStack'
+			);
+			const carbonioSendAnalytics = configs.find(
+				(item: any) => item?.n === 'carbonioSendAnalytics'
+			);
+			const carbonioAllowFeedback = configs.find(
+				(item: any) => item?.n === 'carbonioAllowFeedback'
+			);
+			if (
+				carbonioSendFullErrorStack?._content === 'TRUE' &&
+				carbonioSendAnalytics?._content === 'TRUE' &&
+				carbonioAllowFeedback?._content === 'TRUE'
+			) {
+				setFeedbackPermission(true);
+			}
+		}
+	}, [configs]);
 	const apps = useMemo(
 		() => filter(allApps, (app) => !!app.sentryDsn),
 
@@ -225,6 +191,8 @@ const Feedback: FC = () => {
 		[apps]
 	);
 	const acct = useUserAccount();
+	const accountStore = useAccountStore();
+
 	const [event, dispatch] = useReducer(reducer, emptyEvent);
 	const [showErr, setShowErr] = useState(false);
 	const [limit, setLimit] = useState(0);
@@ -246,11 +214,29 @@ const Feedback: FC = () => {
 		dispatch({ type: 'select-topic', payload: ev });
 	}, []);
 
+	const getBackendVersion = useCallback(() => {
+		getCarbonioBackendVersion().then((data) => {
+			if (data?.Body?.response?.content) {
+				const versionResponse = JSON.parse(data?.Body?.response?.content);
+				setCarbonioBackendVersion(versionResponse?.response?.currentVersion);
+			}
+		});
+		searchDirectoryListCount('accounts').then((data) => {
+			setTotalAccounts(data?.Body?.SearchDirectoryResponse?.searchTotal || '');
+		});
+		searchDirectoryListCount('domains').then((data) => {
+			setTotalDomains(data?.Body?.SearchDirectoryResponse?.searchTotal || '');
+		});
+		getAllServers().then((data) => {
+			setTotalServers(data?.servers?.length || '');
+		});
+	}, []);
+
 	const onInputChange = useCallback((ev) => {
 		// eslint-disable-next-line no-param-reassign
 		ev.target.style.height = 'auto';
 		// eslint-disable-next-line no-param-reassign
-		ev.target.style.height = `${25 + ev.target.scrollHeight}px`;
+		// ev.target.style.height = `${25 + ev.target.scrollHeight}px`;
 		if (ev.target.value.length <= 500) {
 			setLimit(ev.target.value.length);
 			dispatch({ type: 'set-message', payload: ev.target.value });
@@ -275,17 +261,27 @@ const Feedback: FC = () => {
 	const createSnackbar = useContext(SnackbarManagerContext) as (snackbar: any) => void;
 
 	const confirmHandler = useCallback(() => {
-		const feedbackId = feedback(event);
-		createSnackbar(
-			feedbackId
-				? { type: 'success', label: t('feedback.success', 'Thank you for your feedback') }
-				: {
-						type: 'error',
-						label: t('feedback.error', 'There was an error while sending your feedback')
-				  }
-		);
-		closeBoard();
-	}, [event, createSnackbar, t, closeBoard]);
+		const feedbackData = feedback(event, {
+			carbonioBackendVersion,
+			totalAccounts,
+			totalDomains,
+			totalServers,
+			carbonioAdminUIVersion
+		});
+		setToggleFeedback(true);
+		setFeedbackSentData(feedbackData);
+		// closeBoard();
+	}, [carbonioBackendVersion, event, totalAccounts, totalDomains, totalServers]);
+
+	// const confirmCountMeInHandler = useCallback(() => {
+	// 	const eventObj: any = { ...event };
+	// 	eventObj.email = acct.displayName;
+	// 	eventObj.name = acct.name;
+	// 	eventObj.comments = `Participate for testing : ${acct.name}`;
+	// 	const feedbackId = feedback(eventObj);
+	// 	setToggleFeedback(true);
+	// 	closeBoard();
+	// }, [event, closeBoard, acct]);
 
 	useEffect(() => {
 		dispatch({
@@ -294,94 +290,213 @@ const Feedback: FC = () => {
 		});
 	}, [acct]);
 
-	const disabledSend = useMemo(
-		() =>
-			(event?.message?.length ?? 0) <= 0 || event.extra?.topic === '0' || event.extra?.app === '0',
-		[event.message, event.extra?.topic, event.extra?.app]
-	);
+	useEffect(() => {
+		getBackendVersion();
+	}, [getBackendVersion]);
 
-	const LabelFactory = useCallback(
-		(props) => <_LabelFactory {...props} showErr={showErr} />,
-		[showErr]
-	);
+	const disabledSend = useMemo(() => (event?.message?.length ?? 0) <= 0, [event?.message]);
 
 	return (
-		<Container padding={{ all: 'large' }} mainAlignment="space-around">
-			<Container orientation="horizontal" height="fit">
-				<TextContainer mainAlignment="flex-start" crossAlignment="flex-start">
-					<Text weight="bold" size="18px">
-						{t('feedback.report_something', 'Do you want to report something?')}
-					</Text>
-					<SubHeadingText overflow="break-word" lineHeight="21px">
-						{t(
-							'feedback.explanation',
-							'Please send us your feedback about your new experience with Zextras Server. Your opinion is meaningful for us to improve our product. So tell us what’s on your mind.'
-						)}
-					</SubHeadingText>
-					<SubHeadingText overflow="break-word">
-						{t(
-							'feedback.hint',
-							'Remember: define the topic using module and macro area selectors before write your feedback. Thanks for your help.'
-						)}
-					</SubHeadingText>
-				</TextContainer>
+		<>
+			{!feedbackPermission ? (
+				<>
+					<Container
+						padding={{ top: 'extralarge' }}
+						mainAlignment="space-between"
+						crossAlignment="flex-start"
+					>
+						<Container>
+							<Text overflow="break-word" weight="normal" size="large">
+								<Padding top="small" />
+								<Logo />
+							</Text>
+							<Padding vertical="large" horizontal="medium" width="294px" />
+							<Text
+								color="gray1"
+								overflow="break-word"
+								weight="normal"
+								size="large"
+								width="60%"
+								style={{ whiteSpace: 'pre-line', textAlign: 'center', paddingBottom: '123px' }}
+							>
+								<Padding bottom="large" />
+								<Text>
+									{t(
+										'label.enable_all__following_permission_to_send_feedback_to_zextras',
+										`Enable all following permissions from the privacy section to send feedback`
+									)}
+								</Text>
+								<ul>
+									<li>
+										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+											{t(
+												'privacy.send_full_error_data_to_zextras',
+												'Send full error data to Zextras'
+											)}
+										</Text>
+									</li>
+									<li>
+										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+											{t('privacy.allow_data_analytics', 'Allow data analytics')}
+										</Text>
+									</li>
+									<li>
+										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+											{t('privacy.allow_live_survey_feedbacks', 'Allow live survey feedbacks')}
+										</Text>
+									</li>
+								</ul>
 
-				<ButtonContainer crossAlignment="flex-end" mainAlignment="baseline">
-					<Button
-						label={t('feedback.send', 'SEND')}
-						onClick={confirmHandler}
-						disabled={disabledSend}
-					/>
-				</ButtonContainer>
-			</Container>
-			<Container
-				padding={{ bottom: 'medium' }}
-				height="fit"
-				mainAlignment="space-between"
-				crossAlignment="flex-start"
-				orientation="horizontal"
-			>
-				<Container mainAlignment="space-between" crossAlignment="flex-start" maxWidth="305px">
-					<Row padding={{ vertical: 'large' }}>
-						<Text weight="bold" size="14px">
-							Module
-						</Text>
+								<Padding top="large" />
+							</Text>
+						</Container>
+					</Container>
+				</>
+			) : (
+				<></>
+			)}
+			{feedbackPermission && !toggleFeedback && (
+				<Container
+					// padding={{ top: 'extralarge' }}
+					mainAlignment="space-between"
+					crossAlignment="flex-start"
+				>
+					<Row>
+						<Container
+							orientation="horizontal"
+							width="99%"
+							// crossAlignment="center"
+							// mainAlignment="space-between"
+							background="#D3EBF8"
+						>
+							<Row takeAvwidth="fill" mainAlignment="flex-start">
+								<Padding horizontal="small">
+									<CustomIcon icon="InfoOutline"></CustomIcon>
+								</Padding>
+							</Row>
+							<Row
+								takeAvwidth="fill"
+								mainAlignment="flex-start"
+								width="100%"
+								padding={{
+									all: 'small'
+								}}
+							>
+								<Text overflow="break-word">
+									{t(
+										'label.details_feedback__collected_msg',
+										`Following details are collected along with feedback message`
+									)}
+								</Text>
+								<ul>
+									<li>
+										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+											{t('label.carbonio_backed_version', `Carbonio Backed Version`)} :{' '}
+											{carbonioBackendVersion} {isAdvanced ? '' : '(CE)'}
+										</Text>
+									</li>
+									<li>
+										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+											{t('label.carbonio_admin_ui_version', `Carbonio AdminUI Version`)} :{' '}
+											{carbonioAdminUIVersion}
+										</Text>
+									</li>
+									<li>
+										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+											{t('label.total_domains', `Total Domains`)} : {totalDomains || '-'}
+										</Text>
+									</li>
+									<li>
+										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+											{t('label.total_accounts', `Total Accounts`)} : {totalAccounts || '-'}
+										</Text>
+									</li>
+									<li>
+										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+											{t('label.total_servers', `Total Servers`)} : {totalServers || '-'}
+										</Text>
+									</li>
+								</ul>
+							</Row>
+						</Container>
 					</Row>
-					<Select
-						label={t('feedback.select_a_module', 'Select a module')}
-						items={appItems}
-						onChange={onAppSelect}
-						LabelFactory={ModuleLabelFactory}
-					/>
-				</Container>
-				<Container mainAlignment="space-between" crossAlignment="flex-start" maxWidth="305px">
-					<Row padding={{ vertical: 'large' }}>
-						<Text weight="bold" size="14px">
-							Topic
+					<Row
+						padding={{
+							all: 'small'
+						}}
+					></Row>
+					<TAContainer crossAlignment="flex-end">
+						<TextArea
+							value={event.message}
+							onKeyUp={checkTopicSelect}
+							onChange={onInputChange}
+							placeholder={t(
+								'feedback.write_here_placeholder_text',
+								'Hey! Start writing here your feedback :) \n\n\nThis will be sent anonymously so let us know what we did good \nor wrong with no filter'
+							)}
+						/>
+						<Text size="medium" color="secondary">
+							{limit}/500
 						</Text>
-					</Row>
-					<Select
-						label={t('feedback.select_a_topic', 'Select a topic')}
-						selection={find(topics, ['value', event.extra?.topic])}
-						items={topics}
-						onChange={onTopicSelect}
-						LabelFactory={LabelFactory}
-						multiple={false}
-					/>
+					</TAContainer>
+					<Container orientation="horizontal" height="fit" padding={{ top: 'large' }} width="100%">
+						<ButtonContainer crossAlignment="flex-end" mainAlignment="baseline">
+							<Button
+								width="fill"
+								label={t('feedback.send_feedback', 'SHARE YOUR FEEDBACK WITH US')}
+								onClick={confirmHandler}
+								disabled={disabledSend}
+							/>
+						</ButtonContainer>
+					</Container>
 				</Container>
-			</Container>
-			<TAContainer crossAlignment="flex-end">
-				<TextArea
-					value={event.message}
-					onKeyUp={checkTopicSelect}
-					onChange={onInputChange}
-					placeholder={t('feedback.write_here', 'Write your feedback here')}
-				/>
-				<Text size="medium" color="secondary">
-					{limit}/500
-				</Text>
-			</TAContainer>
-		</Container>
+			)}
+			{feedbackPermission && toggleFeedback && (
+				<Container
+					padding={{ top: 'extralarge' }}
+					mainAlignment="space-between"
+					crossAlignment="flex-start"
+				>
+					<Container>
+						<Text overflow="break-word" weight="normal" size="large">
+							<Padding top="small" />
+							<Logo />
+						</Text>
+						<Padding vertical="large" horizontal="medium" width="294px" />
+						<Text
+							color="gray1"
+							overflow="break-word"
+							weight="normal"
+							size="large"
+							width="60%"
+							style={{ whiteSpace: 'pre-line', textAlign: 'center', paddingBottom: '123px' }}
+						>
+							<Text weight="bold">
+								{t('label.thank_you_for_feedback', `Thank you for the feedback!`)}
+							</Text>
+							<Padding bottom="large" />
+							<Padding top="large" />
+							{/* <Text>{t('label.feedback_helper_text', `Would you like to participate?`)}</Text> */}
+						</Text>
+					</Container>
+
+					{/* <Container
+						orientation="horizontal"
+						height="fit"
+						padding={{ top: 'extralarge' }}
+						width="100%"
+					>
+						<ButtonContainer crossAlignment="flex-end" mainAlignment="baseline">
+							<Button
+								width="fill"
+								label={t('feedback.count_user_in_helper_button_text', 'YES, COUNT ME IN!')}
+								onClick={confirmCountMeInHandler}
+							/>
+						</ButtonContainer>
+					</Container> */}
+				</Container>
+			)}
+		</>
 	);
 };
 

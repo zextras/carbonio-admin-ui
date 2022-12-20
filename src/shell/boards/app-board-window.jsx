@@ -111,9 +111,10 @@ const Board = styled(Container)`
 	left: 24px;
 	bottom: 0;
 	width: 700px;
-	height: 70vh;
+	height: 63vh;
 	min-height: 400px;
 	box-shadow: 0 2px 5px 0 rgba(125, 125, 125, 0.5);
+	border-radius: 16px 16px 0px 0px;
 	pointer-events: auto;
 	${({ largeView }) =>
 		largeView &&
@@ -153,7 +154,12 @@ export default function AppBoardWindow() {
 	if (!tabs.length) return null;
 	return (
 		<BoardContainer largeView={largeView} minimized={minimized}>
-			<Board background="gray6" crossAlignment="unset" largeView={largeView}>
+			<Board
+				background="gray5"
+				crossAlignment="unset"
+				largeView={largeView}
+				padding={{ horizontal: 'extralarge' }}
+			>
 				<BoardHeader background="gray5">
 					<Padding all="extrasmall">
 						<Tooltip label={t('board.hide', 'Hide board')} placement="top">
