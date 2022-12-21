@@ -11,6 +11,7 @@ import { reduce } from 'lodash';
 import { useAccountStore } from '../store/account';
 import { ThemeExtension, ThemeExtensionMap } from '../../types';
 import { darkReaderDynamicThemeFixes } from '../constants';
+import { useThemeStore } from '../store/theme/store';
 
 setFetchMethod(window.fetch);
 
@@ -103,6 +104,13 @@ export const ThemeProvider: FC = ({ children }) => {
 		}));
 	}, [zimbraPrefFontSize]);
 	const [darkReaderState, setDarkReaderState] = useState<'auto' | 'disabled' | 'enabled'>('auto');
+
+	const isDarkMode = useThemeStore((state) => state.isDarkMode);
+
+	useEffect(() => {
+		setDarkReaderState(isDarkMode ? 'enabled' : 'disabled');
+	}, [isDarkMode]);
+
 	useEffect(() => {
 		switch (darkReaderState) {
 			case 'disabled':

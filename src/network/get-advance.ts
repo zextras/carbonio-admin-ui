@@ -12,7 +12,13 @@ export const getIsAdvancedSupported = (): Promise<void> =>
 		// eslint-disable-next-line consistent-return
 		.then((data: any) => {
 			if (data?.domain) {
-				useAdvanceStore.setState({ isAdvanced: true });
+				useAdvanceStore.setState({
+					maxApiVersion: data?.maxApiVersion,
+					minApiVersion: data?.minApiVersion,
+					version: data?.version,
+					domain: data?.domain,
+					isAdvanced: true
+				});
 			} else {
 				useAdvanceStore.setState({ isAdvanced: false });
 			}
