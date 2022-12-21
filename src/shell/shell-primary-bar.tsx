@@ -18,10 +18,10 @@ import { map, isEmpty, trim, filter, sortBy } from 'lodash';
 import React, { useContext, FC, useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 // TODO: convert boards management to ts (and maybe a zustand store)
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { useTranslation } from 'react-i18next';
 import { BoardValueContext, BoardSetterContext } from './boards/board-context';
 import { useAppStore } from '../store/app';
 import { AppRoute, PrimaryAccessoryView, PrimaryBarView, SHELL_APP_ID } from '../../types';
@@ -56,7 +56,11 @@ const PrimaryBarIconButton = styled(IconButton)`
 `;
 
 const ToggleBoardIcon: FC = () => {
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
 	const { boards, minimized } = useContext(BoardValueContext);
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
 	const { toggleMinimized } = useContext(BoardSetterContext);
 
 	if (isEmpty(boards)) return null;
