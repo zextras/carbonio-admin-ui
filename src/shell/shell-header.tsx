@@ -21,7 +21,6 @@ import { SearchBar } from '../search/search-bar';
 import { CreationButton } from './creation-button';
 import { useAppStore } from '../store/app';
 import { AppRoute } from '../../types';
-import { useAllConfigStore } from '../store/config/store';
 import { openLink } from '../utility-bar/utils';
 import { useUserAccount, useUserSettings } from '../store/account';
 import { getDomainInformation } from '../network/get-domain-information';
@@ -29,6 +28,7 @@ import { useAdvanceStore, useIsAdvanced } from '../store/advance';
 import { CARBONIO_HELP_ADMIN_URL, CARBONIO_HELP_ADVANCED_URL } from '../constants';
 import { getLoginConfig } from '../network/get-login-config';
 import { useThemeStore } from '../store/theme/store';
+import { useDomainInformationStore } from '../store/domain-information';
 
 const ShellHeader: FC<{
 	activeRoute: AppRoute;
@@ -52,6 +52,7 @@ const ShellHeader: FC<{
 			getDomainInformation('name', name).then((data) => {
 				const domain = data?.domain[0];
 				if (domain) {
+					useDomainInformationStore.setState({ a: domain?.a, id: domain?.id, name: domain?.name });
 					const domainInformation = domain?.a;
 					const obj: any = {};
 					domainInformation.map((item: any) => {

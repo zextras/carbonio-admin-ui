@@ -25,7 +25,7 @@ export const useReporter = create<ReporterState>((set) => ({
 		),
 		feedbacks: new Hub(
 			new BrowserClient({
-				dsn: 'https://1b6b3e2bbdc64a73bf45c72b725c56b4@feedback.zextras.tools/8',
+				dsn: 'https://b93587078dad409fb79180ddc716b14b@feedback.zextras.tools/27',
 				release: '0',
 				maxValueLength: 500
 			})
