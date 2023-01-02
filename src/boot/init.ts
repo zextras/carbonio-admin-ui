@@ -12,9 +12,10 @@ import StoreFactory from '../redux/store-factory';
 import { getInfo } from '../network/get-info';
 import { getAllConfig } from '../network/get-all-config';
 import { getIsAdvancedSupported } from '../network/get-advance';
+import { loginConfig } from '../network/login-config';
 
 export const init = (_i18nFactory: I18nFactory, _storeFactory: StoreFactory): void => {
-	getInfo().then(() => {
+	Promise.all([loginConfig(), getInfo()]).finally(() => {
 		_i18nFactory.setLocale(
 			(
 				(useAccountStore.getState().settings?.prefs?.zimbraPrefLocale as string) ??

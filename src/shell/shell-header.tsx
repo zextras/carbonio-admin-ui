@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import React, { FC, useCallback, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import {
 	Container,
 	IconButton,
@@ -15,6 +15,7 @@ import {
 	Icon,
 	Text
 } from '@zextras/carbonio-design-system';
+import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import Logo from '../svg/carbonio-admin-panel.svg';
 import { SearchBar } from '../search/search-bar';
@@ -27,6 +28,12 @@ import { getDomainInformation } from '../network/get-domain-information';
 import { useIsAdvanced } from '../store/advance';
 import { CARBONIO_HELP_ADMIN_URL, CARBONIO_HELP_ADVANCED_URL } from '../constants';
 import { useDomainInformationStore } from '../store/domain-information';
+import { useLoginConfigStore } from '../store/login/store';
+import { useDarkReaderResultValue } from '../custom-hooks/useDarkReaderResultValue';
+
+const CustomImg = styled.img`
+	height: 2rem;
+`;
 
 const ShellHeader: FC<{
 	activeRoute: AppRoute;
@@ -41,6 +48,9 @@ const ShellHeader: FC<{
 	const isDelegatedAdmin = useUserSettings().attrs?.zimbraIsDelegatedAdminAccount;
 	const userName = useUserAccount()?.name;
 	const isAdvanced = useIsAdvanced();
+	const { carbonioAdminUiAppLogo, carbonioAdminUiDarkAppLogo } = useLoginConfigStore();
+	const darkReaderResultValue = useDarkReaderResultValue();
+	const [darkModeEnabled, setDarkModeEnabled] = useState(false);
 
 	const getDomainDetails = useCallback(
 		(name: any): any => {
@@ -88,6 +98,20 @@ const ShellHeader: FC<{
 	const onHelpCenterClick = useCallback(() => {
 		openLink(helpCenterURL);
 	}, [helpCenterURL]);
+
+	useEffect(() => {
+		if (darkReaderResultValue) {
+			setDarkModeEnabled(darkReaderResultValue === 'enabled');
+		}
+	}, [darkReaderResultValue]);
+
+	const logoSrc = useMemo(() => {
+		if (darkModeEnabled) {
+			return carbonioAdminUiDarkAppLogo || carbonioAdminUiAppLogo;
+		}
+		return carbonioAdminUiAppLogo || carbonioAdminUiDarkAppLogo;
+	}, [carbonioAdminUiDarkAppLogo, carbonioAdminUiAppLogo, darkModeEnabled]);
+
 	return (
 		<Container
 			orientation="horizontal"
@@ -121,7 +145,9 @@ const ShellHeader: FC<{
 					width="auto"
 				>
 					<Container width="auto" height={32} crossAlignment="flex-start">
-						<Logo height="32px" />
+						{darkReaderResultValue && (
+							<>{logoSrc ? <CustomImg src={logoSrc} /> : <Logo height="2rem" />}</>
+						)}
 					</Container>
 
 					<Padding horizontal="extralarge">
