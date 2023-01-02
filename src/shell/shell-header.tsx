@@ -25,7 +25,7 @@ import { AppRoute } from '../../types';
 import { openLink } from '../utility-bar/utils';
 import { useUserAccount, useUserSettings } from '../store/account';
 import { getDomainInformation } from '../network/get-domain-information';
-import { useIsAdvanced } from '../store/advance';
+import { useAdvanceStore, useIsAdvanced } from '../store/advance';
 import { CARBONIO_HELP_ADMIN_URL, CARBONIO_HELP_ADVANCED_URL } from '../constants';
 import { useDomainInformationStore } from '../store/domain-information';
 import { useLoginConfigStore } from '../store/login/store';

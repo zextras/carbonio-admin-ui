@@ -11,6 +11,7 @@ import { reduce } from 'lodash';
 import { useAccountStore } from '../store/account';
 import { DarkReaderPropValues, ThemeExtension, ThemeExtensionMap } from '../../types';
 import { darkReaderDynamicThemeFixes } from '../constants';
+import { useThemeStore } from '../store/theme/store';
 
 setFetchMethod(window.fetch);
 
