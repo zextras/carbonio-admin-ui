@@ -83,3 +83,7 @@ export const EMAIL_VALIDATION_REGEX =
 export const CARBONIO_HELP_ADMIN_URL = 'https://docs.zextras.com/carbonio-ce/html/management.html';
 export const CARBONIO_HELP_ADVANCED_URL =
 	'https://docs.zextras.com/carbonio/html/administration.html';
+
+export const DARK_READER_VALUES = ['auto', 'enabled', 'disabled'] as const;
+export const LOGIN_V3_CONFIG_PATH = '/zx/login/v3/config';
+export const DARK_READER_PROP_KEY = 'zappDarkreaderMode';

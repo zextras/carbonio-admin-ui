@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import React, { FC, useCallback, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import {
 	Container,
 	IconButton,
@@ -15,6 +15,7 @@ import {
 	Icon,
 	Text
 } from '@zextras/carbonio-design-system';
+import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import Logo from '../svg/carbonio-admin-panel.svg';
 import { SearchBar } from '../search/search-bar';
@@ -26,9 +27,13 @@ import { useUserAccount, useUserSettings } from '../store/account';
 import { getDomainInformation } from '../network/get-domain-information';
 import { useAdvanceStore, useIsAdvanced } from '../store/advance';
 import { CARBONIO_HELP_ADMIN_URL, CARBONIO_HELP_ADVANCED_URL } from '../constants';
-import { getLoginConfig } from '../network/get-login-config';
-import { useThemeStore } from '../store/theme/store';
 import { useDomainInformationStore } from '../store/domain-information';
+import { useLoginConfigStore } from '../store/login/store';
+import { useDarkReaderResultValue } from '../custom-hooks/useDarkReaderResultValue';
+
+const CustomImg = styled.img`
+	height: 2rem;
+`;
 
 const ShellHeader: FC<{
 	activeRoute: AppRoute;
@@ -43,9 +48,9 @@ const ShellHeader: FC<{
 	const isDelegatedAdmin = useUserSettings().attrs?.zimbraIsDelegatedAdminAccount;
 	const userName = useUserAccount()?.name;
 	const isAdvanced = useIsAdvanced();
-	const [logo, setLogo] = useState<any>({});
-	const setIsDarkMode = useThemeStore((state) => state.setIsDarkMode);
-	const maxApiVersion = useAdvanceStore((state) => state.maxApiVersion);
+	const { carbonioAdminUiAppLogo, carbonioAdminUiDarkAppLogo } = useLoginConfigStore();
+	const darkReaderResultValue = useDarkReaderResultValue();
+	const [darkModeEnabled, setDarkModeEnabled] = useState(false);
 
 	const getDomainDetails = useCallback(
 		(name: any): any => {
@@ -84,51 +89,28 @@ const ShellHeader: FC<{
 		[isAdvanced, isDelegatedAdmin, isGlobalAdmin]
 	);
 
-	const getThemeConfig = useCallback(
-		(version: any, domain: any): any => {
-			getLoginConfig(version, domain, domain).then((res) => {
-				// In case of v3 API response
-				const _logo: any = {};
-				if (res.carbonioAdminUiTitle) {
-					document.title = res.carbonioAdminUiTitle;
-				}
-				if (res.carbonioAdminUiFavicon) {
-					const link: any =
-						document.querySelector("link[rel*='icon']") || document.createElement('link');
-					link.type = 'image/x-icon';
-					link.rel = 'shortcut icon';
-					link.href = res.carbonioAdminUiFavicon;
-					document.getElementsByTagName('head')[0].appendChild(link);
-				}
-				if (res?.carbonioAdminUiAppLogo) {
-					_logo.image = res.carbonioAdminUiAppLogo;
-					_logo.width = '100%';
-				} else if (res?.carbonioAdminUiDarkAppLogo) {
-					_logo.image = res.carbonioAdminUiDarkAppLogo;
-					_logo.width = '100%';
-				}
-				setIsDarkMode(!!res?.carbonioWebUiDarkMode);
-				setLogo(_logo);
-			});
-		},
-		[setIsDarkMode]
-	);
-
 	useEffect(() => {
 		if (userName) {
 			getDomainDetails(userName?.split('@')[1]);
 		}
 	}, [getDomainDetails, userName]);
 
-	useEffect(() => {
-		if (userName && maxApiVersion) {
-			getThemeConfig(maxApiVersion, userName?.split('@')[1]);
-		}
-	}, [getThemeConfig, maxApiVersion, userName]);
-
 	const onHelpCenterClick = useCallback(() => {
 		openLink(helpCenterURL);
 	}, [helpCenterURL]);
+
+	useEffect(() => {
+		if (darkReaderResultValue) {
+			setDarkModeEnabled(darkReaderResultValue === 'enabled');
+		}
+	}, [darkReaderResultValue]);
+
+	const logoSrc = useMemo(() => {
+		if (darkModeEnabled) {
+			return carbonioAdminUiDarkAppLogo || carbonioAdminUiAppLogo;
+		}
+		return carbonioAdminUiAppLogo || carbonioAdminUiDarkAppLogo;
+	}, [carbonioAdminUiDarkAppLogo, carbonioAdminUiAppLogo, darkModeEnabled]);
 
 	return (
 		<Container
@@ -163,19 +145,8 @@ const ShellHeader: FC<{
 					width="auto"
 				>
 					<Container width="auto" height={32} crossAlignment="flex-start">
-						{logo?.image ? (
-							<img
-								alt="Logo"
-								src={logo.image}
-								width={logo.width}
-								style={{
-									display: 'block',
-									marginLeft: 'auto',
-									marginRight: 'auto'
-								}}
-							/>
-						) : (
-							<Logo height="32px" />
+						{darkReaderResultValue && (
+							<>{logoSrc ? <CustomImg src={logoSrc} /> : <Logo height="2rem" />}</>
 						)}
 					</Container>
 
