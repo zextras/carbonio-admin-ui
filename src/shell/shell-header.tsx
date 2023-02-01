@@ -26,7 +26,11 @@ import { openLink } from '../utility-bar/utils';
 import { useUserAccount, useUserSettings } from '../store/account';
 import { getDomainInformation } from '../network/get-domain-information';
 import { useAdvanceStore, useIsAdvanced } from '../store/advance';
-import { CARBONIO_HELP_ADMIN_URL, CARBONIO_HELP_ADVANCED_URL } from '../constants';
+import {
+	CARBONIO_HELP_ADMIN_URL,
+	CARBONIO_HELP_ADVANCED_URL,
+	CARBONIO_LOGO_URL
+} from '../constants';
 import { useDomainInformationStore } from '../store/domain-information';
 import { useLoginConfigStore } from '../store/login/store';
 import { useDarkReaderResultValue } from '../custom-hooks/useDarkReaderResultValue';
@@ -48,7 +52,8 @@ const ShellHeader: FC<{
 	const isDelegatedAdmin = useUserSettings().attrs?.zimbraIsDelegatedAdminAccount;
 	const userName = useUserAccount()?.name;
 	const isAdvanced = useIsAdvanced();
-	const { carbonioAdminUiAppLogo, carbonioAdminUiDarkAppLogo } = useLoginConfigStore();
+	const { carbonioAdminUiAppLogo, carbonioAdminUiDarkAppLogo, carbonioLogoURL } =
+		useLoginConfigStore();
 	const darkReaderResultValue = useDarkReaderResultValue();
 	const [darkModeEnabled, setDarkModeEnabled] = useState(false);
 
@@ -112,6 +117,8 @@ const ShellHeader: FC<{
 		return carbonioAdminUiAppLogo || carbonioAdminUiDarkAppLogo;
 	}, [carbonioAdminUiDarkAppLogo, carbonioAdminUiAppLogo, darkModeEnabled]);
 
+	const logoUrl = useMemo(() => carbonioLogoURL || CARBONIO_LOGO_URL, [carbonioLogoURL]);
+
 	return (
 		<Container
 			orientation="horizontal"
@@ -146,7 +153,9 @@ const ShellHeader: FC<{
 				>
 					<Container width="auto" height={32} crossAlignment="flex-start">
 						{darkReaderResultValue && (
-							<>{logoSrc ? <CustomImg src={logoSrc} /> : <Logo height="2rem" />}</>
+							<a target="_blank" href={logoUrl} rel="noreferrer">
+								{logoSrc ? <CustomImg src={logoSrc} /> : <Logo height="2rem" />}
+							</a>
 						)}
 					</Container>
 

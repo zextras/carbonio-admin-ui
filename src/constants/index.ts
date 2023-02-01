@@ -87,3 +87,4 @@ export const CARBONIO_HELP_ADVANCED_URL =
 export const DARK_READER_VALUES = ['auto', 'enabled', 'disabled'] as const;
 export const LOGIN_V3_CONFIG_PATH = '/zx/login/v3/config';
 export const DARK_READER_PROP_KEY = 'zappDarkreaderMode';
+export const CARBONIO_LOGO_URL = 'https://www.zextras.com';
