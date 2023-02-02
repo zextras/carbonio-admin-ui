@@ -476,5 +476,9 @@
     "create": "बनाएँ",
     "labels": {
         "help_center": "सहायता केंद्र"
+    },
+    "privacy": {
+        "send_full_error_data_to_zextras": "Carbonio को फुल एरर डाटा भेजें",
+        "allow_data_analytics": "डाटा एनालिटिक्स की अनुमति दें"
     }
 }
