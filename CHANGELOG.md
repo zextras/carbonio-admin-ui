@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.7](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.6...v0.9.7) (2023-02-02)
+
+
+### Bug Fixes
+
+* add logo url open in new page ([#45](https://github.com/zextras/carbonio-admin-ui/issues/45)) ([1990753](https://github.com/zextras/carbonio-admin-ui/commit/19907538c74391c8ebe47c43c02ace4a54fe2e8e))
+* splash screen logo of admin panel ([#46](https://github.com/zextras/carbonio-admin-ui/issues/46)) ([a88861c](https://github.com/zextras/carbonio-admin-ui/commit/a88861c9ac405d446492a1d497c1918359d5297e))
+
 ### [0.9.6](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.5...v0.9.6) (2023-01-05)
 
 
