@@ -476,5 +476,9 @@
     "labels": {
         "help_center": "Pusat Bantuan"
     },
-    "create": "Buat"
+    "create": "Buat",
+    "privacy": {
+        "send_full_error_data_to_zextras": "Kirim data kesalahan lengkap ke Zextras",
+        "allow_data_analytics": "Izinkan analitik data"
+    }
 }

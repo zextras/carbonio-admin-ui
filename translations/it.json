@@ -183,7 +183,15 @@
         "use_personas_line1": "Utilizza le personalità per cambiare velocemente le impostazioni quando componi il messaggio.",
         "when_composing": "Durante la composizione, nella risposta o nell'inoltro di messaggi nelle cartella:",
         "button": "Pulsante",
-        "click_to_copy": "Seleziona per copiare"
+        "click_to_copy": "Seleziona per copiare",
+        "carbonio_community_edition": "Carbonio Community Edition",
+        "total_servers": "Numero di server",
+        "total_domains": "Numero di domini",
+        "total_accounts": "Numero di account",
+        "thank_you_for_feedback": "Grazie per il tuo feedback!",
+        "feedback_helper_text": "Vuoi partecipare?",
+        "carbonio_backed+version": "Versione Carbonio Backend",
+        "carbonio_admin_ui_version": "Versione Carbonio AdminUI"
     },
     "locale": {
         "English": "Inglese",
@@ -458,7 +466,10 @@
         "behaviors": "Comportamenti",
         "other": "Altro",
         "error": "Si è verificato un errore durante l'invio del feedback",
-        "explanation": "Ci piacerebbe ricevere il tuo feedback in merito all'esperienza con Zextras Server. La tua opinione è fondamentale per permetterci di migliorare il nostro prodotto. Facci sapere cosa ne pensi."
+        "explanation": "Ci piacerebbe ricevere il tuo feedback in merito all'esperienza con Zextras Server. La tua opinione è fondamentale per permetterci di migliorare il nostro prodotto. Facci sapere cosa ne pensi.",
+        "send_feedback": "CONDIVIDI LA TUA OPINIONE CON NOI",
+        "goto_privacy": "Vai a Privacy",
+        "count_user_in_helper_button_text": "SÌ, TIENIMI IN CONSIDERAZIONE!"
     },
     "primary_account": {
         "title": "Impostazioni Account Primario"
@@ -476,5 +487,10 @@
     "create": "Crea",
     "labels": {
         "help_center": "Help Center"
+    },
+    "privacy": {
+        "allow_live_survey_feedbacks": "Consenti sondaggi per i feedback",
+        "send_full_error_data_to_zextras": "Invia rapporto di errore completo a Zextras",
+        "allow_data_analytics": "Consenti l'analisi dei dati"
     }
 }

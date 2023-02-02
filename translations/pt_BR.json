@@ -476,5 +476,9 @@
     "create": "Criar",
     "labels": {
         "help_center": "Central de ajuda"
+    },
+    "privacy": {
+        "send_full_error_data_to_zextras": "Enviar relatório completo de erros para a Zextras",
+        "allow_data_analytics": "Permitir análise de dados"
     }
 }

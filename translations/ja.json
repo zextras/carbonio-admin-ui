@@ -476,5 +476,9 @@
     "labels": {
         "help_center": "ヘルプセンター"
     },
-    "create": "作成する"
+    "create": "作成する",
+    "privacy": {
+        "send_full_error_data_to_zextras": "すべてのエラーデータを に送る",
+        "allow_data_analytics": "データ分析を許可する"
+    }
 }
