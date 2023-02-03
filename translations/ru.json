@@ -182,7 +182,6 @@
         "allow_permission_to_send_feedback_to_zextras": "Следующая информация будет отправлена вместе с сообщением обратной связи",
         "allow_permission_to_send_data_to_zextras": "Разрешить настройке из раздела \"Конфиденциальность\" отправлять полные данные об ошибках в Zextras",
         "post_feedback_send_helper_text_line_3": "Помогите нам стать лучше!",
-        "feedback_request_data": "Данные для запроса обратной связи:",
         "total_servers": "Общее количество серверов",
         "total_domains": "Общее количество доменов",
         "total_accounts": "Общее количество учетных записей",
