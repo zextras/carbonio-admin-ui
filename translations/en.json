@@ -11,6 +11,8 @@
     "feedback": {
         "behaviors": "Behaviors",
         "count_user_in_helper_button_text": "YES, COUNT ME IN!",
+        "enable_feedback": "Enable Feedback",
+        "enable_privacy_setting": "Enable privacy setting to send feedback",
         "error": "There was an error while submitting your feedback",
         "explanation": "Please give us your feedback about your new experience with Zextras Server. Your opinion is meaningful for us to improve our product. Let us know your thoughts.",
         "goto_privacy": "Go to Privacy",
@@ -71,6 +73,7 @@
         "email_server": "E-mail server (e.g. “mail.example.com”)",
         "enable_all__following_permission_to_send_feedback_to_zextras": "Enable all following permissions from the privacy section to send feedback",
         "enable_all_permission_to_send_feedback_to_zextras": "Enable all following permissions from privacy section to send feedback",
+        "enable_following_permission_to_send_feedback_to_zextras": "Enable following permissions to send feedback",
         "external_account_settings": "External Account Settings",
         "feedback": "Feedback",
         "feedback_helper_text": "Would you like to participate?",
