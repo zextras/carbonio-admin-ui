@@ -9,6 +9,7 @@ import { To } from 'history';
 import { i18n } from 'i18next';
 import { ComponentType } from 'react';
 import { CarbonioModule, PanelMode } from '../apps';
+import { DARK_READER_VALUES } from '../../src/constants';
 
 export interface II18nFactory {
 	_cache: { [pkg: string]: i18n };
@@ -143,3 +144,14 @@ export type CreateModalProps = {
 	type: string;
 	zIndex: number;
 };
+
+export type DarkReaderPropValues = typeof DARK_READER_VALUES[number];
+
+export function isDarkReaderPropValues(
+	maybeDarkReaderPropValue: unknown
+): maybeDarkReaderPropValue is DarkReaderPropValues {
+	return (
+		typeof maybeDarkReaderPropValue === 'string' &&
+		DARK_READER_VALUES.includes(maybeDarkReaderPropValue)
+	);
+}

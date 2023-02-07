@@ -52,12 +52,6 @@ export const ShellUtilityBar: FC = () => {
 				icon: 'MessageSquareOutline'
 			},
 			{
-				id: 'update',
-				label: t('label.update_view', 'Update view'),
-				click: (): void => noOp(),
-				icon: 'Refresh'
-			},
-			{
 				id: 'docs',
 				label: t('label.documentation', 'Documentation'),
 				// TODO: Replace when the correct link is available

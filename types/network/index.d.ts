@@ -201,5 +201,15 @@ export type ConfigState = {
 };
 
 export type AdvanceState = {
+	maxApiVersion: number;
+	minApiVersion: number;
+	version: string;
+	domain: string;
 	isAdvanced: boolean;
+};
+
+export type DomainInformationState = {
+	id: string;
+	name: string;
+	a: Array<Attribute>;
 };

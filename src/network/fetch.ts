@@ -138,10 +138,34 @@ export const getSoapFetch =
 		api: string,
 		body: Request,
 		otherAccount?: string,
-		targetServer?: string
+		targetServer?: string,
+		authToken?: string,
+		noSession = false
 	): Promise<Response> => {
 		const { zimbraVersion, account } = useAccountStore.getState();
 		const { context } = useNetworkStore.getState();
+		const header: any = {
+			context: {
+				_jsns: 'urn:zimbra',
+				notify: context?.notify?.[0]?.seq
+					? {
+							seq: context?.notify?.[0]?.seq
+					  }
+					: undefined,
+				session: context?.session ?? {},
+				account: getAccount(account as Account, otherAccount),
+				userAgent: {
+					name: userAgent,
+					version: zimbraVersion
+				},
+				targetServer: targetServer || undefined,
+				authToken: [{ _content: authToken }] || undefined
+			}
+		};
+		if (noSession) {
+			header.context.nosession = {};
+			delete header.context.session;
+		}
 		return fetch(`/service/admin/soap/${api}Request`, {
 			method: 'POST',
 			headers: {
@@ -151,23 +175,7 @@ export const getSoapFetch =
 				Body: {
 					[`${api}Request`]: body
 				},
-				Header: {
-					context: {
-						_jsns: 'urn:zimbra',
-						notify: context?.notify?.[0]?.seq
-							? {
-									seq: context?.notify?.[0]?.seq
-							  }
-							: undefined,
-						session: context?.session ?? {},
-						account: getAccount(account as Account, otherAccount),
-						userAgent: {
-							name: userAgent,
-							version: zimbraVersion
-						},
-						targetServer: targetServer || undefined
-					}
-				}
+				Header: header
 			})
 		}) // TODO proper error handling
 			.then((res) => res?.json())

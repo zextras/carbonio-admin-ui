@@ -5,14 +5,10 @@
  */
 
 import create, { StoreApi, UseBoundStore } from 'zustand';
-import { AdvanceState } from '../../../types';
+import { DomainInformationState } from '../../../types';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-export const useAdvanceStore = create<AdvanceState>(() => ({
-	maxApiVersion: 1,
-	minApiVersion: 1,
-	version: '',
-	domain: '',
-	isAdvanced: false
-})) as UseBoundStore<AdvanceState, StoreApi<AdvanceState>>;
+export const useDomainInformationStore = create<DomainInformationState>(() => ({
+	actions: {}
+})) as UseBoundStore<DomainInformationState, StoreApi<DomainInformationState>>;

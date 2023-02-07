@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.7](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.6...v0.9.7) (2023-02-02)
+
+
+### Bug Fixes
+
+* add logo url open in new page ([#45](https://github.com/zextras/carbonio-admin-ui/issues/45)) ([1990753](https://github.com/zextras/carbonio-admin-ui/commit/19907538c74391c8ebe47c43c02ace4a54fe2e8e))
+* splash screen logo of admin panel ([#46](https://github.com/zextras/carbonio-admin-ui/issues/46)) ([a88861c](https://github.com/zextras/carbonio-admin-ui/commit/a88861c9ac405d446492a1d497c1918359d5297e))
+
+### [0.9.6](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.5...v0.9.6) (2023-01-05)
+
+
+### Bug Fixes
+
+* admin ui whitelabeling ([#41](https://github.com/zextras/carbonio-admin-ui/issues/41)) ([1205a89](https://github.com/zextras/carbonio-admin-ui/commit/1205a8982e6b6069af704ffad9f5d34890687148))
+* theme and whitelabeling for admin ui ([#43](https://github.com/zextras/carbonio-admin-ui/issues/43)) ([eb8cb3e](https://github.com/zextras/carbonio-admin-ui/commit/eb8cb3e1181cea3dd0da8307eb4e29c6426164e0))
+
+### [0.9.5](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.4...v0.9.5) (2022-11-25)
+
+
+### Bug Fixes
+
+* remove font download ([#36](https://github.com/zextras/carbonio-admin-ui/issues/36)) ([333b10d](https://github.com/zextras/carbonio-admin-ui/commit/333b10d02a245487a5d154f082c08eb84f1c2fe2))
+
 ### [0.9.4](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.3...v0.9.4) (2022-10-28)
 
 ### [0.9.3](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.2...v0.9.3) (2022-09-29)
