@@ -33,11 +33,14 @@ import { feedback } from './functions';
 import { useAppList } from '../store/app';
 import Logo from '../../assets/carbonio_feedback.svg';
 import { useAllConfigStore } from '../store/config/store';
+import { SHELL_APP_ID } from '../constants';
 import {
 	getCarbonioBackendVersion,
 	searchDirectoryListCount,
-	getAllServers
+	getAllServers,
+	getXmlSoapFetch
 } from '../network/fetch';
+import { getAllConfig } from '../network/get-all-config';
 import { getIsAdvanced } from '../store/advance';
 
 const CustomIcon = styled(Icon)`
@@ -273,15 +276,19 @@ const Feedback: FC = () => {
 		// closeBoard();
 	}, [carbonioBackendVersion, event, totalAccounts, totalDomains, totalServers]);
 
-	// const confirmCountMeInHandler = useCallback(() => {
-	// 	const eventObj: any = { ...event };
-	// 	eventObj.email = acct.displayName;
-	// 	eventObj.name = acct.name;
-	// 	eventObj.comments = `Participate for testing : ${acct.name}`;
-	// 	const feedbackId = feedback(eventObj);
-	// 	setToggleFeedback(true);
-	// 	closeBoard();
-	// }, [event, closeBoard, acct]);
+	const enableFeedback = useCallback(() => {
+		getXmlSoapFetch(SHELL_APP_ID)(
+			'ModifyConfig',
+			`<ModifyConfigRequest xmlns="urn:zimbraAdmin">
+				<a n="carbonioSendAnalytics">TRUE</a>
+				<a n="carbonioAllowFeedback">TRUE</a>
+				<a n="carbonioSendFullErrorStack">TRUE</a>
+			</ModifyConfigRequest>`
+		).then((res: any) => {
+			getAllConfig().then();
+		});
+		// closeBoard();
+	}, []);
 
 	useEffect(() => {
 		dispatch({
@@ -322,8 +329,8 @@ const Feedback: FC = () => {
 								<Padding bottom="large" />
 								<Text>
 									{t(
-										'label.enable_all__following_permission_to_send_feedback_to_zextras',
-										`Enable all following permissions from the privacy section to send feedback`
+										'label.enable_following_permission_to_send_feedback_to_zextras',
+										`Enable following permissions to send feedback`
 									)}
 								</Text>
 								<ul>
@@ -348,6 +355,10 @@ const Feedback: FC = () => {
 								</ul>
 
 								<Padding top="large" />
+								<Button
+									label={t('feedback.enable_feedback', 'Enable Feedback')}
+									onClick={enableFeedback}
+								/>
 							</Text>
 						</Container>
 					</Container>
