@@ -19,7 +19,9 @@
 		"lint": "eslint --ext .js,.jsx,.ts,.tsx --resolve-plugins-relative-to node_modules/@zextras/zapp-config src",
 		"build": "sdk build --admin",
 		"deploy": "sdk deploy --admin",
-		"start": "sdk watch --admin"
+		"start": "sdk watch --admin",
+		"pull-translations": "git subtree pull -P translations git@bitbucket.org:zextras/admin-ui.git main --squash",
+		"push-translations": "git subtree push -P translations git@bitbucket.org:zextras/admin-ui.git"
 	},
 	"files": [
 		"dist/",
