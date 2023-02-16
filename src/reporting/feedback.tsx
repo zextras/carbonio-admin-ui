@@ -51,7 +51,7 @@ const CustomIcon = styled(Icon)`
 const TextArea = styled.textarea<{ size?: string }>`
 	width: 100%;
 	height: 100%;
-	min-height: 150px;
+	min-height: 3rem;
 	box-sizing: border-box;
 	outline: none;
 	border: none;
@@ -363,19 +363,9 @@ const Feedback: FC = () => {
 				<></>
 			)}
 			{feedbackPermission && !toggleFeedback && (
-				<Container
-				// padding={{ top: 'extralarge' }}
-				// mainAlignment="space-between"
-				// crossAlignment="flex-start"
-				>
+				<Container>
 					<Row width="100%">
-						<Container
-							orientation="horizontal"
-							width="99%"
-							// crossAlignment="center"
-							// mainAlignment="space-between"
-							background="#D3EBF8"
-						>
+						<Container orientation="horizontal" width="99%" background="#D3EBF8">
 							<Row takeAvwidth="fill" mainAlignment="flex-start">
 								<Padding horizontal="small">
 									<CustomIcon icon="InfoOutline"></CustomIcon>
