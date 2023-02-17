@@ -163,20 +163,21 @@
         "detailsfeedback__collected_msg": "Następujące szczegóły są zbierane wraz z opinią",
         "details_feedback__collected_msg": "Następujące szczegóły są zbierane wraz z opinią",
         "carbonio_community_edition": "Carbonio CE",
-        "carbonio_backed_version": "Wersja Carbonio w kopii zapasowej",
-        "carbonio_backed+version": "Wersja Carbonio w kopii zapasowej",
+        "carbonio_backed_version": "Wersja back-endu Carbonio",
+        "carbonio_backed+version": "Wersja back-endu Carbonio",
         "carbonio_admin_ui_version": "Wersja Carbonio Admin UI",
-        "allow_all_permission_to_send_feedback_to_zextras": "Zezwalaj, aby następujące uprawnienia z sekcji prywatność wysyłały informacje zwrotne",
-        "allow_permission_to_send_feedback_to_zextras": "Zezwalaj, aby uprawnienia z sekcji prywatność wysyłały informacje zwrotne",
-        "allow_permission_to_send_data_to_zextras": "Zezwalaj, aby uprawnienia z sekcji prywatność wysyłały pełne dane o błędach do Zextras",
+        "allow_all_permission_to_send_feedback_to_zextras": "Aby wysłać opinię, udziel tych uprawnień w sekcji prywatność",
+        "allow_permission_to_send_feedback_to_zextras": "Aby wysłać opinię, udziel tych uprawnień w sekcji prywatność",
+        "allow_permission_to_send_data_to_zextras": "Aby wysłać pełne dane o błędzie do Zextras, udziel tych uprawnień w sekcji prywatność",
         "total_servers": "Serwerów w sumie",
         "total_domains": "Domen w sumie",
         "total_accounts": "Kont w sumie",
         "thank_you_for_feedback": "Dziękujemy za opinię!",
         "post_feedback_send_helper_text_line_3": "być może jesteś głosem, którego akurat potrzebujemy!",
         "post_feedback_send_helper_text_line_2": "Aby ulepszyć Carbonio, ciągle przeprowadzamy sesje testowania,",
+        "feedback_request_data": "Poproś o opinię na temat tych danych:",
         "feedback_helper_text": "Chciałbyś wziąć udział?",
-        "enable_all_permission_to_send_feedback_to_zextras": "Zezwól, aby wszystkie następujące uprawnienia z sekcji prywatność wysyłały informacje zwrotne",
+        "enable_all_permission_to_send_feedback_to_zextras": "Aby wysłać opinię, udziel tych uprawnień w sekcji prywatność",
         "enable_all__following_permission_to_send_feedback_to_zextras": "Zezwól, aby wszystkie następujące uprawnienia z sekcji prywatność wysyłały informacje zwrotne"
     },
     "board": {
@@ -501,7 +502,7 @@
     "create": "Stwórz",
     "privacy": {
         "allow_live_survey_feedbacks": "Zezwalaj na opinie z ankiet",
-        "send_full_error_data_to_zextras": "Wysyłaj wszystkie informacje o błędach do Zextras",
+        "send_full_error_data_to_zextras": "Wysyłaj pełne dane o błędach do Zextras",
         "allow_data_analytics": "Zezwalaj na analitykę danych"
     }
 }

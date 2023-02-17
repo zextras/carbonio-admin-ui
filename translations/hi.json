@@ -175,7 +175,26 @@
         "update_view": "व्यू अपडेट करें",
         "use_persona": "इस शख्सियत को इस्तेमाल करें",
         "use_ssl": "इस सर्वर को एक्सेस करते समय एक इंक्रीप्टर कनेक्शन (SSL) इस्तेमाल करें",
-        "when_composing": "मैसेज लिखते समय, जबाब देते समय या फोल्डर (रों) के मैसेज फॉरवर्ड करते समय:"
+        "when_composing": "मैसेज लिखते समय, जबाब देते समय या फोल्डर (रों) के मैसेज फॉरवर्ड करते समय:",
+        "total_servers": "कुल सर्वर",
+        "total_domains": "कुल डोमेन",
+        "total_accounts": "कुल खाते",
+        "thank_you_for_feedback": "आपके फीडबैक के लिए धनयवाद!",
+        "post_feedback_send_helper_text_line_3": "आप ही वह आवाज़ हो सकते हैं जो हम अभी सुनना चाह रहे हैं!",
+        "post_feedback_send_helper_text_line_2": "Carbonio को बेहतर करने के लिए हम लगातार टेस्टिंग सेशन चला रहे हैं,",
+        "feedback_request_data": "फीडबैक अनुरोध डाटा:",
+        "feedback_helper_text": "क्या आप हिस्सा लेना चाहते हैं?",
+        "enable_all_permission_to_send_feedback_to_zextras": "फीडबैक देने के लिए गोपनीयता अनुभाग से निम्नलिखित सभी अनुमतियाँ चालू करें",
+        "enable_all__following_permission_to_send_feedback_to_zextras": "फीडबैक देने के लिए गोपनीयता अनुभाग से निम्नलिखित सभी अनुमतियाँ चालू करें",
+        "detailsfeedback__collected_msg": "कोई फीडबैक मैसेज देते समय निम्नलिखित जानकारी भी एकत्रित की जाती है",
+        "details_feedback__collected_msg": "कोई फीडबैक मैसेज देते समय निम्नलिखित जानकारी भी एकत्रित की जाती है",
+        "carbonio_community_edition": "Carbonio Community Edition",
+        "carbonio_backed_version": "Carbonio बैकएंड वर्ज़न",
+        "carbonio_backed+version": "Carbonio बैकएंड वर्ज़न",
+        "carbonio_admin_ui_version": "Carbonio AdminUI वर्ज़न",
+        "allow_permission_to_send_feedback_to_zextras": "गोपनीयता अनुभाग में निम्नलिखित अनुमतियाँ दें ताकि फीडबैक भेजा जा सके",
+        "allow_permission_to_send_data_to_zextras": "गोपनीयता अनुभाग से निम्नलिखित सभी अनुमतियाँ दें ताकि पूरा एरर डाटा Zextras को भेजा जा सके",
+        "allow_all_permission_to_send_feedback_to_zextras": "गोपनीयता अनुभाग में निम्नलिखित अनुमतियाँ दें ताकि फीडबैक भेजा जा सके"
     },
     "board": {
         "close_tab": "टैब बंद करने",
@@ -458,7 +477,11 @@
         "send": "भेजें",
         "success": "आपके फीडबैक के लिए धनयवाद",
         "user_interface": "यूज़र इंटरफेस",
-        "write_here": "अपना फीडबैक यहाँ लिखें"
+        "write_here": "अपना फीडबैक यहाँ लिखें",
+        "write_here_placeholder_text": "हैलो! अपने फीडबैक के लिए यहाँ लिखना शुरू करें :)\n\n\nयह गोपनीय रूप से भेजा जाएगा इसलिए हमें बताएं कि हमने कहाँ अच्छा किया\nऔर कहाँ हम गलत थे और इसमें झिझकें नहीं",
+        "send_feedback": "हमसे अपना फीडबैक शेयर करें",
+        "goto_privacy": "गोपनीयता में जाएँ",
+        "count_user_in_helper_button_text": "जी हाँ, मुझे करना है!"
     },
     "messages": {
         "permanent_delete_title": "क्या आप वाकई में इस एलीमेंट को परमानेंट डिलीट करना चाहते हैं?",
@@ -479,6 +502,7 @@
     },
     "privacy": {
         "send_full_error_data_to_zextras": "Carbonio को फुल एरर डाटा भेजें",
-        "allow_data_analytics": "डाटा एनालिटिक्स की अनुमति दें"
+        "allow_data_analytics": "डाटा एनालिटिक्स की अनुमति दें",
+        "allow_live_survey_feedbacks": "लाइव सर्वे फीडबैक की अनुमति दें"
     }
 }

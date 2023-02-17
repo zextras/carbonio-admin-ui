@@ -191,7 +191,18 @@
         "thank_you_for_feedback": "Grazie per il tuo feedback!",
         "feedback_helper_text": "Vuoi partecipare?",
         "carbonio_backed+version": "Versione Carbonio Backend",
-        "carbonio_admin_ui_version": "Versione Carbonio AdminUI"
+        "carbonio_admin_ui_version": "Versione Carbonio AdminUI",
+        "enable_all__following_permission_to_send_feedback_to_zextras": "Abilita i seguenti permessi della sezione privacy per inviare i feedback",
+        "detailsfeedback__collected_msg": "Quando invii un feedback, anche i seguenti dati vengono condivisi",
+        "details_feedback__collected_msg": "Quando invii un feedback, anche i seguenti dati vengono condivisi",
+        "carbonio_backed_version": "Versione Backend di Carbonio",
+        "allow_permission_to_send_feedback_to_zextras": "Abilita i seguenti permessi della sezione privacy per inviare i feedback",
+        "allow_permission_to_send_data_to_zextras": "Abilita i seguenti permessi della sezione privacy per condividere con Zextras tutti i dati relativi all'errore",
+        "allow_all_permission_to_send_feedback_to_zextras": "Abilita i seguenti permessi della sezione privacy per inviare i feedback",
+        "post_feedback_send_helper_text_line_3": "ci piacerebbe molto sapere cosa ne pensi!",
+        "post_feedback_send_helper_text_line_2": "Al fine di migliorare Carbonio, ci impegnano in sessioni di testing continue,",
+        "feedback_request_data": "Dati necessari per il feedback:",
+        "enable_all_permission_to_send_feedback_to_zextras": "Abilita i seguenti permessi della sezione privacy per inviare i feedback"
     },
     "locale": {
         "English": "Inglese",
@@ -469,7 +480,8 @@
         "explanation": "Ci piacerebbe ricevere il tuo feedback in merito all'esperienza con Zextras Server. La tua opinione è fondamentale per permetterci di migliorare il nostro prodotto. Facci sapere cosa ne pensi.",
         "send_feedback": "CONDIVIDI LA TUA OPINIONE CON NOI",
         "goto_privacy": "Vai a Privacy",
-        "count_user_in_helper_button_text": "SÌ, TIENIMI IN CONSIDERAZIONE!"
+        "count_user_in_helper_button_text": "SÌ, TIENIMI IN CONSIDERAZIONE!",
+        "write_here_placeholder_text": "Ciao! Inizia a scrivere il tuo feedback:)\nIl messaggio verrà inviato anonimamente, facci sapere cosa ti è piaciuto e cosa no."
     },
     "primary_account": {
         "title": "Impostazioni Account Primario"

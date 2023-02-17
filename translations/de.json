@@ -175,7 +175,8 @@
         "reply_to_field_example": "z.B. Bob Smith",
         "set_reply_to_field": "Setzen Sie das Feld \"Antwort an\" der E-Mail-Nachricht auf:",
         "settings_sent_messages": "Einstellungen für gesendete Nachrichten",
-        "unsaved_changes": "Sie haben ungespeicherte Änderungen"
+        "unsaved_changes": "Sie haben ungespeicherte Änderungen",
+        "thank_you_for_feedback": "Vielen Dank für Ihr Feedback!"
     },
     "timezone": {
         "asuncion": "{{value}} Asuncion",
