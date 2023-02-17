@@ -182,7 +182,7 @@
         "allow_permission_to_send_feedback_to_zextras": "Следующая информация будет отправлена вместе с сообщением обратной связи",
         "allow_permission_to_send_data_to_zextras": "Разрешить настройке из раздела \"Конфиденциальность\" отправлять полные данные об ошибках в Zextras",
         "post_feedback_send_helper_text_line_3": "Помогите нам стать лучше!",
-        "feedback_request_data": "Данные для запроса обратной связи:",
+        "feedback_request_data": "Запросить данные для обратной связи:",
         "total_servers": "Общее количество серверов",
         "total_domains": "Общее количество доменов",
         "total_accounts": "Общее количество учетных записей",
@@ -280,7 +280,7 @@
         "america_regina": "{{value}} Саскачеван",
         "america_sao_paulo": "{{value}} Бразилия",
         "america_st_johns": "{{value}} Ньюфаундленд",
-        "america_tijuana": "{{value}}Нижняя Калифорния",
+        "america_tijuana": "{{value}} Нижняя Калифорния",
         "america_whitehorse": "{{value}}Yukon",
         "asia_almaty": "{{value}} Астана",
         "asia_amman": "{{value}} Иордания",
@@ -296,7 +296,7 @@
         "asia_hong_kong": "{{value}} Пекин, Чунцин, Гонконг, Уру М Фаза",
         "asia_hovd": "{{value}} Ховд",
         "asia_irkutsk": "{{value}} Иркутск (RTZ 7)",
-        "asia_jerusalem": "{{value}} Jerusalem",
+        "asia_jerusalem": "{{value}} Иерусалим",
         "asia_kabul": "{{value}} Кабул",
         "asia_kamchatka": "{{value}} Анадырь, Петропавловск-Камчатский (RTZ 11)",
         "asia_karachi": "{{value}} Исламабад, Карачи",
@@ -502,7 +502,7 @@
     "create": "Создать",
     "privacy": {
         "send_full_error_data_to_zextras": "Отправить полные данные об ошибках в Zextras",
-        "allow_live_survey_feedbacks": "Разрешить опросы в реальном времени об отзывах",
+        "allow_live_survey_feedbacks": "Разрешить опросы в реальном времени",
         "allow_data_analytics": "Разрешить аналитику данных"
     }
 }

@@ -175,7 +175,26 @@
         "test_settings": "Probar ajustes",
         "unsaved_changes": "Tienes cambios no guardados",
         "unsaved_changes_line2": "Todos tus cambios no guardados se perderán",
-        "update_view": "Actualizar vista"
+        "update_view": "Actualizar vista",
+        "feedback_request_data": "Solicitar datos para obtener feedback:",
+        "total_servers": "Servidores totales",
+        "total_domains": "Dominios totales",
+        "total_accounts": "Cuentas totales",
+        "thank_you_for_feedback": "¡Gracias por el feedback!",
+        "post_feedback_send_helper_text_line_3": "¡tú puedes ser la voz que nos gustaría escuchar ahora mismo!",
+        "post_feedback_send_helper_text_line_2": "Para mejorar Carbonio realizamos sesiones de pruebas continuas,",
+        "feedback_helper_text": "¿Te gustaría participar?",
+        "enable_all_permission_to_send_feedback_to_zextras": "Activa todos los siguientes permisos de la sección de privacidad para enviar feedback",
+        "enable_all__following_permission_to_send_feedback_to_zextras": "Activa todos los permisos siguientes de la sección de privacidad para enviar feedback",
+        "detailsfeedback__collected_msg": "Cuando envíes un mensaje de feedback, también se recopilan los siguientes detalles",
+        "details_feedback__collected_msg": "Cuando envíes un mensaje de feedback, también se recopilan los siguientes detalles",
+        "carbonio_community_edition": "Carbonio Community Edition",
+        "carbonio_backed_version": "Versión respaldada por Carbonio",
+        "carbonio_backed+version": "Versión respaldada por Carbonio",
+        "carbonio_admin_ui_version": "Versión Carbonio AdminUI",
+        "allow_permission_to_send_feedback_to_zextras": "Conceder todos los permisos siguientes de la sección de privacidad para enviar feedback",
+        "allow_permission_to_send_data_to_zextras": "Conceder todos los siguientes permisos de la sección de privacidad para enviar los datos de error completos a Zextras",
+        "allow_all_permission_to_send_feedback_to_zextras": "Conceder todos los permisos a continuación de la sección de privacidad para enviar feedback"
     },
     "timezone": {
         "argentina": "{{value}} Argentina",
@@ -440,7 +459,7 @@
     "board": {
         "close_tab": "Cerrar pestaña",
         "close_tabs": "Cerrar todas las pestañas",
-        "enlarge": "Agrandar ventana",
+        "enlarge": "Ampliar ventana",
         "hide": "Minimizar ventana",
         "reduce": "Reducir ventana",
         "show_tabs": "Mostrar las otras ventanas de composición"
@@ -449,16 +468,20 @@
         "other": "Otro",
         "behaviors": "Comportamientos",
         "error": "Ocurrió un error mientras se enviaba el comentario",
-        "hint": "Recuerda: debes definir el asunto utilizando los módulos y los selectores de área macro antes de escribir tus comentarios. Gracias por la colaboración.",
+        "hint": "Recuerde: debe definir el asunto utilizando los módulos y los selectores de área macro antes de escribir sus comentarios. Gracias por la colaboración.",
         "missing_features": "Funcionalidades faltantes",
-        "report_something": "¿Quieres informar algo?",
-        "select_a_module": "Elige un módulo",
-        "select_a_topic": "Elige el asunto",
+        "report_something": "¿Quiere informar algo?",
+        "select_a_module": "Elija un módulo",
+        "select_a_topic": "Elija el asunto",
         "send": "ENVIAR",
-        "success": "Gracias por tus comentarios",
+        "success": "Gracias por sus comentarios",
         "user_interface": "Interfaz de usuario",
-        "write_here": "Escribe aquí tus comentarios",
-        "explanation": "Por favor, envíanos tus comentarios sobre la experiencia con Zextras Server. Tu opinion es importante para que podamos mejorar el producto."
+        "write_here": "Escriba aquí sus comentarios",
+        "explanation": "Por favor, envíanos tus comentarios sobre la experiencia con Zextras Server. Tu opinion es importante para que podamos mejorar el producto.",
+        "write_here_placeholder_text": "¡Hola! Empiece a escribir sus comentarios aquí\n\n\nEstos se enviarán de manera anónima, no importa si se trata de cosas buenas o malas",
+        "send_feedback": "COMPARTA SUS COMENTARIOS CON NOSOTROS",
+        "goto_privacy": "Ir a Privacidad",
+        "count_user_in_helper_button_text": "¡OK!"
     },
     "messages": {
         "permanent_delete_title": "¿Seguro que quieres eliminar permanentemente este elemento?",
@@ -479,6 +502,7 @@
     },
     "privacy": {
         "send_full_error_data_to_zextras": "Enviar error completo a Zextras",
-        "allow_data_analytics": "Permitir análisis de datos"
+        "allow_data_analytics": "Permitir análisis de datos",
+        "allow_live_survey_feedbacks": "Permitir encuestas de feedback en directo"
     }
 }
