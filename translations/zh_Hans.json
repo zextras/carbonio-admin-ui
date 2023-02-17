@@ -176,7 +176,25 @@
         "use_personas_line1": "使用角色以在发送邮件消息时快速变更多项设置。",
         "use_personas_line2": "例如，如果您有时候会在工作中以特定角色发送邮件，可为其创建角色。",
         "recovery_email": "恢复邮件",
-        "thank_you_for_feedback": "感谢您的反馈 !"
+        "thank_you_for_feedback": "感谢您的反馈 !",
+        "feedback_request_data": "反馈请求数据：",
+        "total_servers": "总服务器",
+        "total_domains": "总域",
+        "total_accounts": "总账户",
+        "post_feedback_send_helper_text_line_3": "您现在可成为我们想要聆听的声音！",
+        "post_feedback_send_helper_text_line_2": "为了改善Carbonio，我们将持续运行测试会话，",
+        "feedback_helper_text": "您想加入吗？",
+        "enable_all_permission_to_send_feedback_to_zextras": "在隐私部分启用所有以下权限以发送反馈",
+        "enable_all__following_permission_to_send_feedback_to_zextras": "在隐私部分启用所有以下权限以发送反馈",
+        "detailsfeedback__collected_msg": "在提供反馈消息时还会收集以下详细信息",
+        "details_feedback__collected_msg": "在提供反馈消息时还会收集以下详细信息",
+        "carbonio_community_edition": "Carbonio Community Edition",
+        "carbonio_backed_version": "Carbonio后台版本",
+        "carbonio_backed+version": "Carbonio后台版本",
+        "carbonio_admin_ui_version": "Carbonio AdminUI版本",
+        "allow_permission_to_send_feedback_to_zextras": "在隐私部分允许所有以下权限以发送反馈",
+        "allow_permission_to_send_data_to_zextras": "在隐私部分允许所有以下权限以将完整错误数据发送至Zextras",
+        "allow_all_permission_to_send_feedback_to_zextras": "在隐私部分允许所有以下权限以发送反馈"
     },
     "locale": {
         "English": "英语",
@@ -459,7 +477,11 @@
         "user_interface": "用户界面",
         "write_here": "在此写下您的反馈",
         "error": "提交反馈时出错",
-        "explanation": "请提供有关 Zextras 服务器全新体验的反馈。您的观点对于产品改善有着重要意义。告诉我们您的想法。"
+        "explanation": "请提供有关 Zextras 服务器全新体验的反馈。您的观点对于产品改善有着重要意义。告诉我们您的想法。",
+        "write_here_placeholder_text": "嘿！可在此处输入您的反馈 :)\n\n\n反馈将匿名发送，所以请放心告诉我们哪些地方做得还不错，\n当然您也可以毫不掩饰地告诉我们哪里做得不好",
+        "send_feedback": "与我们分享您的反馈",
+        "goto_privacy": "前往隐私",
+        "count_user_in_helper_button_text": "是的，算我一个！"
     },
     "messages": {
         "permanent_delete_title": "确定要永久删除该元素吗？",
@@ -480,6 +502,7 @@
     "create": "创建",
     "privacy": {
         "send_full_error_data_to_zextras": "向Zextras发送完整错误数据",
-        "allow_data_analytics": "允许数据分析"
+        "allow_data_analytics": "允许数据分析",
+        "allow_live_survey_feedbacks": "允许实时调查反馈"
     }
 }

@@ -175,7 +175,26 @@
         "use_personas_line1": "Utilize Personas para alterar rapidamente entre diferentes configurações ao enviar mensagens de e-mail.",
         "use_ssl": "Usar conexão criptografada (SSL) ao acessar este servidor",
         "when_composing": "Ao escrever, responder ou encaminhar mensagens na(s) pasta(s):",
-        "when_replying": "Ao responder ou encaminhar mensagens enviadas para:"
+        "when_replying": "Ao responder ou encaminhar mensagens enviadas para:",
+        "total_servers": "Servidores Totais",
+        "total_domains": "Domínios Totais",
+        "total_accounts": "Contas Totais",
+        "thank_you_for_feedback": "Agradecemos o seu feedback!",
+        "post_feedback_send_helper_text_line_3": "você pode ser a voz que adoraríamos ouvir agora!",
+        "post_feedback_send_helper_text_line_2": "Para melhorar o Carbonio, estamos rodando testes contínuos,",
+        "feedback_request_data": "Solicitar dados para feedback:",
+        "feedback_helper_text": "Gostaria de participar?",
+        "enable_all_permission_to_send_feedback_to_zextras": "Conceda todas as permissões abaixo na seção de privacidade para enviar seus comentários",
+        "enable_all__following_permission_to_send_feedback_to_zextras": "Conceda todas as permissões abaixo na seção de privacidade para enviar seus comentários",
+        "detailsfeedback__collected_msg": "Ao enviar seus comentários, também coletamos os seguintes detalhes",
+        "details_feedback__collected_msg": "Ao enviar seus comentários, também coletamos os seguintes detalhes",
+        "carbonio_community_edition": "Carbonio Community Edition",
+        "carbonio_backed_version": "Versão Backend do Carbonio",
+        "carbonio_backed+version": "Versão Backend do Carbonio",
+        "carbonio_admin_ui_version": "Versão AdminUI do Carbonio",
+        "allow_permission_to_send_feedback_to_zextras": "Conceda todas as permissões abaixo na seção de privacidade para enviar seus comentários",
+        "allow_permission_to_send_data_to_zextras": "Conceda todas as permissões abaixo na seção de privacidade para enviar os dados completos do erro para a Zextras",
+        "allow_all_permission_to_send_feedback_to_zextras": "Conceda todas as permissões abaixo na seção de privacidade para enviar seus comentários"
     },
     "timezone": {
         "brasilia": "{{value}} Brasília",
@@ -458,7 +477,11 @@
         "send": "ENVIAR",
         "success": "Agradecemos o seu feedback",
         "user_interface": "Interface do usuário",
-        "write_here": "Escreva seu feedback aqui"
+        "write_here": "Escreva seu feedback aqui",
+        "write_here_placeholder_text": "Olá! Comece a escrever seus comentários aqui :) \n\n\nO envio será feito de forma anônima para a gente saber o que está fazendo de bom \nou de ruim, pode ser sincero",
+        "send_feedback": "COMPARTILHE SEUS COMENTÁRIOS CONOSCO",
+        "goto_privacy": "Acessar Privacidade",
+        "count_user_in_helper_button_text": "SIM, CONTE COMIGO!"
     },
     "messages": {
         "permanent_delete_title": "Tem certeza que deseja excluir permanentemente este elemento?",
@@ -479,6 +502,7 @@
     },
     "privacy": {
         "send_full_error_data_to_zextras": "Enviar relatório completo de erros para a Zextras",
-        "allow_data_analytics": "Permitir análise de dados"
+        "allow_data_analytics": "Permitir análise de dados",
+        "allow_live_survey_feedbacks": "Permitir pesquisas diretas de feedback"
     }
 }
