@@ -397,7 +397,7 @@ const Feedback: FC = () => {
 								<ul>
 									<li>
 										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
-											{t('label.carbonio_backed_version', `Carbonio Backed Version`)}:{' '}
+											{t('label.carbonio_backend_version', `Carbonio Backend Version`)}:{' '}
 											{carbonioBackendVersion} {isAdvanced ? '' : '(CE)'}
 										</Text>
 									</li>
