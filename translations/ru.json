@@ -192,7 +192,6 @@
         "enable_all_permission_to_send_feedback_to_zextras": "Включите все следующие разрешения из раздела конфиденциальности, чтобы отправить отзыв",
         "enable_all__following_permission_to_send_feedback_to_zextras": "Включите все следующие разрешения в разделе конфиденциальности, чтобы отправить отзыв",
         "carbonio_community_edition": "Carbonio Community Edition",
-        "carbonio_backed_version": "Версия Carbonio Backed",
         "carbonio_backed+version": "Версия Carbonio Backed",
         "carbonio_admin_ui_version": "Версия Carbonio AdminUI"
     },

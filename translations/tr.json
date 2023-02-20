@@ -197,12 +197,11 @@
         "detailsfeedback__collected_msg": "Görüşlerinizi ilettiğiniz mesajınızla birlikte şu detaylar ekleniyor",
         "details_feedback__collected_msg": "Görüşlerinizi ilettiğiniz mesajınızla birlikte şu detaylar ekleniyor",
         "carbonio_community_edition": "Carbonio Topluluk Sürümü",
-        "carbonio_backed_version": "Carbonio Anasunucu Versiyonu",
-        "carbonio_backed+version": "Carbonio Anasunucu Versiyonu",
         "carbonio_admin_ui_version": "Carbonio AdminUI Veriyonu",
         "allow_permission_to_send_feedback_to_zextras": "Görüşlerinizi iletmek için gizlilik bölümünde tüm izinleri onaylayın",
         "allow_permission_to_send_data_to_zextras": "Hata verisini Zextras'a bütünüyle iletmek için Gizlilik bölümünde tüm izinleri onaylayın",
-        "allow_all_permission_to_send_feedback_to_zextras": "Görüşlerinizi iletmek için gizlilik bölümünde tüm izinleri onaylayın"
+        "allow_all_permission_to_send_feedback_to_zextras": "Görüşlerinizi iletmek için gizlilik bölümünde tüm izinleri onaylayın",
+        "carbonio_backend_version": "Carbonio Anasunucu Versiyonu"
     },
     "locale": {
         "label_italian": "Italian - {{value}}",
@@ -481,7 +480,9 @@
         "write_here_placeholder_text": "Görüşlerinizi yazmaya başlayın :) \n\n\nKişisel bilgi gönderilmeyeceği için neleri iyi veya kötü yaptığımızı \nlütfen açıkça bizlerle paylaşın",
         "send_feedback": "GÖRÜŞLERİNİZİ BİZİMLE PAYLAŞIN",
         "goto_privacy": "Gizlilik Ayarlarına git",
-        "count_user_in_helper_button_text": "EVET, KATILMAK İSTİYORUM!"
+        "count_user_in_helper_button_text": "EVET, KATILMAK İSTİYORUM!",
+        "enable_feedback": "Görüş bildirim açık",
+        "enable_privacy_setting": "Görüşleri göndermek için gizlilik ayarları aç"
     },
     "messages": {
         "permanent_delete_body": "Bu Kişiliği kalıcı olarak silerseniz geri alamazsınız. Devam edilsin mi?",
