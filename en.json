@@ -11,6 +11,8 @@
     "feedback": {
         "behaviors": "Behaviors",
         "count_user_in_helper_button_text": "YES, COUNT ME IN!",
+        "enable_feedback": "Enable Feedback",
+        "enable_privacy_setting": "Enable privacy setting to send feedback",
         "error": "There was an error while submitting your feedback",
         "explanation": "Please give us your feedback about your new experience with Zextras Server. Your opinion is meaningful for us to improve our product. Let us know your thoughts.",
         "goto_privacy": "Go to Privacy",
@@ -47,8 +49,7 @@
         "button": "Button",
         "cancel": "Cancel",
         "carbonio_admin_ui_version": "Carbonio AdminUI Version",
-        "carbonio_backed+version": "Carbonio Backend Version",
-        "carbonio_backed_version": "Carbonio Backend Version",
+        "carbonio_backend_version": "Carbonio Backend Version",
         "carbonio_community_edition": "Carbonio Community Edition",
         "change_pop": "Change POP port",
         "choose_account": "Choose an account",

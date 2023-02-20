@@ -189,7 +189,6 @@
         "detailsfeedback__collected_msg": "フィードバックメッセージを送信する際、次の詳細も収集されます",
         "details_feedback__collected_msg": "フィードバックメッセージを送信する際、次の詳細も収集されます",
         "carbonio_community_edition": "Carbonioコミュニティ版",
-        "carbonio_backed_version": "Carbonioバックエンドバージョン",
         "carbonio_backed+version": "Carbonioバックエンドバージョン",
         "carbonio_admin_ui_version": "Carbonio AdminUIバージョン",
         "allow_permission_to_send_feedback_to_zextras": "フィードバックを送信するには、プライバシー欄から以下の権限をすべて許可してください",
