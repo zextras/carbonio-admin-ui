@@ -76,7 +76,11 @@ export const ShellUtilityBar: FC = () => {
 			))}
 			<Tooltip label={t('label.account_menu', 'Account menu')} placement="left-end">
 				<Dropdown items={accountItems}>
-					<IconButton icon="AvatarOutline" size="large" iconColor="primary" />
+					<IconButton
+						icon="AvatarOutline"
+						customSize={{ iconSize: '1.5rem', paddingSize: 'medium' }}
+						iconColor="primary"
+					/>
 				</Dropdown>
 			</Tooltip>
 		</Container>
