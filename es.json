@@ -2,13 +2,13 @@
     "search": {
         "module": "Módulo",
         "app": "Búsqueda",
-        "active_input_label": "Separe las palabras con coma o con TAB",
+        "active_input_label": "Separe las palabras con coma",
         "clear": "Borrar término de búsqueda",
         "idle_input_label": "Buscar en {{module}}",
         "start": "Iniciar búsqueda",
         "already_clear": "El término de la búsqueda ya ha sido borrado",
-        "type_to_start_search": "Introducir las palabras clave para iniciar una búsqueda",
-        "type_or_choose_suggestion": "Introducir o elegir las palabras clave para iniciar una búsqueda",
+        "type_to_start_search": "Introduzca las palabras clave para iniciar una búsqueda",
+        "type_or_choose_suggestion": "Introduzca las palabras clave para iniciar una búsqueda",
         "unable_to_parse_query": "No se puede completar la búsqueda. Vuelva a intentarlo"
     },
     "settings": {
@@ -56,7 +56,7 @@
             "general": "Ajustes generales",
             "theme_auto": "Auto",
             "theme_options": "Opciones del tema",
-            "dark_mode": "Modo obscuro"
+            "dark_mode": "Modo oscuro"
         },
         "general_tab": "General",
         "timezone_and_language": "Zona horaria e idioma",
@@ -76,7 +76,7 @@
             "settings_saved": "Ediciones guardadas correctamente",
             "identities_quota_exceeded": "La identidad no pudo crearse porque se ha superado la cuota de identidades"
         },
-        "reload": "\t¿Le gustaría volver a cargar la aplicación ahora para mostrar el nuevo idioma?\n(De lo contrario, el cambio se aplicará la próxima vez que se inicie sesión)"
+        "reload": "\t¿Le gustaría volver a cargar la aplicación ahora para mostrar el nuevo idioma?\nDe lo contrario, el cambio se aplicará la próxima vez que se inicie sesión"
     },
     "snackbar": {
         "error": "Algo ha salido mal. Intente nuevamente"
@@ -102,7 +102,7 @@
         "clear_search_query": "BORRAR BÚSQUEDA",
         "discard_changes": "DESCARTAR CAMBIOS",
         "reload": "Recargar",
-        "time_zone": "Huso horario",
+        "time_zone": "Zona horaria",
         "accounts": "Cuentas",
         "address": "Dirección",
         "advanced_settings": "Configuración avanzada",
@@ -138,14 +138,14 @@
         "download_messages": "Descargar mensajes en:",
         "edit_permissions": "Editar permisos",
         "email_server": "Servidor de Email (ej. \"mail.example.com\")",
-        "external_account_settings": "Ajustes externos de la cuenta",
-        "feedback": "Feedback",
+        "external_account_settings": "Ajustes de cuenta externa",
+        "feedback": "Comentarios",
         "folder": "Carpeta: Nueva Cuenta Externa 3",
         "recipents": "Destinatarios",
         "recovery_email": "Email de recuperación",
         "reply_to_field_example": "ej.: Juan Pérez",
         "use_ssl": "Utilizar una conexión encriptada (SSL) al acceder a este servidor",
-        "when_composing": "Cuando redactes, respondas o reenvíes mensajes en la(s) carpeta(s):",
+        "when_composing": "Al redactar, responder o reenvíar mensajes en la(s) carpeta(s):",
         "when_replying": "Al responder o reenvíar mensajes enviados a:",
         "button": "Botón",
         "delete_after_download": "Eliminar mensajes del servidor después de descargarlos",
@@ -164,36 +164,36 @@
         "passwords_recovery_settings": "Opciones de recuperación de contraseña",
         "persona": "Persona",
         "persona_name": "Nombre de la Persona",
-        "persona_settings": "Configuración de Persona",
+        "persona_settings": "Configuraciones de Persona",
         "pop3": "POP3",
         "pop_port": "Puerto POP",
         "save_and_leave": "Guardar y salir",
         "save_both_folders": "Guardar una copia de los mensajes enviados en mi carpeta Enviados y en la del delegado",
-        "save_to_my_sent_folder": "Guardar una copia de los mensajes enviados en mi carpeta de Enviados",
-        "set_reply_to_field": "Definir el campo \"Responder-a\" de los mensajes con:",
+        "save_to_my_sent_folder": "Guardar una copia de los mensajes enviados en mi carpeta Enviados",
+        "set_reply_to_field": "Definir el campo \"Responder a:\" en los mensajes con:",
         "settings_sent_messages": "Ajustes para los mensajes enviados",
         "test_settings": "Probar ajustes",
-        "unsaved_changes": "Hay cambios que no se han guardado",
-        "unsaved_changes_line2": "Todos los cambios no guardados se perderán",
+        "unsaved_changes": "Hay cambios no guardados",
+        "unsaved_changes_line2": "Todo los cambios no guardados se perderán",
         "update_view": "Actualizar vista",
-        "feedback_request_data": "Solicitar datos para el feedback:",
+        "feedback_request_data": "Datos necesarios:",
         "total_servers": "Servidores totales",
         "total_domains": "Dominios totales",
         "total_accounts": "Cuentas totales",
-        "thank_you_for_feedback": "¡Gracias por el feedback!",
+        "thank_you_for_feedback": "¡Gracias por sus comentarios!",
         "post_feedback_send_helper_text_line_3": "¡puede ayudarnos con sus comentarios!",
         "post_feedback_send_helper_text_line_2": "Para mejorar Carbonio realizamos sesiones de pruebas continuas,",
         "feedback_helper_text": "¿Le gustaría participar?",
-        "enable_all_permission_to_send_feedback_to_zextras": "Active los siguientes permisos de la sección de privacidad para enviar feedback",
-        "enable_all__following_permission_to_send_feedback_to_zextras": "Active los siguientes permisos de la sección de privacidad para enviar feedback",
-        "detailsfeedback__collected_msg": "Al enviar su feedback, también se recopilan los siguientes detalles",
-        "details_feedback__collected_msg": "Al enviar su feedback también se recopilan los siguientes detalles",
+        "enable_all_permission_to_send_feedback_to_zextras": "Active los siguientes permisos de la sección de privacidad para enviar comentarios",
+        "enable_all__following_permission_to_send_feedback_to_zextras": "Active los siguientes permisos de la sección de privacidad para enviar comentarios",
+        "detailsfeedback__collected_msg": "Al enviar sus comentarios, también se recopilan los siguientes datos",
+        "details_feedback__collected_msg": "Al enviar sus comentarios también se recopilan los siguientes datos",
         "carbonio_community_edition": "Carbonio Community Edition",
-        "carbonio_admin_ui_version": "Versión de la interfáz de administración",
-        "allow_permission_to_send_feedback_to_zextras": "Conceder los siguientes permisos de privacidad para el envío de feedback",
+        "carbonio_admin_ui_version": "Versión de la interfáz administrativa",
+        "allow_permission_to_send_feedback_to_zextras": "Conceder los siguientes permisos de privacidad para el envío de comentarios",
         "allow_permission_to_send_data_to_zextras": "Conceder los siguientes permisos de privacidad para el envío de datos de error a Zextras",
-        "allow_all_permission_to_send_feedback_to_zextras": "Conceder los siguientes permisos de privacidad para el envío de feedback",
-        "carbonio_backend_version": "Versión del backend"
+        "allow_all_permission_to_send_feedback_to_zextras": "Conceder los siguientes permisos de privacidad para el envío de comentarios",
+        "carbonio_backend_version": "Versión del back-end"
     },
     "timezone": {
         "argentina": "{{value}} Argentina",
@@ -216,13 +216,13 @@
         "america_bogota": "{{value}} Colombia",
         "america_cancun": "{{value}} Cancún, Chetumal",
         "america_caracas": "{{value}} Caracas",
-        "america_chicago": "{{value}} EEUU/Canada Central",
+        "america_chicago": "{{value}} EEUU/Canadá Central",
         "america_cuiaba": "{{value}} Cuiabá",
-        "america_denver": "{{value}} Zona Pacífico EEUU/Canada",
+        "america_denver": "{{value}} Zona Pacífico EEUU/Canadá",
         "america_fort_nelson": "{{value}} Fort Nelson",
         "america_grand_turk": "{{value}} Islas Turcas y Caicos",
         "america_guatemala": "{{value}} Centroamérica",
-        "america_halifax": "{{value}} Tiempo del Atlántico (Canadá)",
+        "america_halifax": "{{value}} Hora del Atlántico (Canadá)",
         "america_indiana_indianapolis": "{{value}} Indiana (Este)",
         "america_los_angeles": "{{value}} Pacífico EEUU/Canadá",
         "america_miquelon": "{{value}} Miquelón",
@@ -300,7 +300,7 @@
         "america_anchorage": "{{value}} Alaska",
         "america_argentina_buenos_aires": "{{value}} Argentina",
         "america_cayenne": "{{value}} Cayena, Fortaleza",
-        "america_chihuahua": "{{value}} Chihuahua, La Paz, Mazatlan",
+        "america_chihuahua": "{{value}} Chihuahua, La Paz, Mazatlán",
         "america_guyana": "{{value}} Georgetown, La Paz, Manaos, San Juan",
         "america_havana": "{{value}} La Havana",
         "america_mexico_city": "{{value}} Guadalajara, Ciudad de México, Monterrey",
@@ -315,7 +315,7 @@
         "asia_kabul": "{{value}} Kabul",
         "asia_kathmandu": "{{value}} Katmandú",
         "asia_kolkata": "{{value}} Madrás, Calcuta, Bombay, Nueva Delhi",
-        "asia_muscat": "{{value}} Abu Dhabi, Mascate",
+        "asia_muscat": "{{value}} Abu Dabi, Mascate",
         "asia_novosibirsk": "{{value}} Novosibirsk (RTZ 5)",
         "asia_taipei": "{{value}} Taipéi",
         "asia_tehran": "{{value}} Teherán",
@@ -423,7 +423,7 @@
     },
     "locale": {
         "label_chinese": "Chino (China) - {{value}}",
-        "label_portuguese_brazil": "Portugués BR - {{value}}",
+        "label_portuguese_brazil": "Portugués PT - {{value}}",
         "thai": "Tailandés",
         "English": "Inglés",
         "chinese_china": "Chino (China)",
@@ -458,7 +458,7 @@
     "board": {
         "close_tab": "Cerrar pestaña",
         "close_tabs": "Cerrar todas las pestañas",
-        "enlarge": "Ampliar ventana",
+        "enlarge": "Agrandar ventana",
         "hide": "Minimizar ventana",
         "reduce": "Reducir ventana",
         "show_tabs": "Mostrar las otras ventanas"
@@ -466,10 +466,10 @@
     "feedback": {
         "other": "Otro",
         "behaviors": "Comportamientos",
-        "error": "Ocurrió un error mientras se enviaba el comentario",
+        "error": "Ocurrió un error al enviar el comentario",
         "hint": "Recuerde definir el asunto utilizando los módulos y los selectores de área macro antes de escribir sus comentarios. Gracias.",
         "missing_features": "Funcionalidades faltantes",
-        "report_something": "¿Quiere reportar algo?",
+        "report_something": "¿Quiere informarnos de algo?",
         "select_a_module": "Seleccione un módulo",
         "select_a_topic": "Seleccione el asunto",
         "send": "ENVIAR",
@@ -478,11 +478,11 @@
         "write_here": "Escriba aquí sus comentarios",
         "explanation": "Envíenos sus comentarios sobre la experiencia con Zextras Server. Su opinion es importante para que podamos mejorar el producto.",
         "write_here_placeholder_text": "¡Hola! Empiece a escribir sus comentarios aquí\n\n\nEstos se enviarán de forma anónima, no importa si se trata de cosas buenas o malas",
-        "send_feedback": "COMPARTA SUS COMENTARIOS CON NOSOTROS",
+        "send_feedback": "ENVÍENOS SUS COMENTARIOS",
         "goto_privacy": "Ir a Privacidad",
         "count_user_in_helper_button_text": "OK",
-        "enable_feedback": "Permitir feedback",
-        "enable_privacy_setting": "Activar configuraciones de privacidad para el envío de feedback"
+        "enable_feedback": "Permitir comentarios",
+        "enable_privacy_setting": "Activar configuraciones de privacidad para el envío de comentarios"
     },
     "messages": {
         "permanent_delete_title": "¿Seguro que desea eliminar permanentemente este elemento?",
@@ -492,10 +492,10 @@
         "is_contained_in": "Está dentro de"
     },
     "passwords_recovery_settings": {
-        "title": "Configuración de la cuenta para la recuperación de contraseña"
+        "title": "Ajustes para recuperación de contraseña"
     },
     "primary_account": {
-        "title": "Ajustes primarios de la cuenta"
+        "title": "Ajustes de la cuenta principal"
     },
     "create": "Crear",
     "labels": {
@@ -504,6 +504,6 @@
     "privacy": {
         "send_full_error_data_to_zextras": "Enviar error completo a Zextras",
         "allow_data_analytics": "Permitir análisis de datos",
-        "allow_live_survey_feedbacks": "Permitir envío de feedback en directo"
+        "allow_live_survey_feedbacks": "Permitir envío de comentarios en tiempo real"
     }
 }
