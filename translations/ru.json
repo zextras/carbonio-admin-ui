@@ -192,8 +192,8 @@
         "enable_all_permission_to_send_feedback_to_zextras": "Включите все следующие разрешения из раздела конфиденциальности, чтобы отправить отзыв",
         "enable_all__following_permission_to_send_feedback_to_zextras": "Включите все следующие разрешения в разделе конфиденциальности, чтобы отправить отзыв",
         "carbonio_community_edition": "Carbonio Community Edition",
-        "carbonio_backed+version": "Версия Carbonio Backed",
-        "carbonio_admin_ui_version": "Версия Carbonio AdminUI"
+        "carbonio_admin_ui_version": "Версия Carbonio AdminUI",
+        "carbonio_backend_version": "Backend Version Carbonio"
     },
     "board": {
         "close_tab": "Закрыть вкладку",
@@ -480,7 +480,9 @@
         "write_here_placeholder_text": "Привет! Начните писать здесь свои отзывы :)\n\n\nЭто будет отправлено анонимно, поэтому поделитесь вашим мнением о продукте",
         "send_feedback": "ПОДЕЛИТЕСЬ ВАШИМ ОТЗЫВОМ С НАМИ",
         "goto_privacy": "Перейти к параметрам конфиденциальности",
-        "count_user_in_helper_button_text": "Да, я буду принимать участие в опросах!"
+        "count_user_in_helper_button_text": "Да, я буду принимать участие в опросах!",
+        "enable_feedback": "Включить обратную связь",
+        "enable_privacy_setting": "Включите настройку конфиденциальности, чтобы отправить отзыв"
     },
     "passwords_recovery_settings": {
         "title": "Настройки учетной записи для восстановления пароля"
