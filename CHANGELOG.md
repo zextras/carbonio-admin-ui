@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.8](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.7...v0.9.8) (2023-03-02)
+
+
+### Bug Fixes
+
+* json array is not passing in api ([7fdfce1](https://github.com/zextras/carbonio-admin-ui/commit/7fdfce161c19a513664c74d47973dc439f3b5328))
+
 ### [0.9.7](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.6...v0.9.7) (2023-02-02)
 
 
