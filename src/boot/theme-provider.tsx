@@ -24,6 +24,7 @@ import { DarkReaderPropValues, ThemeExtension } from '../../types';
 import { darkReaderDynamicThemeFixes } from '../constants';
 import { getAutoScalingFontSize } from '../settings/components/utils';
 import { useGetPrimaryColor } from './use-get-primary-color';
+import { useAccountStore } from '../store/account/store';
 
 setFetchMethod(window.fetch);
 
@@ -89,13 +90,88 @@ const GlobalStyle = createGlobalStyle<GlobalStyledProps>`
   }
 `;
 
+const themeSizes = (
+	size: 'small' | 'normal' | 'large' | 'larger' | 'default' | string
+): ThemeExtension => {
+	switch (size) {
+		case 'small': {
+			return (t: any): any => {
+				// eslint-disable-next-line no-param-reassign
+				t.sizes.font = {
+					extrasmall: '10px',
+					small: '12px',
+					medium: '14px',
+					large: '16px'
+				};
+				return t;
+			};
+		}
+		case 'large': {
+			return (t: any): any => {
+				// eslint-disable-next-line no-param-reassign
+				t.sizes.font = {
+					extrasmall: '14px',
+					small: '16px',
+					medium: '18px',
+					large: '20px'
+				};
+				return t;
+			};
+		}
+		case 'larger': {
+			return (t: any): any => {
+				// eslint-disable-next-line no-param-reassign
+				t.sizes.font = {
+					extrasmall: '16px',
+					small: '18px',
+					medium: '20px',
+					large: '22px'
+				};
+				return t;
+			};
+		}
+		case 'default':
+		case 'normal':
+		default: {
+			return (t: any): any => {
+				// eslint-disable-next-line no-param-reassign
+				t.sizes.font = {
+					extrasmall: '12px',
+					small: '14px',
+					medium: '16px',
+					large: '18px'
+				};
+				return t;
+			};
+		}
+	}
+};
 interface ThemeProviderProps {
 	children?: React.ReactNode | React.ReactNode[];
 }
 export const ThemeProvider = ({ children }: ThemeProviderProps): JSX.Element => {
+	const zimbraPrefFontSize = useAccountStore((s) => s.settings.prefs?.zimbraPrefFontSize as string);
 	const [extensions, setExtensions] = useState<Partial<Record<keyof DefaultTheme, ThemeExtension>>>(
-		{}
+		{
+			fonts: (theme) => {
+				// eslint-disable-next-line no-param-reassign
+				theme.sizes.font = {
+					extrasmall: '12px',
+					small: '14px',
+					medium: '16px',
+					large: '18px'
+				};
+				return theme;
+			}
+		}
 	);
+
+	useEffect(() => {
+		setExtensions((e) => ({
+			...e,
+			fonts: themeSizes(zimbraPrefFontSize)
+		}));
+	}, [zimbraPrefFontSize]);
 
 	const primaryColor = useGetPrimaryColor();
 
@@ -160,15 +236,16 @@ export const ThemeProvider = ({ children }: ThemeProviderProps): JSX.Element => 
 		setExtensions((ext) => ({ ...ext, [id]: newExtension }));
 	}, []);
 
-	const baseFontSize = useMemo<GlobalStyledProps['baseFontSize']>(
-		() => getAutoScalingFontSize(),
-		[]
-	);
+	/* In future we need to do admin UI's font support auto scalling feature */
+	// const baseFontSize = useMemo<GlobalStyledProps['baseFontSize']>(
+	// 	() => getAutoScalingFontSize(),
+	// 	[]
+	// );
 
 	return (
 		<UIThemeProvider extension={aggregatedExtensions}>
 			<ThemeCallbacksContext.Provider value={{ addExtension, setDarkReaderState }}>
-				<GlobalStyle baseFontSize={baseFontSize} />
+				{/* <GlobalStyle baseFontSize={baseFontSize} /> */}
 				{children}
 			</ThemeCallbacksContext.Provider>
 		</UIThemeProvider>
