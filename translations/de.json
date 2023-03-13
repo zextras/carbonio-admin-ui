@@ -139,7 +139,7 @@
         "permanent_delete_title": "Sind Sie sicher, dass Sie diese Persona endgültig löschen wollen?",
         "persona": "Person",
         "save_delegate_folder": "Speichern einer Kopie der gesendeten Nachrichten im Ordner \"Gesendet\" des Delegierten",
-        "unsaved_changes_line2": "Alle nicht gespeicherten Änderungen gehen verloren.",
+        "unsaved_changes_line2": "Alle nicht gespeicherten Änderungen gehen verloren",
         "update_view": "Ansicht aktualisieren",
         "use_persona": "Verwenden Sie diese Persona",
         "use_personas_line1": "Verwenden Sie Personas, um viele Einstellungen beim Senden von E-Mail-Nachrichten schnell zu ändern.",
@@ -176,7 +176,24 @@
         "set_reply_to_field": "Setzen Sie das Feld \"Antwort an\" der E-Mail-Nachricht auf:",
         "settings_sent_messages": "Einstellungen für gesendete Nachrichten",
         "unsaved_changes": "Sie haben ungespeicherte Änderungen",
-        "thank_you_for_feedback": "Vielen Dank für Ihr Feedback!"
+        "thank_you_for_feedback": "Vielen Dank für Ihr Feedback!",
+        "allow_all_permission_to_send_feedback_to_zextras": "Erlauben Sie alle folgenden Berechtigungen aus dem Bereich Datenschutz, um Feedback zu senden",
+        "enable_all_permission_to_send_feedback_to_zextras": "Aktivieren Sie alle folgenden Berechtigungen im Abschnitt Datenschutz, um Feedback zu senden",
+        "carbonio_admin_ui_version": "Carbonio AdminUI Version",
+        "carbonio_backend_version": "Carbonio-Backend-Version",
+        "detailsfeedback__collected_msg": "Bei der Abgabe einer Rückmeldung werden auch die folgenden Angaben erfasst",
+        "enable_all__following_permission_to_send_feedback_to_zextras": "Aktivieren Sie alle folgenden Berechtigungen im Abschnitt Datenschutz, um Feedback zu senden",
+        "feedback_helper_text": "Möchten Sie teilnehmen?",
+        "feedback_request_data": "Daten für Feedback anfordern:",
+        "post_feedback_send_helper_text_line_3": "Sie können die Stimme sein, die wir jetzt gerne hören würden!",
+        "total_accounts": "Gesammt Konto",
+        "total_domains": "Gesamt Domains",
+        "total_servers": "Gesamt Servers",
+        "allow_permission_to_send_data_to_zextras": "Erlauben Sie allen folgenden Berechtigungen aus dem Abschnitt Datenschutz, vollständige Fehlerdaten an Zextras zu senden",
+        "allow_permission_to_send_feedback_to_zextras": "Erlauben Sie alle folgenden Berechtigungen aus dem Bereich Datenschutz, um Feedback zu senden",
+        "carbonio_community_edition": "Carbonio -Community -Edition",
+        "details_feedback__collected_msg": "Bei der Abgabe einer Rückmeldung werden auch die folgenden Angaben erfasst",
+        "post_feedback_send_helper_text_line_2": "Um Carbonio zu verbessern, führen wir kontinuierliche Tests durch,"
     },
     "timezone": {
         "asuncion": "{{value}} Asuncion",
@@ -459,7 +476,13 @@
         "user_interface": "Benutzeroberfläche",
         "write_here": "Schreiben Sie Ihr Feedback hier",
         "error": "Beim Absenden Ihres Feedbacks ist ein Fehler aufgetreten",
-        "explanation": "Bitte geben Sie uns Ihr Feedback über Ihre neuen Erfahrungen mit Zextras Server. Ihre Meinung ist wichtig für uns, um unser Produkt zu verbessern. Teilen Sie uns Ihre Gedanken mit."
+        "explanation": "Bitte geben Sie uns Ihr Feedback über Ihre neuen Erfahrungen mit Zextras Server. Ihre Meinung ist wichtig für uns, um unser Produkt zu verbessern. Teilen Sie uns Ihre Gedanken mit.",
+        "enable_privacy_setting": "Aktivieren Sie die Datenschutzeinstellungen, um Feedback zu senden",
+        "goto_privacy": "Gehe zu Datenschutz",
+        "send_feedback": "Feedback mit uns verteilen",
+        "count_user_in_helper_button_text": "Ja, ich bin dabei!",
+        "enable_feedback": "Rückmeldung erlauben",
+        "write_here_placeholder_text": "Hey! Schreiben Sie hier Ihr Feedback :) \n\n\nDas wird anonym gesendet, also lasst uns wissen, was wir gut oder falsch gemacht haben \noder falsch gemacht haben, ohne Filter"
     },
     "messages": {
         "permanent_delete_title": "Sind Sie sicher, dass Sie dieses Element dauerhaft löschen wollen?",
@@ -480,6 +503,7 @@
     "create": "Erstellen",
     "privacy": {
         "send_full_error_data_to_zextras": "Vollständige Fehlerdaten an schicken",
-        "allow_data_analytics": "Datenanalyse erlauben"
+        "allow_data_analytics": "Datenanalyse erlauben",
+        "allow_live_survey_feedbacks": "Erlauben Sie Live-Feedbacks zu Umfragen"
     }
 }

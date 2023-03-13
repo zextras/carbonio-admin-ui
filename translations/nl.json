@@ -189,11 +189,11 @@
         "detailsfeedback__collected_msg": "Bij het geven van een feedbackbericht worden ook de volgende gegevens verzameld",
         "details_feedback__collected_msg": "Bij het geven van een feedbackbericht worden ook de volgende gegevens verzameld",
         "carbonio_community_edition": "Carbonio Community Edition",
-        "carbonio_backed+version": "Carbonio Backend Versie",
         "carbonio_admin_ui_version": "Carbonio AdminUI Versie",
         "allow_permission_to_send_feedback_to_zextras": "Sta alle volgende toestemmingen uit de privacy-sectie toe om feedback te sturen",
         "allow_permission_to_send_data_to_zextras": "Sta alle volgende toestemmingen uit de privacysectie toe om volledige foutgegevens naar Zextras te sturen",
-        "allow_all_permission_to_send_feedback_to_zextras": "Sta alle volgende toestemmingen uit de privacy-sectie toe om feedback te sturen"
+        "allow_all_permission_to_send_feedback_to_zextras": "Sta alle volgende toestemmingen uit de privacy-sectie toe om feedback te sturen",
+        "carbonio_backend_version": "Carbonio Backend Versie"
     },
     "locale": {
         "label_russian": "Russisch - {{value}}",
@@ -480,7 +480,9 @@
         "write_here_placeholder_text": "Hey! Schrijf hier uw feedback :)\n\n\nDeze zal anoniem verstuurd worden dus laat ons weten wat we goed\n of fout hebben gedaan zonder filter",
         "send_feedback": "DEEK UW FEEDBACK MET ONS",
         "goto_privacy": "Ga naar Privacy",
-        "count_user_in_helper_button_text": "JA, IK DOE MEE!"
+        "count_user_in_helper_button_text": "JA, IK DOE MEE!",
+        "enable_feedback": "Feedback mogelijk maken",
+        "enable_privacy_setting": "Privacy-instelling inschakelen om feedback te sturen"
     },
     "messages": {
         "permanent_delete_title": "Weet u zeker dat u dit element permanent wilt verwijderen?",

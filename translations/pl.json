@@ -163,7 +163,6 @@
         "detailsfeedback__collected_msg": "Następujące szczegóły są zbierane wraz z opinią",
         "details_feedback__collected_msg": "Następujące szczegóły są zbierane wraz z opinią",
         "carbonio_community_edition": "Carbonio CE",
-        "carbonio_backed+version": "Wersja back-endu Carbonio",
         "carbonio_admin_ui_version": "Wersja Carbonio Admin UI",
         "allow_all_permission_to_send_feedback_to_zextras": "Aby wysłać opinię, udziel tych uprawnień w sekcji prywatność",
         "allow_permission_to_send_feedback_to_zextras": "Aby wysłać opinię, udziel tych uprawnień w sekcji prywatność",
@@ -177,7 +176,8 @@
         "feedback_request_data": "Poproś o opinię na temat tych danych:",
         "feedback_helper_text": "Chciałbyś wziąć udział?",
         "enable_all_permission_to_send_feedback_to_zextras": "Aby wysłać opinię, udziel tych uprawnień w sekcji prywatność",
-        "enable_all__following_permission_to_send_feedback_to_zextras": "Zezwól, aby wszystkie następujące uprawnienia z sekcji prywatność wysyłały informacje zwrotne"
+        "enable_all__following_permission_to_send_feedback_to_zextras": "Zezwól, aby wszystkie następujące uprawnienia z sekcji prywatność wysyłały informacje zwrotne",
+        "carbonio_backend_version": "Wersja Carbonio Backend"
     },
     "board": {
         "close_tab": "Zamknij kartę",
@@ -385,7 +385,7 @@
         "azores": "{{value}} Azory",
         "baja_california": "{{value}} Baja Kalifornia",
         "baku": "{{value}} Baku",
-        "beijing_chongqing_hong_kong_urumqi": "{{value}} Pekin, Chongquing, Hong Kong, Urumczi",
+        "beijing_chongqing_hong_kong_urumqi": "{{value}} Pekin, Chongqing, Hong Kong, Urumczi",
         "beirut": "{{value}} Bejrut",
         "belgrade_bratislava_budapest_ljubljana_prague": "{{value}} Belgrad, Bratysława, Budapeszt, Ljubljana, Praga",
         "brasilia": "{{value}} Brazylia",
@@ -480,7 +480,9 @@
         "write_here_placeholder_text": "Hej! Zacznij pisać swoją opinię tutaj :) \n\n\nZostanie ona wysłana anonimowo, tak byśmy wiedzieli co robimy dobrze \na co źle tak objektywnie jak to możliwe",
         "send_feedback": "PODZIEL SIĘ Z NAMI TWOJĄ OPINIĄ",
         "goto_privacy": "Idź do prywatności",
-        "count_user_in_helper_button_text": "TAK, WCHODZĘ W TO!"
+        "count_user_in_helper_button_text": "TAK, WCHODZĘ W TO!",
+        "enable_privacy_setting": "Włącz ustawienia prywatności, aby wysyłać opinie",
+        "enable_feedback": "Zezwól na wysyłanie opinii"
     },
     "messages": {
         "permanent_delete_body": "Jeśli trwale usuniesz tę personę, nie będziesz w stanie jej już odzyskać. Kontynuować?",

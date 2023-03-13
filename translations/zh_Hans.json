@@ -170,7 +170,7 @@
         "use_ssl": "在访问此服务器时使用加密器连接（SSL）",
         "when_composing": "在文件夹中撰写、回复或转发消息时：",
         "when_replying": "在回复或转发已发送至以下位置的消息时：",
-        "delegates": "委派",
+        "delegates": "被委派人",
         "update_view": "更新视图",
         "use_persona": "使用该角色",
         "use_personas_line1": "使用角色以在发送邮件消息时快速变更多项设置。",
@@ -189,11 +189,11 @@
         "detailsfeedback__collected_msg": "在提供反馈消息时还会收集以下详细信息",
         "details_feedback__collected_msg": "在提供反馈消息时还会收集以下详细信息",
         "carbonio_community_edition": "Carbonio Community Edition",
-        "carbonio_backed+version": "Carbonio后台版本",
         "carbonio_admin_ui_version": "Carbonio AdminUI版本",
         "allow_permission_to_send_feedback_to_zextras": "在隐私部分允许所有以下权限以发送反馈",
         "allow_permission_to_send_data_to_zextras": "在隐私部分允许所有以下权限以将完整错误数据发送至Zextras",
-        "allow_all_permission_to_send_feedback_to_zextras": "在隐私部分允许所有以下权限以发送反馈"
+        "allow_all_permission_to_send_feedback_to_zextras": "在隐私部分允许所有以下权限以发送反馈",
+        "carbonio_backend_version": "Carbonio 后台版本"
     },
     "locale": {
         "English": "英语",
@@ -480,7 +480,9 @@
         "write_here_placeholder_text": "嘿！可在此处输入您的反馈 :)\n\n\n反馈将匿名发送，所以请放心告诉我们哪些地方做得还不错，\n当然您也可以毫不掩饰地告诉我们哪里做得不好",
         "send_feedback": "与我们分享您的反馈",
         "goto_privacy": "前往隐私",
-        "count_user_in_helper_button_text": "是的，算我一个！"
+        "count_user_in_helper_button_text": "是的，算我一个！",
+        "enable_feedback": "启用反馈",
+        "enable_privacy_setting": "启用隐私设置以发送反馈"
     },
     "messages": {
         "permanent_delete_title": "确定要永久删除该元素吗？",

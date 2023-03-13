@@ -189,11 +189,11 @@
         "detailsfeedback__collected_msg": "Saat memberikan pesan masukan, detail berikut juga akan dikumpulkan",
         "details_feedback__collected_msg": "Saat memberikan pesan masukan, detail berikut juga akan dikumpulkan",
         "carbonio_community_edition": "Carbonio Community Edition",
-        "carbonio_backed+version": "Versi Backend Carbonio",
         "carbonio_admin_ui_version": "Versi AdminUI Carbonio",
         "allow_permission_to_send_feedback_to_zextras": "Izinkan semua izin berikut dari bagian privasi untuk mengirim masukan",
         "allow_permission_to_send_data_to_zextras": "Izinkan semua izin berikut dari bagian privasi untuk mengirim data kesalahan lengkap ke Zextras",
-        "allow_all_permission_to_send_feedback_to_zextras": "Izinkan semua izin berikut dari bagian privasi untuk mengirim masukan"
+        "allow_all_permission_to_send_feedback_to_zextras": "Izinkan semua izin berikut dari bagian privasi untuk mengirim masukan",
+        "carbonio_backend_version": "Versi Backend Carbonio"
     },
     "locale": {
         "portuguese_brazil": "Portugis (Brasil)",
@@ -487,7 +487,9 @@
         "write_here_placeholder_text": "Hai! Tulis masukan Anda di sini :) \n\n\nIni akan dikirim secara anonim. Jadi, beri tahu kami apa saja yang sudah bagus \natau apa yang perlu diperbaiki",
         "send_feedback": "SAMPAIKAN MASUKAN ANDA KEPADA KAMI",
         "goto_privacy": "Buka Privasi",
-        "count_user_in_helper_button_text": "YA, SAYA IKUT!"
+        "count_user_in_helper_button_text": "YA, SAYA IKUT!",
+        "enable_feedback": "Aktifkan Masukan",
+        "enable_privacy_setting": "Aktifkan pengaturan privasi untuk mengirim masukan"
     },
     "primary_account": {
         "title": "Pengaturan Akun Utama"
