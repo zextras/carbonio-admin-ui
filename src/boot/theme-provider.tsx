@@ -245,7 +245,9 @@ export const ThemeProvider = ({ children }: ThemeProviderProps): JSX.Element => 
 	return (
 		<UIThemeProvider extension={aggregatedExtensions}>
 			<ThemeCallbacksContext.Provider value={{ addExtension, setDarkReaderState }}>
-				{/* <GlobalStyle baseFontSize={baseFontSize} /> */}
+				{/* Just commented for now in future if apply font size via settings
+				<GlobalStyle baseFontSize={baseFontSize} />
+				*/}
 				{children}
 			</ThemeCallbacksContext.Provider>
 		</UIThemeProvider>
