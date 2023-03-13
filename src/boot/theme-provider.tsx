@@ -156,10 +156,10 @@ export const ThemeProvider = ({ children }: ThemeProviderProps): JSX.Element => 
 			fonts: (theme) => {
 				// eslint-disable-next-line no-param-reassign
 				theme.sizes.font = {
-					extrasmall: '12px',
-					small: '14px',
-					medium: '16px',
-					large: '18px'
+					extrasmall: '0.75rem',
+					small: '0.875rem',
+					medium: '1rem',
+					large: '1.125rem'
 				};
 				return theme;
 			}
