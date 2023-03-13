@@ -192,7 +192,8 @@
         "carbonio_admin_ui_version": "Versão AdminUI do Carbonio",
         "allow_permission_to_send_feedback_to_zextras": "Conceda todas as permissões abaixo na seção de privacidade para enviar seus comentários",
         "allow_permission_to_send_data_to_zextras": "Conceda todas as permissões abaixo na seção de privacidade para enviar os dados completos do erro para a Zextras",
-        "allow_all_permission_to_send_feedback_to_zextras": "Conceda todas as permissões abaixo na seção de privacidade para enviar seus comentários"
+        "allow_all_permission_to_send_feedback_to_zextras": "Conceda todas as permissões abaixo na seção de privacidade para enviar seus comentários",
+        "carbonio_backend_version": "Versão Backend do Carbonio"
     },
     "timezone": {
         "brasilia": "{{value}} Brasília",
@@ -479,7 +480,9 @@
         "write_here_placeholder_text": "Olá! Comece a escrever seus comentários aqui :) \n\n\nO envio será feito de forma anônima para a gente saber o que está fazendo de bom \nou de ruim, pode ser sincero",
         "send_feedback": "COMPARTILHE SEUS COMENTÁRIOS CONOSCO",
         "goto_privacy": "Acessar Privacidade",
-        "count_user_in_helper_button_text": "SIM, CONTE COMIGO!"
+        "count_user_in_helper_button_text": "SIM, CONTE COMIGO!",
+        "enable_feedback": "Ativar Feedback",
+        "enable_privacy_setting": "Ativar configurações de privacidade para o envio de feedback"
     },
     "messages": {
         "permanent_delete_title": "Tem certeza que deseja excluir permanentemente este elemento?",
