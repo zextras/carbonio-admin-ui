@@ -189,11 +189,11 @@
         "detailsfeedback__collected_msg": "เมื่อส่งข้อความฟีดแบ็ค จะมีการรวบรวมรายละเอียดต่อไปนี้ด้วย",
         "details_feedback__collected_msg": "เมื่อส่งข้อความฟีดแบ็ค จะมีการรวบรวมรายละเอียดต่อไปนี้ด้วย",
         "carbonio_community_edition": "Carbonio Community Edition",
-        "carbonio_backed+version": "เวอร์ชั่น Carbonio Backend",
         "carbonio_admin_ui_version": "เวอร์ชัน Carbonio AdminUI",
         "allow_permission_to_send_feedback_to_zextras": "อนุญาตสิทธิ์ต่อไปนี้ทั้งหมดจากในส่วนความเป็นส่วนตัวเพื่อส่งข้อเสนอแนะ",
         "allow_permission_to_send_data_to_zextras": "อนุญาตสิทธิ์ต่อไปนี้ทั้งหมดจากในส่วนความเป็นส่วนตัวเพื่อส่งข้อมูลข้อผิดพลาดทั้งหมดไปยัง Zextras",
-        "allow_all_permission_to_send_feedback_to_zextras": "อนุญาตสิทธิ์ต่อไปนี้ทั้งหมดจากในส่วนความเป็นส่วนตัวเพื่อส่งข้อเสนอแนะ"
+        "allow_all_permission_to_send_feedback_to_zextras": "อนุญาตสิทธิ์ต่อไปนี้ทั้งหมดจากในส่วนความเป็นส่วนตัวเพื่อส่งข้อเสนอแนะ",
+        "carbonio_backend_version": "เวอร์ชั่น Carbonio Backend"
     },
     "board": {
         "close_tab": "ปิดแท็บ",
@@ -487,7 +487,9 @@
         "write_here_placeholder_text": "เริ่มเขียนความคิดเห็นของคุณที่นี่ :)\n\n\nข้อความนี้จะถูกส่งโดยไม่ระบุชื่อ ดังนั้น คุณสามารถแจ้งให้เราทราบว่าสิ่งใดดี\nหรือไม่ดีได้โดยไม่ต้องลังเล",
         "send_feedback": "แบ่งปันความคิดเห็นของคุณกับเรา",
         "goto_privacy": "ไปที่ความเป็นส่วนตัว",
-        "count_user_in_helper_button_text": "ใช่ ฉันร่วมด้วย!"
+        "count_user_in_helper_button_text": "ใช่ ฉันร่วมด้วย!",
+        "enable_feedback": "เปิดใช้งานความคิดเห็น",
+        "enable_privacy_setting": "เปิดใช้งานการตั้งค่าความเป็นส่วนตัวเพื่อส่งความคิดเห็น"
     },
     "passwords_recovery_settings": {
         "title": "การตั้งค่าบัญชีการกู้คืนรหัสผ่าน"
