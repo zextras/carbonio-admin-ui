@@ -33,7 +33,7 @@ import {
 } from '../constants';
 import { useDomainInformationStore } from '../store/domain-information';
 import { useLoginConfigStore } from '../store/login/store';
-import { useDarkReaderResultValue } from '../custom-hooks/useDarkReaderResultValue';
+import { useDarkMode } from '../dark-mode/use-dark-mode';
 
 const CustomImg = styled.img`
 	height: 2rem;
@@ -54,8 +54,7 @@ const ShellHeader: FC<{
 	const isAdvanced = useIsAdvanced();
 	const { carbonioAdminUiAppLogo, carbonioAdminUiDarkAppLogo, carbonioLogoURL } =
 		useLoginConfigStore();
-	const darkReaderResultValue = useDarkReaderResultValue();
-	const [darkModeEnabled, setDarkModeEnabled] = useState(false);
+	const { darkModeEnabled, darkReaderStatus } = useDarkMode();
 
 	const getDomainDetails = useCallback(
 		(name: any): any => {
@@ -104,12 +103,6 @@ const ShellHeader: FC<{
 		openLink(helpCenterURL);
 	}, [helpCenterURL]);
 
-	useEffect(() => {
-		if (darkReaderResultValue) {
-			setDarkModeEnabled(darkReaderResultValue === 'enabled');
-		}
-	}, [darkReaderResultValue]);
-
 	const logoSrc = useMemo(() => {
 		if (darkModeEnabled) {
 			return carbonioAdminUiDarkAppLogo || carbonioAdminUiAppLogo;
@@ -152,7 +145,7 @@ const ShellHeader: FC<{
 					width="auto"
 				>
 					<Container width="auto" height={32} crossAlignment="flex-start">
-						{darkReaderResultValue && (
+						{darkReaderStatus && (
 							<a target="_blank" href={logoUrl} rel="noreferrer">
 								{logoSrc ? <CustomImg src={logoSrc} /> : <Logo height="2rem" />}
 							</a>

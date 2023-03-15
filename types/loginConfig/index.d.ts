@@ -11,4 +11,6 @@ export type LoginConfigStore = {
 	carbonioAdminUiTitle?: string;
 	carbonioAdminUiFavicon?: string;
 	carbonioLogoURL?: string;
+	carbonioWebUiPrimaryColor?: string;
+	carbonioWebUiDarkPrimaryColor?: string;
 };

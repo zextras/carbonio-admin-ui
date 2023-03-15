@@ -19,7 +19,7 @@ import { ShellUtilityBar, ShellUtilityPanel } from '../utility-bar';
 import { useCurrentRoute } from '../history/hooks';
 import { useTagStore } from '../store/tags/store';
 import { createTag } from '../network/tags';
-import { useDarkReaderResultValue } from '../custom-hooks/useDarkReaderResultValue';
+import { useDarkReaderResultValue } from '../dark-mode/use-dark-reader-result-value';
 
 const Background = styled.div`
 	background: ${({ theme }) => theme.palette.gray6.regular};
