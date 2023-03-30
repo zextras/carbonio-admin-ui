@@ -29,7 +29,8 @@ import {
 	AccountRightName,
 	AccountRightTarget,
 	SoapFetch,
-	SoapFetchPost
+	SoapFetchPost,
+	SoapFetchExternal
 } from '../account';
 import {
 	Mods,
@@ -132,7 +133,7 @@ export const useIsMobile: () => boolean;
 export const soapFetch: SoapFetch;
 export const getSoapFetchRequest: SoapFetch;
 export const postSoapFetchRequest: SoapFetchPost;
-export const fetchExternalSoap: SoapFetchPost;
+export const fetchExternalSoap: SoapFetchExternal;
 export const xmlSoapFetch: SoapFetch;
 export const report: (error: Error, hint?: unknown) => void;
 export const setAppContext: <T>(obj: T) => void;

@@ -338,7 +338,7 @@ export const fetchExternalSoap =
 		apiURL: string,
 		body: Request,
 		api?: string,
-		otherAccount?: string
+		method?: string
 	): Promise<Response> => {
 		const { zimbraVersion, account } = useAccountStore.getState();
 		const { context } = useNetworkStore.getState();
@@ -351,7 +351,7 @@ export const fetchExternalSoap =
 			bodyItem = body;
 		}
 		return fetch(`${apiURL}`, {
-			method: 'POST',
+			method: method || 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
@@ -361,7 +361,12 @@ export const fetchExternalSoap =
 						...bodyItem
 				  })
 		}) // TODO proper error handling
-			.then((res) => (res?.headers.get('content-length') === null ? res : res?.json()))
+			.then((res) =>
+				res?.headers?.get('content-length') === null &&
+				!res?.headers?.get('content-type')?.includes('application/json')
+					? res
+					: res?.json()
+			)
 			.then((res: any) => handleSoapResponse(res))
 			.catch((e) => {
 				report(app)(e);
