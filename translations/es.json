@@ -79,7 +79,7 @@
         "reload": "\t¿Recargar Carbonio ahora para mostrar el nuevo idioma?\nDe lo contrario el cambio se aplicará con el próximo inicio de sesión"
     },
     "snackbar": {
-        "error": "Algo ha salido mal. Intente nuevamente"
+        "error": "Algo salió mal. Intente nuevamente"
     },
     "module": {
         "app": {
@@ -107,15 +107,15 @@
         "address": "Dirección",
         "advanced_settings": "Ajustes avanzados",
         "delete": "Eliminar",
-        "delete_permanently": "Eliminar definitivamente",
+        "delete_permanently": "Eliminar permanentemente",
         "email_address": "Dirección de e-mail",
-        "filter_folders": "Buscar carpeta",
+        "filter_folders": "Filtrar carpetas",
         "folders": "Carpetas",
-        "go_back": "Volver",
+        "go_back": "Atrás",
         "inbox": "Bandeja de entrada",
         "logout": "Cerrar sesión",
         "new_folder": "Nueva carpeta",
-        "no_results": "No se han encontrado resultados",
+        "no_results": "No se encontraron resultados",
         "password": "Contraseña",
         "primary": "Principal",
         "remove": "Eliminar",
@@ -126,7 +126,7 @@
         "account_type": "Tipo de cuenta",
         "account_username": "Nombre de usuario",
         "accounts_list": "Cuentas de correo",
-        "add_delegate": "Nuevo delegado",
+        "add_delegate": "Nuevo Delegado",
         "add_external_account": "Añadir cuenta externa",
         "add_new_email": "Añadir nueva dirección de e-mail",
         "add_persona": "Nueva Persona",
@@ -138,7 +138,7 @@
         "download_messages": "Descargar mensajes en:",
         "edit_permissions": "Editar permisos",
         "email_server": "Servidor de e-mail (ej. \"mail.example.com\")",
-        "external_account_settings": "Configuración de cuenta externa",
+        "external_account_settings": "Ajustes de cuenta externa",
         "feedback": "Comentarios",
         "folder": "Carpeta: Nueva cuenta externa 3",
         "recipents": "Destinatarios",
@@ -149,12 +149,12 @@
         "when_replying": "Al responder o reenvíar mensajes a:",
         "button": "Botón",
         "delete_after_download": "Eliminar mensajes del servidor después de descargarlos",
-        "permanent_delete_title": "¿Estás seguro que quieres eliminar esta Persona?",
-        "save_delegate_folder": "Guardar una copia de los mensajes enviados en la carpeta Enviados del delegado",
-        "unsaved_changes_line1": "¿Seguro que quieres salir de esta página sin guardar?",
+        "permanent_delete_title": "¿Seguro que quieres eliminar esta Persona?",
+        "save_delegate_folder": "Guardar una copia de los mensajes enviados en la carpeta Enviados del Delegado",
+        "unsaved_changes_line1": "¿Seguro que quiere salir de esta página sin guardar?",
         "use_persona": "Usar esta Persona",
-        "use_personas_line1": "Las Personas sirven para cambiar rápidamente entre diferentes perfiles al enviar e-mails.",
-        "use_personas_line2": "Por ejemplo, si envías e-mails con diferentes perfiles, crea una Persona para cambiar facilmente entre ellos.",
+        "use_personas_line1": "Las Personas sirven para cambiar rápidamente entre diferentes perfiles al enviar correos.",
+        "use_personas_line2": "Por ejemplo, si envías correos desde diferentes perfiles, crea una Persona para cambiar facilmente entre ellos.",
         "click_to_copy": "Clic para copiar",
         "documentation": "Documentación",
         "dont_save": "No guardar copia de los mensajes enviados",
@@ -168,7 +168,7 @@
         "pop3": "POP3",
         "pop_port": "Puerto POP",
         "save_and_leave": "Guardar",
-        "save_both_folders": "Guardar una copia de los mensajes enviados en mi carpeta Enviados y en la del delegado",
+        "save_both_folders": "Guardar una copia de los mensajes enviados en mi carpeta Enviados y en la del Delegado",
         "save_to_my_sent_folder": "Guardar una copia de los mensajes enviados en mi carpeta de Enviados",
         "set_reply_to_field": "Habilitar el campo \"Responder a:\" en los mensajes",
         "settings_sent_messages": "Ajustes de mensajes enviados",
@@ -193,7 +193,7 @@
         "allow_permission_to_send_feedback_to_zextras": "Permitir los siguientes permisos de privacidad para el envío de comentarios",
         "allow_permission_to_send_data_to_zextras": "Permitir los siguientes permisos de privacidad para el envío de datos de error a Zextras",
         "allow_all_permission_to_send_feedback_to_zextras": "Permitir los siguientes permisos de privacidad para el envío de comentarios",
-        "carbonio_backend_version": "Versión del back-end"
+        "carbonio_backend_version": "Versión del backend"
     },
     "timezone": {
         "argentina": "{{value}} Argentina",
@@ -448,7 +448,7 @@
         "portuguese_brazil": "Portugués (Brasil)",
         "romanian": "Rumano",
         "russian": "Ruso",
-        "spanish": "Español",
+        "spanish": "Spanish",
         "turkish": "Turco",
         "french": "Francés",
         "label_french": "Francés - {{value}}",
@@ -467,11 +467,11 @@
         "other": "Otro",
         "behaviors": "Funcionamiento",
         "error": "Ocurrió un error mientras se enviaba el comentario",
-        "hint": "Recuerda definir el asunto utilizando los módulos y los selectores de área macro antes de escribir los comentarios. Gracias por la colaboración.",
+        "hint": "Recuerda definir el tema utilizando los módulos y los selectores de área macro antes de escribir los comentarios. Gracias por la colaboración.",
         "missing_features": "Funcionalidades faltantes",
         "report_something": "¿Quieres reportar algo?",
         "select_a_module": "Selecciona un módulo",
-        "select_a_topic": "Selecciona el asunto",
+        "select_a_topic": "Selecciona un tema",
         "send": "ENVIAR",
         "success": "¡Gracias por sus comentarios!",
         "user_interface": "Interfaz de usuario",
@@ -485,7 +485,7 @@
         "enable_privacy_setting": "Activar configuraciones de privacidad para el envío de comentarios"
     },
     "messages": {
-        "permanent_delete_title": "¿Seguro que quieres eliminarlo definitivamente?",
+        "permanent_delete_title": "¿Seguro que quieres eliminarlo de forma permanente?",
         "permanent_delete_body": "Al eliminar esta Persona ya no se podrá recuperar. ¿Continuar?"
     },
     "share": {
