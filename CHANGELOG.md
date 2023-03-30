@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.10](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.9...v0.9.10) (2023-03-30)
+
+
+### Bug Fixes
+
+* support put/delete api ([#59](https://github.com/zextras/carbonio-admin-ui/issues/59)) ([300d9cc](https://github.com/zextras/carbonio-admin-ui/commit/300d9cc5cc0f29caa190189571c0baf0235855a5))
+
 ### [0.9.9](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.8...v0.9.9) (2023-03-14)
 
 ### [0.9.8](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.7...v0.9.8) (2023-03-02)
