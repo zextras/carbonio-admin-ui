@@ -87,5 +87,15 @@ module.exports = (conf, pkg, options, mode) => {
 		]
 	};
 	conf.externals = {};
+	conf.module.rules = [
+		...conf.module.rules,
+		{
+			test: /\.(woff(2)?|ttf|eot)$/,
+			type: 'asset/resource',
+			generator: {
+				filename: './files/[name][ext]'
+			}
+		}
+	];
 	return conf;
 };
