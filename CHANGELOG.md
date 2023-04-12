@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.11](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.10...v0.9.11) (2023-04-12)
+
+
+### Bug Fixes
+
+* load local copy of font instead of external call ([#63](https://github.com/zextras/carbonio-admin-ui/issues/63)) ([74570ed](https://github.com/zextras/carbonio-admin-ui/commit/74570ed2bfcd010c24c5de257e11fe966b7e2a5d))
+
 ### [0.9.10](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.9...v0.9.10) (2023-03-30)
 
 
