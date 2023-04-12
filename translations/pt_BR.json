@@ -14,7 +14,7 @@
                 "auto_reply_message_external": "Mensagem de Resposta Automática para Remetentes Externos:",
                 "create_appointment": "Criar Compromisso:",
                 "end_time": "Hota Final:",
-                "external_senders": "Remetentes Externos",
+                "external_senders": "Remetentes externos",
                 "out_of_office_status": "Status Fora do Escritório:",
                 "send_auto_reply_period": "Enviar respostas automáticas durante o seguinte período:",
                 "start_time": "Hora de Início:"
@@ -24,15 +24,15 @@
             },
             "do_not_send_auto_replies": "Não enviar respostas automáticas",
             "external_senders": {
-                "do_not_send_to_external": "Não enviar mensagens de resposta automática a um remetente externo",
-                "send_standard_auto_reply": "Enviar mensagem de resposta automática padrão",
+                "do_not_send_to_external": "Não enviar a remetentes externos",
+                "send_standard_auto_reply": "Enviar mensagem padrão",
                 "send_custom_in_organisation": "Enviar mensagem personalizada a quem não faz parte da minha organização",
-                "send_custom_not_in_organisation": "Enviar mensagem personalizada a quem não faz parte da minha organização ou agenda de endereços"
+                "send_custom_not_in_organisation": "Enviar mensagem personalizada a quem não faz parte da minha organização ou agenda de contatos"
             },
             "headings": {
                 "create_appointment": "Compromisso do Calendário",
                 "settings_label": "Configurações para Fora do Escritório",
-                "time_period": "Período de Tempo"
+                "time_period": "Período"
             },
             "send_auto_replies": "Enviar respostas automáticas"
         },
@@ -66,9 +66,9 @@
         "clear": "Limpar caixa de pesquisa",
         "idle_input_label": "Buscar em {{module}}",
         "start": "Iniciar busca",
-        "already_clear": "Caixa de pesquisa está vazia",
-        "type_to_start_search": "Digite algumas palavras-chave para fazer uma pesquisa",
-        "type_or_choose_suggestion": "Digite ou escolhe algumas palavras-chave para iniciar uma busca",
+        "already_clear": "A caixa de pesquisa está vazia",
+        "type_to_start_search": "Digite as palavras-chave para iniciar a busca",
+        "type_or_choose_suggestion": "Digite as palavras-chave para iniciar a busca",
         "unable_to_parse_query": "Não foi possível completar a busca, limpe-a e tente novamente"
     },
     "message": {
@@ -147,9 +147,9 @@
         "button": "Botão",
         "click_to_copy": "Clique para copiar",
         "delete_after_download": "Excluir mensagens do servidor após o download",
-        "save_both_folders": "Salvar uma cópia das mensagens enviadas na minha pasta Enviadas e na dos delegados",
-        "settings_sent_messages": "Configurações das mensagens Enviadas",
-        "unsaved_changes_line2": "Todas as suas alterações não salvas serão perdidas",
+        "save_both_folders": "Salvar uma cópia das mensagens na minha pasta Enviadas e na dos delegados",
+        "settings_sent_messages": "Configurações de mensagens enviadas",
+        "unsaved_changes_line2": "Alterações não salvas serão perdidas",
         "use_personas_line2": "Por exemplo, se você enviar e-mails em uma função específica no trabalho, crie uma Persona para isso.",
         "documentation": "Documentação",
         "dont_save": "Não salvar cópia das mensagens enviadas",
@@ -164,10 +164,10 @@
         "recovery_email": "E-mail de recuperação",
         "save_and_leave": "Salvar e sair",
         "save_delegate_folder": "Salvar uma cópia das mensagens enviadas na pasta Enviadas do delegado",
-        "save_to_my_sent_folder": "Salvar uma cópia das mensagens enviadas na minha pasta Enviadas",
-        "set_reply_to_field": "Definir o campo \"Responder para\" do e-mail:",
+        "save_to_my_sent_folder": "Salvar uma cópia das mensagens na minha pasta Enviadas",
+        "set_reply_to_field": "Habilitar o campo \"Responder a\" nas mensagens:",
         "test_settings": "Configurações de teste",
-        "unsaved_changes": "Você tem alterações que não foram salvas",
+        "unsaved_changes": "As alterações não foram salvas",
         "unsaved_changes_line1": "Tem certeza que deseja sair desta página sem salvar?",
         "update_view": "Atualizar visualização",
         "use_persona": "Usar esta Persona",
@@ -422,10 +422,10 @@
         "guadalajara_mexico_city_monterrey ": "{{value}} Guadalajara, Cidade do México, Monterrey "
     },
     "locale": {
-        "label_chinese": "Chinês (China) - {{value}}",
+        "label_chinese": "Chinese (China) - {{value}}",
         "label_hindi": "Hindi - {{value}}",
-        "label_italian": "Italiano - {{value}}",
-        "label_turkish": "Turco - {{value}}",
+        "label_italian": "Italian - {{value}}",
+        "label_turkish": "Turkish - {{value}}",
         "English": "Inglês",
         "chinese_china": "Chinês (China)",
         "dutch": "Holandês",
@@ -433,25 +433,25 @@
         "hindi": "Hindi",
         "italian": "Italiano",
         "japanese": "Japonês",
-        "label_dutch": "Holandês - {{value}}",
-        "label_english": "Inglês - {{value}}",
-        "label_german": "Alemão - {{value}}",
-        "label_japanese": "Japonês - {{value}}",
-        "label_portuguese": "Português - {{value}}",
-        "label_portuguese_brazil": "Português - {{value}}",
-        "label_romanian": "Romeno - {{value}}",
-        "label_russian": "Russo - {{value}}",
-        "label_spanish": "Espanhol - {{value}}",
-        "label_thai": "Tailandês - {{value}}",
+        "label_dutch": "Dutch - {{value}}",
+        "label_english": "English - {{value}}",
+        "label_german": "German - {{value}}",
+        "label_japanese": "Japanese - {{value}}",
+        "label_portuguese": "Portuguese - {{value}}",
+        "label_portuguese_brazil": "Portuguese - {{value}}",
+        "label_romanian": "Romanian - {{value}}",
+        "label_russian": "Russian - {{value}}",
+        "label_spanish": "Spanish - {{value}}",
+        "label_thai": "Thai - {{value}}",
         "portuguese": "Português",
-        "portuguese_brazil": "Português (Brasil)",
+        "portuguese_brazil": "Portuguese (Brasil)",
         "romanian": "Romeno",
         "russian": "Russo",
         "spanish": "Espanhol",
         "thai": "Tailandês",
         "turkish": "Turco",
         "french": "Francês",
-        "label_french": "Francês - {{value}}",
+        "label_french": "French - {{value}}",
         "vietnamese": "Vietnamita",
         "polish": "Polonês"
     },
@@ -489,7 +489,7 @@
         "permanent_delete_body": "Se você excluir permanentemente esta Persona, não poderá recuperá-la. Continuar?"
     },
     "share": {
-        "is_contained_in": "Está contido em"
+        "is_contained_in": "Na pasta"
     },
     "passwords_recovery_settings": {
         "title": "Configurações da Conta para Recuperação de Senha"
