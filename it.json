@@ -480,7 +480,7 @@
         "send_feedback": "CONDIVIDI LA TUA OPINIONE CON NOI",
         "goto_privacy": "Vai a Privacy",
         "count_user_in_helper_button_text": "SÌ, TIENIMI IN CONSIDERAZIONE!",
-        "write_here_placeholder_text": "Ciao! Inizia a scrivere il tuo feedback:)\nIl messaggio verrà inviato anonimamente, facci sapere cosa ti è piaciuto e cosa no.",
+        "write_here_placeholder_text": "Ciao! Inizia a scrivere il tuo feedback:)\n\n\nIl messaggio verrà inviato anonimamente, facci sapere\n cosa ti è piaciuto e cosa no",
         "enable_feedback": "Abilita Feedback",
         "enable_privacy_setting": "Abilita le impostazioni privacy per inviare i feedback"
     },
