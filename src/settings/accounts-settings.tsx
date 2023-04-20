@@ -210,7 +210,7 @@ export const AccountsSettings = ({ identitiesDefault, t }: AccountSettingsProps)
 			identitiesDefault.length +
 				(mods.identity?.createList?.length || 0) -
 				(mods?.identity?.deleteList?.length || 0) >
-			maxIdentities
+			+maxIdentities
 		) {
 			createSnackbar({
 				key: `new`,

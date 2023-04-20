@@ -217,7 +217,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps): JSX.Element => 
 		}
 	}, [darkReaderState]);
 
-	const aggregatedExtensions = useCallback<NonNullable<typeof UIThemeProviderProps['extension']>>(
+	const aggregatedExtensions = useCallback<NonNullable<(typeof UIThemeProviderProps)['extension']>>(
 		(theme: any) =>
 			reduce(
 				extensions,
