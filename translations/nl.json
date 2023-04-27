@@ -76,7 +76,7 @@
             "settings_saved": "Bewerkingen correct opgeslagen",
             "identities_quota_exceeded": "De identiteit kon niet worden aangemaakt omdat u uw identiteitsquota heeft overschreden"
         },
-        "reload": "\tWilt u de applicatie nu opnieuw laden om de nieuwe taal te tonen?\n(Anders zal de nieuwe taal verschijnen wanneer u de volgende keer inlogt)."
+        "reload": "\tWilt u de applicatie nu opnieuw laden om de nieuwe taal te tonen?\n(Anders zal de nieuwe taal verschijnen wanneer u de volgende keer inlogt.)"
     },
     "module": {
         "app": {
