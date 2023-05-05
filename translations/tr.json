@@ -183,7 +183,25 @@
         "save_both_folders": "Gönderilen mesajların bir kopyasını Gönderilenler klasörüme ve yardımcımın klasörüne kaydet",
         "use_personas_line1": "E-posta mesajları gönderirken bir çok ayarı kolayca değiştirmek için kişilik özelliğini kullanabilirsiniz.",
         "button": "Buton",
-        "click_to_copy": "Kopyalamak için tıklayın"
+        "click_to_copy": "Kopyalamak için tıklayın",
+        "total_servers": "Toplam Sunucular",
+        "total_domains": "Toplam Alan adları",
+        "total_accounts": "Toplam Hesaplar",
+        "thank_you_for_feedback": "Görüşlerinizi paylaştığınız için teşekkürler!",
+        "post_feedback_send_helper_text_line_3": "sizin de görüşlerinizi almak isteriz!",
+        "post_feedback_send_helper_text_line_2": "Carbonio'u geliştirmek için sürekli testler yapıyoruz,",
+        "feedback_request_data": "Görüşler için veri isteği:",
+        "feedback_helper_text": "Katılmak ister misiniz?",
+        "enable_all_permission_to_send_feedback_to_zextras": "Görüşlerinizi iletmek için gizlilik bölümünde şu izinleri onaylayın",
+        "enable_all__following_permission_to_send_feedback_to_zextras": "Görüşlerinizi iletmek için gizlilik bölümünde şu izinleri onaylayın",
+        "detailsfeedback__collected_msg": "Görüşlerinizi ilettiğiniz mesajınızla birlikte şu detaylar ekleniyor",
+        "details_feedback__collected_msg": "Görüşlerinizi ilettiğiniz mesajınızla birlikte şu detaylar ekleniyor",
+        "carbonio_community_edition": "Carbonio Topluluk Sürümü",
+        "carbonio_admin_ui_version": "Carbonio AdminUI Veriyonu",
+        "allow_permission_to_send_feedback_to_zextras": "Görüşlerinizi iletmek için gizlilik bölümünde tüm izinleri onaylayın",
+        "allow_permission_to_send_data_to_zextras": "Hata verisini Zextras'a bütünüyle iletmek için Gizlilik bölümünde tüm izinleri onaylayın",
+        "allow_all_permission_to_send_feedback_to_zextras": "Görüşlerinizi iletmek için gizlilik bölümünde tüm izinleri onaylayın",
+        "carbonio_backend_version": "Carbonio Anasunucu Versiyonu"
     },
     "locale": {
         "label_italian": "Italian - {{value}}",
@@ -458,7 +476,13 @@
         "success": "Geri bildirim için teşekkürler",
         "user_interface": "Kullanıcı arayüzü",
         "write_here": "Geri bildiriminizi buraya yazın",
-        "explanation": "Zextras Sunucu ile yeni deneyiminiz hakkında lütfen bize geri bildirim gönderin. Ürünümüzü geliştirmek için görüşleriniz bizim için önemli, o nedenle düşüncelerinizi lütfen bizimle paylaşın."
+        "explanation": "Zextras Sunucu ile yeni deneyiminiz hakkında lütfen bize geri bildirim gönderin. Ürünümüzü geliştirmek için görüşleriniz bizim için önemli, o nedenle düşüncelerinizi lütfen bizimle paylaşın.",
+        "write_here_placeholder_text": "Görüşlerinizi yazmaya başlayın :) \n\n\nKişisel bilgi gönderilmeyeceği için neleri iyi veya kötü yaptığımızı \nlütfen açıkça bizlerle paylaşın",
+        "send_feedback": "GÖRÜŞLERİNİZİ BİZİMLE PAYLAŞIN",
+        "goto_privacy": "Gizlilik Ayarlarına git",
+        "count_user_in_helper_button_text": "EVET, KATILMAK İSTİYORUM!",
+        "enable_feedback": "Görüş bildirim açık",
+        "enable_privacy_setting": "Görüşleri göndermek için gizlilik ayarları aç"
     },
     "messages": {
         "permanent_delete_body": "Bu Kişiliği kalıcı olarak silerseniz geri alamazsınız. Devam edilsin mi?",
@@ -476,5 +500,10 @@
     "labels": {
         "help_center": "Yardım Merkezi"
     },
-    "create": "Oluştur"
+    "create": "Oluştur",
+    "privacy": {
+        "send_full_error_data_to_zextras": "Tüm hata verisini Zextras'a gönder",
+        "allow_live_survey_feedbacks": "Canlı anket görüşlere izin ver",
+        "allow_data_analytics": "Veri analize izin ver"
+    }
 }

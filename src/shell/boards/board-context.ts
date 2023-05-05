@@ -13,13 +13,13 @@ const BoardValueContext = createContext({
 	minimized: false
 });
 const BoardSetterContext = createContext({
-	addBoard: (url, title, context) => undefined,
-	removeBoard: (key) => undefined,
+	addBoard: (url: string, title: unknown, context: unknown) => undefined,
+	removeBoard: (key: string) => undefined,
 	removeCurrentBoard: () => undefined,
 	removeAllBoards: () => undefined,
-	updateBoard: (key, url, title) => undefined,
-	setCurrentBoard: (key) => undefined,
-	updateCurrentBoard: (url, title) => undefined,
+	updateBoard: (key: string, url: string, title: string) => undefined,
+	setCurrentBoard: (key: string) => undefined,
+	updateCurrentBoard: (url: string, title: string) => undefined,
 	toggleLargeView: () => undefined,
 	toggleMinimized: () => undefined
 });

@@ -86,3 +86,18 @@ export const CARBONIO_HELP_ADVANCED_URL =
 export const DARK_READER_VALUES = ['auto', 'enabled', 'disabled'] as const;
 export const LOGIN_V3_CONFIG_PATH = '/zx/login/v3/config';
 export const DARK_READER_PROP_KEY = 'zappDarkreaderMode';
+export const CARBONIO_LOGO_URL = 'https://www.zextras.com';
+export const LOCAL_STORAGE_LAST_PRIMARY_KEY = 'config';
+export const SCALING_OPTIONS = [
+	{ value: 75, label: 'xs' },
+	{ value: 87.5, label: 's' },
+	{ value: 100, label: 'm' },
+	{ value: 112.5, label: 'l' },
+	{ value: 125, label: 'xl' }
+] as const;
+export const BASE_FONT_SIZE = 100;
+export const SCALING_LIMIT = {
+	WIDTH: 1400,
+	HEIGHT: 900,
+	DPR: 2 // device pixel ratio
+} as const;

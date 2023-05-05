@@ -175,7 +175,25 @@
         "settings_sent_messages": "การตั้งค่าสำหรับข้อความส่งออก",
         "test_settings": "ตั้งค่าการทดสอบ",
         "unsaved_changes_line2": "การเปลี่ยนแปลงที่ไม่ได้บันทึกทั้งหมดของคุณจะสูญหายไป",
-        "when_composing": "เมื่อเขียน, ตอบกลับ, หรือส่งต่อข้อความในโฟลเดอร์:"
+        "when_composing": "เมื่อเขียน, ตอบกลับ, หรือส่งต่อข้อความในโฟลเดอร์:",
+        "total_servers": "เซิร์ฟเวอร์ทั้งหมด",
+        "total_domains": "โดเมนทั้งหมด",
+        "total_accounts": "บัญชีทั้งหมด",
+        "thank_you_for_feedback": "ขอบคุณสำหรับความคิดเห็นของคุณ!",
+        "post_feedback_send_helper_text_line_3": "คุณสามารถช่วยเราได้ตอนนี้!",
+        "post_feedback_send_helper_text_line_2": "เพื่อปรับปรุง Carbonio เราจึงดำเนินการทดสอบอย่างต่อเนื่อง",
+        "feedback_request_data": "ขอข้อมูลสำหรับข้อเสนอแนะ:",
+        "feedback_helper_text": "คุณต้องการที่จะมีส่วนร่วมหรือไม่?",
+        "enable_all_permission_to_send_feedback_to_zextras": "เปิดใช้งานการอนุญาตต่อไปนี้ทั้งหมดจากในส่วนความเป็นส่วนตัวเพื่อส่งข้อเสนอแนะ",
+        "enable_all__following_permission_to_send_feedback_to_zextras": "เปิดใช้งานการอนุญาตต่อไปนี้ทั้งหมดจากในส่วนความเป็นส่วนตัวเพื่อส่งข้อเสนอแนะ",
+        "detailsfeedback__collected_msg": "เมื่อส่งข้อความฟีดแบ็ค จะมีการรวบรวมรายละเอียดต่อไปนี้ด้วย",
+        "details_feedback__collected_msg": "เมื่อส่งข้อความฟีดแบ็ค จะมีการรวบรวมรายละเอียดต่อไปนี้ด้วย",
+        "carbonio_community_edition": "Carbonio Community Edition",
+        "carbonio_admin_ui_version": "เวอร์ชัน Carbonio AdminUI",
+        "allow_permission_to_send_feedback_to_zextras": "อนุญาตสิทธิ์ต่อไปนี้ทั้งหมดจากในส่วนความเป็นส่วนตัวเพื่อส่งข้อเสนอแนะ",
+        "allow_permission_to_send_data_to_zextras": "อนุญาตสิทธิ์ต่อไปนี้ทั้งหมดจากในส่วนความเป็นส่วนตัวเพื่อส่งข้อมูลข้อผิดพลาดทั้งหมดไปยัง Zextras",
+        "allow_all_permission_to_send_feedback_to_zextras": "อนุญาตสิทธิ์ต่อไปนี้ทั้งหมดจากในส่วนความเป็นส่วนตัวเพื่อส่งข้อเสนอแนะ",
+        "carbonio_backend_version": "เวอร์ชั่น Carbonio Backend"
     },
     "board": {
         "close_tab": "ปิดแท็บ",
@@ -465,7 +483,13 @@
         "success": "ขอบคุณสำหรับความคิดเห็นของคุณ",
         "user_interface": "อินเทอร์เฟซผู้ใช้",
         "write_here": "เขียนความคิดเห็นของคุณที่นี่",
-        "explanation": "โปรดแสดงความคิดเห็นของคุณเกี่ยวกับประสบการณ์ใหม่ที่มีกับ Zextras Server ความคิดเห็นของคุณมีความหมายอย่างยิ่งสำหรับการปรับปรุงผลิตภัณฑ์ของเรา โปรดแจ้งให้เราทราบถึงความคิดเห็นของคุณ"
+        "explanation": "โปรดแสดงความคิดเห็นของคุณเกี่ยวกับประสบการณ์ใหม่ที่มีกับ Zextras Server ความคิดเห็นของคุณมีความหมายอย่างยิ่งสำหรับการปรับปรุงผลิตภัณฑ์ของเรา โปรดแจ้งให้เราทราบถึงความคิดเห็นของคุณ",
+        "write_here_placeholder_text": "เริ่มเขียนความคิดเห็นของคุณที่นี่ :)\n\n\nข้อความนี้จะถูกส่งโดยไม่ระบุชื่อ ดังนั้น คุณสามารถแจ้งให้เราทราบว่าสิ่งใดดี\nหรือไม่ดีได้โดยไม่ต้องลังเล",
+        "send_feedback": "แบ่งปันความคิดเห็นของคุณกับเรา",
+        "goto_privacy": "ไปที่ความเป็นส่วนตัว",
+        "count_user_in_helper_button_text": "ใช่ ฉันร่วมด้วย!",
+        "enable_feedback": "เปิดใช้งานความคิดเห็น",
+        "enable_privacy_setting": "เปิดใช้งานการตั้งค่าความเป็นส่วนตัวเพื่อส่งความคิดเห็น"
     },
     "passwords_recovery_settings": {
         "title": "การตั้งค่าบัญชีการกู้คืนรหัสผ่าน"
@@ -476,5 +500,10 @@
     "create": "สร้าง",
     "labels": {
         "help_center": "ศูนย์ความช่วยเหลือ"
+    },
+    "privacy": {
+        "send_full_error_data_to_zextras": "ส่งข้อมูลข้อผิดพลาดแบบเต็มไปยัง Zextras",
+        "allow_data_analytics": "อนุญาตการวิเคราะห์ข้อมูล",
+        "allow_live_survey_feedbacks": "อนุญาตข้อเสนอแนะของการสำรวจแบบไลฟ์"
     }
 }

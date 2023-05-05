@@ -26,10 +26,14 @@ import { openLink } from '../utility-bar/utils';
 import { useUserAccount, useUserSettings } from '../store/account';
 import { getDomainInformation } from '../network/get-domain-information';
 import { useAdvanceStore, useIsAdvanced } from '../store/advance';
-import { CARBONIO_HELP_ADMIN_URL, CARBONIO_HELP_ADVANCED_URL } from '../constants';
+import {
+	CARBONIO_HELP_ADMIN_URL,
+	CARBONIO_HELP_ADVANCED_URL,
+	CARBONIO_LOGO_URL
+} from '../constants';
 import { useDomainInformationStore } from '../store/domain-information';
 import { useLoginConfigStore } from '../store/login/store';
-import { useDarkReaderResultValue } from '../custom-hooks/useDarkReaderResultValue';
+import { useDarkMode } from '../dark-mode/use-dark-mode';
 
 const CustomImg = styled.img`
 	height: 2rem;
@@ -48,9 +52,9 @@ const ShellHeader: FC<{
 	const isDelegatedAdmin = useUserSettings().attrs?.zimbraIsDelegatedAdminAccount;
 	const userName = useUserAccount()?.name;
 	const isAdvanced = useIsAdvanced();
-	const { carbonioAdminUiAppLogo, carbonioAdminUiDarkAppLogo } = useLoginConfigStore();
-	const darkReaderResultValue = useDarkReaderResultValue();
-	const [darkModeEnabled, setDarkModeEnabled] = useState(false);
+	const { carbonioAdminUiAppLogo, carbonioAdminUiDarkAppLogo, carbonioLogoURL } =
+		useLoginConfigStore();
+	const { darkModeEnabled, darkReaderStatus } = useDarkMode();
 
 	const getDomainDetails = useCallback(
 		(name: any): any => {
@@ -99,18 +103,14 @@ const ShellHeader: FC<{
 		openLink(helpCenterURL);
 	}, [helpCenterURL]);
 
-	useEffect(() => {
-		if (darkReaderResultValue) {
-			setDarkModeEnabled(darkReaderResultValue === 'enabled');
-		}
-	}, [darkReaderResultValue]);
-
 	const logoSrc = useMemo(() => {
 		if (darkModeEnabled) {
 			return carbonioAdminUiDarkAppLogo || carbonioAdminUiAppLogo;
 		}
 		return carbonioAdminUiAppLogo || carbonioAdminUiDarkAppLogo;
 	}, [carbonioAdminUiDarkAppLogo, carbonioAdminUiAppLogo, darkModeEnabled]);
+
+	const logoUrl = useMemo(() => carbonioLogoURL || CARBONIO_LOGO_URL, [carbonioLogoURL]);
 
 	return (
 		<Container
@@ -145,8 +145,10 @@ const ShellHeader: FC<{
 					width="auto"
 				>
 					<Container width="auto" height={32} crossAlignment="flex-start">
-						{darkReaderResultValue && (
-							<>{logoSrc ? <CustomImg src={logoSrc} /> : <Logo height="2rem" />}</>
+						{darkReaderStatus && (
+							<a target="_blank" href={logoUrl} rel="noreferrer">
+								{logoSrc ? <CustomImg src={logoSrc} /> : <Logo height="2rem" />}
+							</a>
 						)}
 					</Container>
 

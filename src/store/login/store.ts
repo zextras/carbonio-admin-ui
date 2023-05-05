@@ -7,10 +7,4 @@
 import create from 'zustand';
 import { LoginConfigStore } from '../../../types/loginConfig';
 
-export const useLoginConfigStore = create<LoginConfigStore>(() => ({
-	carbonioWebUIDarkMode: undefined,
-	carbonioAdminUiAppLogo: undefined,
-	carbonioAdminUiDarkAppLogo: undefined,
-	carbonioAdminUiTitle: undefined,
-	carbonioAdminUiFavicon: undefined
-}));
+export const useLoginConfigStore = create<LoginConfigStore>(() => ({}));

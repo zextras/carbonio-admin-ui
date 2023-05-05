@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import { find, map } from 'lodash';
+import _, { find, map } from 'lodash';
 import { goToLogin } from './go-to-login';
 import {
 	Account,
@@ -338,11 +338,11 @@ export const fetchExternalSoap =
 		apiURL: string,
 		body: Request,
 		api?: string,
-		otherAccount?: string
+		method?: string
 	): Promise<Response> => {
 		const { zimbraVersion, account } = useAccountStore.getState();
 		const { context } = useNetworkStore.getState();
-		let bodyItem: any = {};
+		let bodyItem;
 		if (api) {
 			bodyItem = {
 				[`${api}`]: body
@@ -351,15 +351,22 @@ export const fetchExternalSoap =
 			bodyItem = body;
 		}
 		return fetch(`${apiURL}`, {
-			method: 'POST',
+			method: method || 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({
-				...bodyItem
-			})
+			body: _.isArray(bodyItem)
+				? JSON.stringify(bodyItem)
+				: JSON.stringify({
+						...bodyItem
+				  })
 		}) // TODO proper error handling
-			.then((res) => (res?.headers.get('content-length') === null ? res : res?.json()))
+			.then((res) =>
+				res?.headers?.get('content-length') === null &&
+				!res?.headers?.get('content-type')?.includes('application/json')
+					? res
+					: res?.json()
+			)
 			.then((res: any) => handleSoapResponse(res))
 			.catch((e) => {
 				report(app)(e);

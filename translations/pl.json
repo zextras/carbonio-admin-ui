@@ -105,7 +105,7 @@
         "delete": "Usuń",
         "delete_permanently": "Trwale usuń",
         "filter_folders": "Filtruj foldery",
-        "folder": "Folder: Nowe Konto spoza mojej domeny 3",
+        "folder": "Folder: Nowe konto spoza mojej domeny 3",
         "folders": "Foldery",
         "from_name": "Od: \"Imię\"",
         "go_back": "Powrót",
@@ -128,8 +128,8 @@
         "save_delegate_folder": "Zapisuj kopię wysyłanych wiadomości do folderu wysłane pełnomocnika",
         "save_to_my_sent_folder": "Zapisuj kopię wysyłanych wiadomości do mojego folderu wysłane",
         "secondary": "Drugorzędny",
-        "set_reply_to_field": "Pole \"Odpowiedz na ten adres\" w wiadomości e-mail",
-        "settings_sent_messages": "Ustawienia wysyłanych wiadomości",
+        "set_reply_to_field": "Ustaw pole \"Odpowiedź na ten adres\" w wiadomości e-mail na:",
+        "settings_sent_messages": "Ustawienia wysłanych wiadomości",
         "test_settings": "Ustawienia testowe",
         "update_view": "Zaktualizuj widok",
         "use_persona": "Użyj tej persony",
@@ -159,7 +159,25 @@
         "use_personas_line2": "Na przykład, jeśli wysyłasz e-maile pełniąc określoną rolę w pracy, stwórz pod to personę.",
         "when_composing": "Podczas tworzenia, odpowiadania na i przekazywania dalej wiadomości w folderze (folderach):",
         "button": "Przycisk",
-        "click_to_copy": "Kliknij, aby skopiować"
+        "click_to_copy": "Kliknij, aby skopiować",
+        "detailsfeedback__collected_msg": "Następujące szczegóły są zbierane wraz z opinią",
+        "details_feedback__collected_msg": "Następujące szczegóły są zbierane wraz z opinią",
+        "carbonio_community_edition": "Carbonio CE",
+        "carbonio_admin_ui_version": "Wersja Carbonio Admin UI",
+        "allow_all_permission_to_send_feedback_to_zextras": "Aby wysłać opinię, udziel tych uprawnień w sekcji prywatność",
+        "allow_permission_to_send_feedback_to_zextras": "Aby wysłać opinię, udziel tych uprawnień w sekcji prywatność",
+        "allow_permission_to_send_data_to_zextras": "Aby wysłać pełne dane o błędzie do Zextras, udziel tych uprawnień w sekcji prywatność",
+        "total_servers": "Serwerów w sumie",
+        "total_domains": "Domen w sumie",
+        "total_accounts": "Kont w sumie",
+        "thank_you_for_feedback": "Dziękujemy za opinię!",
+        "post_feedback_send_helper_text_line_3": "być może jesteś głosem, którego akurat potrzebujemy!",
+        "post_feedback_send_helper_text_line_2": "Aby ulepszyć Carbonio, ciągle przeprowadzamy sesje testowania,",
+        "feedback_request_data": "Poproś o opinię na temat tych danych:",
+        "feedback_helper_text": "Chciałbyś wziąć udział?",
+        "enable_all_permission_to_send_feedback_to_zextras": "Aby wysłać opinię, udziel tych uprawnień w sekcji prywatność",
+        "enable_all__following_permission_to_send_feedback_to_zextras": "Zezwól, aby wszystkie następujące uprawnienia z sekcji prywatność wysyłały informacje zwrotne",
+        "carbonio_backend_version": "Wersja Carbonio Backend"
     },
     "board": {
         "close_tab": "Zamknij kartę",
@@ -367,7 +385,7 @@
         "azores": "{{value}} Azory",
         "baja_california": "{{value}} Baja Kalifornia",
         "baku": "{{value}} Baku",
-        "beijing_chongqing_hong_kong_urumqi": "{{value}} Pekin, Chongquing, Hong Kong, Urumczi",
+        "beijing_chongqing_hong_kong_urumqi": "{{value}} Pekin, Chongqing, Hong Kong, Urumczi",
         "beirut": "{{value}} Bejrut",
         "belgrade_bratislava_budapest_ljubljana_prague": "{{value}} Belgrad, Bratysława, Budapeszt, Ljubljana, Praga",
         "brasilia": "{{value}} Brazylia",
@@ -450,7 +468,7 @@
         "select_a_module": "Wybierz moduł",
         "select_a_topic": "Wybierz temat",
         "send": "WYŚLIJ",
-        "success": "Dziękujemy za udzielenie swojego zdania",
+        "success": "Dziękujemy, że podzieliłeś się z nami swoim zdaniem",
         "user_interface": "Interfejs użytkownika",
         "missing_features": "Brakujące funkcje",
         "other": "Inne",
@@ -458,7 +476,13 @@
         "write_here": "Tutaj napisz swoją opinię",
         "behaviors": "Zachowania programu",
         "explanation": "Podziel się z nami swoją opinią o Twoim nowym doświadczeniu z serwerem Zextras. Twoje zdanie wiele dla nas znaczy i pozwala nam rozwijać produkt.",
-        "hint": "Pamiętaj: określ temat używając modułów i wybierając obszar macro przed napisaniem oceny. Dziękujemy za pomoc."
+        "hint": "Pamiętaj: określ temat używając modułów i wybierając obszar macro przed napisaniem oceny. Dziękujemy za pomoc.",
+        "write_here_placeholder_text": "Hej! Zacznij pisać swoją opinię tutaj :) \n\n\nZostanie ona wysłana anonimowo, tak byśmy wiedzieli co robimy dobrze \na co źle tak objektywnie jak to możliwe",
+        "send_feedback": "PODZIEL SIĘ Z NAMI TWOJĄ OPINIĄ",
+        "goto_privacy": "Idź do prywatności",
+        "count_user_in_helper_button_text": "TAK, WCHODZĘ W TO!",
+        "enable_privacy_setting": "Włącz ustawienia prywatności, aby wysyłać opinie",
+        "enable_feedback": "Zezwól na wysyłanie opinii"
     },
     "messages": {
         "permanent_delete_body": "Jeśli trwale usuniesz tę personę, nie będziesz w stanie jej już odzyskać. Kontynuować?",
@@ -476,5 +500,10 @@
     "labels": {
         "help_center": "Pomoc"
     },
-    "create": "Stwórz"
+    "create": "Stwórz",
+    "privacy": {
+        "allow_live_survey_feedbacks": "Zezwalaj na opinie z ankiet",
+        "send_full_error_data_to_zextras": "Wysyłaj pełne dane o błędach do Zextras",
+        "allow_data_analytics": "Zezwalaj na analitykę danych"
+    }
 }

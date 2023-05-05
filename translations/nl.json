@@ -76,7 +76,7 @@
             "settings_saved": "Bewerkingen correct opgeslagen",
             "identities_quota_exceeded": "De identiteit kon niet worden aangemaakt omdat u uw identiteitsquota heeft overschreden"
         },
-        "reload": "\tWilt u de applicatie nu opnieuw laden om de nieuwe taal te tonen?\n(Anders zal de nieuwe taal verschijnen wanneer u de volgende keer inlogt)."
+        "reload": "\tWilt u de applicatie nu opnieuw laden om de nieuwe taal te tonen?\n(Anders zal de nieuwe taal verschijnen wanneer u de volgende keer inlogt.)"
     },
     "module": {
         "app": {
@@ -175,7 +175,25 @@
         "use_persona": "Deze persona gebruiken",
         "use_personas_line2": "Als u bijvoorbeeld op het werk soms e-mails verstuurt in een bepaalde rol, maak daar dan een persona voor aan.",
         "when_composing": "Bij het samenstellen, beantwoorden of doorsturen van berichten in map(pen):",
-        "when_replying": "Bij het beantwoorden of doorsturen van berichten die zijn verzonden naar:"
+        "when_replying": "Bij het beantwoorden of doorsturen van berichten die zijn verzonden naar:",
+        "total_servers": "Totaal Servers",
+        "total_domains": "Totaal Domeinen",
+        "total_accounts": "Totaal Accounts",
+        "thank_you_for_feedback": "Dank u voor uw feedback!",
+        "post_feedback_send_helper_text_line_3": "u kunt de stem zijn die we nu graag willen horen!",
+        "post_feedback_send_helper_text_line_2": "Om Carbonio te verbeteren voeren we voortdurend testsessies uit,",
+        "feedback_request_data": "Vraag gegevens voor feedback:",
+        "feedback_helper_text": "Wilt u meedoen?",
+        "enable_all_permission_to_send_feedback_to_zextras": "Sta alle volgende toestemmingen uit de privacy-sectie toe om feedback te sturen",
+        "enable_all__following_permission_to_send_feedback_to_zextras": "Sta alle volgende toestemmingen uit de privacy-sectie toe om feedback te sturen",
+        "detailsfeedback__collected_msg": "Bij het geven van een feedbackbericht worden ook de volgende gegevens verzameld",
+        "details_feedback__collected_msg": "Bij het geven van een feedbackbericht worden ook de volgende gegevens verzameld",
+        "carbonio_community_edition": "Carbonio Community Edition",
+        "carbonio_admin_ui_version": "Carbonio AdminUI Versie",
+        "allow_permission_to_send_feedback_to_zextras": "Sta alle volgende toestemmingen uit de privacy-sectie toe om feedback te sturen",
+        "allow_permission_to_send_data_to_zextras": "Sta alle volgende toestemmingen uit de privacysectie toe om volledige foutgegevens naar Zextras te sturen",
+        "allow_all_permission_to_send_feedback_to_zextras": "Sta alle volgende toestemmingen uit de privacy-sectie toe om feedback te sturen",
+        "carbonio_backend_version": "Carbonio Backend Versie"
     },
     "locale": {
         "label_russian": "Russisch - {{value}}",
@@ -458,7 +476,13 @@
         "success": "Dank u voor uw feedback",
         "write_here": "Schrijf hier uw feedback",
         "error": "Er is een fout opgetreden bij het indienen van uw feedback",
-        "explanation": "Geef ons uw feedback over uw nieuwe ervaring met Zextras Server. Uw mening is zinvol voor ons om ons product te verbeteren. Laat ons weten wat u denkt."
+        "explanation": "Geef ons uw feedback over uw nieuwe ervaring met Zextras Server. Uw mening is zinvol voor ons om ons product te verbeteren. Laat ons weten wat u denkt.",
+        "write_here_placeholder_text": "Hey! Schrijf hier uw feedback :)\n\n\nDeze zal anoniem verstuurd worden dus laat ons weten wat we goed\n of fout hebben gedaan zonder filter",
+        "send_feedback": "DEEK UW FEEDBACK MET ONS",
+        "goto_privacy": "Ga naar Privacy",
+        "count_user_in_helper_button_text": "JA, IK DOE MEE!",
+        "enable_feedback": "Feedback mogelijk maken",
+        "enable_privacy_setting": "Privacy-instelling inschakelen om feedback te sturen"
     },
     "messages": {
         "permanent_delete_title": "Weet u zeker dat u dit element permanent wilt verwijderen?",
@@ -476,5 +500,10 @@
     "create": "Creëren",
     "labels": {
         "help_center": "Helpcentrum"
+    },
+    "privacy": {
+        "send_full_error_data_to_zextras": "Stuur volledige foutgegevens naar Zextras",
+        "allow_data_analytics": "Data-analyse mogelijk maken",
+        "allow_live_survey_feedbacks": "Live feedback van enquêtes toestaan"
     }
 }

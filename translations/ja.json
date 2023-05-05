@@ -175,7 +175,25 @@
         "address": "住所",
         "go_back": "戻る",
         "save": "保存する",
-        "secondary": "セカンダリー"
+        "secondary": "セカンダリー",
+        "total_servers": "総サーバー数",
+        "total_accounts": "総アカウント数",
+        "total_domains": "総ドメイン数",
+        "thank_you_for_feedback": "フィードバックをお寄せいただきありがとうございます！",
+        "post_feedback_send_helper_text_line_3": "あなたからのご意見をお待ちしています！",
+        "post_feedback_send_helper_text_line_2": "Carbonioを改善するために、継続的なテストセッションを実行しています",
+        "feedback_request_data": "フィードバックのためのリクエストデータ:",
+        "feedback_helper_text": "参加しますか？",
+        "enable_all_permission_to_send_feedback_to_zextras": "フィードバックを送信するには、プライバシー欄から以下の権限をすべて有効にしてください",
+        "enable_all__following_permission_to_send_feedback_to_zextras": "フィードバックを送信するには、プライバシー欄から以下の権限をすべて有効にしてください",
+        "detailsfeedback__collected_msg": "フィードバックメッセージを送信する際、次の詳細も収集されます",
+        "details_feedback__collected_msg": "フィードバックメッセージを送信する際、次の詳細も収集されます",
+        "carbonio_community_edition": "Carbonioコミュニティ版",
+        "carbonio_admin_ui_version": "Carbonio AdminUIバージョン",
+        "allow_permission_to_send_feedback_to_zextras": "フィードバックを送信するには、プライバシー欄から以下の権限をすべて許可してください",
+        "allow_permission_to_send_data_to_zextras": "プライバシー 欄の以下の権限をすべて許可して、完全なエラー データをZextrasに送信してください",
+        "allow_all_permission_to_send_feedback_to_zextras": "フィードバックを送信するには、プライバシー欄から以下の権限をすべて許可してください",
+        "carbonio_backend_version": "Carbonioバックエンドバージョン"
     },
     "locale": {
         "label_turkish": "トルコ語- {{value}}",
@@ -256,7 +274,7 @@
         "asia_yekaterinburg": "{{value}}エカテリンブルク（RTZ 4）",
         "asia_yerevan": "{{value}}エレバン",
         "atlantic_azores": "{{value}}アゾレス諸島",
-        "atlantic_cape_verde": "{{value}}カーボベルデ諸島",
+        "atlantic_cape_verde": "{{value}}カーボベルデ諸島。",
         "australia_darwin": "{{value}}ダーウィン",
         "australia_eucla": "{{value}}ユークラ",
         "europe_athens": "{{value}}アテネ、ベイルート、ブカレスト、イスタンブール",
@@ -458,7 +476,13 @@
         "hint": "留意事項: フィードバックを書く前に、モジュールとマクロ領域セレクターを使用してトピックを定義してください。 ご協力いただきありがとうございます。",
         "error": "フィードバックの送信中にエラーが発生しました",
         "explanation": "Zextrasサーバーの新しい体験についてフィードバックをお寄せください。 あなたの意見は私達が製品の改善に役立ちます。 ご意見をお聞かせください。",
-        "other": "その他"
+        "other": "その他",
+        "write_here_placeholder_text": "こんにちは！ ここにフィードバックを記入してください:)\n\n\n匿名で送信されるので、弊社サービスの良い点や悪い点に関する\n感想をお寄せださい",
+        "send_feedback": "フィードバックをお寄せください",
+        "goto_privacy": "プライバシーに移動する",
+        "count_user_in_helper_button_text": "はい、私も頭数に入れてください！",
+        "enable_feedback": "フィードバックを有効にする",
+        "enable_privacy_setting": "プライバシー設定を有効にしてフィードバックを送信する"
     },
     "messages": {
         "permanent_delete_body": "このペルソナを完全に削除すると、復元できなくなります。 継続しますか？",
@@ -476,5 +500,10 @@
     "labels": {
         "help_center": "ヘルプセンター"
     },
-    "create": "作成する"
+    "create": "作成する",
+    "privacy": {
+        "send_full_error_data_to_zextras": "すべてのエラーデータを に送る",
+        "allow_data_analytics": "データ分析を許可する",
+        "allow_live_survey_feedbacks": "ライブアンケートフィードバックを許可する"
+    }
 }

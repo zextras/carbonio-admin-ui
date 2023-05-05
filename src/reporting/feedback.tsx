@@ -33,11 +33,14 @@ import { feedback } from './functions';
 import { useAppList } from '../store/app';
 import Logo from '../../assets/carbonio_feedback.svg';
 import { useAllConfigStore } from '../store/config/store';
+import { SHELL_APP_ID } from '../constants';
 import {
 	getCarbonioBackendVersion,
 	searchDirectoryListCount,
-	getAllServers
+	getAllServers,
+	getXmlSoapFetch
 } from '../network/fetch';
+import { getAllConfig } from '../network/get-all-config';
 import { getIsAdvanced } from '../store/advance';
 
 const CustomIcon = styled(Icon)`
@@ -47,8 +50,8 @@ const CustomIcon = styled(Icon)`
 
 const TextArea = styled.textarea<{ size?: string }>`
 	width: 100%;
-	height: 96%;
-	min-height: 96%;
+	height: 100%;
+	min-height: 3rem;
 	box-sizing: border-box;
 	outline: none;
 	border: none;
@@ -273,15 +276,19 @@ const Feedback: FC = () => {
 		// closeBoard();
 	}, [carbonioBackendVersion, event, totalAccounts, totalDomains, totalServers]);
 
-	// const confirmCountMeInHandler = useCallback(() => {
-	// 	const eventObj: any = { ...event };
-	// 	eventObj.email = acct.displayName;
-	// 	eventObj.name = acct.name;
-	// 	eventObj.comments = `Participate for testing : ${acct.name}`;
-	// 	const feedbackId = feedback(eventObj);
-	// 	setToggleFeedback(true);
-	// 	closeBoard();
-	// }, [event, closeBoard, acct]);
+	const enableFeedback = useCallback(() => {
+		getXmlSoapFetch(SHELL_APP_ID)(
+			'ModifyConfig',
+			`<ModifyConfigRequest xmlns="urn:zimbraAdmin">
+				<a n="carbonioSendAnalytics">TRUE</a>
+				<a n="carbonioAllowFeedback">TRUE</a>
+				<a n="carbonioSendFullErrorStack">TRUE</a>
+			</ModifyConfigRequest>`
+		).then((res: any) => {
+			getAllConfig().then();
+		});
+		// closeBoard();
+	}, []);
 
 	useEffect(() => {
 		dispatch({
@@ -300,11 +307,7 @@ const Feedback: FC = () => {
 		<>
 			{!feedbackPermission ? (
 				<>
-					<Container
-						padding={{ top: 'extralarge' }}
-						mainAlignment="space-between"
-						crossAlignment="flex-start"
-					>
+					<Container mainAlignment="space-between" crossAlignment="flex-start">
 						<Container>
 							<Text overflow="break-word" weight="normal" size="large">
 								<Padding top="small" />
@@ -317,13 +320,13 @@ const Feedback: FC = () => {
 								weight="normal"
 								size="large"
 								width="60%"
-								style={{ whiteSpace: 'pre-line', textAlign: 'center', paddingBottom: '123px' }}
+								style={{ whiteSpace: 'pre-line', textAlign: 'center' }}
 							>
 								<Padding bottom="large" />
 								<Text>
 									{t(
-										'label.enable_all__following_permission_to_send_feedback_to_zextras',
-										`Enable all following permissions from the privacy section to send feedback`
+										'label.enable_following_permission_to_send_feedback_to_zextras',
+										`Enable following permissions to send feedback`
 									)}
 								</Text>
 								<ul>
@@ -348,6 +351,10 @@ const Feedback: FC = () => {
 								</ul>
 
 								<Padding top="large" />
+								<Button
+									label={t('feedback.enable_feedback', 'Enable Feedback')}
+									onClick={enableFeedback}
+								/>
 							</Text>
 						</Container>
 					</Container>
@@ -356,19 +363,9 @@ const Feedback: FC = () => {
 				<></>
 			)}
 			{feedbackPermission && !toggleFeedback && (
-				<Container
-					// padding={{ top: 'extralarge' }}
-					mainAlignment="space-between"
-					crossAlignment="flex-start"
-				>
-					<Row>
-						<Container
-							orientation="horizontal"
-							width="99%"
-							// crossAlignment="center"
-							// mainAlignment="space-between"
-							background="#D3EBF8"
-						>
+				<Container>
+					<Row width="100%">
+						<Container orientation="horizontal" width="99%" background="#D3EBF8">
 							<Row takeAvwidth="fill" mainAlignment="flex-start">
 								<Padding horizontal="small">
 									<CustomIcon icon="InfoOutline"></CustomIcon>
@@ -382,38 +379,47 @@ const Feedback: FC = () => {
 									all: 'small'
 								}}
 							>
-								<Text overflow="break-word">
-									{t(
-										'label.details_feedback__collected_msg',
-										`Following details are collected along with feedback message`
-									)}
-								</Text>
+								<Row
+									width="100%"
+									mainAlignment="flex-start"
+									padding={{
+										left: 'large'
+									}}
+								>
+									<Text overflow="break-word">
+										{t(
+											'label.details_feedback__collected_msg',
+											`Following details are collected along with feedback message`
+										)}
+									</Text>
+								</Row>
+
 								<ul>
 									<li>
 										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
-											{t('label.carbonio_backed_version', `Carbonio Backed Version`)} :{' '}
+											{t('label.carbonio_backend_version', `Carbonio Backend Version`)}:{' '}
 											{carbonioBackendVersion} {isAdvanced ? '' : '(CE)'}
 										</Text>
 									</li>
 									<li>
 										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
-											{t('label.carbonio_admin_ui_version', `Carbonio AdminUI Version`)} :{' '}
+											{t('label.carbonio_admin_ui_version', `Carbonio AdminUI Version`)}:{' '}
 											{carbonioAdminUIVersion}
 										</Text>
 									</li>
 									<li>
 										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
-											{t('label.total_domains', `Total Domains`)} : {totalDomains || '-'}
+											{t('label.total_domains', `Total Domains`)}: {totalDomains || '--'}
 										</Text>
 									</li>
 									<li>
 										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
-											{t('label.total_accounts', `Total Accounts`)} : {totalAccounts || '-'}
+											{t('label.total_accounts', `Total Accounts`)}: {totalAccounts || '--'}
 										</Text>
 									</li>
 									<li>
 										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
-											{t('label.total_servers', `Total Servers`)} : {totalServers || '-'}
+											{t('label.total_servers', `Total Servers`)}: {totalServers || '--'}
 										</Text>
 									</li>
 								</ul>

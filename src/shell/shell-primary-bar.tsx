@@ -122,7 +122,11 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, isExpanded, 
 				<PrimaryBarRow width="fill" mainAlignment="flex-start" active={active} onClick={onClick}>
 					<BadgeWrap badge={view.badge}>
 						{typeof view.component === 'string' ? (
-							<PrimaryBarIconButton icon={view.component} size="large" onClick={onClick} />
+							<PrimaryBarIconButton
+								icon={view.component}
+								customSize={{ iconSize: 'large', paddingSize: 'medium' }}
+								onClick={onClick}
+							/>
 						) : (
 							<view.component active={active} />
 						)}

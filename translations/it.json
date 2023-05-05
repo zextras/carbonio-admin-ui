@@ -183,7 +183,25 @@
         "use_personas_line1": "Utilizza le personalità per cambiare velocemente le impostazioni quando componi il messaggio.",
         "when_composing": "Durante la composizione, nella risposta o nell'inoltro di messaggi nelle cartella:",
         "button": "Pulsante",
-        "click_to_copy": "Seleziona per copiare"
+        "click_to_copy": "Seleziona per copiare",
+        "carbonio_community_edition": "Carbonio Community Edition",
+        "total_servers": "Numero di server",
+        "total_domains": "Numero di domini",
+        "total_accounts": "Numero di account",
+        "thank_you_for_feedback": "Grazie per il tuo feedback!",
+        "feedback_helper_text": "Vuoi partecipare?",
+        "carbonio_admin_ui_version": "Versione Carbonio AdminUI",
+        "enable_all__following_permission_to_send_feedback_to_zextras": "Abilita i seguenti permessi della sezione privacy per inviare i feedback",
+        "detailsfeedback__collected_msg": "Quando invii un feedback, anche i seguenti dati vengono condivisi",
+        "details_feedback__collected_msg": "Quando invii un feedback, anche i seguenti dati vengono condivisi",
+        "allow_permission_to_send_feedback_to_zextras": "Abilita i seguenti permessi della sezione privacy per inviare i feedback",
+        "allow_permission_to_send_data_to_zextras": "Abilita i seguenti permessi della sezione privacy per condividere con Zextras tutti i dati relativi all'errore",
+        "allow_all_permission_to_send_feedback_to_zextras": "Abilita i seguenti permessi della sezione privacy per inviare i feedback",
+        "post_feedback_send_helper_text_line_3": "ci piacerebbe molto sapere cosa ne pensi!",
+        "post_feedback_send_helper_text_line_2": "Al fine di migliorare Carbonio, ci impegnano in sessioni di testing continue,",
+        "feedback_request_data": "Dati necessari per il feedback:",
+        "enable_all_permission_to_send_feedback_to_zextras": "Abilita i seguenti permessi della sezione privacy per inviare i feedback",
+        "carbonio_backend_version": "Versione Backend di Carbonio"
     },
     "locale": {
         "English": "Inglese",
@@ -458,7 +476,13 @@
         "behaviors": "Comportamenti",
         "other": "Altro",
         "error": "Si è verificato un errore durante l'invio del feedback",
-        "explanation": "Ci piacerebbe ricevere il tuo feedback in merito all'esperienza con Zextras Server. La tua opinione è fondamentale per permetterci di migliorare il nostro prodotto. Facci sapere cosa ne pensi."
+        "explanation": "Ci piacerebbe ricevere il tuo feedback in merito all'esperienza con Zextras Server. La tua opinione è fondamentale per permetterci di migliorare il nostro prodotto. Facci sapere cosa ne pensi.",
+        "send_feedback": "CONDIVIDI LA TUA OPINIONE CON NOI",
+        "goto_privacy": "Vai a Privacy",
+        "count_user_in_helper_button_text": "SÌ, TIENIMI IN CONSIDERAZIONE!",
+        "write_here_placeholder_text": "Ciao! Inizia a scrivere il tuo feedback:)\n\n\nIl messaggio verrà inviato anonimamente, facci sapere\n cosa ti è piaciuto e cosa no",
+        "enable_feedback": "Abilita Feedback",
+        "enable_privacy_setting": "Abilita le impostazioni privacy per inviare i feedback"
     },
     "primary_account": {
         "title": "Impostazioni Account Primario"
@@ -476,5 +500,10 @@
     "create": "Crea",
     "labels": {
         "help_center": "Help Center"
+    },
+    "privacy": {
+        "allow_live_survey_feedbacks": "Consenti sondaggi per i feedback",
+        "send_full_error_data_to_zextras": "Invia rapporto di errore completo a Zextras",
+        "allow_data_analytics": "Consenti l'analisi dei dati"
     }
 }

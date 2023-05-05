@@ -24,6 +24,13 @@ export type SoapFetchPost = <Request, Response>(
 	otherAccount?: string
 ) => Promise<Response>;
 
+export type SoapFetchExternal = <Request, Response>(
+	apiURL: string,
+	body: Request,
+	api?: string,
+	method?: string
+) => Promise<Response>;
+
 export type AccountState = {
 	account?: Account;
 	settings: AccountSettings;
