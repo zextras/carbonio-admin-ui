@@ -50,7 +50,7 @@ const CustomIcon = styled(Icon)`
 
 const TextArea = styled.textarea<{ size?: string }>`
 	width: 100%;
-	height: 100%;
+	height: 100% !important;
 	min-height: 3rem;
 	box-sizing: border-box;
 	outline: none;
