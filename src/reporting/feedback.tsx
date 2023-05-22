@@ -42,6 +42,7 @@ import {
 } from '../network/fetch';
 import { getAllConfig } from '../network/get-all-config';
 import { getIsAdvanced } from '../store/advance';
+import packageJson from '../../package.json';
 
 const CustomIcon = styled(Icon)`
 	width: 20px;
@@ -159,7 +160,7 @@ const Feedback: FC = () => {
 	const [totalServers, setTotalServers] = useState('');
 	const configs = useAllConfigStore((c) => c.a);
 	const isAdvanced = getIsAdvanced();
-	const carbonioAdminUIVersion = '0.9.4';
+	const carbonioAdminUIVersion = packageJson?.version || '0.9.12';
 	useEffect(() => {
 		if (configs && configs.length > 0) {
 			const carbonioSendFullErrorStack = configs.find(
@@ -224,9 +225,14 @@ const Feedback: FC = () => {
 				setCarbonioBackendVersion(versionResponse?.response?.currentVersion);
 			}
 		});
-		searchDirectoryListCount('accounts').then((data) => {
-			setTotalAccounts(data?.Body?.SearchDirectoryResponse?.searchTotal || '');
-		});
+		searchDirectoryListCount('accounts')
+			.then((data) => {
+				setTotalAccounts(data?.Body?.SearchDirectoryResponse?.searchTotal || '');
+			})
+			.catch((error) => {
+				if (error?.Detail?.Error?.Code === 'account.TOO_MANY_SEARCH_RESULTS')
+					setTotalAccounts('5000+');
+			});
 		searchDirectoryListCount('domains').then((data) => {
 			setTotalDomains(data?.Body?.SearchDirectoryResponse?.searchTotal || '');
 		});
@@ -274,7 +280,14 @@ const Feedback: FC = () => {
 		setToggleFeedback(true);
 		setFeedbackSentData(feedbackData);
 		// closeBoard();
-	}, [carbonioBackendVersion, event, totalAccounts, totalDomains, totalServers]);
+	}, [
+		carbonioAdminUIVersion,
+		carbonioBackendVersion,
+		event,
+		totalAccounts,
+		totalDomains,
+		totalServers
+	]);
 
 	const enableFeedback = useCallback(() => {
 		getXmlSoapFetch(SHELL_APP_ID)(

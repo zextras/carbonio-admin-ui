@@ -236,6 +236,22 @@ const handleSoapResponse = (res: any): any => {
 	return <SuccessSoapResponse<any>>res;
 };
 
+const handleSoapResponseWithErrorCode = (res: any): any => {
+	if (res?.Body?.Fault) {
+		if (
+			find(
+				['service.AUTH_REQUIRED', 'service.AUTH_EXPIRED'],
+				(code) => code === (<any>res).Body.Fault.Detail?.Error?.Code
+			)
+		) {
+			goToLogin();
+		}
+		const error = res?.Body?.Fault ? res?.Body?.Fault : res;
+		throw error;
+	}
+	return <SuccessSoapResponse<any>>res;
+};
+
 const fetchAccount = (
 	acc?: Account,
 	otherAccount?: string
@@ -461,7 +477,7 @@ export const searchDirectoryListCount = async (types: string): Promise<any> => {
 		body: JSON.stringify(request)
 	})
 		.then((res) => (res?.headers.get('content-length') === null ? res : res?.json()))
-		.then((res: any) => handleSoapResponse(res))
+		.then((res: any) => handleSoapResponseWithErrorCode(res))
 		.catch((e) => {
 			throw e;
 		});
