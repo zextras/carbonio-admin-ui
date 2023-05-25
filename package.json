@@ -20,8 +20,8 @@
 		"build": "sdk build --admin",
 		"deploy": "sdk deploy --admin",
 		"start": "sdk watch --admin",
-		"pull-translations": "git subtree pull -P translations git@bitbucket.org:zextras/admin-ui.git main --squash",
-		"push-translations": "git subtree push -P translations git@bitbucket.org:zextras/admin-ui.git"
+		"pull-translations": "git subtree pull -P translations git@github.com:Zextras/carbonio-admin-ui-i18n.git master --squash",
+		"push-translations": "git subtree push -P translations git@github.com:Zextras/carbonio-admin-ui-i18n.git"
 	},
 	"files": [
 		"dist/",
