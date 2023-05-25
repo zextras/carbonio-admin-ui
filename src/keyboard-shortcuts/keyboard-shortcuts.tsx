@@ -87,14 +87,12 @@ export const handleKeyboardShortcuts = (props: handleKeyboardShortcutsProps): vo
 				if (isGlobalContext) {
 					props.event.preventDefault();
 					consoleLogKeyCombination();
-					if (props.inputRef) {
-						props.inputRef.current?.focus();
-					}
+					props.inputRef ? props.inputRef.current?.focus() : null;
 				}
 				break;
 
 			default:
-				break;
+				null;
 		}
 		keySequence = '';
 	};
@@ -117,6 +115,6 @@ export const handleKeyboardShortcuts = (props: handleKeyboardShortcutsProps): vo
 			break;
 
 		default:
-			break;
+			null;
 	}
 };

@@ -9,6 +9,7 @@ import { Container } from '@zextras/carbonio-design-system';
 // eslint-disable-next-line no-unused-vars
 import tinymce from 'tinymce/tinymce';
 // this 'expression' prevents webpack from stripping it, maybe there's a better way
+tinymce;
 
 // Theme
 import 'tinymce/themes/silver';
@@ -128,7 +129,7 @@ const Composer: FC<ComposerProps> = ({
 					quickbars_selection_toolbar: inline
 						? 'bold italic underline | forecolor backcolor | removeformat | quicklink'
 						: 'quicklink',
-					contextmenu: '',
+					contextmenu: inline ? '' : '',
 					toolbar_mode: 'wrap'
 				}}
 				onEditorChange={_onEditorChange}
