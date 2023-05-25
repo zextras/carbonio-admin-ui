@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.13](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.12...v0.9.13) (2023-05-25)
+
+
+### Bug Fixes
+
+* sonar analysis bugs ([#67](https://github.com/zextras/carbonio-admin-ui/issues/67)) ([97200fe](https://github.com/zextras/carbonio-admin-ui/commit/97200fee1aa5e8bbc973cebd9b9ba02e4a5d34af))
+
 ### [0.9.12](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.11...v0.9.12) (2023-04-27)
 
 
