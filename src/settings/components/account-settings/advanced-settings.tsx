@@ -42,23 +42,9 @@ const AdvancedSettings = ({ t }: AdvancedSettingsProps): ReactElement => (
 			mainAlignment="flex-start"
 			padding={{ horizontal: 'large', bottom: 'large' }}
 		>
-			<Checkbox
-				label={t('label.change_pop', 'Change POP port')}
-				width="fit"
-				onClick={(): void => {
-					null;
-				}}
-			/>
+			<Checkbox label={t('label.change_pop', 'Change POP port')} width="fit" />
 			<Padding right="large" />
-			<Input
-				width="100px"
-				label={t('label.pop_port', 'POP port')}
-				value="110"
-				onChange={(): void => {
-					null;
-				}}
-				background="gray5"
-			/>
+			<Input width="100px" label={t('label.pop_port', 'POP port')} value="110" background="gray5" />
 		</Row>
 		<Row
 			width="fill"
@@ -68,9 +54,6 @@ const AdvancedSettings = ({ t }: AdvancedSettingsProps): ReactElement => (
 		>
 			<Checkbox
 				label={t('label.use_ssl', 'Use an encrypter connection (SSL) when accessing this server')}
-				onClick={(): void => {
-					null;
-				}}
 			/>
 		</Row>
 
@@ -81,14 +64,7 @@ const AdvancedSettings = ({ t }: AdvancedSettingsProps): ReactElement => (
 			background="gray6"
 		>
 			<Padding bottom="large">
-				<Button
-					label={t('label.test_settings', 'Test Settings')}
-					onClick={(): void => {
-						null;
-					}}
-					color="primary"
-					type="outlined"
-				/>
+				<Button label={t('label.test_settings', 'Test Settings')} color="primary" type="outlined" />
 			</Padding>
 		</Row>
 		<Padding bottom="large" />
