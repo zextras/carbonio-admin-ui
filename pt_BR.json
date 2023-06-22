@@ -38,7 +38,7 @@
         },
         "general": {
             "account": "Conta",
-            "account_logout": "Encerrar sessão",
+            "account_logout": "Sair",
             "theme_disabled": "Desabilitado",
             "theme_enabled": "Habilitado",
             "general": "Configurações gerais",
@@ -76,7 +76,7 @@
             "settings_saved": "Edições salvas corretamente",
             "identities_quota_exceeded": "A identidade não pôde ser criada porque você excedeu o máximo de identidades permitidas"
         },
-        "reload": "\tGostaria de recarregar o aplicativo agora para exibir o novo idioma?\nCaso contrário, o novo idioma aparecerá da próxima vez que você fizer login."
+        "reload": "\tQuer recarregar o aplicativo agora para exibir o novo idioma?\nCaso contrário, o novo idioma aparecerá a próxima vez que você fizer login."
     },
     "module": {
         "app": {
@@ -107,7 +107,7 @@
         "address": "Endereço",
         "email_address": "Endereço de e-mail",
         "filter_folders": "Filtrar pastas",
-        "logout": "Encerrar sessão",
+        "logout": "Sair",
         "new_folder": "Nova pasta",
         "save": "Salvar",
         "secondary": "Secundário",
