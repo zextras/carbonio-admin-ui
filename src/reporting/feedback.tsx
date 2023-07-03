@@ -16,7 +16,6 @@ import React, {
 import {
 	Text,
 	Button,
-	Select,
 	Container,
 	Row,
 	Icon,
@@ -96,19 +95,6 @@ const TAContainer = styled(Container)`
 		outline: none;
 		border-bottom: 1px solid ${({ theme }): string => theme.palette.primary.regular};
 	}
-`;
-
-const SubHeadingText = styled(Text)`
-	border-radius: 2px 2px 0 0;
-	line-height: 21px;
-	font-size: 14px;
-	font-weight: 300;
-	margin-top: 10px;
-	line-height: ${(props): string => props.lineHeight};
-`;
-
-const LabelContainer = styled(Container)`
-	border-bottom: 1px solid ${(props): string => (props.disabled ? 'red' : '#cfd5dc')};
 `;
 
 const emptyEvent: Event = {
@@ -362,11 +348,6 @@ const Feedback: FC = () => {
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									{/* <Trans
-										i18nKey="label.send_feedback_link"
-										defaults="Send<br />Feedback"
-										components={{ break: <br /> }}
-									/> */}
 									{t('label.head_to_forum', 'Head to the Forum')}
 									<Icon icon="ExternalLinkOutline" size="large" color="primary" />
 								</Link>
@@ -630,24 +611,8 @@ const Feedback: FC = () => {
 									</Text>
 									<Padding bottom="large" />
 									<Padding top="large" />
-									{/* <Text>{t('label.feedback_helper_text', `Would you like to participate?`)}</Text> */}
 								</Text>
 							</Container>
-
-							{/* <Container
-						orientation="horizontal"
-						height="fit"
-						padding={{ top: 'extralarge' }}
-						width="100%"
-					>
-						<ButtonContainer crossAlignment="flex-end" mainAlignment="baseline">
-							<Button
-								width="fill"
-								label={t('feedback.count_user_in_helper_button_text', 'YES, COUNT ME IN!')}
-								onClick={confirmCountMeInHandler}
-							/>
-						</ButtonContainer>
-					</Container> */}
 						</Container>
 					)}
 				</>
