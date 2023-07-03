@@ -102,3 +102,5 @@ export const SCALING_LIMIT = {
 	HEIGHT: 900,
 	DPR: 2 // device pixel ratio
 } as const;
+export const SEND_FEEDBACK_URL =
+	'https://docs.zextras.com/carbonio/html/general.html#seeking-help-on-product';

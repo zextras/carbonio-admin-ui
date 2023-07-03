@@ -21,19 +21,22 @@ import {
 	Row,
 	Icon,
 	SnackbarManagerContext,
-	Padding
+	Padding,
+	Divider,
+	Switch,
+	Link
 } from '@zextras/carbonio-design-system';
 import { Severity, Event } from '@sentry/browser';
 import { filter, find, map } from 'lodash';
 import styled from 'styled-components';
-import { TFunction, useTranslation } from 'react-i18next';
+import { TFunction, Trans, useTranslation } from 'react-i18next';
 import { useUserAccount, useAccountStore } from '../store/account';
 import { useRemoveCurrentBoard } from '../shell/boards/board-hooks';
 import { feedback } from './functions';
 import { useAppList } from '../store/app';
 import Logo from '../../assets/carbonio_feedback.svg';
 import { useAllConfigStore } from '../store/config/store';
-import { SHELL_APP_ID } from '../constants';
+import { SEND_FEEDBACK_URL, SHELL_APP_ID } from '../constants';
 import {
 	getCarbonioBackendVersion,
 	searchDirectoryListCount,
@@ -158,6 +161,7 @@ const Feedback: FC = () => {
 	const [totalAccounts, setTotalAccounts] = useState('');
 	const [totalDomains, setTotalDomains] = useState('');
 	const [totalServers, setTotalServers] = useState('');
+	const [isForum, setIsForum] = useState(false);
 	const configs = useAllConfigStore((c) => c.a);
 	const isAdvanced = getIsAdvanced();
 	const carbonioAdminUIVersion = packageJson?.version || '0.9.12';
@@ -318,188 +322,319 @@ const Feedback: FC = () => {
 
 	return (
 		<>
-			{!feedbackPermission ? (
-				<>
-					<Container mainAlignment="space-between" crossAlignment="flex-start">
-						<Container>
-							<Text overflow="break-word" weight="normal" size="large">
-								<Padding top="small" />
-								<Logo />
-							</Text>
-							<Padding vertical="large" horizontal="medium" width="294px" />
-							<Text
-								color="gray1"
-								overflow="break-word"
-								weight="normal"
-								size="large"
-								width="60%"
-								style={{ whiteSpace: 'pre-line', textAlign: 'center' }}
+			{!isForum && (
+				<Container
+					padding={{ top: 'large' }}
+					crossAlignment="flex-start"
+					mainAlignment="flex-start"
+				>
+					<Container
+						padding={{ vertical: 'large', horizontal: 'extrasmall' }}
+						width="100%"
+						orientation="horizontal"
+						crossAlignment="flex-start"
+						height="auto"
+					>
+						<Row
+							padding={{ right: 'large' }}
+							width="50%"
+							crossAlignment="flex-start"
+							mainAlignment="flex-start"
+						>
+							<Container height="11rem" crossAlignment="flex-start" mainAlignment="flex-start">
+								<Link
+									style={{
+										textAlign: 'center',
+										display: 'flex',
+										alignItems: 'center',
+										justifyContent: 'center',
+										flexDirection: 'column',
+										gap: '.5rem',
+										width: '100%',
+										height: '100%',
+										borderRadius: '0.25rem',
+										border: '0.0625rem solid rgb(51, 51, 255)',
+										fontSize: '1.525rem',
+										textDecoration: 'none'
+									}}
+									color="primary"
+									href={SEND_FEEDBACK_URL}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									{/* <Trans
+										i18nKey="label.send_feedback_link"
+										defaults="Send<br />Feedback"
+										components={{ break: <br /> }}
+									/> */}
+									{t('label.head_to_forum', 'Head to the Forum')}
+									<Icon icon="ExternalLinkOutline" size="large" color="primary" />
+								</Link>
+							</Container>
+							<Container
+								padding={{ top: 'large' }}
+								crossAlignment="flex-start"
+								mainAlignment="flex-start"
 							>
-								<Padding bottom="large" />
-								<Text>
-									{t(
-										'label.enable_following_permission_to_send_feedback_to_zextras',
-										`Enable following permissions to send feedback`
-									)}
+								<Text overflow="break-word" weight="regular">
+									<Trans
+										i18nKey="label.feedback_head_to_forum_helperText"
+										defaults="<bold>Would you like to receive an update regarding your request?</bold><br /><br />Get support from the entire Carbonio CE community by creating a post on our forum."
+										components={{ bold: <strong />, break: <br /> }}
+									/>
 								</Text>
-								<ul>
-									<li>
-										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+							</Container>
+						</Row>
+						<Row width="50%" crossAlignment="flex-start" mainAlignment="flex-start">
+							<Container height="11rem" crossAlignment="flex-center" mainAlignment="flex-center">
+								<Button
+									style={{
+										paddingBlock: '3.8rem',
+										flexDirection: 'column',
+										fontSize: '1.625rem'
+									}}
+									type="outlined"
+									label={t('label.send_feedback', 'Send Feedback')}
+									iconPlacement="right"
+									icon="Edit2Outline"
+									height="fill"
+									width="fill"
+									size="extralarge"
+									color="primary"
+									onClick={(): void => setIsForum(true)}
+								/>
+							</Container>
+							<Container
+								padding={{ top: 'large' }}
+								crossAlignment="flex-start"
+								mainAlignment="flex-start"
+							>
+								<Text overflow="break-word" weight="regular">
+									<Trans
+										i18nKey="label.send_feedback_helperText"
+										defaults="<bold>Would you like to suggest any change or tell us something?</bold><br /><br />Share your thoughts with us and help shape a better Carbonio CE. We look forward to hearing from you!"
+										components={{ bold: <strong />, break: <br /> }}
+									/>
+								</Text>
+							</Container>
+						</Row>
+					</Container>
+					<Row
+						padding={{ vertical: 'large', horizontal: 'extralarge' }}
+						orientation="horizontal"
+						width="100%"
+					>
+						<Divider />
+					</Row>
+					<Row
+						padding={{ vertical: 'large', horizontal: 'extralarge' }}
+						orientation="horizontal"
+						width="100%"
+						crossAlignment="flex-start"
+						mainAlignment="flex-start"
+					>
+						<Switch
+							label={
+								<Trans
+									i18nKey="label.part_of_project_atom"
+									defaults="Be part of <bold>Project ATOM</bold>, test new features in advance, share feedback, and help enhance Carbonio!"
+									components={{ bold: <strong /> }}
+								/>
+							}
+							iconColor="primary"
+						/>
+					</Row>
+				</Container>
+			)}
+			{isForum && (
+				<>
+					{!feedbackPermission ? (
+						<>
+							<Container mainAlignment="space-between" crossAlignment="flex-start">
+								<Container>
+									<Text overflow="break-word" weight="normal" size="large">
+										<Padding top="small" />
+										<Logo />
+									</Text>
+									<Padding vertical="large" horizontal="medium" width="294px" />
+									<Text
+										color="gray1"
+										overflow="break-word"
+										weight="normal"
+										size="large"
+										width="60%"
+										style={{ whiteSpace: 'pre-line', textAlign: 'center' }}
+									>
+										<Padding bottom="large" />
+										<Text>
 											{t(
-												'privacy.send_full_error_data_to_zextras',
-												'Send full error data to Zextras'
+												'label.enable_following_permission_to_send_feedback_to_zextras',
+												`Enable following permissions to send feedback`
 											)}
 										</Text>
-									</li>
-									<li>
-										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
-											{t('privacy.allow_data_analytics', 'Allow data analytics')}
-										</Text>
-									</li>
-									<li>
-										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
-											{t('privacy.allow_live_survey_feedbacks', 'Allow live survey feedbacks')}
-										</Text>
-									</li>
-								</ul>
+										<ul>
+											<li>
+												<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+													{t(
+														'privacy.send_full_error_data_to_zextras',
+														'Send full error data to Zextras'
+													)}
+												</Text>
+											</li>
+											<li>
+												<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+													{t('privacy.allow_data_analytics', 'Allow data analytics')}
+												</Text>
+											</li>
+											<li>
+												<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+													{t('privacy.allow_live_survey_feedbacks', 'Allow live survey feedbacks')}
+												</Text>
+											</li>
+										</ul>
 
-								<Padding top="large" />
-								<Button
-									label={t('feedback.enable_feedback', 'Enable Feedback')}
-									onClick={enableFeedback}
-								/>
-							</Text>
-						</Container>
-					</Container>
-				</>
-			) : (
-				<></>
-			)}
-			{feedbackPermission && !toggleFeedback && (
-				<Container>
-					<Row width="100%">
-						<Container orientation="horizontal" width="99%" background="#D3EBF8">
-							<Row takeAvwidth="fill" mainAlignment="flex-start">
-								<Padding horizontal="small">
-									<CustomIcon icon="InfoOutline"></CustomIcon>
-								</Padding>
+										<Padding top="large" />
+										<Button
+											label={t('feedback.enable_feedback', 'Enable Feedback')}
+											onClick={enableFeedback}
+										/>
+									</Text>
+								</Container>
+							</Container>
+						</>
+					) : (
+						<></>
+					)}
+					{feedbackPermission && !toggleFeedback && (
+						<Container>
+							<Row width="100%">
+								<Container orientation="horizontal" width="99%" background="#D3EBF8">
+									<Row takeAvwidth="fill" mainAlignment="flex-start">
+										<Padding horizontal="small">
+											<CustomIcon icon="InfoOutline"></CustomIcon>
+										</Padding>
+									</Row>
+									<Row
+										takeAvwidth="fill"
+										mainAlignment="flex-start"
+										width="100%"
+										padding={{
+											all: 'small'
+										}}
+									>
+										<Row
+											width="100%"
+											mainAlignment="flex-start"
+											padding={{
+												left: 'large'
+											}}
+										>
+											<Text overflow="break-word">
+												{t(
+													'label.details_feedback__collected_msg',
+													`Following details are collected along with feedback message`
+												)}
+											</Text>
+										</Row>
+
+										<ul>
+											<li>
+												<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+													{t('label.carbonio_backend_version', `Carbonio Backend Version`)}:{' '}
+													{carbonioBackendVersion} {isAdvanced ? '' : '(CE)'}
+												</Text>
+											</li>
+											<li>
+												<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+													{t('label.carbonio_admin_ui_version', `Carbonio AdminUI Version`)}:{' '}
+													{carbonioAdminUIVersion}
+												</Text>
+											</li>
+											<li>
+												<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+													{t('label.total_domains', `Total Domains`)}: {totalDomains || '--'}
+												</Text>
+											</li>
+											<li>
+												<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+													{t('label.total_accounts', `Total Accounts`)}: {totalAccounts || '--'}
+												</Text>
+											</li>
+											<li>
+												<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+													{t('label.total_servers', `Total Servers`)}: {totalServers || '--'}
+												</Text>
+											</li>
+										</ul>
+									</Row>
+								</Container>
 							</Row>
 							<Row
-								takeAvwidth="fill"
-								mainAlignment="flex-start"
-								width="100%"
 								padding={{
 									all: 'small'
 								}}
+							></Row>
+							<TAContainer crossAlignment="flex-end">
+								<TextArea
+									value={event.message}
+									onKeyUp={checkTopicSelect}
+									onChange={onInputChange}
+									placeholder={t(
+										'feedback.write_here_placeholder_text',
+										'Hey! Start writing here your feedback :) \n\n\nThis will be sent anonymously so let us know what we did good \nor wrong with no filter'
+									)}
+								/>
+								<Text size="medium" color="secondary">
+									{limit}/500
+								</Text>
+							</TAContainer>
+							<Container
+								orientation="horizontal"
+								height="fit"
+								padding={{ top: 'large' }}
+								width="100%"
 							>
-								<Row
-									width="100%"
-									mainAlignment="flex-start"
-									padding={{
-										left: 'large'
-									}}
-								>
-									<Text overflow="break-word">
-										{t(
-											'label.details_feedback__collected_msg',
-											`Following details are collected along with feedback message`
-										)}
-									</Text>
-								</Row>
-
-								<ul>
-									<li>
-										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
-											{t('label.carbonio_backend_version', `Carbonio Backend Version`)}:{' '}
-											{carbonioBackendVersion} {isAdvanced ? '' : '(CE)'}
-										</Text>
-									</li>
-									<li>
-										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
-											{t('label.carbonio_admin_ui_version', `Carbonio AdminUI Version`)}:{' '}
-											{carbonioAdminUIVersion}
-										</Text>
-									</li>
-									<li>
-										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
-											{t('label.total_domains', `Total Domains`)}: {totalDomains || '--'}
-										</Text>
-									</li>
-									<li>
-										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
-											{t('label.total_accounts', `Total Accounts`)}: {totalAccounts || '--'}
-										</Text>
-									</li>
-									<li>
-										<Text style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
-											{t('label.total_servers', `Total Servers`)}: {totalServers || '--'}
-										</Text>
-									</li>
-								</ul>
-							</Row>
+								<ButtonContainer crossAlignment="flex-end" mainAlignment="baseline">
+									<Button
+										width="fill"
+										label={t('feedback.send_feedback', 'SHARE YOUR FEEDBACK WITH US')}
+										onClick={confirmHandler}
+										disabled={disabledSend}
+									/>
+								</ButtonContainer>
+							</Container>
 						</Container>
-					</Row>
-					<Row
-						padding={{
-							all: 'small'
-						}}
-					></Row>
-					<TAContainer crossAlignment="flex-end">
-						<TextArea
-							value={event.message}
-							onKeyUp={checkTopicSelect}
-							onChange={onInputChange}
-							placeholder={t(
-								'feedback.write_here_placeholder_text',
-								'Hey! Start writing here your feedback :) \n\n\nThis will be sent anonymously so let us know what we did good \nor wrong with no filter'
-							)}
-						/>
-						<Text size="medium" color="secondary">
-							{limit}/500
-						</Text>
-					</TAContainer>
-					<Container orientation="horizontal" height="fit" padding={{ top: 'large' }} width="100%">
-						<ButtonContainer crossAlignment="flex-end" mainAlignment="baseline">
-							<Button
-								width="fill"
-								label={t('feedback.send_feedback', 'SHARE YOUR FEEDBACK WITH US')}
-								onClick={confirmHandler}
-								disabled={disabledSend}
-							/>
-						</ButtonContainer>
-					</Container>
-				</Container>
-			)}
-			{feedbackPermission && toggleFeedback && (
-				<Container
-					padding={{ top: 'extralarge' }}
-					mainAlignment="space-between"
-					crossAlignment="flex-start"
-				>
-					<Container>
-						<Text overflow="break-word" weight="normal" size="large">
-							<Padding top="small" />
-							<Logo />
-						</Text>
-						<Padding vertical="large" horizontal="medium" width="294px" />
-						<Text
-							color="gray1"
-							overflow="break-word"
-							weight="normal"
-							size="large"
-							width="60%"
-							style={{ whiteSpace: 'pre-line', textAlign: 'center', paddingBottom: '123px' }}
+					)}
+					{feedbackPermission && toggleFeedback && (
+						<Container
+							padding={{ top: 'extralarge' }}
+							mainAlignment="space-between"
+							crossAlignment="flex-start"
 						>
-							<Text weight="bold">
-								{t('label.thank_you_for_feedback', `Thank you for the feedback!`)}
-							</Text>
-							<Padding bottom="large" />
-							<Padding top="large" />
-							{/* <Text>{t('label.feedback_helper_text', `Would you like to participate?`)}</Text> */}
-						</Text>
-					</Container>
+							<Container>
+								<Text overflow="break-word" weight="normal" size="large">
+									<Padding top="small" />
+									<Logo />
+								</Text>
+								<Padding vertical="large" horizontal="medium" width="294px" />
+								<Text
+									color="gray1"
+									overflow="break-word"
+									weight="normal"
+									size="large"
+									width="60%"
+									style={{ whiteSpace: 'pre-line', textAlign: 'center', paddingBottom: '123px' }}
+								>
+									<Text weight="bold">
+										{t('label.thank_you_for_feedback', `Thank you for the feedback!`)}
+									</Text>
+									<Padding bottom="large" />
+									<Padding top="large" />
+									{/* <Text>{t('label.feedback_helper_text', `Would you like to participate?`)}</Text> */}
+								</Text>
+							</Container>
 
-					{/* <Container
+							{/* <Container
 						orientation="horizontal"
 						height="fit"
 						padding={{ top: 'extralarge' }}
@@ -513,7 +648,9 @@ const Feedback: FC = () => {
 							/>
 						</ButtonContainer>
 					</Container> */}
-				</Container>
+						</Container>
+					)}
+				</>
 			)}
 		</>
 	);
