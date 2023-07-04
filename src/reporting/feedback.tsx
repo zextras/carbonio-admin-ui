@@ -35,7 +35,7 @@ import { feedback } from './functions';
 import { useAppList } from '../store/app';
 import Logo from '../../assets/carbonio_feedback.svg';
 import { useAllConfigStore } from '../store/config/store';
-import { SEND_FEEDBACK_URL, SHELL_APP_ID } from '../constants';
+import { OPEN_TICKET_URL, SHELL_APP_ID, FORUM_URL } from '../constants';
 import {
 	getCarbonioBackendVersion,
 	searchDirectoryListCount,
@@ -344,12 +344,18 @@ const Feedback: FC = () => {
 										textDecoration: 'none'
 									}}
 									color="primary"
-									href={SEND_FEEDBACK_URL}
+									href={isAdvanced ? OPEN_TICKET_URL : FORUM_URL}
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									{t('label.head_to_forum', 'Head to the Forum')}
-									<Icon icon="ExternalLinkOutline" size="large" color="primary" />
+									{isAdvanced
+										? t('label.open_a_ticket', 'Open a Ticket')
+										: t('label.head_to_forum', 'Head to the Forum')}
+									<Icon
+										icon={isAdvanced ? 'CircleGroupOutline' : 'ExternalLinkOutline'}
+										size="40"
+										color="primary"
+									/>
 								</Link>
 							</Container>
 							<Container
@@ -358,14 +364,19 @@ const Feedback: FC = () => {
 								mainAlignment="flex-start"
 							>
 								<Text overflow="break-word" weight="regular">
-									<Trans
-										i18nKey="label.feedback_head_to_forum_helperText_carbonio"
-										defaults="<bold>Would you like to receive an update regarding your request?</bold><br /><br />Get support from the entire {{carbonio}} community by creating a post on our forum."
-										components={{ bold: <strong />, break: <br /> }}
-										values={{
-											carbonio: isAdvanced ? 'Carbonio' : 'Carbonio CE'
-										}}
-									/>
+									{isAdvanced ? (
+										<Trans
+											i18nKey="label.feedback_head_to_forum_reachout_carbonio"
+											defaults="<bold>Would you like to reach out to our helpdesk for support?</bold><br /><br />Open a support ticket from our dedicated page to get assistance from our expert helpdesk."
+											components={{ bold: <strong />, break: <br /> }}
+										/>
+									) : (
+										<Trans
+											i18nKey="label.feedback_head_to_forum_helperText_carbonio"
+											defaults="<bold>Would you like to receive an update regarding your request?</bold><br /><br />Get support from the entire Carbonio CE community by creating a post on our forum."
+											components={{ bold: <strong />, break: <br /> }}
+										/>
+									)}
 								</Text>
 							</Container>
 						</Row>
@@ -406,6 +417,19 @@ const Feedback: FC = () => {
 							</Container>
 						</Row>
 					</Container>
+					{isAdvanced ? (
+						<Row
+							padding={{ vertical: 'large', horizontal: 'extralarge' }}
+							orientation="horizontal"
+							width="100%"
+						>
+							<Link underlined href={FORUM_URL}>
+								{t('label.use_our_forum', 'Use our forum instead')}
+							</Link>
+						</Row>
+					) : (
+						<></>
+					)}
 					<Row
 						padding={{ vertical: 'large', horizontal: 'extralarge' }}
 						orientation="horizontal"
