@@ -359,9 +359,12 @@ const Feedback: FC = () => {
 							>
 								<Text overflow="break-word" weight="regular">
 									<Trans
-										i18nKey="label.feedback_head_to_forum_helperText"
-										defaults="<bold>Would you like to receive an update regarding your request?</bold><br /><br />Get support from the entire Carbonio CE community by creating a post on our forum."
+										i18nKey="label.feedback_head_to_forum_helperText_carbonio"
+										defaults="<bold>Would you like to receive an update regarding your request?</bold><br /><br />Get support from the entire {{carbonio}} community by creating a post on our forum."
 										components={{ bold: <strong />, break: <br /> }}
+										values={{
+											carbonio: isAdvanced ? 'Carbonio' : 'Carbonio CE'
+										}}
 									/>
 								</Text>
 							</Container>
@@ -392,9 +395,12 @@ const Feedback: FC = () => {
 							>
 								<Text overflow="break-word" weight="regular">
 									<Trans
-										i18nKey="label.send_feedback_helperText"
-										defaults="<bold>Would you like to suggest any change or tell us something?</bold><br /><br />Share your thoughts with us and help shape a better Carbonio CE. We look forward to hearing from you!"
+										i18nKey="label.send_feedback_helperText_carbonio"
+										defaults="<bold>Would you like to suggest any change or tell us something?</bold><br /><br />Share your thoughts with us and help shape a better {{carbonio}}. We look forward to hearing from you!"
 										components={{ bold: <strong />, break: <br /> }}
+										values={{
+											carbonio: isAdvanced ? 'Carbonio' : 'Carbonio CE'
+										}}
 									/>
 								</Text>
 							</Container>
