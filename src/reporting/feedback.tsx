@@ -428,7 +428,7 @@ const Feedback: FC = () => {
 							orientation="horizontal"
 							width="100%"
 						>
-							<Link underlined href={FORUM_URL}>
+							<Link underlined href={FORUM_URL} target="_blank">
 								{t('label.use_our_forum', 'Use our forum instead')}
 							</Link>
 						</Row>
