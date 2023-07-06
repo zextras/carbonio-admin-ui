@@ -209,13 +209,16 @@ const Feedback: FC = () => {
 	}, []);
 
 	const getBackendVersion = useCallback(() => {
-		getCarbonioBackendVersion().then((data) => {
-			if (data?.Body?.response?.content) {
-				const versionResponse = JSON.parse(data?.Body?.response?.content);
-				setCarbonioBackendVersion(versionResponse?.response?.currentVersion);
-			}
-		});
+		getCarbonioBackendVersion()
+			.then((response) => response.json())
+			.then((data) => {
+				if (data?.Body?.response?.content) {
+					const versionResponse = JSON.parse(data?.Body?.response?.content);
+					setCarbonioBackendVersion(versionResponse?.response?.currentVersion);
+				}
+			});
 		searchDirectoryListCount('accounts')
+			.then((response) => response.json())
 			.then((data) => {
 				setTotalAccounts(data?.Body?.SearchDirectoryResponse?.searchTotal || '');
 			})
@@ -223,9 +226,11 @@ const Feedback: FC = () => {
 				if (error?.Detail?.Error?.Code === 'account.TOO_MANY_SEARCH_RESULTS')
 					setTotalAccounts('5000+');
 			});
-		searchDirectoryListCount('domains').then((data) => {
-			setTotalDomains(data?.Body?.SearchDirectoryResponse?.searchTotal || '');
-		});
+		searchDirectoryListCount('domains')
+			.then((response) => response.json())
+			.then((data) => {
+				setTotalDomains(data?.Body?.SearchDirectoryResponse?.searchTotal || '');
+			});
 		getAllServers().then((data) => {
 			setTotalServers(data?.servers?.length || '');
 		});
