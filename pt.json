@@ -2,22 +2,22 @@
     "settings": {
         "app": "Configurações",
         "button": {
-            "primary": "Salvar",
+            "primary": "Gravar",
             "confirm": "Confirmar"
         },
         "out_of_office": {
             "labels": {
-                "start_date": "Data de inicio",
-                "end_date": "Data final",
+                "start_date": "Data de início",
+                "end_date": "Data de fim",
                 "all_day": "Todo o dia:",
                 "auto_reply_message": "Mensagem de resposta automática:",
                 "auto_reply_message_external": "Mensagem de resposta automática para remetentes externos:",
                 "create_appointment": "Criar evento:",
                 "end_time": "Hora de fim:",
                 "external_senders": "Remetentes externos",
-                "out_of_office_status": "Mostrar como:",
+                "out_of_office_status": "Estado da resposta automática:",
                 "send_auto_reply_period": "Enviar respostas automáticas durante o seguinte período:",
-                "start_time": "Hora de Início:"
+                "start_time": "Hora de início:"
             },
             "status": {
                 "busy": "Ocupado"
@@ -30,7 +30,7 @@
                 "send_custom_not_in_organisation": "Enviar mensagem personalizada a quem não faz parte da minha organização ou agenda de contatos"
             },
             "headings": {
-                "create_appointment": "Compromisso do calendário",
+                "create_appointment": "Compromisso",
                 "settings_label": "Respostas automáticas",
                 "time_period": "Período"
             },
@@ -39,8 +39,8 @@
         "general": {
             "account": "Conta",
             "account_logout": "Encerrar sessão",
-            "theme_disabled": "Desabilitado",
-            "theme_enabled": "Habilitado",
+            "theme_disabled": "Desativado",
+            "theme_enabled": "Ativado",
             "general": "Configurações gerais",
             "theme_auto": "Auto",
             "theme_options": "Opções do tema",
@@ -49,12 +49,12 @@
         "general_tab": "Geral",
         "timezone_and_language": "Fuso horário e idioma",
         "accounts": "Contas",
-        "choose": "Selecionar",
+        "choose": "Escolher",
         "search_settings": {
             "labels": {
-                "include_search_in_shared_folder": "Incluir pastas compartilhadas nas buscas",
-                "include_search_in_spam_folder": "Incluir pasta de Spam nas buscas",
-                "include_search_in_trash_folder": "Incluir itens excluídos nas buscas"
+                "include_search_in_shared_folder": "Incluir pastas partilhadas nas pesquisas",
+                "include_search_in_spam_folder": "Incluir a pasta Spam nas pesquisas",
+                "include_search_in_trash_folder": "Incluir itens excluídos nas pesquisas"
             }
         }
     },
@@ -63,17 +63,17 @@
         "app": "Pesquisa",
         "module": "Módulo",
         "active_input_label": "Separe as palavras-chave pressionando vírgula ou espaço",
-        "clear": "Limpar caixa de pesquisa",
-        "idle_input_label": "Buscar em {{module}}",
-        "start": "Buscar",
+        "clear": "Limpar a caixa de pesquisa",
+        "idle_input_label": "Pesquisar em {{module}}",
+        "start": "Pesquisar",
         "already_clear": "A caixa de pesquisa está vazia",
-        "type_to_start_search": "Digite as palavras-chave para iniciar a busca",
-        "type_or_choose_suggestion": "Digite as palavras-chave para iniciar a busca",
-        "unable_to_parse_query": "Não foi possível completar a busca, limpe-a e tente novamente"
+        "type_to_start_search": "Digite algumas palavras-chave para iniciar a pesquisa",
+        "type_or_choose_suggestion": "Digite as palavras-chave para iniciar a pesquisa",
+        "unable_to_parse_query": "Não foi possível completar a pesquisa, limpe-a e tente novamente"
     },
     "message": {
         "snackbar": {
-            "settings_saved": "Edições salvas corretamente",
+            "settings_saved": "Edições guardadas corretamente",
             "identities_quota_exceeded": "A identidade não foi criada porque atingiu o número máximo de identidades permitido"
         },
         "reload": "\tPretende recarregar a aplicação agora para mostrar o novo idioma?\nCaso contrário, o novo idioma aparecerá da próxima vez que fizer login."
@@ -83,33 +83,33 @@
             "version": "Versão dos aplicativos"
         }
     },
-    "new_tab": "Nova aba",
+    "new_tab": "Novo separador",
     "user_quota": {
-        "limited": "Você utilizou {{quota}}% do espaço disponível",
-        "unlimited": "Sem limite de cota",
-        "space_full": "Todo o espaço alocado foi ocupado",
-        "title": "Cota de usuário"
+        "limited": "Ocupado {{quota}}% do espaço disponível",
+        "unlimited": "Não há limite de cota",
+        "space_full": "Todo o espaço disponivel foi ocupado",
+        "title": "Cota de espaço"
     },
     "snackbar": {
-        "error": "Algo deu errado. Tente novamente"
+        "error": "Ocorreu um erro. Tente novamente"
     },
     "label": {
         "language": "Idioma",
         "cancel": "Cancelar",
-        "edit_to_start_search": "Edite para fazer uma nova busca",
-        "out_of_office": "Resposta automática",
+        "edit_to_start_search": "Edite a sua pesquisa para fazer uma nova",
+        "out_of_office": "Fora do escritório",
         "no": "Não",
-        "clear_search_query": "LIMPAR BUSCA",
-        "discard_changes": "DESCARTAR ALTERAÇÕES",
+        "clear_search_query": "LIMPAR A PESQUISA",
+        "discard_changes": "DESCARTAR MODIFICAÇÕES",
         "reload": "Recarregar",
         "time_zone": "Fuso horário",
         "accounts": "Contas",
         "address": "Endereço",
         "email_address": "Endereço de e-mail",
         "filter_folders": "Filtrar pastas",
-        "logout": "Encerrar sessão",
+        "logout": "Encerrar a sessão",
         "new_folder": "Nova pasta",
-        "save": "Salvar",
+        "save": "Guardar",
         "secondary": "Secundário",
         "advanced_settings": "Configurações avançadas",
         "delete": "Excluir",
@@ -117,65 +117,65 @@
         "folders": "Pastas",
         "go_back": "Voltar",
         "inbox": "Caixa de entrada",
-        "no_results": "Nenhum resultado encontrado",
+        "no_results": "Não foram encontrados resultados",
         "password": "Senha",
-        "primary": "Principal",
+        "primary": "Primário",
         "remove": "Excluir",
         "account_menu": "Menu da conta",
         "account_name": "Nome da conta",
         "account_type": "Tipo de conta",
-        "choose_folder": "Selecionar pasta",
+        "choose_folder": "Escolher uma pasta",
         "delegates": "Delegados",
-        "add_persona": "Adicionar Persona",
-        "account_username": "Nome de usuário",
+        "add_persona": "Adicionar uma identidade",
+        "account_username": "Nome de utilizador",
         "accounts_list": "Lista de Contas",
         "add_delegate": "Novo delegado",
-        "add_external_account": "Adicionar conta externa",
-        "add_new_email": "Adicionar novo endereço de e-mail",
-        "add_recovery_email": "Adicionar e-mail de recuperação",
-        "change_pop": "Alterar porta POP",
-        "choose_account": "Selecionar conta",
-        "download_messages": "Baixar mensagens para:",
-        "edit_permissions": "Editar permissões",
-        "email_server": "Servidor de e-mail (ex. \"mail.exemplo.com”)",
-        "passwords_recovery_settings": "Configurações para recuperação de senha",
+        "add_external_account": "Adicionar uma conta externa",
+        "add_new_email": "Adicionar um endereço de e-mail",
+        "add_recovery_email": "Adicionar um e-mail de recuperação",
+        "change_pop": "Alterar a porta POP",
+        "choose_account": "Escolha uma conta",
+        "download_messages": "Descarregar as mensagens para:",
+        "edit_permissions": "Editar as permissões",
+        "email_server": "Servidor de e-mail (ex. \"mail.example.com”)",
+        "passwords_recovery_settings": "Configurações de recuperação de senha",
         "pop3": "POP3",
-        "persona_name": "Nome da Persona",
-        "permanent_delete_title": "Tem certeza que deseja excluir permanentemente essa Persona?",
-        "persona": "Persona",
+        "persona_name": "Nome da Identidade",
+        "permanent_delete_title": "Confirma que deseja excluir permanentemente esta Indentidade?",
+        "persona": "Identidade",
         "reply_to_field_example": "ex. João da Silva",
         "button": "Botão",
         "click_to_copy": "Clique para copiar",
         "delete_after_download": "Excluir mensagens do servidor após o download",
-        "save_both_folders": "Salvar uma cópia das mensagens na minha pasta Enviadas e na do delegado",
+        "save_both_folders": "Guardar uma cópia das mensagens na minha pasta de mensagens Enviadas e na dos delegados",
         "settings_sent_messages": "Configurações de mensagens enviadas",
-        "unsaved_changes_line2": "Alterações não salvas serão perdidas",
-        "use_personas_line2": "Por exemplo, se você enviar e-mails de perfis diferentes, crie uma Pessoa para alternar facilmente entre eles.",
+        "unsaved_changes_line2": "As alterações não gravadas serão perdidas",
+        "use_personas_line2": "Por exemplo, se enviar e-mails com uma função específica no seu trabalho, crie uma Identidade especifica.",
         "documentation": "Documentação",
-        "dont_save": "Não salvar cópia das mensagens enviadas",
-        "external_account_settings": "Configurações de conta externa",
+        "dont_save": "Não guardar uma cópia das mensagens enviadas",
+        "external_account_settings": "Configurações da conta externa",
         "feedback": "Feedback",
         "folder": "Pasta: Nova conta externa 3",
         "from_name": "De: \"Nome\"",
         "imap": "IMAP",
-        "leave_anyway": "Sair assim mesmo",
+        "leave_anyway": "Sair sem gravar",
         "pop_port": "Porta POP",
         "recipents": "Destinatários",
         "recovery_email": "E-mail de recuperação",
-        "save_and_leave": "Salvar",
-        "save_delegate_folder": "Salvar uma cópia das mensagens na pasta Enviadas do delegado",
-        "save_to_my_sent_folder": "Salvar uma cópia das mensagens na minha pasta Enviadas",
+        "save_and_leave": "Guardar",
+        "save_delegate_folder": "Guardar uma cópia das mensagens enviadas na pasta de Enviados do delegado",
+        "save_to_my_sent_folder": "Guardar uma cópia das mensagens na minha pasta Enviadas",
         "set_reply_to_field": "Habilitar o campo \"Responder a\" nas mensagens:",
-        "test_settings": "Testar configurações",
-        "unsaved_changes": "As alterações não foram salvas",
-        "unsaved_changes_line1": "Tem certeza que deseja sair desta página sem salvar?",
+        "test_settings": "Configurações de teste",
+        "unsaved_changes": "As alterações não foram gravadas",
+        "unsaved_changes_line1": "Confirma que deseja sair desta página sem gravar as alterações?",
         "update_view": "Atualizar visualização",
-        "use_persona": "Usar esta Persona",
-        "persona_settings": "Configurações da Persona",
-        "use_personas_line1": "Las Personas siven para cambiar rapidamente entre diferentes perfis ao enviar correos.",
-        "use_ssl": "Usar conexão criptografada (SSL) ao acessar este servidor",
+        "use_persona": "Usar esta Identidade",
+        "persona_settings": "Configurações da Identidade",
+        "use_personas_line1": "As identidades são usadas para alternar rapidamente entre diferentes perfis ao enviar e-mails.",
+        "use_ssl": "Usar uma ligação criptografada (SSL) ao aceder a este servidor",
         "when_composing": "Ao escrever, responder ou encaminhar mensagens na(s) pasta(s):",
-        "when_replying": "Ao responder ou encaminhar mensagens para:",
+        "when_replying": "Ao responder ou encaminhar mensagens enviadas para:",
         "total_servers": "Servidores totais",
         "total_domains": "Domínios totais",
         "total_accounts": "Contas totais",
@@ -444,7 +444,7 @@
         "label_spanish": "Spanish - {{value}}",
         "label_thai": "Thai - {{value}}",
         "portuguese": "Português",
-        "portuguese_brazil": "Portuguese (Brasil)",
+        "portuguese_brazil": "Português (Brasil)",
         "romanian": "Romeno",
         "russian": "Russo",
         "spanish": "Espanhol",
@@ -453,30 +453,30 @@
         "french": "Francês",
         "label_french": "French - {{value}}",
         "vietnamese": "Vietnamita",
-        "polish": "Polonês"
+        "polish": "Polaco"
     },
     "board": {
-        "close_tab": "Fechar aba",
-        "close_tabs": "Fechar todas as abas",
+        "close_tab": "Fechar separador",
+        "close_tabs": "Fechar tudo",
         "enlarge": "Ampliar janela",
         "hide": "Minimizar janela",
-        "reduce": "Restaurar janela",
+        "reduce": "Redefinir janela",
         "show_tabs": "Mostrar tudo"
     },
     "feedback": {
         "other": "Outro",
         "behaviors": "Funcionamento",
-        "error": "Houve um erro ao enviar seu feedback",
-        "explanation": "Deixe seu feedback sobre a sua experiência com o Zextras Carbonio. Sua opinião é importante para melhorarmos o produto.",
-        "missing_features": "Recursos faltantes",
+        "error": "Houve um erro ao enviar o feedback",
+        "explanation": "Deixe o seu feedback sobre a sua experiência com o Zextras Carbonio. Sua opinião é importante para melhorarmos o produto.",
+        "missing_features": "Recursos em falta",
         "report_something": "Deseja reportar alguma coisa?",
         "select_a_module": "Selecione um módulo",
         "select_a_topic": "Selecione um assunto",
-        "hint": "Lembre-se de definir o tema usando os módulos e os macro seletores de área antes de escrever comentários. Obrigado por sua colaboração.",
+        "hint": "Lembre-se: defina o assunto usando módulos e seletores de área de macro antes de escrever o seu feedback. Agradecemos a ajuda.",
         "send": "ENVIAR",
         "success": "Agradecemos o seu feedback",
-        "user_interface": "Interface de usuário",
-        "write_here": "Escreva seu feedback aqui",
+        "user_interface": "Interface do utilizador",
+        "write_here": "Escreva o seu feedback aqui",
         "write_here_placeholder_text": "Olá! Comece a escrever seus comentários aqui :) \n\n\nO envio será feito de forma anônima, independentemente se se tratar\nde coisas boas ou ruins",
         "send_feedback": "ENVIAR COMENTÁRIOS",
         "goto_privacy": "Ir para Privacidade",
@@ -485,14 +485,14 @@
         "enable_privacy_setting": "Ativar configurações de privacidade para o envio de feedback"
     },
     "messages": {
-        "permanent_delete_title": "Tem certeza que deseja excluir permanentemente este elemento?",
-        "permanent_delete_body": "Se você excluir permanentemente esta Persona, não poderá recuperá-la. Continuar?"
+        "permanent_delete_title": "Confirma que deseja excluir permanentemente este elemento?",
+        "permanent_delete_body": "Se excluir permanentemente esta Identidade, não poderá recuperá-la. Continuar?"
     },
     "share": {
         "is_contained_in": "Na pasta"
     },
     "passwords_recovery_settings": {
-        "title": "Configurações de recuperação de Senha"
+        "title": "Configurações de recuperação de senha"
     },
     "primary_account": {
         "title": "Conta principal"
