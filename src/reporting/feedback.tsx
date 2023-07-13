@@ -312,15 +312,11 @@ const Feedback: FC = () => {
 	const disabledSend = useMemo(() => (event?.message?.length ?? 0) <= 0, [event?.message]);
 
 	return (
-		<>
+		<Container padding={{ all: '2rem' }} background="white">
 			{!isForum && (
-				<Container
-					padding={{ top: 'large' }}
-					crossAlignment="flex-start"
-					mainAlignment="flex-start"
-				>
+				<Container crossAlignment="flex-start" mainAlignment="flex-start">
 					<Container
-						padding={{ vertical: 'large', horizontal: 'extrasmall' }}
+						padding={{ horizontal: 'extrasmall' }}
 						width="100%"
 						orientation="horizontal"
 						crossAlignment="flex-start"
@@ -333,35 +329,27 @@ const Feedback: FC = () => {
 							mainAlignment="flex-start"
 						>
 							<Container height="11rem" crossAlignment="flex-start" mainAlignment="flex-start">
-								<Link
+								<Button
 									style={{
-										textAlign: 'center',
-										display: 'flex',
-										alignItems: 'center',
-										justifyContent: 'center',
+										paddingBlock: '3.8rem',
 										flexDirection: 'column',
-										gap: '.5rem',
-										width: '100%',
-										height: '100%',
-										borderRadius: '0.25rem',
-										border: '0.0625rem solid rgb(51, 51, 255)',
-										fontSize: '1.525rem',
-										textDecoration: 'none'
+										fontSize: '1.625rem'
 									}}
+									type="outlined"
+									label={
+										isAdvanced
+											? t('label.open_a_ticket', 'OPEN A TICKET')
+											: t('label.head_to_forum', 'HEAD TO THE FORUM')
+									}
+									height="fill"
+									width="fill"
+									size="extralarge"
 									color="primary"
-									href={isAdvanced ? OPEN_TICKET_URL : FORUM_URL}
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									{isAdvanced
-										? t('label.open_a_ticket', 'Open a Ticket')
-										: t('label.head_to_forum', 'Head to the Forum')}
-									<Icon
-										icon={isAdvanced ? 'CircleGroupOutline' : 'ExternalLinkOutline'}
-										size="40"
-										color="primary"
-									/>
-								</Link>
+									onClick={(): null => {
+										window.open(isAdvanced ? OPEN_TICKET_URL : FORUM_URL, '_blank');
+										return null;
+									}}
+								/>
 							</Container>
 							<Container
 								padding={{ top: 'large' }}
@@ -395,8 +383,6 @@ const Feedback: FC = () => {
 									}}
 									type="outlined"
 									label={t('label.send_feedback', 'Send Feedback')}
-									iconPlacement="right"
-									icon="Edit2Outline"
 									height="fill"
 									width="fill"
 									size="extralarge"
@@ -423,11 +409,7 @@ const Feedback: FC = () => {
 						</Row>
 					</Container>
 					{isAdvanced ? (
-						<Row
-							padding={{ vertical: 'large', horizontal: 'extralarge' }}
-							orientation="horizontal"
-							width="100%"
-						>
+						<Row padding={{ bottom: 'large', top: '2rem' }} orientation="horizontal" width="100%">
 							<Link underlined href={FORUM_URL} target="_blank">
 								{t('label.use_our_forum', 'Use our forum instead')}
 							</Link>
@@ -652,7 +634,7 @@ const Feedback: FC = () => {
 					)}
 				</>
 			)}
-		</>
+		</Container>
 	);
 };
 
