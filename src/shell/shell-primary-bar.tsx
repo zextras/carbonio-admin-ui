@@ -65,12 +65,14 @@ const ToggleBoardIcon: FC = () => {
 
 	if (isEmpty(boards)) return null;
 	return (
-		<IconButton
-			iconColor="primary"
-			icon={minimized ? 'BoardOpen' : 'BoardCollapse'}
-			onClick={toggleMinimized}
-			size="large"
-		/>
+		<Container orientation="horizontal" mainAlignment="flex-start" background="transparent">
+			<IconButton
+				iconColor="primary"
+				icon={minimized ? 'BoardOpen' : 'BoardCollapse'}
+				onClick={toggleMinimized}
+				size="large"
+			/>
+		</Container>
 	);
 };
 
