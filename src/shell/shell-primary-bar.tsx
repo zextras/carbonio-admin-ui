@@ -14,7 +14,7 @@ import {
 	Divider,
 	Popper
 } from '@zextras/carbonio-design-system';
-import { map, isEmpty, trim, filter, sortBy } from 'lodash';
+import { map, isEmpty, trim, filter, sortBy, find } from 'lodash';
 import React, { useContext, FC, useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
@@ -24,13 +24,16 @@ import { useTranslation } from 'react-i18next';
 // @ts-ignore
 import { BoardValueContext, BoardSetterContext } from './boards/board-context';
 import { useAppStore } from '../store/app';
-import { AppRoute, PrimaryAccessoryView, PrimaryBarView, SHELL_APP_ID } from '../../types';
+import { AppRoute, PrimaryAccessoryView, PrimaryBarView, Right } from '../../types';
 import BadgeWrap from './badge-wrap';
 import AppContextProvider from '../boot/app/app-context-provider';
 import { checkRoute } from '../utility-bar/utils';
 import { useUtilityBarStore } from '../utility-bar';
 import { useContextBridge } from '../store/context-bridge';
 import { Collapser } from './collapser';
+import { useUserAccounts } from '../store/account';
+import { getUsersRights } from '../network/get-user-accounts-rights';
+import { CONFIG } from '../constants';
 
 const PrimaryBarContainer = styled(Container)`
 	min-width: 48px;
@@ -189,12 +192,14 @@ const PrimaryBarAccessoryElement: FC<PrimaryBarAccessoryItemProps> = ({ view }) 
 
 const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 	const isOpen = useUtilityBarStore((s) => s.primaryBarState);
+	const accounts = useUserAccounts();
 	const setIsOpen = useUtilityBarStore((s) => s.setPrimaryBarState);
 	const onCollapserClick = useCallback(() => setIsOpen(!isOpen), [isOpen, setIsOpen]);
 	const primaryBarViews = useAppStore((s) => s.views.primaryBar);
 	const primarybarSections = useAppStore((s) => s.views.primarybarSections);
 	const [primaryBarViewWithSection, setPrimaryBarViewWithSection] = useState<any[]>([]);
 	const [routes, setRoutes] = useState<Record<string, string>>({});
+	const [allUserRights, setAllUserRights] = useState();
 	const history = useHistory();
 	const [t] = useTranslation();
 
@@ -253,6 +258,22 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 			setPrimaryBarViewWithSection(sortBy(allPrimaryBarView, 'position'));
 		}
 	}, [primarybarSections, primaryBarViews]);
+
+	const allowShowFeedback = useMemo(() => {
+		const rightsConfig: Right = find(allUserRights, { type: CONFIG }) || { all: [], type: CONFIG };
+		if (rightsConfig?.all?.[0]?.setAttrs?.[0]?.all) {
+			return true;
+		}
+		return false;
+	}, [allUserRights]);
+
+	useEffect(() => {
+		if (!!accounts && Array.isArray(accounts) && accounts.length > 0 && accounts[0]?.name) {
+			getUsersRights('name', accounts[0].name).then((res) => {
+				setAllUserRights(res?.target);
+			});
+		}
+	}, [accounts]);
 
 	return (
 		<>
@@ -320,26 +341,28 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 					)}
 				</Container>
 				<Container mainAlignment="flex-end" height="fit">
-					<PrimaryBarRow
-						width="fill"
-						mainAlignment="flex-start"
-						onClick={(): void => {
-							useContextBridge.getState().packageDependentFunctions?.addBoard('feedbacks')(
-								'/feedback/',
-								{ title: t('label.feedback', 'Feedback') }
-							);
-						}}
-					>
-						<BadgeWrap badge={{ show: false, count: 0 }}>
-							<PrimaryBarIconButton
-								icon="MessageSquareOutline"
-								size="large"
-								onClick={(): void => {
-									null;
-								}}
-							/>
-						</BadgeWrap>
-					</PrimaryBarRow>
+					{allowShowFeedback && (
+						<PrimaryBarRow
+							width="fill"
+							mainAlignment="flex-start"
+							onClick={(): void => {
+								useContextBridge.getState().packageDependentFunctions?.addBoard('feedbacks')(
+									'/feedback/',
+									{ title: t('label.feedback', 'Feedback') }
+								);
+							}}
+						>
+							<BadgeWrap badge={{ show: false, count: 0 }}>
+								<PrimaryBarIconButton
+									icon="MessageSquareOutline"
+									size="large"
+									onClick={(): void => {
+										null;
+									}}
+								/>
+							</BadgeWrap>
+						</PrimaryBarRow>
+					)}
 					{accessories.map((v) => (
 						<PrimaryBarAccessoryElement view={v} key={v.id} />
 					))}

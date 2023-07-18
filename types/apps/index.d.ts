@@ -200,3 +200,18 @@ export type PrimarybarSection = {
 	label: string;
 	position: number;
 };
+
+export interface Right {
+	type: string;
+	all?: {
+		right?: {
+			n: string;
+		}[];
+		setAttrs?: {
+			all: boolean;
+		}[];
+		getAttrs?: {
+			all: boolean;
+		}[];
+	}[];
+}
