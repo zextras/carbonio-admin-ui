@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.15](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.14...v0.9.15) (2023-07-18)
+
+
+### Bug Fixes
+
+* hide feedback if delegated admin not have access ([d307e3c](https://github.com/zextras/carbonio-admin-ui/commit/d307e3c5e0c4c351eee14cd30dbc45c18c56e6e5))
+
 ### [0.9.14](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.13...v0.9.14) (2023-07-06)
 
 ### [0.9.13](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.12...v0.9.13) (2023-05-25)
