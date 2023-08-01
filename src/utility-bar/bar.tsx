@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import React, { FC, useCallback, useMemo } from 'react';
-import { Container, Tooltip, IconButton, Dropdown } from '@zextras/carbonio-design-system';
+import { Container, Tooltip, IconButton, Dropdown, Text } from '@zextras/carbonio-design-system';
 import { map } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { useUtilityBarStore } from './store';
@@ -12,7 +12,7 @@ import { SHELL_APP_ID, UtilityView } from '../../types';
 import { useUtilityViews } from './utils';
 import { logout } from '../network/logout';
 import { useContextBridge } from '../store/context-bridge';
-import { noOp } from '../network/fetch';
+import { useUserAccount } from '../store/account';
 
 const UtilityBarItem: FC<{ view: UtilityView }> = ({ view }) => {
 	const { mode, setMode, current, setCurrent } = useUtilityBarStore();
@@ -38,6 +38,7 @@ const UtilityBarItem: FC<{ view: UtilityView }> = ({ view }) => {
 
 export const ShellUtilityBar: FC = () => {
 	const views = useUtilityViews();
+	const acct = useUserAccount();
 	const [t] = useTranslation();
 	const accountItems = useMemo(
 		() => [
@@ -52,15 +53,6 @@ export const ShellUtilityBar: FC = () => {
 				icon: 'MessageSquareOutline'
 			},
 			{
-				id: 'docs',
-				label: t('label.documentation', 'Documentation'),
-				// TODO: Replace when the correct link is available
-				// eslint-disable-next-line @typescript-eslint/no-empty-function
-				click: (): void => {},
-				disabled: true,
-				icon: 'InfoOutline'
-			},
-			{
 				id: 'logout',
 				label: t('label.logout', 'Logout'),
 				click: logout,
@@ -69,11 +61,24 @@ export const ShellUtilityBar: FC = () => {
 		],
 		[t]
 	);
+	const clipTextAfterWords = (text: string): string => {
+		const words = text.split('');
+		const clippedText = words.slice(0, 32).join('');
+		return clippedText + (words.length > 32 ? '...' : '');
+	};
+
+	const accountName: string = clipTextAfterWords(acct?.name);
+
 	return (
 		<Container orientation="horizontal" width="fit">
 			{map(views, (view) => (
 				<UtilityBarItem view={view} key={view.id} />
 			))}
+			<Container margin={{ right: 'small' }}>
+				<Text color="primary" style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
+					{accountName}
+				</Text>
+			</Container>
 			<Tooltip label={t('label.account_menu', 'Account menu')} placement="left-end">
 				<Dropdown items={accountItems}>
 					<IconButton
