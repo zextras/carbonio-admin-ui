@@ -61,14 +61,22 @@ export const ShellUtilityBar: FC = () => {
 		],
 		[t]
 	);
+	const clipTextAfterWords = (text: string): string => {
+		const words = text.split('');
+		const clippedText = words.slice(0, 32).join('');
+		return clippedText + (words.length > 32 ? '...' : '');
+	};
+
+	const accountName: string = clipTextAfterWords(acct?.name);
+
 	return (
 		<Container orientation="horizontal" width="fit">
 			{map(views, (view) => (
 				<UtilityBarItem view={view} key={view.id} />
 			))}
-			<Container padding={{ right: 'small' }}>
+			<Container margin={{ right: 'small' }}>
 				<Text color="primary" style={{ whiteSpace: 'pre-line', textAlign: 'left' }}>
-					{acct?.name}
+					{accountName}
 				</Text>
 			</Container>
 			<Tooltip label={t('label.account_menu', 'Account menu')} placement="left-end">
