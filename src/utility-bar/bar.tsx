@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { FC, useCallback, useMemo } from 'react';
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { Container, Tooltip, IconButton, Dropdown, Text } from '@zextras/carbonio-design-system';
 import { map } from 'lodash';
 import { useTranslation } from 'react-i18next';
@@ -37,6 +37,7 @@ const UtilityBarItem: FC<{ view: UtilityView }> = ({ view }) => {
 };
 
 export const ShellUtilityBar: FC = () => {
+	const [accountName, setAccountName] = useState('');
 	const views = useUtilityViews();
 	const acct = useUserAccount();
 	const [t] = useTranslation();
@@ -61,13 +62,18 @@ export const ShellUtilityBar: FC = () => {
 		],
 		[t]
 	);
+
 	const clipTextAfterWords = (text: string): string => {
-		const words = text.split('');
-		const clippedText = words.slice(0, 32).join('');
-		return clippedText + (words.length > 32 ? '...' : '');
+		const words = text?.split('');
+		const clippedText = words?.slice(0, 32).join('');
+		return clippedText + (words?.length > 32 ? '...' : '');
 	};
 
-	const accountName: string = clipTextAfterWords(acct?.name);
+	useEffect(() => {
+		if (acct?.name) {
+			setAccountName(clipTextAfterWords(acct?.name));
+		}
+	}, [acct?.name]);
 
 	return (
 		<Container orientation="horizontal" width="fit">
