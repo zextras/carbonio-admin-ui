@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.16](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.15...v0.9.16) (2023-08-31)
+
+
+### Features
+
+* add account name in top bar ([957d209](https://github.com/zextras/carbonio-admin-ui/commit/957d209fd3388974aad0980f39bc07b2a4336727))
+
+
+### Bug Fixes
+
+* not using ternary operator for account name ([0b10a79](https://github.com/zextras/carbonio-admin-ui/commit/0b10a79442b45216e780e5f0009328a6d9e8a3fe))
+
 ### [0.9.15](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.14...v0.9.15) (2023-07-18)
 
 
