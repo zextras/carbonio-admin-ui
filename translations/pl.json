@@ -30,7 +30,7 @@
             "labels": {
                 "start_date": "Data rozpoczęcia",
                 "start_time": "Czas rozpoczęcia:",
-                "all_day": "Cały dzień",
+                "all_day": "Cały dzień:",
                 "auto_reply_message": "Automatyczna odpowiedź:",
                 "create_appointment": "Utwórz termin i wyświetlaj jako:",
                 "end_date": "Data zakończenia",
@@ -139,7 +139,7 @@
         "change_pop": "Zmień port POP",
         "delete_after_download": "Usuń wiadomości z serwera po ich pobraniu",
         "documentation": "Dokumentacja",
-        "dont_save": "Nie zapisuj kopii wysłanych wiadomości",
+        "dont_save": "Nie zapisuj kopii wysyłanych wiadomości",
         "download_messages": "Pobieraj wiadomości do:",
         "edit_permissions": "Edytuj uprawnienia",
         "email_address": "Adres e-mail",
@@ -175,9 +175,20 @@
         "post_feedback_send_helper_text_line_2": "Aby ulepszyć Carbonio, ciągle przeprowadzamy sesje testowania,",
         "feedback_request_data": "Poproś o opinię na temat tych danych:",
         "feedback_helper_text": "Chciałbyś wziąć udział?",
-        "enable_all_permission_to_send_feedback_to_zextras": "Aby wysłać opinię, udziel tych uprawnień w sekcji prywatność",
-        "enable_all__following_permission_to_send_feedback_to_zextras": "Zezwól, aby wszystkie następujące uprawnienia z sekcji prywatność wysyłały informacje zwrotne",
-        "carbonio_backend_version": "Wersja Carbonio Backend"
+        "enable_all_permission_to_send_feedback_to_zextras": "Aby wysłać opinię, udziel wszystkich następujących uprawnień w sekcji prywatność",
+        "enable_all__following_permission_to_send_feedback_to_zextras": "Aby wysłać opinię, udziel wszystkich następujących uprawnień w sekcji prywatność",
+        "carbonio_backend_version": "Wersja Carbonio Backend",
+        "enable_following_permission_to_send_feedback_to_zextras": "Aby wysłać opinię, udziel następujących uprawnień",
+        "feedback_head_to_forum_helperText": "<bold>Czy chcesz otrzymać aktualizację dot. Twojego zgłoszenia?</bold><br /><br />Otrzymaj wsparcie od całej społeczności Carbonio CE tworząc post na naszym forum.",
+        "feedback_head_to_forum_reachout_carbonio": "<bold>Czy chcesz skontaktować się z naszym zespołem wsparcia technicznego?</bold><br /><br />Utwórz zgłoszenie poprzez dedykowaną stronę, aby otrzymać pomoc od jednego z naszych ekspertów.",
+        "head_to_forum": "UDAJ SIĘ NA FORUM",
+        "open_a_ticket": "UTWÓRZ ZGŁOSZENIE",
+        "part_of_project_atom": "Stań się częścią <bold>Projektu ATOM</bold> i testuj nowe funkcjonalności z wyprzedzeniem, dziel się swoją opinią oraz pomagaj ulepszyć Carbonio!",
+        "send_feedback": "Wyślij opinię",
+        "use_our_forum": "Użyj naszego forum",
+        "send_feedback_helperText": "<bold>Chcesz zasugerować jakąś zmianę lub coś nam powiedzieć?</bold><br /><br />Podziel się z nami Twoimi myślami i pomóż tworzyć lepsze Carbonio CE. Chętnie wysłuchamy!",
+        "send_feedback_helperText_carbonio": "<bold>Chcesz zasugerować jakąś zmianę lub coś nam powiedzieć?</bold><br /><br />Podziel się z nami Twoimi myślami i pomóż tworzyć lepsze {{carbonio}}. Chętnie wysłuchamy!",
+        "feedback_head_to_forum_helperText_carbonio": "<bold>Czy chcesz otrzymać aktualizację dot. Twojego zgłoszenia?</bold><br /><br />Otrzymaj wsparcie od całej społeczności {{carbonio}} tworząc post na naszym forum."
     },
     "board": {
         "close_tab": "Zamknij kartę",
@@ -185,7 +196,8 @@
         "enlarge": "Powiększ okienko",
         "hide": "Ukryj okienko",
         "reduce": "Zmniejsz okienko",
-        "show_tabs": "Pokaż inne karty"
+        "show_tabs": "Pokaż inne karty",
+        "open_app": "Otwórz w aplikacji"
     },
     "locale": {
         "italian": "Włoski",
