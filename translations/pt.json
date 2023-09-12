@@ -76,7 +76,7 @@
             "settings_saved": "Edições guardadas corretamente",
             "identities_quota_exceeded": "A identidade não foi criada porque atingiu o número máximo de identidades permitido"
         },
-        "reload": "\tPretende recarregar a aplicação agora para mostrar o novo idioma?\nCaso contrário, o novo idioma aparecerá da próxima vez que fizer login."
+        "reload": "\tPretende recarregar agora a aplicação para mostrar o novo idioma?\nCaso contrário, o novo idioma aparecerá da próxima vez que fizer login."
     },
     "module": {
         "app": {
@@ -120,7 +120,7 @@
         "no_results": "Não foram encontrados resultados",
         "password": "Senha",
         "primary": "Primário",
-        "remove": "Excluir",
+        "remove": "remover",
         "account_menu": "Menu da conta",
         "account_name": "Nome da conta",
         "account_type": "Tipo de conta",
