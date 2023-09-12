@@ -58,7 +58,7 @@
         "accounts": "アカウント",
         "choose": "選択してください"
     },
-    "new": "新規",
+    "new": "新規作成",
     "search": {
         "app": "検索する",
         "module": "モジュール",
@@ -193,7 +193,18 @@
         "allow_permission_to_send_feedback_to_zextras": "フィードバックを送信するには、プライバシー欄から以下の権限をすべて許可してください",
         "allow_permission_to_send_data_to_zextras": "プライバシー 欄の以下の権限をすべて許可して、完全なエラー データをZextrasに送信してください",
         "allow_all_permission_to_send_feedback_to_zextras": "フィードバックを送信するには、プライバシー欄から以下の権限をすべて許可してください",
-        "carbonio_backend_version": "Carbonioバックエンドバージョン"
+        "carbonio_backend_version": "Carbonioバックエンドバージョン",
+        "enable_following_permission_to_send_feedback_to_zextras": "フィードバックを送信するには次の権限を有効にしてください",
+        "feedback_head_to_forum_reachout_carbonio": "<bold>ヘルプデスクにサポートを依頼しますか?</bold><br /><br />専用ページからサポート チケットを開いて、専門ヘルプデスクからサポートを受けてください。",
+        "head_to_forum": "フォーラムへ進む",
+        "open_a_ticket": "チケットを開く",
+        "part_of_project_atom": "<bold>Project ATOM</bold> に参加して、新機能を事前にテストしてフィードバックを共有し、Carbonio の強化にご協力ください！",
+        "send_feedback": "フィードバックを送信する",
+        "send_feedback_helperText_carbonio": "<bold>変更を提案したり、コメントをお寄せください。</bold><br /><br />ご意見を共有して、{{carbonio}}をより良くするためにご協力ください。ご返信をお待ちしております！",
+        "use_our_forum": "代わりにフォーラムを使用してください",
+        "feedback_head_to_forum_helperText": "<bold>リクエストに関する最新情報を受け取りますか?</bold><br /><br />フォーラムに投稿を作成して、Carbonio CE コミュニティ全体からのサポートを得てください。",
+        "feedback_head_to_forum_helperText_carbonio": "<bold>リクエストに関する最新情報を受け取りますか?</bold><br /><br />フォーラムに投稿を作成して、{{carbonio}} コミュニティ全体からのサポートを得てください。",
+        "send_feedback_helperText": "<bold>変更を提案したり、コメントをお寄せください。</bold><br /><br />ご意見を共有して、Carbonio CE をより良くするためにご協力ください。ご返信をお待ちしております！"
     },
     "locale": {
         "label_turkish": "トルコ語- {{value}}",
@@ -461,7 +472,8 @@
         "enlarge": "ボードを拡大する",
         "hide": "ボードを隠す",
         "reduce": "ボードを減らす",
-        "show_tabs": "他のタブを表示する"
+        "show_tabs": "他のタブを表示する",
+        "open_app": "アプリで開く"
     },
     "feedback": {
         "behaviors": "行動",

@@ -99,7 +99,8 @@
         "enlarge": "Panoyu büyüt",
         "hide": "Panoyu gizle",
         "reduce": "Panoyu küçült",
-        "show_tabs": "Diğer sekmeleri göster"
+        "show_tabs": "Diğer sekmeleri göster",
+        "open_app": "Uygulamada aç"
     },
     "label": {
         "cancel": "İptal",
@@ -201,7 +202,18 @@
         "allow_permission_to_send_feedback_to_zextras": "Görüşlerinizi iletmek için gizlilik bölümünde tüm izinleri onaylayın",
         "allow_permission_to_send_data_to_zextras": "Hata verisini Zextras'a bütünüyle iletmek için Gizlilik bölümünde tüm izinleri onaylayın",
         "allow_all_permission_to_send_feedback_to_zextras": "Görüşlerinizi iletmek için gizlilik bölümünde tüm izinleri onaylayın",
-        "carbonio_backend_version": "Carbonio Anasunucu Versiyonu"
+        "carbonio_backend_version": "Carbonio Anasunucu Versiyonu",
+        "enable_following_permission_to_send_feedback_to_zextras": "Geri bildirim göndermek için aşağıdaki izinleri etkinleştir",
+        "feedback_head_to_forum_helperText": "<bold>Talebinizle ilgili bir güncelleme almak ister misiniz?</bold><br /><br />Forumumuzda bir gönderi oluşturarak tüm Carbonio CE topluluğundan destek alın.",
+        "feedback_head_to_forum_helperText_carbonio": "<bold>Talebinizle ilgili bir güncelleme almak ister misiniz?</bold><br /><br />Forumumuzda bir gönderi oluşturarak tüm {{carbonio}} topluluğundan destek alın.",
+        "head_to_forum": "FORUMA GİT",
+        "send_feedback": "Geri Bildirim Gönder",
+        "send_feedback_helperText_carbonio": "<bold>Herhangi bir değişiklik önermek veya bize bir şey söylemek ister misiniz?</bold><br /><br />Düşüncelerinizi bizimle paylaşın ve daha iyi bir {{carbonio}} oluşturmaya yardımcı olun. Görüşlerinizi heyecanla bekliyoruz!",
+        "use_our_forum": "Bunun yerine forumumuzu kullanın",
+        "feedback_head_to_forum_reachout_carbonio": "<bold>Destek için yardım masamıza ulaşmak ister misiniz?</bold><br /><br />Uzman yardım masamızdan yardım almak için özel sayfamızdan bir destek talebi açın.",
+        "open_a_ticket": "DESTEK TALEBİ OLUŞTUR",
+        "part_of_project_atom": "<bold>Project ATOM'un </bold> bir parçası olun, yeni özellikleri önceden test edin, geri bildirim paylaşın ve Carbonio'nun geliştirilmesine yardımcı olun!",
+        "send_feedback_helperText": "<bold>Herhangi bir değişiklik önermek veya bize bir şey söylemek ister misiniz?</bold><br /><br />Düşüncelerinizi bizimle paylaşın ve daha iyi bir Carbonio CE oluşturmaya yardımcı olun. Görüşlerinizi heyecanla bekliyoruz!"
     },
     "locale": {
         "label_italian": "Italian - {{value}}",
