@@ -7,3 +7,7 @@
 export const goToLogin: () => void = () => {
 	window?.location?.assign?.(`${window?.location?.origin}/static/login`);
 };
+
+export function goTo(location: string): void {
+	window.location.assign(location);
+}
