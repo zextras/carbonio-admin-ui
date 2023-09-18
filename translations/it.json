@@ -99,10 +99,11 @@
         "enlarge": "Ingrandisci finestra",
         "show_tabs": "Mostra altre schede",
         "hide": "Nascondi finestra",
-        "reduce": "Riduci finestra"
+        "reduce": "Riduci finestra",
+        "open_app": "Apri in app"
     },
     "label": {
-        "cancel": "Elimina",
+        "cancel": "Annulla",
         "clear_search_query": "PULISCI RICERCA",
         "edit_to_start_search": "Modifica la ricerca per iniziarne una nuova",
         "out_of_office": "Fuori Ufficio",
@@ -201,7 +202,18 @@
         "post_feedback_send_helper_text_line_2": "Al fine di migliorare Carbonio, ci impegnano in sessioni di testing continue,",
         "feedback_request_data": "Dati necessari per il feedback:",
         "enable_all_permission_to_send_feedback_to_zextras": "Abilita i seguenti permessi della sezione privacy per inviare i feedback",
-        "carbonio_backend_version": "Versione Backend di Carbonio"
+        "carbonio_backend_version": "Versione Backend di Carbonio",
+        "enable_following_permission_to_send_feedback_to_zextras": "Abilita le seguenti autorizzazioni per inviare feedback",
+        "feedback_head_to_forum_helperText_carbonio": "<bold> Vuoi ricevere aggiornamenti relativi alla tua richiesta?</bold><br /><br /> Trova supporto dall'intera community {{carbonio}} creando un post sul nostro forum.",
+        "head_to_forum": "VAI AL FORUM",
+        "open_a_ticket": "APRI UN TICKET",
+        "part_of_project_atom": "Sii parte del <bold>Progetto ATOM</bold>, testa nuove funzionalità in anteprima, condividi opinioni e aiutaci a migliorare Carbonio!",
+        "send_feedback": "Invia Feedback",
+        "send_feedback_helperText": "<bold> Vuoi suggerirci qualcosa o comunicare con noi?</bold><br /><br />Condividi cosa ne pensi e aiutaci a rendere Carbonio CE sempre migliore. Non vediamo l'ora di sentire la tua opinione!",
+        "send_feedback_helperText_carbonio": "<bold> Vuoi suggerirci qualcosa o comunicare con noi?</bold><br /><br />Condividi cosa ne pensi e aiutaci a rendere {{carbonio}} sempre migliore. Non vediamo l'ora di sentire la tua opinione!",
+        "use_our_forum": "Utilizza il nostro forum",
+        "feedback_head_to_forum_helperText": "<bold> Vuoi ricevere aggiornamenti relativi alla tua richiesta?</bold><br /><br /> Trova supporto dall'intera community Carbonio CE creando un post sul nostro forum.",
+        "feedback_head_to_forum_reachout_carbonio": "<bold> Vuoi contattare il nostro helpdesk per ricevere supporto?</bold><br /><br />Apri un ticket di supporto direttamente dalla nostra pagina dedicata per ricevere assistenza dai nostri esperti."
     },
     "locale": {
         "English": "Inglese",
