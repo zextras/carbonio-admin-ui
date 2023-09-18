@@ -9,6 +9,7 @@ html, body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  
 }
 
 body {
@@ -43,3 +44,18 @@ body {
 		background: #e5e5e5;
 	}
 }
+
+@media screen and (max-width: 767px) and (orientation:portrait)  {
+  #app { 
+   width: 100vh;
+   max-width: 100vh;
+ }
+ body {
+   transform: rotate(-90deg);
+   position: fixed;
+   left: 0;
+   top:0;
+   width: 100vh;
+   max-width: 100vh;
+ }
+ }

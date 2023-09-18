@@ -5,8 +5,16 @@
  */
 
 import React, { useEffect, useState, useContext } from 'react';
-import { Row, Responsive, ModalManager, SnackbarManager } from '@zextras/carbonio-design-system';
+import {
+	Row,
+	Responsive,
+	ModalManager,
+	SnackbarManager,
+	Modal,
+	Text
+} from '@zextras/carbonio-design-system';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { find } from 'lodash';
 import AppViewContainer from './app-view-container';
 import ShellContextProvider from './shell-context-provider';
@@ -46,9 +54,29 @@ function DarkReaderListener() {
 
 export function Shell() {
 	const [mobileNavOpen, setMobileNavOpen] = useState(false);
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [t] = useTranslation();
 	const activeRoute = useCurrentRoute();
+	useEffect(() => {
+		if (window.innerWidth < 767) {
+			setIsModalOpen(true);
+		}
+	}, []);
 	return (
 		<Background>
+			<Modal
+				open={isModalOpen}
+				onConfirm={() => setIsModalOpen(false)}
+				confirmLabel={t('message.snackbar.okay_got_it', 'Okay, got it')}
+				onClose={() => setIsModalOpen(false)}
+			>
+				<Text overflow="break-word">
+					{t(
+						'message.snackbar.our_interface_does_not_support_tablets_and_smartphones',
+						"Our interface does not support tablets and smartphones, which may lead to visualization issues. Please use a desktop or laptop for optimal performance. We're working on mobile compatibility for the future. Thank you."
+					)}
+				</Text>
+			</Modal>
 			<DarkReaderListener />
 			{/* <MainAppRerouter /> */}
 			<ShellHeader
