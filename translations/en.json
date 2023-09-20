@@ -183,6 +183,8 @@
         "reload": "\tWould you like to reload the application now to show the new language?\n(Otherwise, the new language will appear the next time you sign in.)",
         "snackbar": {
             "identities_quota_exceeded": "The identity could not be created because you have exceeded your identity quota",
+            "okay_got_it": "Okay, got it",
+            "our_interface_does_not_support_tablets_and_smartphones": "Our interface does not support tablets and smartphones, which may lead to visualization issues. Please use a desktop or laptop for optimal performance. We're working on mobile compatibility for the future. Thank you.",
             "settings_saved": "Edits saved correctly"
         }
     },
