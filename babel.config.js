@@ -17,8 +17,6 @@ module.exports = {
 		'@babel/preset-typescript'
 	],
 	plugins: [
-		'@babel/plugin-transform-runtime',
-		'@babel/plugin-proposal-class-properties',
 		'babel-plugin-styled-components',
 		[
 			'i18next-extract',

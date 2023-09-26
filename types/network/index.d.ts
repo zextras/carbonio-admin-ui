@@ -213,3 +213,14 @@ export type DomainInformationState = {
 	name: string;
 	a: Array<Attribute>;
 };
+
+export type GetRightsRequest = {
+	ace?: Array<{ right: Right }>;
+	_jsns: NameSpace;
+};
+
+export type NameSpace = 'urn:zimbraMail' | 'urn:zimbraAccount' | 'urn:zimbra';
+
+export type GetRightsResponse = {
+	ace?: Array<AccountACEInfo>;
+};
