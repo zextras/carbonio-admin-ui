@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import { reduce, find } from 'lodash';
+import { reduce, find, get, sortBy } from 'lodash';
 import { Accordion, Collapse, Container, Padding } from '@zextras/carbonio-design-system';
 import { useHistory } from 'react-router-dom';
 import { useAppStore } from '../store/app';
@@ -20,9 +20,13 @@ const SidebarComponent = ({ item }) =>
 
 export default function ShellMobileNav({ mobileNavIsOpen, menuTree }) {
 	const history = useHistory();
-	const views = useAppStore((s) =>
-		reduce(
-			s.routes,
+	const views = useAppStore((s) => {
+		const sortedRoutes = sortBy(
+			sortBy(s.routes, (item) => get(item, 'position', 0)),
+			(item) => get(item, 'primarybarSection.position', 0)
+		);
+		return reduce(
+			sortedRoutes,
 			(acc, val) => {
 				const primary = find(s.views.primaryBar, (item) => item.id === val.id);
 				const secondary = find(s.views.secondaryBar, (item) => item.id === val.id);
@@ -30,7 +34,10 @@ export default function ShellMobileNav({ mobileNavIsOpen, menuTree }) {
 					acc.push({
 						id: `${val.app}-wrap`,
 						label: primary.label,
-						icon: typeof primary.component === 'string' ? primary.component : 'Cube',
+						icon:
+							typeof primary.component === 'string' || typeof primary.component === 'function'
+								? primary.component
+								: 'Cube',
 						onClick: () => history.push(`/${val.route}`),
 						items: secondary
 							? [
@@ -48,8 +55,8 @@ export default function ShellMobileNav({ mobileNavIsOpen, menuTree }) {
 				return acc;
 			},
 			[]
-		)
-	);
+		);
+	});
 
 	return (
 		<Container
