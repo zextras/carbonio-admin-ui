@@ -57,6 +57,7 @@ export function createExportForTestOnly<TObj extends Record<string, unknown>>(
 		: reduce(
 				objToExport,
 				(accumulator, value, key) => {
+					// eslint-disable-next-line no-param-reassign
 					accumulator[key as keyof TObj] = undefined;
 					return accumulator;
 				},

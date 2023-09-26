@@ -145,7 +145,7 @@ export type CreateModalProps = {
 	zIndex: number;
 };
 
-export type DarkReaderPropValues = typeof DARK_READER_VALUES[number];
+export type DarkReaderPropValues = (typeof DARK_READER_VALUES)[number];
 
 export function isDarkReaderPropValues(
 	maybeDarkReaderPropValue: unknown
