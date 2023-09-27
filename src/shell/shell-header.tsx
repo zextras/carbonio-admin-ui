@@ -122,10 +122,16 @@ const ShellHeader: FC<{
 			maxHeight="60px"
 			mainAlignment="space-between"
 			padding={{
-				horizontal: screenMode === 'desktop' ? 'large' : 'extrasmall',
+				left: screenMode === 'desktop' ? 'large' : 'small',
+				right: screenMode === 'desktop' ? 'large' : 'extrasmall',
 				vertical: 'small'
 			}}
 		>
+			<Responsive mode="mobile">
+				<Padding right="small">
+					<IconButton icon={mobileNavIsOpen ? 'Close' : 'Menu'} onClick={onMobileMenuClick} />
+				</Padding>
+			</Responsive>
 			<Container
 				orientation="horizontal"
 				width="75%"
@@ -133,11 +139,6 @@ const ShellHeader: FC<{
 				mainAlignment="space-between"
 				crossAlignment="center"
 			>
-				<Responsive mode="mobile">
-					<Padding right="small">
-						<IconButton icon={mobileNavIsOpen ? 'Close' : 'Menu'} onClick={onMobileMenuClick} />
-					</Padding>
-				</Responsive>
 				<Container
 					orientation="horizontal"
 					mainAlignment="flex-start"
