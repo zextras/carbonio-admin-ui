@@ -193,7 +193,8 @@
         "allow_permission_to_send_feedback_to_zextras": "Permitir as seguintes permissões de privacidade para o envio de feedback",
         "allow_permission_to_send_data_to_zextras": "Permitir as seguintes permissões de privacidade para o envio de dados de erro à Zextras",
         "allow_all_permission_to_send_feedback_to_zextras": "Conceda as seguintes permissões de privacidade para enviar comentários",
-        "carbonio_backend_version": "Versão do backend"
+        "carbonio_backend_version": "Versão do backend",
+        "use_our_forum": "Utilize o fórum"
     },
     "timezone": {
         "brasilia": "{{value}} Brasília",
