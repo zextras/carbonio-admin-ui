@@ -5,6 +5,7 @@
  */
 
 import create, { StoreApi, UseBoundStore } from 'zustand';
+
 import { AccountState } from '../../../types';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment

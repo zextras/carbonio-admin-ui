@@ -8,7 +8,8 @@ import { Container, Tooltip, IconButton, Dropdown, Text } from '@zextras/carboni
 import { map } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { useUtilityBarStore } from './store';
-import { SHELL_APP_ID, UtilityView } from '../../types';
+import { UtilityView } from '../../types/apps';
+import { SHELL_APP_ID } from '../constants';
 import { useUtilityViews } from './utils';
 import { logout } from '../network/logout';
 import { useContextBridge } from '../store/context-bridge';
