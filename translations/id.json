@@ -193,7 +193,18 @@
         "allow_permission_to_send_feedback_to_zextras": "Izinkan semua izin berikut dari bagian privasi untuk mengirim masukan",
         "allow_permission_to_send_data_to_zextras": "Izinkan semua izin berikut dari bagian privasi untuk mengirim data kesalahan lengkap ke Zextras",
         "allow_all_permission_to_send_feedback_to_zextras": "Izinkan semua izin berikut dari bagian privasi untuk mengirim masukan",
-        "carbonio_backend_version": "Versi Backend Carbonio"
+        "carbonio_backend_version": "Versi Backend Carbonio",
+        "feedback_head_to_forum_helperText": "<bold>Apakah Anda ingin menerima pembaruan mengenai permintaan Anda?</bold><br /><br />Dapatkan dukungan dari seluruh komunitas Carbonio CE dengan membuat postingan di forum kami.",
+        "feedback_head_to_forum_reachout_carbonio": "<bold>Apakah Anda ingin menghubungi meja bantuan kami untuk mendapatkan dukungan?</bold><br /><br />Buka tiket dukungan dari halaman khusus kami untuk mendapatkan bantuan dari meja bantuan ahli kami.",
+        "part_of_project_atom": "Jadilah bagian dari <bold>Project ATOM</bold>, uji fitur barunya terlebih dahulu, bagikan umpan balik, dan bantu tingkatkan Carbonio!",
+        "enable_following_permission_to_send_feedback_to_zextras": "Aktifkan izin berikut untuk mengirim umpan balik",
+        "feedback_head_to_forum_helperText_carbonio": "<bold>Apakah Anda ingin menerima pembaruan mengenai permintaan Anda?</bold><br /><br />Dapatkan dukungan dari seluruh komunitas {{carbonio}} dengan membuat postingan di forum kami.",
+        "open_a_ticket": "BUKA TIKET",
+        "head_to_forum": "KUNJUNGI FORUM",
+        "send_feedback": "Kirim Umpan Balik",
+        "send_feedback_helperText": "<bold>Apakah Anda ingin menyarankan perubahan atau memberi tahu kami sesuatu?</bold><br /><br />Bagikan pemikiran Anda dan bantu tingkatkan Carbonio CE. Kami menantikan bantuan Anda!",
+        "send_feedback_helperText_carbonio": "<bold>Apakah Anda ingin menyarankan perubahan atau memberi tahu kami sesuatu?</bold><br /><br />Bagikan pemikiran Anda dan bantu tingkatkan {{carbonio}}. Kami menantikan bantuan Anda!",
+        "use_our_forum": "Gunakan forum kami"
     },
     "locale": {
         "portuguese_brazil": "Portugis (Brasil)",
@@ -461,7 +472,8 @@
         "enlarge": "Perluas papan",
         "hide": "Sembunyikan papan",
         "reduce": "Persempit papan",
-        "show_tabs": "Tampilkan tab lainnya"
+        "show_tabs": "Tampilkan tab lainnya",
+        "open_app": "Buka di aplikasi"
     },
     "messages": {
         "permanent_delete_title": "Anda yakin ingin menghapus elemen ini secara permanen?",
@@ -482,14 +494,14 @@
         "success": "Terima kasih atas masukan Anda",
         "user_interface": "Antarmuka pengguna",
         "write_here": "Tulis masukan Anda di sini",
-        "error": "Ada kesalahan saat mengirimkan umpan balik",
-        "explanation": "Harap beri masukan tentang pengalaman barumu dengan Zextras Server. Pendapat Anda berarti bagi kami untuk menyempurnakan produk kami. Beri tahu kami pendapat Anda.",
+        "error": "Terjadi kesalahan saat mengirimkan umpan balik",
+        "explanation": "Harap beri masukan tentang pengalaman baru Anda dengan Zextras Server. Pendapat Anda sangat berarti untuk menyempurnakan produk kami. Beri tahu kami pendapat Anda.",
         "write_here_placeholder_text": "Hai! Tulis masukan Anda di sini :) \n\n\nIni akan dikirim secara anonim. Jadi, beri tahu kami apa saja yang sudah bagus \natau apa yang perlu diperbaiki",
         "send_feedback": "SAMPAIKAN MASUKAN ANDA KEPADA KAMI",
         "goto_privacy": "Buka Privasi",
         "count_user_in_helper_button_text": "YA, SAYA IKUT!",
-        "enable_feedback": "Aktifkan Masukan",
-        "enable_privacy_setting": "Aktifkan pengaturan privasi untuk mengirim masukan"
+        "enable_feedback": "Aktifkan Umpan Balik",
+        "enable_privacy_setting": "Aktifkan pengaturan privasi untuk mengirim umpan balik"
     },
     "primary_account": {
         "title": "Pengaturan Akun Utama"

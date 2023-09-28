@@ -193,7 +193,18 @@
         "allow_permission_to_send_feedback_to_zextras": "Permitir as seguintes permissões de privacidade para o envio de feedback",
         "allow_permission_to_send_data_to_zextras": "Permitir as seguintes permissões de privacidade para o envio de dados de erro à Zextras",
         "allow_all_permission_to_send_feedback_to_zextras": "Conceda as seguintes permissões de privacidade para enviar comentários",
-        "carbonio_backend_version": "Versão do backend"
+        "carbonio_backend_version": "Versão do backend",
+        "enable_following_permission_to_send_feedback_to_zextras": "Ative as seguintes permissões para enviar seu feedback",
+        "feedback_head_to_forum_helperText": "<bold>Você gostaria de receber uma atualização sobre este assunto?</bold><br /><br />Receba suporte da comunidade Carbonio postando sua pergunta no fórum.",
+        "feedback_head_to_forum_helperText_carbonio": "<bold>Você gostaria de receber uma atualização sobre este assunto?</bold><br /><br />Obtenha suporte da comunidade {{carbonio}} postando sua pergunta no fórum",
+        "send_feedback_helperText_carbonio": "<bold>Você gostaria de sugerir alguma mudança ou sinalizar alguma coisa?</bold><br /><br /> Compartilhe com a gente o que você acha do {{carbonio}}. Queremos ouví-lo!",
+        "use_our_forum": "Utilize o fórum em seu lugar",
+        "open_a_ticket": "Abrir chamado",
+        "feedback_head_to_forum_reachout_carbonio": "<bold>Deseja contactar o nosso helpdesk para obter assistência? </bold><br /><br />Abra um chamado de suporte na nossa página dedicada para obter assistência do nosso helpdesk especializado.",
+        "head_to_forum": "Ir para o fórum",
+        "part_of_project_atom": "Faça parte do <bold>Projeto ATOM</bold>, teste antecipadamente as novas funcionalidades, compartilhe o seu feedback e ajude a melhorar o Carbonio!",
+        "send_feedback": "Envie seu feedback",
+        "send_feedback_helperText": "<bold>Gostaria de sugerir alguma alteração ou nos dizer algo? </bold><br /><br />Compartilhe suas ideias conosco e ajude a melhorar o Carbonio CE. Queremos ouvir sua opinião!"
     },
     "timezone": {
         "brasilia": "{{value}} Brasília",
@@ -461,7 +472,8 @@
         "enlarge": "Ampliar janela",
         "hide": "Minimizar janela",
         "reduce": "Restaurar janela",
-        "show_tabs": "Mostrar tudo"
+        "show_tabs": "Mostrar tudo",
+        "open_app": "Abrir no aplicativo"
     },
     "feedback": {
         "other": "Outro",
