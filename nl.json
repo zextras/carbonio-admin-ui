@@ -137,7 +137,7 @@
         "folder": "Map: Nieuwe externe account 3",
         "from_name": "Van: \"Name\"",
         "imap": "IMAP",
-        "persona": "Persoon",
+        "persona": "Persona",
         "persona_name": "Naam Persona",
         "persona_settings": "Instellingen Persona",
         "reply_to_field_example": "bijv. Bob Smith",
@@ -193,7 +193,18 @@
         "allow_permission_to_send_feedback_to_zextras": "Sta alle volgende toestemmingen uit de privacy-sectie toe om feedback te sturen",
         "allow_permission_to_send_data_to_zextras": "Sta alle volgende toestemmingen uit de privacysectie toe om volledige foutgegevens naar Zextras te sturen",
         "allow_all_permission_to_send_feedback_to_zextras": "Sta alle volgende toestemmingen uit de privacy-sectie toe om feedback te sturen",
-        "carbonio_backend_version": "Carbonio Backend Versie"
+        "carbonio_backend_version": "Carbonio Backend Versie",
+        "enable_following_permission_to_send_feedback_to_zextras": "Schakel de volgende machtigingen in om feedback te verzenden",
+        "feedback_head_to_forum_helperText": "<bold>Wilt u op de hoogte blijven van uw aanvraag?</bold><br /><br />Krijg steun van de hele Carbonio CE-community door een bericht op ons forum te maken.",
+        "feedback_head_to_forum_helperText_carbonio": "<bold>Wilt u op de hoogte blijven in verband met uw aanvraag?</bold><br /><br />Krijg steun van de hele {{carbonio}} community door een bericht op ons forum te maken.",
+        "feedback_head_to_forum_reachout_carbonio": "<bold>Wilt u contact opnemen met onze helpdesk voor ondersteuning?</bold><br /><br />Open een supportticket op onze speciale pagina om hulp te krijgen van onze deskundige helpdesk.",
+        "head_to_forum": "GA NAAR HET FORUM",
+        "open_a_ticket": "EEN TICKET OPENEN",
+        "part_of_project_atom": "Maak deel uit van <bold>Project ATOM</bold>, test nieuwe functies van tevoren, deel feedback en help Carbonio te verbeteren!",
+        "send_feedback": "Feedback versturen",
+        "send_feedback_helperText": "<bold>Wilt u een wijziging voorstellen of ons iets vertellen?</bold><br /><br />Deel uw gedachten met ons en help mee aan een beter Carbonio CE. We horen graag van u!",
+        "send_feedback_helperText_carbonio": "<bold>Wilt u een wijziging voorstellen of ons iets vertellen?</bold><br /><br />Deel uw gedachten met ons en help mee aan een beter {{carbonio}}. We horen graag van u!",
+        "use_our_forum": "Gebruik in plaats daarvan ons forum"
     },
     "locale": {
         "label_russian": "Russisch - {{value}}",
@@ -461,7 +472,8 @@
         "enlarge": "Board uitbreiden",
         "hide": "Board verbergen",
         "reduce": "Board verkleinen",
-        "show_tabs": "Andere tabs tonen"
+        "show_tabs": "Andere tabs tonen",
+        "open_app": "In app openen"
     },
     "feedback": {
         "other": "Ander",
