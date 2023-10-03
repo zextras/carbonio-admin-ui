@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.18](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.17...v0.9.18) (2023-09-29)
+
+
+### Bug Fixes
+
+* ac-685: Support custom domain logout in the Admin UI ([9ad2983](https://github.com/zextras/carbonio-admin-ui/commit/9ad29837b9b76131be4beab52210d506d50833e7))
+* add unit testing env ([d5c62fb](https://github.com/zextras/carbonio-admin-ui/commit/d5c62fb7f94ba7ba7663c850375cf1571e24b6de))
+* fixed alignment of primary sidebar on mobile devices ([9b622cb](https://github.com/zextras/carbonio-admin-ui/commit/9b622cbd35b711fdbe5e69c45b89d2b1d0c41d83))
+* lint issue ([2db025d](https://github.com/zextras/carbonio-admin-ui/commit/2db025d7e79ab92bb7796052b95b9c52b9c5de41))
+
 ### [0.9.17](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.16...v0.9.17) (2023-09-12)
 
 ### [0.9.16](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.15...v0.9.16) (2023-08-31)
