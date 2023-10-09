@@ -47,7 +47,7 @@ SPDX-License-Identifier: AGPL-3.0-only
         }
     </style>
 <body>
-    <div class="feedback">
+    <div id="feedbackdiv" class="feedback">
         <a style="cursor:pointer; position: fixed; right: 2rem; bottom: 1rem; z-index: 3;display: flex; flex-direction: row;text-decoration:none;color:#FFFFFF;background:#2B73D2;padding:0.8rem;border-radius: 
         50px;"data-useberry-trigger="true"data-useberry-mode=preview data-useberry-test-id=mmuYb4FfdgPlom>
         <span class="feedback-text">Tell us how are we doing</span>
@@ -61,6 +61,19 @@ src="https://app.useberry.com/embed/embed-script.js">
 		window.__SHELL_ENV__ = "<%- htmlWebpackPlugin.options.SHELL_ENV %>"
         function removeButton(button) {
             button.parentElement.remove();
+            saveToLocalStorage();
+        }
+        function saveToLocalStorage() {
+            const valueToStore = "true";
+            
+            // Use the localStorage.setItem method to store a key-value pair
+            localStorage.setItem("feedback", valueToStore);
+        }
+        const storedValue = localStorage.getItem("feedback");
+        if (storedValue === "true") {
+            document.getElementById("feedbackdiv").style.display = "none";
+        } else {
+            document.getElementById("feedbackdiv").style.display = "block";
         }
 	</script>
 	<div id="app"></div>
