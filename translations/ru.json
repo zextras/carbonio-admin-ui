@@ -129,7 +129,6 @@
         "email_address": "Адрес электронной почты",
         "email_server": "Почтовый сервер (например, «mail.example.com»)",
         "external_account_settings": "Настройки внешней учетной записи",
-        "documentation": "Документация",
         "filter_folders": "Фильтровать папки",
         "folder": "Папка: Новая внешняя учетная запись 3",
         "folders": "Папки",

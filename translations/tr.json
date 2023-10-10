@@ -2,7 +2,9 @@
     "message": {
         "snackbar": {
             "settings_saved": "Değişiklikler başarıyla kaydedildi",
-            "identities_quota_exceeded": "Kimlik kotanızı aştığınız için kimlik oluşturulamadı"
+            "identities_quota_exceeded": "Kimlik kotanızı aştığınız için kimlik oluşturulamadı",
+            "our_interface_does_not_support_tablets_and_smartphones": "Arayüzümüz tabletleri ve akıllı telefonları desteklememektedir, bu da görselleştirme sorunlarına yol açabilir. En iyi performans için lütfen masaüstü veya dizüstü bilgisayar kullanın. Yakında mobil uyumlu kullanım sağlamak için çalışıyoruz. Teşekkürler.",
+            "okay_got_it": "Tamam, anladım"
         },
         "reload": "\tYeni dilde görüntülemek için uygulamayı şimdi yeniden başlatmak ister misiniz?\n(Yoksa, daha sonra giriş yaptığınızda yeni dilde görüntülenecek.)"
     },
@@ -132,7 +134,6 @@
         "delete": "Sil",
         "delete_after_download": "İndirildikten sonra mesajları sunucudan sil",
         "delete_permanently": "Kalıcı olarak sil",
-        "documentation": "Yardımcı belgeler",
         "dont_save": "Gönderilen mesajların kopyasını kaydetme",
         "download_messages": "Mesajları indirme yeri:",
         "edit_permissions": "İzinleri düzenle",
