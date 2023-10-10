@@ -80,7 +80,9 @@
     "message": {
         "snackbar": {
             "settings_saved": "Modifiche salvate correttamente",
-            "identities_quota_exceeded": "Impossibile creare questa identità in quanto hai raggiunto la quota massima per le identità"
+            "identities_quota_exceeded": "Impossibile creare questa identità in quanto hai raggiunto la quota massima per le identità",
+            "okay_got_it": "Ok, ho capito",
+            "our_interface_does_not_support_tablets_and_smartphones": "La nostra interfaccia non supporta tablet e smartphone, potrebbero causare problemi di visualizzazione. Utilizzare un desktop o un laptop per avere prestazioni ottimali. Stiamo lavorando alla per supportare al più presto dispositivi mobili. Grazie per la comprensione."
         },
         "reload": "\tVuoi ricaricare l'applicazione per vedere la nuova lingua?\n(Altrimenti, la nuova lingua verrà applicata al prossimo accesso.)"
     },
@@ -127,7 +129,6 @@
         "delegates": "Delegati",
         "delete_permanently": "Elimina definitivamente",
         "delete_after_download": "Elimina il messaggio dal server dopo che è stato scaricato",
-        "documentation": "Documentazione",
         "email_address": "Indirizzo e-mail",
         "filter_folders": "Filtra cartelle",
         "folders": "Cartelle",

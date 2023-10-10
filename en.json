@@ -64,7 +64,6 @@
         "details_feedback__collected_msg": "When providing a feedback message, also the following details are collected",
         "detailsfeedback__collected_msg": "When providing a feedback message, also the following details are collected",
         "discard_changes": "DISCARD CHANGES",
-        "documentation": "Documentation",
         "dont_save": "Don’t save a copy of sent messages",
         "download_messages": "Download messages to:",
         "edit_permissions": "Edit permissions",
@@ -184,6 +183,8 @@
         "reload": "\tWould you like to reload the application now to show the new language?\n(Otherwise, the new language will appear the next time you sign in.)",
         "snackbar": {
             "identities_quota_exceeded": "The identity could not be created because you have exceeded your identity quota",
+            "okay_got_it": "Okay, got it",
+            "our_interface_does_not_support_tablets_and_smartphones": "Our interface does not support tablets and smartphones, which may lead to visualization issues. Please use a desktop or laptop for optimal performance. We're working on mobile compatibility for the future. Thank you.",
             "settings_saved": "Edits saved correctly"
         }
     },

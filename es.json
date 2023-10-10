@@ -156,7 +156,6 @@
         "use_personas_line1": "Las Personas sirven para cambiar rápidamente entre diferentes perfiles al enviar correos.",
         "use_personas_line2": "Por ejemplo, si envías correos desde diferentes perfiles, crea una Persona para cambiar facilmente entre ellos.",
         "click_to_copy": "Clic para copiar",
-        "documentation": "Documentación",
         "dont_save": "No guardar copia de los mensajes enviados",
         "from_name": "De: \"Nombre\"",
         "imap": "IMAP",
@@ -193,7 +192,18 @@
         "allow_permission_to_send_feedback_to_zextras": "Permitir los siguientes permisos de privacidad para el envío de comentarios",
         "allow_permission_to_send_data_to_zextras": "Permitir los siguientes permisos de privacidad para el envío de datos de error a Zextras",
         "allow_all_permission_to_send_feedback_to_zextras": "Permitir los siguientes permisos de privacidad para el envío de comentarios",
-        "carbonio_backend_version": "Versión del backend"
+        "carbonio_backend_version": "Versión del backend",
+        "feedback_head_to_forum_helperText_carbonio": "<bold>¿Quiere recibir información actualizada sobre la solicitud?</bold><br /><br />Obtenga soporte de la comunidad {{carbonio}} creando un post en nuestro foro.",
+        "part_of_project_atom": "Sea parte del <bold>Proyecto ATOM</bold>, pruebe nuevas funciones, comparta sus comentarios y ayude a mejorar Carbonio.",
+        "enable_following_permission_to_send_feedback_to_zextras": "Habilite los siguientes permisos para enviar comentarios",
+        "feedback_head_to_forum_helperText": "<bold>¿Quiere recibir información actualizada sobre la solicitud?</bold><br /><br />Obtenga soporte de la comunidad Carbonio CE creando un post en nuestro foro.",
+        "feedback_head_to_forum_reachout_carbonio": "<bold>¿Quiere contactar con nuestro soporte para obtener ayuda?</bold><br /><br />Abra un ticket desde nuestra página dedicada.",
+        "head_to_forum": "Ir al foro",
+        "open_a_ticket": "Abrir ticket",
+        "send_feedback": "Enviar comentarios",
+        "send_feedback_helperText": "<bold>¿Quiere sugerir algún cambio o comentar algo?</bold><br /><br />Comparta su opinión con nosotros y ayude a mejorar Carbonio CE. ¡Estaremos complacidos en conocer su opinión!",
+        "send_feedback_helperText_carbonio": "<bold>¿Quiere sugerir algún cambio o comentar algo?</bold><br /><br />Comparta su opinión con nosotros y ayude a mejorar {{carbonio}}. ¡Estaremos complacidos en conocer su opinión!",
+        "use_our_forum": "Utilice el foro"
     },
     "timezone": {
         "argentina": "{{value}} Argentina",
@@ -461,7 +471,8 @@
         "enlarge": "Agrandar ventana",
         "hide": "Minimizar ventana",
         "reduce": "Restablecer ventana",
-        "show_tabs": "Mostrar todo"
+        "show_tabs": "Mostrar todo",
+        "open_app": "Abrir en la aplicación"
     },
     "feedback": {
         "other": "Otro",
