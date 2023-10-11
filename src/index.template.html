@@ -4,8 +4,9 @@ SPDX-FileCopyrightText: 2021 Zextras <https://www.zextras.com>
 SPDX-License-Identifier: AGPL-3.0-only
 -->
 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="">
+
 <head>
     <title>Carbonio Admin Panel</title>
     <link rel="icon" type="image/svg+xml" href="<%- htmlWebpackPlugin.options.BASE_PATH %>favicon.svg">
@@ -17,65 +18,12 @@ SPDX-License-Identifier: AGPL-3.0-only
     <meta http-equiv="Cache-Control" content="no-cache" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <style> 
-    .feedback-text{
-        padding: 0 0.5rem;
-        display: none;
-        animation: slideInRight 0.8s;
-    }
-    .feedback:hover .feedback-text{
-        display: inline;
-    }
-    .close-button {
-            position: fixed;
-            right: 1rem; 
-            bottom: 2.7rem;
-            z-index: 3;
-            background-color:transparent;
-            color: #414141;
-            border-radius: 50%; /* Circular shape */
-            cursor: pointer;
-            border: none;
-        }
-        @keyframes slideInRight {
-            0% {
-                transform: translateX(100%);
-            }
-            100% {
-                transform: translateX(0);
-            }
-        }
-    </style>
+
 <body>
-    <div id="feedbackdiv" class="feedback">
-        <a style="cursor:pointer; position: fixed; right: 2rem; bottom: 1rem; z-index: 3;display: flex; flex-direction: row;text-decoration:none;color:#FFFFFF;background:#2B73D2;padding:0.8rem;border-radius: 
-        50px;"data-useberry-trigger="true"data-useberry-mode=preview data-useberry-test-id=mmuYb4FfdgPlom>
-        <span class="feedback-text">Tell us how are we doing</span>
-  <img style="background-color: #2B73D2; z-index: 4;" src="<%- htmlWebpackPlugin.options.BASE_PATH %>smile outline1.svg"> </a>
-        <img class="close-button" src="<%- htmlWebpackPlugin.options.BASE_PATH %>close.svg" onclick="removeButton(this)">
-    </div>
-<script type="text/javascript" 
-src="https://app.useberry.com/embed/embed-script.js">
-</script>
 	<script>
 		window.__SHELL_ENV__ = "<%- htmlWebpackPlugin.options.SHELL_ENV %>"
-        function removeButton(button) {
-            button.parentElement.remove();
-            saveToLocalStorage();
-        }
-        function saveToLocalStorage() {
-            const valueToStore = "true";
-            
-            // Use the localStorage.setItem method to store a key-value pair
-            localStorage.setItem("feedback", valueToStore);
-        }
-        const storedValue = localStorage.getItem("feedback");
-        if (storedValue === "true") {
-            document.getElementById("feedbackdiv").style.display = "none";
-        } else {
-            document.getElementById("feedbackdiv").style.display = "block";
-        }
 	</script>
 	<div id="app"></div>
 </body>
+
 </html>

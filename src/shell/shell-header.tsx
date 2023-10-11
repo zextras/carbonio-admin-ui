@@ -11,11 +11,11 @@ import {
 	Padding,
 	Responsive,
 	useScreenMode,
-	Input,
+	Button,
 	Icon,
 	Text
 } from '@zextras/carbonio-design-system';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import Logo from '../svg/carbonio-admin-panel.svg';
 import { SearchBar } from '../search/search-bar';
@@ -25,7 +25,7 @@ import { AppRoute } from '../../types';
 import { openLink } from '../utility-bar/utils';
 import { useUserAccount, useUserSettings } from '../store/account';
 import { getDomainInformation } from '../network/get-domain-information';
-import { useAdvanceStore, useIsAdvanced } from '../store/advance';
+import { useIsAdvanced } from '../store/advance';
 import {
 	CARBONIO_HELP_ADMIN_URL,
 	CARBONIO_HELP_ADVANCED_URL,
@@ -34,9 +34,53 @@ import {
 import { useDomainInformationStore } from '../store/domain-information';
 import { useLoginConfigStore } from '../store/login/store';
 import { useDarkMode } from '../dark-mode/use-dark-mode';
+import { useAllConfigStore } from '../store/config';
 
 const CustomImg = styled.img`
 	height: 2rem;
+`;
+
+const slideInRight = keyframes`
+  0% {
+    transform: translateX(50%) scaleX(0);
+  }
+  100% {
+    transform: translateX(0%)  scaleX(1);
+  }
+`;
+
+const FeedbackDiv = styled.div`
+	&.feedback {
+		position: fixed;
+		right: 2rem;
+		bottom: 1rem;
+		z-index: 3;
+	}
+`;
+
+const FeedbackText = styled.div`
+	padding: 0 0.5rem;
+	display: none;
+	font-size: 14px;
+	animation: ${slideInRight} 0.1s;
+
+	${FeedbackDiv}:hover & {
+		display: inline;
+	}
+`;
+
+const FeedbackContainer = styled.a`
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	text-decoration: none;
+	color: #ffffff;
+	background: #2b73d2;
+	padding: 0.8rem;
+	border-radius: 50px;
+	background-color: #2b73d2;
+	z-index: 4;
 `;
 
 const ShellHeader: FC<{
@@ -55,6 +99,13 @@ const ShellHeader: FC<{
 	const { carbonioAdminUiAppLogo, carbonioAdminUiDarkAppLogo, carbonioLogoURL } =
 		useLoginConfigStore();
 	const { darkModeEnabled, darkReaderStatus } = useDarkMode();
+	const [feedbackVisible, setFeedbackVisible] = useState(true);
+	const configs = useAllConfigStore((c) => c.a);
+	const [feedbackConfig, setFeedbackConfig] = useState('FALSE');
+
+	const saveToLocalStorage = (): void => {
+		localStorage.setItem('feedback', 'true');
+	};
 
 	const getDomainDetails = useCallback(
 		(name: any): any => {
@@ -94,6 +145,26 @@ const ShellHeader: FC<{
 	);
 
 	useEffect(() => {
+		const storedValue = localStorage.getItem('feedback');
+		if (storedValue === 'true') {
+			setFeedbackVisible(false);
+		}
+		const carbonioAllowFeedback = configs.find((item: any) => item?.n === 'carbonioAllowFeedback');
+		if (carbonioAllowFeedback) {
+			setFeedbackConfig(carbonioAllowFeedback?._content);
+		}
+		const script = document.createElement('script');
+		script.type = 'text/javascript';
+		script.src = 'https://app.useberry.com/embed/embed-script.js';
+		script.async = true;
+		document.body.appendChild(script);
+
+		return () => {
+			document.body.removeChild(script);
+		};
+	}, [configs]);
+
+	useEffect(() => {
 		if (userName) {
 			getDomainDetails(userName?.split('@')[1]);
 		}
@@ -111,6 +182,11 @@ const ShellHeader: FC<{
 	}, [carbonioAdminUiDarkAppLogo, carbonioAdminUiAppLogo, darkModeEnabled]);
 
 	const logoUrl = useMemo(() => carbonioLogoURL || CARBONIO_LOGO_URL, [carbonioLogoURL]);
+
+	const removeFeedback = (): void => {
+		setFeedbackVisible(false);
+		saveToLocalStorage();
+	};
 
 	return (
 		<Container
@@ -221,6 +297,33 @@ const ShellHeader: FC<{
 					</Container>
 				</Responsive>
 			</Container>
+			{feedbackVisible && feedbackConfig === 'TRUE' && (
+				<FeedbackDiv className="feedback" onClick={removeFeedback}>
+					<FeedbackContainer
+						data-useberry-trigger="true"
+						data-useberry-mode="preview"
+						data-useberry-test-id="mmuYb4FfdgPlom"
+					>
+						<FeedbackText>Tell us how are we doing</FeedbackText>
+						<Icon size="medium" color="gray6" icon="SmileOutline" />
+					</FeedbackContainer>
+					<Icon
+						style={{
+							position: 'fixed',
+							right: '1rem',
+							bottom: '2.7rem',
+							zIndex: 3,
+							backgroundColor: 'transparent',
+							color: '#414141',
+							borderRadius: '50%',
+							cursor: 'pointer',
+							border: 'none'
+						}}
+						icon="Close"
+						onClick={removeFeedback}
+					/>
+				</FeedbackDiv>
+			)}
 		</Container>
 	);
 };
