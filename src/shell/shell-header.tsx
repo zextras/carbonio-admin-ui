@@ -301,7 +301,7 @@ const ShellHeader: FC<{
 				<FeedbackDiv className="feedback" onClick={removeFeedback}>
 					<FeedbackContainer
 						data-useberry-trigger="true"
-						data-useberry-mode="preview"
+						data-useberry-mode="live"
 						data-useberry-test-id="mmuYb4FfdgPlom"
 					>
 						<FeedbackText>Tell us how are we doing</FeedbackText>
