@@ -147,7 +147,6 @@
         "recovery_email": "อีเมลสำรอง",
         "button": "ปุ่ม",
         "click_to_copy": "คลิกเพื่อคัดลอก",
-        "documentation": "เอกสาร",
         "dont_save": "ไม่ต้องบันทึกสำเนาของข้อความที่ส่งออก",
         "download_messages": "ดาวน์โหลดข้อความไปที่:",
         "edit_permissions": "แก้ไขการอนุญาต",
@@ -193,7 +192,18 @@
         "allow_permission_to_send_feedback_to_zextras": "อนุญาตสิทธิ์ต่อไปนี้ทั้งหมดจากในส่วนความเป็นส่วนตัวเพื่อส่งข้อเสนอแนะ",
         "allow_permission_to_send_data_to_zextras": "อนุญาตสิทธิ์ต่อไปนี้ทั้งหมดจากในส่วนความเป็นส่วนตัวเพื่อส่งข้อมูลข้อผิดพลาดทั้งหมดไปยัง Zextras",
         "allow_all_permission_to_send_feedback_to_zextras": "อนุญาตสิทธิ์ต่อไปนี้ทั้งหมดจากในส่วนความเป็นส่วนตัวเพื่อส่งข้อเสนอแนะ",
-        "carbonio_backend_version": "เวอร์ชั่น Carbonio Backend"
+        "carbonio_backend_version": "เวอร์ชั่น Carbonio Backend",
+        "feedback_head_to_forum_reachout_carbonio": "<bold>คุณต้องการติดต่อฝ่ายช่วยเหลือของเราเพื่อขอความช่วยเหลือหรือไม่? </bold><br /><br />เปิดตั๋วสนับสนุนจากหน้าเพจของเรา เพื่อรับความช่วยเหลือจากผู้เชี่ยวชาญของเรา",
+        "part_of_project_atom": "เป็นส่วนหนึ่งของ<bold>โครงการ ATOM</bold> ทดสอบคุณสมบัติใหม่, แบ่งปันข้อเสนอแนะและช่วยปรับปรุง Carbonio!",
+        "send_feedback_helperText": "<bold>คุณต้องการแนะนำการเปลี่ยนแปลงหรือบอกเราบางอย่างกับเราหรือไม่? </bold><br /><br />แบ่งปันความคิดของคุณกับเราและช่วยกำหนด Carbonio CE ให้ดียิ่งขึ้น เราหวังว่าจะได้รับความคิดเห็นจากคุณ!",
+        "enable_following_permission_to_send_feedback_to_zextras": "เปิดใช้งานการอนุญาตต่อไปนี้เพื่อส่งข้อเสนอแนะ",
+        "feedback_head_to_forum_helperText": "<bold>คุณต้องการรับข้อมูลอัปเดตเกี่ยวกับคำขอของคุณหรือไม่? </bold><br /><br />รับการสนับสนุนจากชุมชน Carbonio CE ทั้งหมดโดยสร้างโพสต์ในฟอรัมของเรา",
+        "feedback_head_to_forum_helperText_carbonio": "<bold>คุณต้องการรับข้อมูลอัปเดตเกี่ยวกับคำขอของคุณหรือไม่? </bold><br /><br />รับการสนับสนุนจากชุมชน {{carbonio}} ทั้งหมดโดยสร้างโพสต์ในฟอรัมของเรา",
+        "head_to_forum": "ไปที่ฟอรัม",
+        "open_a_ticket": "เปิดตั๋ว",
+        "send_feedback": "ส่งความคิดเห็น",
+        "send_feedback_helperText_carbonio": "<bold>คุณต้องการแนะนำการเปลี่ยนแปลงหรือบอกเราบางอย่างกับเราหรือไม่? </bold><br /><br />แบ่งปันความคิดของคุณกับเรา และช่วยกำหนด {{carbonio}} ให้ดียิ่งขึ้น เราหวังว่าจะได้รับความคิดเห็นจากคุณ!",
+        "use_our_forum": "ใช้ฟอรัมของเราแทน"
     },
     "board": {
         "close_tab": "ปิดแท็บ",
@@ -201,7 +211,8 @@
         "hide": "ซ่อนกระดาน",
         "enlarge": "ขยายกระดาน",
         "reduce": "ลดกระดาน",
-        "show_tabs": "แสดงแท็บอื่นๆ"
+        "show_tabs": "แสดงแท็บอื่นๆ",
+        "open_app": "เปิดในแอป"
     },
     "locale": {
         "English": "ภาษาอังกฤษ",
@@ -235,7 +246,7 @@
         "label_french": "ฝรั่งเศส - {{value}}",
         "french": "ภาษาฝรั่งเศส",
         "vietnamese": "ภาษาเวียดนาม",
-        "polish": "กำจัดทิ้งอย่างรวดเร็ว"
+        "polish": "โปแลนด์"
     },
     "timezone": {
         "caracas": "{{value}} การากัส",
