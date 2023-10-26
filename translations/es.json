@@ -74,7 +74,9 @@
     "message": {
         "snackbar": {
             "settings_saved": "Se han guardado los cambios",
-            "identities_quota_exceeded": "La identidad no pudo ser creada porque has superado el máximo de identidades permitido"
+            "identities_quota_exceeded": "La identidad no pudo ser creada porque has superado el máximo de identidades permitido",
+            "okay_got_it": "Ok, entendido",
+            "our_interface_does_not_support_tablets_and_smartphones": "Nuestra interfaz no es compatible con tabletas y smartphones, lo que puede provocar problemas de visualización. Por favor, utilice un PC de escritorio o un portátil para un rendimiento óptimo. Estamos trabajando en la compatibilidad móvil para el futuro. Muchas gracias."
         },
         "reload": "\t¿Recargar Carbonio ahora para mostrar el nuevo idioma?\nDe lo contrario el cambio se aplicará con el próximo inicio de sesión"
     },
