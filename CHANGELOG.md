@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.20](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.19...v0.9.20) (2023-10-26)
+
+
+### Features
+
+* randomly ask the admin for the usability feedback ([5bdd37f](https://github.com/zextras/carbonio-admin-ui/commit/5bdd37fed353fa2180d08eeb124d432dc713acf2))
+
 ### [0.9.19](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.18...v0.9.19) (2023-10-10)
 
 ### [0.9.18](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.17...v0.9.18) (2023-09-29)
