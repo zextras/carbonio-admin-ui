@@ -74,7 +74,9 @@
     "message": {
         "snackbar": {
             "settings_saved": "Edições salvas corretamente",
-            "identities_quota_exceeded": "A identidade não pôde ser criada porque você excedeu o máximo de identidades permitidas"
+            "identities_quota_exceeded": "A identidade não pôde ser criada porque você excedeu o máximo de identidades permitidas",
+            "okay_got_it": "Ok, entendí",
+            "our_interface_does_not_support_tablets_and_smartphones": "Nossa interface não é compatível com tablets e smartphones, o que pode levar a problemas de visualização. Use um desktop ou laptop para obter o melhor desempenho. Estamos trabalhando na compatibilidade com dispositivos móveis para o futuro. Muito obrigado."
         },
         "reload": "\tQuer recarregar o aplicativo agora para exibir o novo idioma?\nCaso contrário, o novo idioma aparecerá a próxima vez que você fizer login."
     },
