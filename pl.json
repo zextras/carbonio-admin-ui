@@ -3,7 +3,9 @@
         "reload": "\tCzy chcesz uruchomić ponownie aplikację, aby wyświetlał się nowy język?\n(Jeśli nie, nowy język będzie wyświetlał się od momentu następnego zalogowania)",
         "snackbar": {
             "settings_saved": "Zmiany zostały zapisane pomyślnie",
-            "identities_quota_exceeded": "Nie udało się utworzyć tej tożsamości, ponieważ przekroczono ich limit"
+            "identities_quota_exceeded": "Nie udało się utworzyć tej tożsamości, ponieważ przekroczono ich limit",
+            "okay_got_it": "Ok, rozumiem",
+            "our_interface_does_not_support_tablets_and_smartphones": "Nasz interfejs nie wspiera tabletów i smartfonów, co może powodować problemy z wyświetlaniem. Aby uzyskać optymalną wydajność, prosimy o użycie komputera lub laptopa. Pracujemy nad kompatybilnością z urz. mobilnymi. Dziękujemy."
         }
     },
     "search": {
@@ -64,7 +66,7 @@
         },
         "general": {
             "account": "Konto",
-            "account_logout": "Wyloguj się",
+            "account_logout": "Wylogowywanie się",
             "dark_mode": "Tryb ciemny",
             "general": "Ustawienia ogólne",
             "theme_auto": "Automatycznie",
@@ -138,7 +140,6 @@
         "add_external_account": "Dodaj konto spoza mojej domeny",
         "change_pop": "Zmień port POP",
         "delete_after_download": "Usuń wiadomości z serwera po ich pobraniu",
-        "documentation": "Dokumentacja",
         "dont_save": "Nie zapisuj kopii wysyłanych wiadomości",
         "download_messages": "Pobieraj wiadomości do:",
         "edit_permissions": "Edytuj uprawnienia",
