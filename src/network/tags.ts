@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import produce from 'immer';
+import { getSoapFetch } from './fetch';
 import {
 	CreateTagRequest,
 	CreateTagResponse,
@@ -14,11 +14,11 @@ import {
 import { Tag } from '../../types/tags';
 import { SHELL_APP_ID } from '../constants';
 import { useTagStore } from '../store/tags';
-import { getSoapFetch } from './fetch';
 
 const set = useTagStore.setState;
 export const createTag = (tag: Omit<Tag, 'id'>): Promise<CreateTagResponse> =>
 	getSoapFetch(SHELL_APP_ID)<CreateTagRequest, CreateTagResponse>('CreateTag', {
+		// eslint-disable-next-line sonarjs/no-duplicate-string
 		_jsns: 'urn:zimbraMail',
 		tag
 	});

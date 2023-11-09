@@ -5,6 +5,7 @@
  */
 
 import React, { useEffect, useState, useContext } from 'react';
+
 import {
 	Row,
 	Responsive,
@@ -13,21 +14,18 @@ import {
 	Modal,
 	Text
 } from '@zextras/carbonio-design-system';
-import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { find } from 'lodash';
+import styled from 'styled-components';
+
 import AppViewContainer from './app-view-container';
+import AppBoardWindow from './boards/app-board-window';
 import ShellContextProvider from './shell-context-provider';
 import ShellHeader from './shell-header';
 import ShellNavigationBar from './shell-navigation-bar';
-import AppBoardWindow from './boards/app-board-window';
 import { ThemeCallbacksContext } from '../boot/theme-provider';
-import { useUserSettings } from '../store/account';
-import { ShellUtilityBar, ShellUtilityPanel } from '../utility-bar';
-import { useCurrentRoute } from '../history/hooks';
-import { useTagStore } from '../store/tags/store';
-import { createTag } from '../network/tags';
 import { useDarkReaderResultValue } from '../dark-mode/use-dark-reader-result-value';
+import { useCurrentRoute } from '../history/hooks';
+import { ShellUtilityBar, ShellUtilityPanel } from '../utility-bar';
 
 const Background = styled.div`
 	background: ${({ theme }) => theme.palette.gray6.regular};

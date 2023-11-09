@@ -5,11 +5,14 @@
  */
 
 import React, { useMemo } from 'react';
+
 import { map } from 'lodash';
 import { useTranslation } from 'react-i18next';
+
 import { AccountsSettings } from './accounts-settings';
 import { useUserAccount } from '../store/account';
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 const AccountWrapper = (): React.ReactElement | null => {
 	const accountSettings = useUserAccount();
 	const [t] = useTranslation();

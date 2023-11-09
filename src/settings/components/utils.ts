@@ -1,11 +1,13 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 /*
  * SPDX-FileCopyrightText: 2021 Zextras <https://www.zextras.com>
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import moment from 'moment';
 import { TFunction } from 'i18next';
+import moment from 'moment';
+
 import { AccountSettings } from '../../../types';
 import { BASE_FONT_SIZE, SCALING_LIMIT, SCALING_OPTIONS } from '../../constants';
 
@@ -109,6 +111,7 @@ export const getOutOfOfficeStatusPrefsData = (
 };
 
 export const changeDateEvent = (date: string | Date): string =>
+	// eslint-disable-next-line sonarjs/no-duplicate-string
 	moment(moment(date, 'YYYYMMDDHHmmss[Z]').utc()).format('YYYYMMDDHHmmss[Z]');
 
 export const getDateEvent = (date: string): Date =>

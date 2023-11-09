@@ -6,20 +6,21 @@
 
 /* eslint-disable import/no-duplicates */
 /* eslint-disable import/no-named-default */
-import { forOwn } from 'lodash';
 import { ComponentType } from 'react';
-import { Reducer, Store } from '@reduxjs/toolkit';
-import StoreFactory from '../../redux/store-factory';
 
-import { useAppStore } from '../../store/app';
+import { Reducer, Store } from '@reduxjs/toolkit';
+import { forOwn } from 'lodash';
+
 import { getAppFunctions } from './app-loader-functions';
-import { Spinner } from '../../ui-extras/spinner';
-import { AppLink } from '../../ui-extras/app-link';
-import * as CONSTANTS from '../../constants';
-import { IShellWindow, CarbonioModule } from '../../../types';
 import { getAppSetters } from './app-loader-setters';
+import { IShellWindow, CarbonioModule } from '../../../types';
+import * as CONSTANTS from '../../constants';
+import StoreFactory from '../../redux/store-factory';
 import { report } from '../../reporting';
 import SettingsHeader from '../../settings/components/settings-header';
+import { useAppStore } from '../../store/app';
+import { AppLink } from '../../ui-extras/app-link';
+import { Spinner } from '../../ui-extras/spinner';
 
 export const _scripts: { [pkgName: string]: HTMLScriptElement } = {};
 let _scriptId = 0;

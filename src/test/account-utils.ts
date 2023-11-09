@@ -21,6 +21,7 @@ export const mockedAccount: Account = {
 export function setupAccountStore(account = mockedAccount): void {
 	useAccountStore.setState(
 		produce((state) => {
+			// eslint-disable-next-line no-param-reassign
 			state.account = account;
 		})
 	);

@@ -4,13 +4,14 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import React, { FC, useCallback, useEffect, useState } from 'react';
+
+import { Editor } from '@tinymce/tinymce-react';
 import { Container } from '@zextras/carbonio-design-system';
 // TinyMCE so the global var exists
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars, import/order
 import tinymce from 'tinymce/tinymce';
 // this 'expression' prevents webpack from stripping it, maybe there's a better way
 tinymce;
-
 // Theme
 import 'tinymce/themes/silver';
 // Toolbar icons
@@ -26,6 +27,7 @@ import 'tinymce/plugins/link';
 import 'tinymce/plugins/image';
 import 'tinymce/plugins/charmap';
 import 'tinymce/plugins/code';
+// eslint-disable-next-line import/no-unresolved
 import 'tinymce/plugins/print';
 import 'tinymce/plugins/preview';
 import 'tinymce/plugins/anchor';
@@ -35,14 +37,13 @@ import 'tinymce/plugins/fullscreen';
 import 'tinymce/plugins/insertdatetime';
 import 'tinymce/plugins/media';
 import 'tinymce/plugins/table';
+// eslint-disable-next-line import/no-unresolved
 import 'tinymce/plugins/paste';
 import 'tinymce/plugins/help';
 import 'tinymce/plugins/wordcount';
 import 'tinymce/plugins/quickbars';
 import 'tinymce/plugins/directionality';
 import 'tinymce/plugins/autoresize';
-
-import { Editor } from '@tinymce/tinymce-react';
 
 type ComposerProps = {
 	/** The callback invoked when an edit is performed into the editor. `([text, html]) => {}` */
@@ -129,6 +130,7 @@ const Composer: FC<ComposerProps> = ({
 					quickbars_selection_toolbar: inline
 						? 'bold italic underline | forecolor backcolor | removeformat | quicklink'
 						: 'quicklink',
+					// eslint-disable-next-line sonarjs/no-all-duplicated-branches
 					contextmenu: inline ? '' : '',
 					toolbar_mode: 'wrap'
 				}}

@@ -5,14 +5,16 @@
  */
 
 import React, { FC, useContext } from 'react';
-import { BrowserRouter, useHistory } from 'react-router-dom';
+
 import { SnackbarManagerContext, ModalManagerContext } from '@zextras/carbonio-design-system';
+import { BrowserRouter, useHistory } from 'react-router-dom';
+
 import AppLoaderMounter from './app/app-loader-mounter';
+import { BASENAME } from '../constants';
+import ShellView from '../shell/shell-view';
 import { useBridge } from '../store/context-bridge';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import ShellView from '../shell/shell-view';
-import { BASENAME } from '../constants';
 
 const ContextBridge: FC = () => {
 	const history = useHistory();

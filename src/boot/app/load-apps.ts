@@ -8,21 +8,19 @@
 /* eslint-disable import/no-named-default */
 import { filter, map } from 'lodash';
 
-import StoreFactory from '../../redux/store-factory';
-
 import { loadApp, unloadApps } from './load-app';
-import { CarbonioModule } from '../../../types';
 import { injectSharedLibraries } from './shared-libraries';
-import { getUserSetting } from '../../store/account';
-import { useReporter } from '../../reporting';
+import { CarbonioModule } from '../../../types';
 import { SHELL_APP_ID } from '../../constants';
+import StoreFactory from '../../redux/store-factory';
+import { useReporter } from '../../reporting';
+import { getUserSetting } from '../../store/account';
 
 export function loadApps(storeFactory: StoreFactory, apps: Array<CarbonioModule>): void {
 	injectSharedLibraries();
 	const appsToLoad = filter(apps, (app) => {
 		if (app.name === SHELL_APP_ID) return false;
-		if (app.attrKey && getUserSetting('attrs', app.attrKey) !== 'TRUE') return false;
-		return true;
+		return !(app.attrKey && getUserSetting('attrs', app.attrKey) !== 'TRUE');
 	});
 	console.log(
 		'%cLOADING APPS',

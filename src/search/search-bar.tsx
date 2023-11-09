@@ -7,6 +7,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
 import React, { useContext, useState, useCallback, useEffect, useMemo, FC, useRef } from 'react';
+
 import {
 	ChipInput,
 	Container,
@@ -19,16 +20,16 @@ import {
 	Text,
 	Padding
 } from '@zextras/carbonio-design-system';
-import { useTranslation } from 'react-i18next';
 import { filter, find, map, reduce } from 'lodash';
-import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
-import { useLocalStorage } from '../shell/hooks';
-import { SEARCH_APP_ID } from '../constants';
-import { useApps, useAppStore } from '../store/app';
+import styled from 'styled-components';
+
 import { useSearchStore } from './search-store';
 import { QueryChip, SearchBarProps, SelectLabelFactoryProps } from '../../types';
-import { handleKeyboardShortcuts } from '../keyboard-shortcuts/keyboard-shortcuts';
+import { SEARCH_APP_ID } from '../constants';
+import { useLocalStorage } from '../shell/hooks';
+import { useAppStore } from '../store/app';
 
 const OutlinedIconButton = styled(IconButton)`
 	border: 1px solid

@@ -5,11 +5,13 @@
  */
 
 import { filter, find, findIndex, forEach, map, reduce } from 'lodash';
+
+import { getXmlSoapFetch } from './fetch';
+import { AccountState, Mods, Account } from '../../types';
 import { SHELL_APP_ID } from '../constants';
 import { useAccountStore } from '../store/account/store';
-import { AccountState, Mods, Account } from '../../types';
-import { getXmlSoapFetch } from './fetch';
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 export const editSettings = (mods: Mods, appId: string = SHELL_APP_ID): Promise<any> =>
 	getXmlSoapFetch(SHELL_APP_ID)(
 		'Batch',
@@ -177,6 +179,7 @@ export const editSettings = (mods: Mods, appId: string = SHELL_APP_ID): Promise<
 							? reduce(
 									mods?.identity?.modifyList,
 									(acc, { id, prefs }) => {
+										// eslint-disable-next-line sonarjs/no-unused-collection
 										const tempResult = [];
 										const propIndex = findIndex(
 											acc,
@@ -221,6 +224,7 @@ export const getEditSettingsForApp =
 	(app: string) =>
 	(mods: Mods): Promise<any> =>
 		editSettings(mods, app).then((r) => {
+			// eslint-disable-next-line no-param-reassign
 			r.type = 'fulfilled';
 			return r;
 		});

@@ -5,8 +5,7 @@
  */
 
 import React, { useCallback, useContext } from 'react';
-import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
+
 import {
 	IconButton,
 	Text,
@@ -16,6 +15,9 @@ import {
 	Container,
 	Tooltip
 } from '@zextras/carbonio-design-system';
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+
 import { BoardValueContext, BoardSetterContext } from './board-context';
 
 const TabContainer = styled(Row)`

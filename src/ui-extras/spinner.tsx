@@ -5,6 +5,7 @@
  */
 
 import React, { FC } from 'react';
+
 import { Button, Container } from '@zextras/carbonio-design-system';
 
 export const Spinner: FC = () => (

@@ -4,9 +4,9 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import { SHELL_APP_ID } from '../constants';
-import { GetAllConfigResponse } from '../../types';
 import { getSoapFetch } from './fetch';
+import { GetAllConfigResponse } from '../../types';
+import { SHELL_APP_ID } from '../constants';
 import { useAllConfigStore } from '../store/config';
 
 export const getAllConfig = (): Promise<void> =>

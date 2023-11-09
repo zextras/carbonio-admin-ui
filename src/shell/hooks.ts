@@ -6,13 +6,14 @@
 
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import { useContext, useMemo, useState } from 'react';
+import { useContext, useState } from 'react';
+
+import ShellContext from './shell-context';
 import { useNetworkStore } from '../store/network';
 import { useUtilityBarStore } from '../utility-bar';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import ShellContext from './shell-context';
 
 export function useIsMobile(): boolean {
 	const { isMobile } = useContext(ShellContext);
@@ -41,9 +42,6 @@ export function useLocalStorage<T>(key: string, initialValue: T): any {
 	return [storedValue, setValue] as const;
 }
 
-export const usePrimaryBarState = (): boolean => {
-	const isOpen = useUtilityBarStore((s) => s.primaryBarState);
-	return isOpen;
-};
+export const usePrimaryBarState = (): boolean => useUtilityBarStore((s) => s.primaryBarState);
 
 export const useNetworkState = (): any => useNetworkStore.getState();

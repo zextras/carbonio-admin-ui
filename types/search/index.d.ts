@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import { AppRoute } from '../apps';
 import { QueryChip } from './items';
+import { AppRoute } from '../apps';
 
 export * from './items';
 export type SearchState = {

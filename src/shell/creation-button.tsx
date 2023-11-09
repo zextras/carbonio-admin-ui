@@ -5,14 +5,16 @@
  */
 
 import React, { FC, useCallback, useMemo, useState } from 'react';
-import { reduce, groupBy } from 'lodash';
+
 import { MultiButton, Button, Dropdown } from '@zextras/carbonio-design-system';
+import { reduce, groupBy } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
-import { useActions } from '../store/integrations/hooks';
-import { ACTION_TYPES } from '../constants';
+
 import { Action, AppRoute } from '../../types';
+import { ACTION_TYPES } from '../constants';
 import { useAppList } from '../store/app';
+import { useActions } from '../store/integrations/hooks';
 
 const useSecondaryActions = (
 	actions: Array<Action>,

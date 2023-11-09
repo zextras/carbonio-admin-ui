@@ -4,16 +4,18 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
+
 import { Container, Tooltip, IconButton, Dropdown, Text } from '@zextras/carbonio-design-system';
 import { map } from 'lodash';
 import { useTranslation } from 'react-i18next';
+
 import { useUtilityBarStore } from './store';
+import { useUtilityViews } from './utils';
 import { UtilityView } from '../../types/apps';
 import { SHELL_APP_ID } from '../constants';
-import { useUtilityViews } from './utils';
 import { logout } from '../network/logout';
-import { useContextBridge } from '../store/context-bridge';
 import { useUserAccount } from '../store/account';
+import { useContextBridge } from '../store/context-bridge';
 
 const UtilityBarItem: FC<{ view: UtilityView }> = ({ view }) => {
 	const { mode, setMode, current, setCurrent } = useUtilityBarStore();

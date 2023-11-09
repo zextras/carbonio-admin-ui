@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
+import React, { useContext, FC, useState, useEffect, useMemo, useCallback, useRef } from 'react';
+
 import {
 	Container,
 	IconButton,
@@ -15,25 +17,25 @@ import {
 	Popper
 } from '@zextras/carbonio-design-system';
 import { map, isEmpty, trim, filter, sortBy, find } from 'lodash';
-import React, { useContext, FC, useState, useEffect, useMemo, useCallback, useRef } from 'react';
-import styled from 'styled-components';
-import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+
 // TODO: convert boards management to ts (and maybe a zustand store)
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { BoardValueContext, BoardSetterContext } from './boards/board-context';
-import { useAppStore } from '../store/app';
-import { AppRoute, PrimaryAccessoryView, PrimaryBarView, Right } from '../../types';
 import BadgeWrap from './badge-wrap';
-import AppContextProvider from '../boot/app/app-context-provider';
-import { checkRoute } from '../utility-bar/utils';
-import { useUtilityBarStore } from '../utility-bar';
-import { useContextBridge } from '../store/context-bridge';
+import { BoardValueContext, BoardSetterContext } from './boards/board-context';
 import { Collapser } from './collapser';
-import { useUserAccounts } from '../store/account';
-import { getUsersRights } from '../network/get-user-accounts-rights';
+import { AppRoute, PrimaryAccessoryView, PrimaryBarView, Right } from '../../types';
+import AppContextProvider from '../boot/app/app-context-provider';
 import { CONFIG } from '../constants';
+import { getUsersRights } from '../network/get-user-accounts-rights';
+import { useUserAccounts } from '../store/account';
+import { useAppStore } from '../store/app';
+import { useContextBridge } from '../store/context-bridge';
+import { useUtilityBarStore } from '../utility-bar';
+import { checkRoute } from '../utility-bar/utils';
 
 const PrimaryBarContainer = styled(Container)`
 	min-width: 48px;
@@ -261,10 +263,7 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 
 	const allowShowFeedback = useMemo(() => {
 		const rightsConfig: Right = find(allUserRights, { type: CONFIG }) || { all: [], type: CONFIG };
-		if (rightsConfig?.all?.[0]?.setAttrs?.[0]?.all) {
-			return true;
-		}
-		return false;
+		return !!rightsConfig?.all?.[0]?.setAttrs?.[0]?.all;
 	}, [allUserRights]);
 
 	useEffect(() => {

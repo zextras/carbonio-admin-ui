@@ -13,6 +13,8 @@ import React, {
 	FC,
 	useContext
 } from 'react';
+
+import { Severity, Event } from '@sentry/browser';
 import {
 	Text,
 	Button,
@@ -25,16 +27,13 @@ import {
 	Switch,
 	Link
 } from '@zextras/carbonio-design-system';
-import { Severity, Event } from '@sentry/browser';
 import { filter, find, map } from 'lodash';
-import styled from 'styled-components';
 import { TFunction, Trans, useTranslation } from 'react-i18next';
-import { useUserAccount, useAccountStore } from '../store/account';
-import { useRemoveCurrentBoard } from '../shell/boards/board-hooks';
+import styled from 'styled-components';
+
 import { feedback } from './functions';
-import { useAppList } from '../store/app';
 import Logo from '../../assets/carbonio_feedback.svg';
-import { useAllConfigStore } from '../store/config/store';
+import packageJson from '../../package.json';
 import { OPEN_TICKET_URL, SHELL_APP_ID, FORUM_URL } from '../constants';
 import {
 	getCarbonioBackendVersion,
@@ -43,8 +42,11 @@ import {
 	getXmlSoapFetch
 } from '../network/fetch';
 import { getAllConfig } from '../network/get-all-config';
+import { useRemoveCurrentBoard } from '../shell/boards/board-hooks';
+import { useUserAccount, useAccountStore } from '../store/account';
 import { getIsAdvanced } from '../store/advance';
-import packageJson from '../../package.json';
+import { useAppList } from '../store/app';
+import { useAllConfigStore } from '../store/config/store';
 
 const CustomIcon = styled(Icon)`
 	width: 20px;
@@ -251,6 +253,7 @@ const Feedback: FC = () => {
 		(ev) => {
 			if (event.extra?.topic === '0') setShowErr(true);
 			else setShowErr(false);
+			// eslint-disable-next-line sonarjs/no-collapsible-if
 			if (ev.keyCode === 8) {
 				if (event.message?.length === 0) {
 					setShowErr(false);

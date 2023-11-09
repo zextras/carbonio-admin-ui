@@ -4,12 +4,14 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
+import { ComponentType } from 'react';
+
 import { Store } from '@reduxjs/toolkit';
 import { To } from 'history';
 import { i18n } from 'i18next';
-import { ComponentType } from 'react';
-import { CarbonioModule, PanelMode } from '../apps';
+
 import { DARK_READER_VALUES } from '../../src/constants';
+import { CarbonioModule, PanelMode } from '../apps';
 
 export interface II18nFactory {
 	_cache: { [pkg: string]: i18n };

@@ -4,9 +4,11 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import React, { FC } from 'react';
+
 import { IconButton } from '@zextras/carbonio-design-system';
-import { useContextBridge } from '../store/context-bridge';
+
 import { SHELL_APP_ID } from '../../types';
+import { useContextBridge } from '../store/context-bridge';
 
 const DevBoardTrigger: FC = () => (
 	<IconButton

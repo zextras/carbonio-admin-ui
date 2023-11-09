@@ -4,12 +4,14 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import produce from 'immer';
-import create from 'zustand';
-import { forEach, omit, reduce } from 'lodash';
 import { ComponentType } from 'react';
-import { ActionFactory, AnyFunction, IntegrationsState, SHELL_APP_ID } from '../../../types';
+
+import { produce } from 'immer';
+import { forEach, omit, reduce } from 'lodash';
+import { create } from 'zustand';
+
 import Composer from './composer';
+import { ActionFactory, AnyFunction, IntegrationsState, SHELL_APP_ID } from '../../../types';
 
 export const useIntegrationsStore = create<IntegrationsState>((set) => ({
 	actions: {},
@@ -27,7 +29,10 @@ export const useIntegrationsStore = create<IntegrationsState>((set) => ({
 		set(
 			produce((state) => {
 				forEach(items, ({ id, action, type }) => {
-					if (!state.actions[type]) state.actions[type] = {};
+					if (!state.actions[type])
+						// eslint-disable-next-line no-param-reassign
+						state.actions[type] = {};
+					// eslint-disable-next-line no-param-reassign
 					state.actions[type][id] = action;
 				});
 			})
@@ -38,6 +43,7 @@ export const useIntegrationsStore = create<IntegrationsState>((set) => ({
 			set(
 				produce((state) => {
 					forEach(items, ({ id, component }) => {
+						// eslint-disable-next-line no-param-reassign
 						state.components[id] = { app, item: component };
 					});
 				})
@@ -46,6 +52,7 @@ export const useIntegrationsStore = create<IntegrationsState>((set) => ({
 		set(
 			produce((state) => {
 				forEach(items, ({ id, hook }) => {
+					// eslint-disable-next-line no-param-reassign
 					state.hooks[id] = hook;
 				});
 			})
@@ -54,6 +61,7 @@ export const useIntegrationsStore = create<IntegrationsState>((set) => ({
 		set(
 			produce((state) => {
 				forEach(items, ({ id, fn }) => {
+					// eslint-disable-next-line no-param-reassign
 					state.functions[id] = fn;
 				});
 			})

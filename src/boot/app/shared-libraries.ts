@@ -7,22 +7,23 @@
 /* eslint-disable import/no-duplicates */
 /* eslint-disable import/no-named-default */
 
-import React, { ComponentClass } from 'react';
+import React from 'react';
+
+import * as ReduxJSToolkit from '@reduxjs/toolkit';
+import * as ZappUI from '@zextras/carbonio-design-system';
+import * as Lodash from 'lodash';
+import * as Moment from 'moment';
 import * as PropTypes from 'prop-types';
 import * as ReactDOM from 'react-dom';
-import * as Lodash from 'lodash';
-import * as ReactRouterDom from 'react-router-dom';
-import * as Moment from 'moment';
 import * as ReactI18n from 'react-i18next';
+import * as ReactRedux from 'react-redux';
+import * as ReactRouterDom from 'react-router-dom';
 // import * as Msw from 'msw';
 // import * as Faker from 'faker';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import * as ReactRedux from 'react-redux';
-import * as ReduxJSToolkit from '@reduxjs/toolkit';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import * as ZappUI from '@zextras/carbonio-design-system';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import * as StyledComponents from 'styled-components';

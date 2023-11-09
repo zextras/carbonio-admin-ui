@@ -5,6 +5,8 @@
  */
 
 import React, { useState, useCallback, FC, useEffect, useMemo } from 'react';
+
+// eslint-disable-next-line import/no-extraneous-dependencies
 import {
 	Container,
 	FormSubSection,
@@ -13,15 +15,15 @@ import {
 	Select,
 	Padding
 } from '@zextras/carbonio-design-system';
-
-// eslint-disable-next-line import/no-extraneous-dependencies
-import momentLocalizer from 'react-widgets-moment';
 import { useTranslation } from 'react-i18next';
+import momentLocalizer from 'react-widgets-moment';
+
 import { AccountSettings } from '../../../../types';
+import { outOfOfficeSubSection } from '../../general-settings-sub-sections';
+import DateTimeSelect from '../date-time-select-view';
 import Heading from '../settings-heading';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import DateTimeSelect from '../date-time-select-view';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import {
@@ -31,7 +33,6 @@ import {
 	getOutOfOfficeStatusPrefsData,
 	ItemsSendAutoReplies
 } from '../utils';
-import { outOfOfficeSubSection } from '../../general-settings-sub-sections';
 
 momentLocalizer();
 

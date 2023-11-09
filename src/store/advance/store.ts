@@ -4,7 +4,8 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import create, { StoreApi, UseBoundStore } from 'zustand';
+import { create } from 'zustand';
+
 import { AdvanceState } from '../../../types';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -15,4 +16,4 @@ export const useAdvanceStore = create<AdvanceState>(() => ({
 	version: '',
 	domain: '',
 	isAdvanced: false
-})) as UseBoundStore<AdvanceState, StoreApi<AdvanceState>>;
+}));

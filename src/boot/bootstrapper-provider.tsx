@@ -5,13 +5,15 @@
  */
 
 import React, { FC } from 'react';
+
 import { I18nextProvider } from 'react-i18next';
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import BoardContextProvider from '../shell/boards/board-context-provider';
 import { BootstrapperContext } from './bootstrapper-context';
 import I18nFactory from '../i18n/i18n-factory';
 import StoreFactory from '../redux/store-factory';
+import BoardContextProvider from '../shell/boards/board-context-provider';
 
 const BootstrapperContextProvider: FC<{ i18nFactory: I18nFactory; storeFactory: StoreFactory }> = ({
 	children,

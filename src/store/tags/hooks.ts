@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import { Tag, Tags } from '../../../types';
 import { useTagStore } from './store';
+import { Tag, Tags } from '../../../types';
 
 /* eslint-disable react-hooks/rules-of-hooks */
 /* THIS FILE CONTAINS HOOKS, BUT ESLINT IS DUMB */

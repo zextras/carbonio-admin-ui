@@ -5,8 +5,10 @@
  */
 
 import React, { useMemo, useEffect, ReactElement, useState, useCallback } from 'react';
+
 import { Container, Text, Padding, Input, Row, Checkbox } from '@zextras/carbonio-design-system';
 import { TFunction } from 'i18next';
+
 import { IdentityProps } from '../../../../types';
 import { EMAIL_VALIDATION_REGEX } from '../../../constants';
 

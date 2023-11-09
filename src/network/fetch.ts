@@ -5,7 +5,9 @@
  */
 
 import _, { find, map } from 'lodash';
+
 import { goToLogin } from './go-to-login';
+import { userAgent } from './user-agent';
 import {
 	Account,
 	ErrorSoapResponse,
@@ -13,10 +15,9 @@ import {
 	SoapResponse,
 	SuccessSoapResponse
 } from '../../types';
-import { userAgent } from './user-agent';
+import { SHELL_APP_ID } from '../constants';
 import { report } from '../reporting';
 import { useAccountStore } from '../store/account';
-import { SHELL_APP_ID } from '../constants';
 import { useNetworkStore } from '../store/network';
 import { handleTagSync } from '../store/tags';
 
@@ -99,6 +100,7 @@ const handleResponse = (api: string, res: SoapResponse<any>): any => {
 	if (res?.Body?.Fault) {
 		if (
 			find(
+				// eslint-disable-next-line sonarjs/no-duplicate-string
 				['service.AUTH_REQUIRED', 'service.AUTH_EXPIRED'],
 				(code) => code === (<ErrorSoapResponse>res).Body.Fault.Detail?.Error?.Code
 			)
@@ -146,6 +148,7 @@ export const getSoapFetch =
 		const { context } = useNetworkStore.getState();
 		const header: any = {
 			context: {
+				// eslint-disable-next-line sonarjs/no-duplicate-string
 				_jsns: 'urn:zimbra',
 				notify: context?.notify?.[0]?.seq
 					? {
@@ -169,6 +172,7 @@ export const getSoapFetch =
 		return fetch(`/service/admin/soap/${api}Request`, {
 			method: 'POST',
 			headers: {
+				// eslint-disable-next-line sonarjs/no-duplicate-string
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
@@ -246,8 +250,7 @@ const handleSoapResponseWithErrorCode = (res: any): any => {
 		) {
 			goToLogin();
 		}
-		const error = res?.Body?.Fault ? res?.Body?.Fault : res;
-		throw error;
+		throw res?.Body?.Fault ? res?.Body?.Fault : res;
 	}
 	return <SuccessSoapResponse<any>>res;
 };
@@ -378,6 +381,7 @@ export const fetchExternalSoap =
 				  })
 		}) // TODO proper error handling
 			.then((res) =>
+				// eslint-disable-next-line sonarjs/no-duplicate-string
 				res?.headers?.get('content-length') === null &&
 				!res?.headers?.get('content-type')?.includes('application/json')
 					? res

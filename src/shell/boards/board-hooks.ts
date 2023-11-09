@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import { useContext, useCallback } from 'react';
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { BoardSetterContext, BoardValueContext } from './board-context';
@@ -11,13 +12,12 @@ import { BoardSetterContext, BoardValueContext } from './board-context';
 export const getUseAddBoardCallback =
 	(appId: string) => (): ((path: string, context?: unknown | { app: string }) => void) => {
 		const { addBoard } = useContext(BoardSetterContext);
-		const callback = useCallback(
+		return useCallback(
 			(path: string, context?: unknown | { app?: string }) => {
 				addBoard(path, context, (context as { app?: string })?.app ?? appId);
 			},
 			[addBoard]
 		);
-		return callback;
 	};
 
 export function useUpdateCurrentBoard(): (url: string, title: string) => void {

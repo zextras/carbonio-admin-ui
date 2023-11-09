@@ -5,14 +5,16 @@
  */
 
 import React, { FC, useCallback, useMemo } from 'react';
-import { filter, findIndex, map, sortBy } from 'lodash';
-import styled from 'styled-components';
-import { Route, Switch } from 'react-router-dom';
+
 import { Container } from '@zextras/carbonio-design-system';
-import AppContextProvider from '../boot/app/app-context-provider';
+import { filter, findIndex, map, sortBy } from 'lodash';
+import { Route, Switch } from 'react-router-dom';
+import styled from 'styled-components';
+
 import { Collapser } from './collapser';
-import { useAppStore } from '../store/app';
 import { AppRoute } from '../../types';
+import AppContextProvider from '../boot/app/app-context-provider';
+import { useAppStore } from '../store/app';
 import { useUtilityBarStore } from '../utility-bar';
 import { checkRoute } from '../utility-bar/utils';
 

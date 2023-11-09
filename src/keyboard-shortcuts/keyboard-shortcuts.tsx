@@ -17,6 +17,7 @@ const modifierKeysSecondTier = ['p'];
 
 let keySequence = '';
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 export const handleKeyboardShortcuts = (props: handleKeyboardShortcutsProps): void => {
 	const createEmail = props.secondaryActions?.filter((item: any) => item.id === 'create-mail')[0]
 		?.click;
@@ -76,6 +77,7 @@ export const handleKeyboardShortcuts = (props: handleKeyboardShortcutsProps): vo
 				}
 				break;
 
+			// eslint-disable-next-line sonarjs/no-duplicated-branches
 			case 'c':
 				if (isGlobalContext) {
 					consoleLogKeyCombination();

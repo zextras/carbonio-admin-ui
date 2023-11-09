@@ -5,12 +5,14 @@
  */
 
 import React, { useContext, useEffect, useMemo, useState } from 'react';
+
+import { createMemoryHistory } from 'history';
+import { map } from 'lodash';
 import { Route, Router, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { map } from 'lodash';
-import { createMemoryHistory } from 'history';
-import AppContextProvider from '../../boot/app/app-context-provider';
+
 import { BoardValueContext, BoardSetterContext } from './board-context';
+import AppContextProvider from '../../boot/app/app-context-provider';
 import { useAppStore } from '../../store/app';
 
 const BoardContainer = styled.div`

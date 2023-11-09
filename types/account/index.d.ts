@@ -3,7 +3,6 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { Tag } from '../tags';
 
 export type ZimletProp = {
 	name: string;

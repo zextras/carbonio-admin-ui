@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import create, { StoreApi, UseBoundStore } from 'zustand';
+import { create } from 'zustand';
 
 import { AccountState } from '../../../types';
 
@@ -20,4 +20,4 @@ export const useAccountStore = create<AccountState>(() => ({
 	},
 	usedQuota: 0,
 	lastNotificationTime: Date.now()
-})) as UseBoundStore<AccountState, StoreApi<AccountState>>;
+}));
