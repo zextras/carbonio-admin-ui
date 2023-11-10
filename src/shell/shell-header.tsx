@@ -99,13 +99,14 @@ const ShellHeader: FC<{
 	const { carbonioAdminUiAppLogo, carbonioAdminUiDarkAppLogo, carbonioLogoURL } =
 		useLoginConfigStore();
 	const { darkModeEnabled, darkReaderStatus } = useDarkMode();
-	const [feedbackVisible, setFeedbackVisible] = useState(true);
-	const configs = useAllConfigStore((c) => c.a);
-	const [feedbackConfig, setFeedbackConfig] = useState('FALSE');
+	// Hide for now because https://app.useberry.com/embed/embed-script.js not working */
+	// const [feedbackVisible, setFeedbackVisible] = useState(true);
+	// const configs = useAllConfigStore((c) => c.a);
+	// const [feedbackConfig, setFeedbackConfig] = useState('FALSE');
 
-	const saveToLocalStorage = (): void => {
-		localStorage.setItem('feedback', 'true');
-	};
+	// const saveToLocalStorage = (): void => {
+	// 	localStorage.setItem('feedback', 'true');
+	// };
 
 	const getDomainDetails = useCallback(
 		(name: any): any => {
@@ -143,26 +144,26 @@ const ShellHeader: FC<{
 		},
 		[isAdvanced, isDelegatedAdmin, isGlobalAdmin]
 	);
+	// Hide for now because https://app.useberry.com/embed/embed-script.js not working */
+	// useEffect(() => {
+	// 	const storedValue = localStorage.getItem('feedback');
+	// 	if (storedValue === 'true') {
+	// 		setFeedbackVisible(false);
+	// 	}
+	// 	const carbonioAllowFeedback = configs.find((item: any) => item?.n === 'carbonioAllowFeedback');
+	// 	if (carbonioAllowFeedback) {
+	// 		setFeedbackConfig(carbonioAllowFeedback?._content);
+	// 	}
+	// 	const script = document.createElement('script');
+	// 	script.type = 'text/javascript';
+	// 	script.src = 'https://app.useberry.com/embed/embed-script.js';
+	// 	script.async = true;
+	// 	document.body.appendChild(script);
 
-	useEffect(() => {
-		const storedValue = localStorage.getItem('feedback');
-		if (storedValue === 'true') {
-			setFeedbackVisible(false);
-		}
-		const carbonioAllowFeedback = configs.find((item: any) => item?.n === 'carbonioAllowFeedback');
-		if (carbonioAllowFeedback) {
-			setFeedbackConfig(carbonioAllowFeedback?._content);
-		}
-		const script = document.createElement('script');
-		script.type = 'text/javascript';
-		script.src = 'https://app.useberry.com/embed/embed-script.js';
-		script.async = true;
-		document.body.appendChild(script);
-
-		return () => {
-			document.body.removeChild(script);
-		};
-	}, [configs]);
+	// 	return () => {
+	// 		document.body.removeChild(script);
+	// 	};
+	// }, [configs]);
 
 	useEffect(() => {
 		if (userName) {
@@ -182,11 +183,11 @@ const ShellHeader: FC<{
 	}, [carbonioAdminUiDarkAppLogo, carbonioAdminUiAppLogo, darkModeEnabled]);
 
 	const logoUrl = useMemo(() => carbonioLogoURL || CARBONIO_LOGO_URL, [carbonioLogoURL]);
-
-	const removeFeedback = (): void => {
-		setFeedbackVisible(false);
-		saveToLocalStorage();
-	};
+	// Hide for now because https://app.useberry.com/embed/embed-script.js not working */
+	// const removeFeedback = (): void => {
+	// 	setFeedbackVisible(false);
+	// 	saveToLocalStorage();
+	// };
 
 	return (
 		<Container
@@ -297,7 +298,8 @@ const ShellHeader: FC<{
 					</Container>
 				</Responsive>
 			</Container>
-			{feedbackVisible && feedbackConfig === 'TRUE' && (
+			{/* Hide for now because https://app.useberry.com/embed/embed-script.js not working */}
+			{/* {feedbackVisible && feedbackConfig === 'TRUE' && (
 				<FeedbackDiv className="feedback" onClick={removeFeedback}>
 					<FeedbackContainer
 						data-useberry-trigger="true"
@@ -323,7 +325,7 @@ const ShellHeader: FC<{
 						onClick={removeFeedback}
 					/>
 				</FeedbackDiv>
-			)}
+			)} */}
 		</Container>
 	);
 };
