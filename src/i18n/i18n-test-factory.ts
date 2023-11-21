@@ -5,8 +5,9 @@
  */
 
 import i18next, { i18n } from 'i18next';
-import { CarbonioModule } from '../../types';
+
 import I18nFactory from './i18n-factory';
+import { CarbonioModule } from '../../types';
 
 export default class I18nTestFactory extends I18nFactory {
 	// eslint-disable-next-line class-methods-use-this

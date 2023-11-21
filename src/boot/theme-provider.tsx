@@ -4,14 +4,8 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import React, {
-	createContext,
-	useCallback,
-	useEffect,
-	useLayoutEffect,
-	useMemo,
-	useState
-} from 'react';
+import React, { createContext, useCallback, useEffect, useLayoutEffect, useState } from 'react';
+
 import {
 	generateColorSet,
 	ThemeProvider as UIThemeProvider,
@@ -20,10 +14,10 @@ import {
 import { auto, disable, enable, setFetchMethod } from 'darkreader';
 import { reduce } from 'lodash';
 import { createGlobalStyle, DefaultTheme } from 'styled-components';
+
+import { useGetPrimaryColor } from './use-get-primary-color';
 import { DarkReaderPropValues, ThemeExtension } from '../../types';
 import { darkReaderDynamicThemeFixes } from '../constants';
-import { getAutoScalingFontSize } from '../settings/components/utils';
-import { useGetPrimaryColor } from './use-get-primary-color';
 import { useAccountStore } from '../store/account/store';
 
 setFetchMethod(window.fetch);

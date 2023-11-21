@@ -5,21 +5,22 @@
  */
 
 import React, { useState, useCallback, FC, useEffect } from 'react';
-import { Container, Checkbox, Text, Icon, Padding } from '@zextras/carbonio-design-system';
 
+import { Container, Checkbox, Text, Icon, Padding } from '@zextras/carbonio-design-system';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 import DateTimePicker from 'react-widgets/lib/DateTimePicker';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import momentLocalizer from 'react-widgets-moment';
-import { useTranslation } from 'react-i18next';
-import { AccountSettings } from '../../../types';
-import Heading from './settings-heading';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+
 import Styler from './date-picker-style';
+import Heading from './settings-heading';
+import { changeDateEvent, getDateEvent, startOfDate, endOfDate } from './utils';
+import { AccountSettings } from '../../../types';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { changeDateEvent, getDateEvent, startOfDate, endOfDate } from './utils';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 
 momentLocalizer();
 

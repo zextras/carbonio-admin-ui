@@ -5,8 +5,7 @@
  */
 
 import React, { useContext, useRef, useMemo, useLayoutEffect } from 'react';
-import styled, { css } from 'styled-components';
-import { reduce, map, slice } from 'lodash';
+
 import {
 	Container,
 	Divider,
@@ -18,9 +17,12 @@ import {
 	useHiddenCount,
 	Tooltip
 } from '@zextras/carbonio-design-system';
+import { reduce, map, slice } from 'lodash';
 import { useTranslation } from 'react-i18next';
-import AppBoardTab from './app-board-tab';
+import styled, { css } from 'styled-components';
+
 import AppBoard from './app-board';
+import AppBoardTab from './app-board-tab';
 import { BoardSetterContext, BoardValueContext } from './board-context';
 import { useApps } from '../../store/app';
 

@@ -5,11 +5,13 @@
  */
 
 import React from 'react';
-import { reduce, find, get, sortBy } from 'lodash';
+
 import { Accordion, Collapse, Container, Padding } from '@zextras/carbonio-design-system';
+import { reduce, find, get, sortBy } from 'lodash';
 import { useHistory } from 'react-router-dom';
-import { useAppStore } from '../store/app';
+
 import AppContextProvider from '../boot/app/app-context-provider';
+import { useAppStore } from '../store/app';
 
 const SidebarComponent = ({ item }) =>
 	item.secondary ? (

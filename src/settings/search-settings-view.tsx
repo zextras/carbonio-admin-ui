@@ -5,10 +5,12 @@
  */
 
 import React, { useState, FC, useCallback, useEffect, useMemo } from 'react';
+
 import { Container, FormSubSection, Checkbox } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
-import { AccountSettings } from '../../types';
+
 import { searchPrefsSubSection } from './general-settings-sub-sections';
+import { AccountSettings } from '../../types';
 
 const SearchSettingsView: FC<{
 	settings: AccountSettings;

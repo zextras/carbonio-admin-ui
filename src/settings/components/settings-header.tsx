@@ -5,6 +5,7 @@
  */
 
 import React, { FC, useEffect } from 'react';
+
 import {
 	Padding,
 	Row,
@@ -16,6 +17,7 @@ import {
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useParams } from 'react-router-dom';
+
 import { SETTINGS_APP_ID } from '../../constants';
 import { RouteLeavingGuard } from '../../ui-extras/nav-guard';
 

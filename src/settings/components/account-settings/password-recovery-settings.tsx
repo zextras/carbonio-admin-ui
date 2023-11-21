@@ -5,6 +5,7 @@
  */
 
 import React, { useMemo, useCallback, ReactElement, useState } from 'react';
+
 import {
 	Container,
 	Text,
@@ -15,8 +16,9 @@ import {
 	Divider
 } from '@zextras/carbonio-design-system';
 import { TFunction } from 'i18next';
-import { SHELL_APP_ID, EMAIL_VALIDATION_REGEX } from '../../../constants';
+
 import { IdentityProps } from '../../../../types';
+import { SHELL_APP_ID, EMAIL_VALIDATION_REGEX } from '../../../constants';
 import { getXmlSoapFetch } from '../../../network/fetch';
 
 interface PasswordRecoverySettingsProps {

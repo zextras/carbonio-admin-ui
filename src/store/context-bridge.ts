@@ -5,9 +5,11 @@
  */
 
 /* eslint-disable @typescript-eslint/ban-types */
-import create, { UseBoundStore, StoreApi } from 'zustand';
-import { reduce } from 'lodash';
 import { useEffect } from 'react';
+
+import { reduce } from 'lodash';
+import { create } from 'zustand';
+
 import { ContextBridgeState } from '../../types';
 
 export const useContextBridge = create<ContextBridgeState>((set) => ({
@@ -35,7 +37,7 @@ export const useContextBridge = create<ContextBridgeState>((set) => ({
 			)
 		}));
 	}
-})) as UseBoundStore<ContextBridgeState, StoreApi<ContextBridgeState>>;
+}));
 
 export const useBridge = (content: Partial<Omit<ContextBridgeState, 'add'>>): void => {
 	const addFunctions = useContextBridge(({ add }) => add);

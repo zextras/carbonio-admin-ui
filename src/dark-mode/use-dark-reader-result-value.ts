@@ -5,9 +5,10 @@
  */
 
 import { useMemo } from 'react';
-import { useLoginConfigStore } from '../store/login/store';
+
 import type { DarkReaderPropValues } from '../../types';
 import { DARK_READER_VALUES } from '../constants';
+import { useLoginConfigStore } from '../store/login/store';
 
 export function isDarkReaderPropValues(
 	maybeDarkReaderPropValue: unknown

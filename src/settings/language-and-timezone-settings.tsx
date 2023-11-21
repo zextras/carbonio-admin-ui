@@ -5,6 +5,8 @@
  */
 
 import React, { useCallback, FC, useMemo } from 'react';
+
+// eslint-disable-next-line import/no-extraneous-dependencies
 import {
 	Container,
 	FormSubSection,
@@ -13,14 +15,13 @@ import {
 	Text,
 	Padding
 } from '@zextras/carbonio-design-system';
-
-// eslint-disable-next-line import/no-extraneous-dependencies
-import momentLocalizer from 'react-widgets-moment';
-import { useTranslation } from 'react-i18next';
 import { find } from 'lodash';
-import { AccountSettings } from '../../types';
+import { useTranslation } from 'react-i18next';
+import momentLocalizer from 'react-widgets-moment';
+
 import { localeList, timeZoneList } from './components/utils';
 import { timezoneAndLanguageSubSection } from './general-settings-sub-sections';
+import { AccountSettings } from '../../types';
 
 momentLocalizer();
 

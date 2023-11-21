@@ -5,8 +5,9 @@
  */
 
 import { forEach, reduce } from 'lodash';
-import { SoapContext, Tag, Tags } from '../../../types';
+
 import { useTagStore } from './store';
+import { SoapContext, Tag, Tags } from '../../../types';
 
 export const handleTagRefresh = (tags: Array<Tag>): Tags =>
 	reduce(

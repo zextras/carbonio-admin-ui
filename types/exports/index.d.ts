@@ -6,9 +6,21 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
 import { ComponentType, FC } from 'react';
+
+import { TFunction } from 'react-i18next';
 import { LinkProps } from 'react-router-dom';
 import { Reducer, Store } from 'redux';
-import { TFunction } from 'react-i18next';
+
+import {
+	AccountSettings,
+	Account,
+	AccountRights,
+	AccountRightName,
+	AccountRightTarget,
+	SoapFetch,
+	SoapFetchPost,
+	SoapFetchExternal
+} from '../account';
 import {
 	AppRoute,
 	AppRouteDescriptor,
@@ -22,16 +34,7 @@ import {
 	UtilityView
 } from '../apps';
 import { ActionFactory, AnyFunction, CombinedActionFactory, Action } from '../integrations';
-import {
-	AccountSettings,
-	Account,
-	AccountRights,
-	AccountRightName,
-	AccountRightTarget,
-	SoapFetch,
-	SoapFetchPost,
-	SoapFetchExternal
-} from '../account';
+import { HistoryParams, ShellModes } from '../misc';
 import {
 	Mods,
 	TagActionResponse,
@@ -40,7 +43,6 @@ import {
 	SoapRefresh,
 	Attribute
 } from '../network';
-import { HistoryParams, ShellModes } from '../misc';
 import { Tag, Tags } from '../tags';
 
 declare const getBridgedFunctions: () => {

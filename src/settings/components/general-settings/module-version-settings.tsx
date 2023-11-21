@@ -7,7 +7,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 
 import React, { FC, useContext, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
+
 import {
 	FormSubSection,
 	Container,
@@ -18,10 +18,11 @@ import {
 	ThemeContext
 } from '@zextras/carbonio-design-system';
 import { map } from 'lodash';
-import { useAppList } from '../../../store/app/hooks';
+import { useTranslation } from 'react-i18next';
 
-import { SEARCH_APP_ID, SETTINGS_APP_ID } from '../../../constants/index';
 import { CarbonioModule } from '../../../../types';
+import { SEARCH_APP_ID, SETTINGS_APP_ID } from '../../../constants/index';
+import { useAppList } from '../../../store/app/hooks';
 import { versionsSubSection } from '../../general-settings-sub-sections';
 
 const ModuleVersionSettings: FC = () => {

@@ -5,7 +5,8 @@
  */
 
 import { isFunction } from 'lodash';
-import create from 'zustand';
+import { create } from 'zustand';
+
 import { QueryChip, SearchState } from '../../types';
 
 export const useSearchStore = create<SearchState>((set, get) => ({

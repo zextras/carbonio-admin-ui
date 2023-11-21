@@ -3,7 +3,8 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { Event, EventHint, Severity, setTag } from '@sentry/browser';
+import { Event, EventHint, Severity } from '@sentry/browser';
+
 import { useReporter } from './store';
 import { getIsAdvanced } from '../store/advance';
 

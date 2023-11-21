@@ -7,39 +7,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
 import { reduce } from 'lodash';
-import { getApp, getAppContext, useApp, useAppContext } from '../../store/app';
-import { useContextBridge } from '../../store/context-bridge';
-import {
-	getAction,
-	getActions,
-	getActionsFactory,
-	getActionFactory,
-	getIntegratedComponent,
-	getIntegratedFunction,
-	getIntegratedHook
-} from '../../store/integrations/getters';
-import {
-	getUserAccount,
-	getUserAccounts,
-	getUserSettings,
-	useUserAccount,
-	useUserAccounts,
-	useUserSettings,
-	useUserRight,
-	useUserRights,
-	getUserRight,
-	getUserRights
-} from '../../store/account';
-import { useIsMobile, usePrimaryBarState, useNetworkState } from '../../shell/hooks';
-import {
-	useAction,
-	useActions,
-	useActionsFactory,
-	useActionFactory,
-	useIntegratedComponent,
-	useIntegratedFunction,
-	useIntegratedHook
-} from '../../store/integrations/hooks';
+
 import { CarbonioModule } from '../../../types';
 import {
 	usePushHistoryCallback,
@@ -52,24 +20,57 @@ import {
 	pushHistory
 } from '../../history/hooks';
 import {
-	getUseAddBoardCallback,
-	useBoardConfig,
-	useRemoveCurrentBoard,
-	useUpdateCurrentBoard
-} from '../../shell/boards/board-hooks';
-import {
 	getSoapFetch,
 	getSoapFetchRequest,
 	getXmlSoapFetch,
 	postSoapFetchRequest,
 	fetchExternalSoap
 } from '../../network/fetch';
-import { getTag, getTags, useTag, useTags } from '../../store/tags';
-import { useNotify, useRefresh } from '../../store/network';
 import { changeTagColor, createTag, deleteTag, renameTag, updateTag } from '../../network/tags';
-import { useAllConfig } from '../../store/config';
+import {
+	getUseAddBoardCallback,
+	useBoardConfig,
+	useRemoveCurrentBoard,
+	useUpdateCurrentBoard
+} from '../../shell/boards/board-hooks';
+import { useIsMobile, usePrimaryBarState, useNetworkState } from '../../shell/hooks';
+import {
+	getUserAccount,
+	getUserAccounts,
+	getUserSettings,
+	useUserAccount,
+	useUserAccounts,
+	useUserSettings,
+	useUserRight,
+	useUserRights,
+	getUserRight,
+	getUserRights
+} from '../../store/account';
 import { getIsAdvanced, useIsAdvanced } from '../../store/advance';
+import { getApp, getAppContext, useApp, useAppContext } from '../../store/app';
+import { useAllConfig } from '../../store/config';
+import { useContextBridge } from '../../store/context-bridge';
 import { useDomainInformation } from '../../store/domain-information';
+import {
+	getAction,
+	getActions,
+	getActionsFactory,
+	getActionFactory,
+	getIntegratedComponent,
+	getIntegratedFunction,
+	getIntegratedHook
+} from '../../store/integrations/getters';
+import {
+	useAction,
+	useActions,
+	useActionsFactory,
+	useActionFactory,
+	useIntegratedComponent,
+	useIntegratedFunction,
+	useIntegratedHook
+} from '../../store/integrations/hooks';
+import { useNotify, useRefresh } from '../../store/network';
+import { getTag, getTags, useTag, useTags } from '../../store/tags';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export const getAppFunctions = (pkg: CarbonioModule): Record<string, Function> => ({

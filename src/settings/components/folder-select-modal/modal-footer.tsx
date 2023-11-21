@@ -5,6 +5,7 @@
  */
 
 import React, { FC, ReactElement } from 'react';
+
 import { Container, Button, Padding, Divider, Tooltip } from '@zextras/carbonio-design-system';
 
 type ModalFooterProps = {

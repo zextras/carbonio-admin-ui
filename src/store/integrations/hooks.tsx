@@ -7,8 +7,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* THIS FILE CONTAINS HOOKS, BUT ESLINT IS DUMB */
 
-import { compact, map } from 'lodash';
 import React, { useMemo, FC, FunctionComponent, useCallback } from 'react';
+
+import { compact, map } from 'lodash';
+
 import { useIntegrationsStore } from './store';
 import { Action, ActionFactory, CombinedActionFactory } from '../../../types';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -46,13 +48,12 @@ export const useIntegratedComponent = (id: string): [FunctionComponent<unknown>,
 
 export const useActions = <T,>(target: T, type: string): Array<Action> => {
 	const factories = useIntegrationsStore((s) => s.actions[type]);
-	const actions = useMemo(
+	return useMemo(
 		() =>
 			compact(
 				map(factories, (f) => {
 					try {
-						const action = f(target);
-						return action;
+						return f(target);
 					} catch (e) {
 						// eslint-disable-next-line no-console
 						console.error(e);
@@ -62,18 +63,16 @@ export const useActions = <T,>(target: T, type: string): Array<Action> => {
 			) ?? [],
 		[factories, target]
 	);
-	return actions;
 };
 
 export const useActionsFactory = <T,>(type: string): CombinedActionFactory<T> => {
 	const factories = useIntegrationsStore((s) => s.actions[type]);
-	const combinedFactory = useCallback(
+	return useCallback(
 		(target: unknown) =>
 			compact(
 				map(factories, (f) => {
 					try {
-						const action = f(target);
-						return action;
+						return f(target);
 					} catch (e) {
 						// eslint-disable-next-line no-console
 						console.error(e);
@@ -83,7 +82,6 @@ export const useActionsFactory = <T,>(type: string): CombinedActionFactory<T> =>
 			),
 		[factories]
 	);
-	return combinedFactory;
 };
 
 export const useAction = <T,>(

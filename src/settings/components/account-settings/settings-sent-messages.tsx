@@ -5,6 +5,7 @@
  */
 
 import React, { useMemo, useCallback, ReactElement, useState, useEffect } from 'react';
+
 import {
 	Container,
 	Text,
@@ -18,6 +19,7 @@ import {
 } from '@zextras/carbonio-design-system';
 import { TFunction } from 'i18next';
 import { filter, find } from 'lodash';
+
 import { IdentityProps } from '../../../../types';
 import { EMAIL_VALIDATION_REGEX } from '../../../constants';
 

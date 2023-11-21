@@ -4,9 +4,10 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import create, { StoreApi, UseBoundStore } from 'zustand';
+import { create } from 'zustand';
+
 import { TagState } from '../../../types';
 
 export const useTagStore = create<TagState>(() => ({
 	tags: {}
-})) as UseBoundStore<TagState, StoreApi<TagState>>;
+}));

@@ -5,8 +5,10 @@
  */
 
 import React, { FC, useMemo } from 'react';
+
 import { Quota, Container, FormSubSection, Text, Tooltip } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
+
 import { useUserSettings } from '../../../store/account/hooks';
 import { useAccountStore } from '../../../store/account/store';
 import { quotaSubSection } from '../../general-settings-sub-sections';

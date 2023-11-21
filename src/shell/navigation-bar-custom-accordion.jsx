@@ -5,7 +5,7 @@
  */
 
 import React, { useCallback, useMemo, useRef, useState } from 'react';
-import styled from 'styled-components';
+
 import {
 	Container,
 	Text,
@@ -19,6 +19,7 @@ import {
 	getKeyboardPreset,
 	pseudoClasses
 } from '@zextras/carbonio-design-system';
+import styled from 'styled-components';
 
 const AccordionContainerEl = styled(Container)`
 	padding: ${(props) => `

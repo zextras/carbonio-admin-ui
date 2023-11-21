@@ -4,8 +4,9 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import { useMemo } from 'react';
-import { DomainInformationState } from '../../../types';
+
 import { useDomainInformationStore } from './store';
+import { DomainInformationState } from '../../../types';
 
 export const useDomainInformation = (): DomainInformationState => {
 	const info: DomainInformationState = useDomainInformationStore((s: any) => s);

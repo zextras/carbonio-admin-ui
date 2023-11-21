@@ -5,11 +5,13 @@
  */
 
 import React, { useCallback, useEffect, useState } from 'react';
-import { forEach } from 'lodash';
-import { useTranslation } from 'react-i18next';
+
 import { Modal, Text, Container, Divider } from '@zextras/carbonio-design-system';
-import styled from 'styled-components';
+import { forEach } from 'lodash';
 import moment from 'moment';
+import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
+
 import MarkdownContainer from './markdown-container';
 import { useApps } from '../store/app';
 

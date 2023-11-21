@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import { useLoginConfigStore } from '../store/login/store';
 import { goTo, goToLogin } from './go-to-login';
+import { useLoginConfigStore } from '../store/login/store';
 
 export const logout = (): Promise<void> =>
 	fetch('/logout', { redirect: 'manual' })

@@ -5,10 +5,12 @@
  */
 
 import React from 'react';
+
 import { Container, Responsive } from '@zextras/carbonio-design-system';
+
+import ShellMobileNav from './shell-mobile-nav';
 import ShellPrimaryBar from './shell-primary-bar';
 import ShellSecondaryBar from './shell-secondary-bar';
-import ShellMobileNav from './shell-mobile-nav';
 
 export default function ShellNavigationBar({ mobileNavIsOpen, activeRoute }) {
 	return (

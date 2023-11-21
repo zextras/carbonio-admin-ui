@@ -5,20 +5,21 @@
  */
 /* eslint-disable no-param-reassign */
 
-import produce from 'immer';
 import { TFunction } from 'i18next';
-import { useAppStore } from '../../store/app';
-import { SearchAppView } from '../../search/search-app-view';
-import { SettingsAppView } from '../../settings/settings-app-view';
-import { SettingsSidebar } from '../../settings/settings-sidebar';
+import { produce } from 'immer';
+
 import { AppState, PrimaryBarView, SettingsView } from '../../../types';
-import GeneralSettings from '../../settings/general-settings';
-import Feedback from '../../reporting/feedback';
+import { SEARCH_APP_ID, SETTINGS_APP_ID, SHELL_APP_ID } from '../../constants';
 import DevBoard from '../../dev/dev-board';
 import DevBoardTrigger from '../../dev/dev-board-trigger';
-import { SEARCH_APP_ID, SETTINGS_APP_ID, SHELL_APP_ID } from '../../constants';
+import Feedback from '../../reporting/feedback';
+import { SearchAppView } from '../../search/search-app-view';
 import AccountWrapper from '../../settings/account-wrapper';
+import GeneralSettings from '../../settings/general-settings';
 import { settingsSubSections } from '../../settings/general-settings-sub-sections';
+import { SettingsAppView } from '../../settings/settings-app-view';
+import { SettingsSidebar } from '../../settings/settings-sidebar';
+import { useAppStore } from '../../store/app';
 
 const settingsRoute = {
 	route: SETTINGS_APP_ID,

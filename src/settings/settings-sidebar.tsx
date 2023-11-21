@@ -5,9 +5,11 @@
  */
 
 import React, { FC, useMemo } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+
 import { Accordion, Tooltip, IconButton } from '@zextras/carbonio-design-system';
 import { map, startsWith } from 'lodash';
+import { useHistory, useLocation } from 'react-router-dom';
+
 import { SETTINGS_APP_ID } from '../constants';
 import { useAppStore } from '../store/app';
 

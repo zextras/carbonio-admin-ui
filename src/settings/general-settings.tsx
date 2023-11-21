@@ -5,20 +5,22 @@
  */
 
 import React, { useCallback, useState, FC, useMemo } from 'react';
+
 import { Container, useSnackbar } from '@zextras/carbonio-design-system';
-import { useTranslation } from 'react-i18next';
 import { includes, isEmpty } from 'lodash';
-import { useUserSettings } from '../store/account';
-import Logout from './components/general-settings/logout';
+import { useTranslation } from 'react-i18next';
+
 import AppearanceSettings from './components/general-settings/appearance-settings';
+import Logout from './components/general-settings/logout';
 import ModuleVersionSettings from './components/general-settings/module-version-settings';
 import OutOfOfficeSettings from './components/general-settings/out-of-office-view';
 import UserQuota from './components/general-settings/user-quota';
-import { editSettings } from '../network/edit-settings';
-import { Mods } from '../../types';
+import SettingsHeader from './components/settings-header';
 import LanguageAndTimeZoneSettings from './language-and-timezone-settings';
 import SearchSettingsView from './search-settings-view';
-import SettingsHeader from './components/settings-header';
+import { Mods } from '../../types';
+import { editSettings } from '../network/edit-settings';
+import { useUserSettings } from '../store/account';
 
 const GeneralSettings: FC = () => {
 	const [mods, setMods] = useState<Mods>({});

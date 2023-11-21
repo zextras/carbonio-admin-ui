@@ -5,23 +5,24 @@
  */
 
 import React, { useCallback, useMemo, useState, useEffect, ReactElement } from 'react';
+
 import { Container, useSnackbar } from '@zextras/carbonio-design-system';
-import { TFunction } from 'react-i18next';
+import { TFunction } from 'i18next';
 import { map, includes, findIndex, reduce, find, replace, lowerFirst, isEmpty } from 'lodash';
-import { useUserSettings } from '../store/account/hooks';
-import { editSettings } from '../network/edit-settings';
-import { SHELL_APP_ID } from '../constants';
-import { Mods, IdentityProps, CreateIdentityProps } from '../../types';
-import { useAccountStore } from '../store/account/store';
+
 import AccountsList from './components/account-settings/accounts-list';
-import PrimaryAccountSettings from './components/account-settings/primary-account-settings';
-import SettingsSentMessages from './components/account-settings/settings-sent-messages';
-import PasswordRecoverySettings from './components/account-settings/password-recovery-settings';
 import Delegates from './components/account-settings/delegates';
+import PasswordRecoverySettings from './components/account-settings/password-recovery-settings';
 import PersonaSettings from './components/account-settings/persona-settings';
 import PersonaUseSection from './components/account-settings/persona-use-section';
+import PrimaryAccountSettings from './components/account-settings/primary-account-settings';
+import SettingsSentMessages from './components/account-settings/settings-sent-messages';
 import SettingsHeader from './components/settings-header';
+import { Mods, IdentityProps, CreateIdentityProps } from '../../types';
+import { SHELL_APP_ID } from '../constants';
+import { editSettings } from '../network/edit-settings';
 import { getXmlSoapFetch } from '../network/fetch';
+import { useUserSettings } from '../store/account/hooks';
 
 // external accounts not yet activated, graphical part is complete
 // import ExternalAccount from './components/account-settings/external-account-settings';

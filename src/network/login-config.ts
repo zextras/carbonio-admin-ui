@@ -5,8 +5,8 @@
  */
 
 import { LoginConfigStore } from '../../types/loginConfig';
-import { useLoginConfigStore } from '../store/login/store';
 import { LOGIN_V3_CONFIG_PATH } from '../constants';
+import { useLoginConfigStore } from '../store/login/store';
 
 export const loginConfig = (): Promise<void> =>
 	fetch(`${LOGIN_V3_CONFIG_PATH}?domain=${window?.location?.hostname}`)

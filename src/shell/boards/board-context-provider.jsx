@@ -5,18 +5,21 @@
  */
 
 import React, { useCallback, useMemo, useReducer } from 'react';
+
 import { pickBy, trim } from 'lodash';
 import { useTranslation } from 'react-i18next';
+
 import { BoardValueContext, BoardSetterContext } from './board-context';
 import { useBridge } from '../../store/context-bridge';
 
 function getRandomKey() {
 	return String(Date.now() * (Math.floor(Math.random() * 1000) + 1));
 }
+// eslint-disable-next-line sonarjs/cognitive-complexity
 const reducer = (state, action) => {
 	switch (action.type) {
 		case 'ADD_BOARD': {
-			const returnValue = {
+			return {
 				...state,
 				boards: {
 					[action.payload.boardKey]: {
@@ -30,7 +33,6 @@ const reducer = (state, action) => {
 				currentBoard: action.payload.boardKey,
 				minimized: false
 			};
-			return returnValue;
 		}
 		case 'REMOVE_BOARD': {
 			let newCurrentBoard = state.currentBoard;

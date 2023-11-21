@@ -4,9 +4,10 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import create, { StoreApi, UseBoundStore } from 'zustand';
 import { BrowserClient, Hub } from '@sentry/browser';
 import { reduce } from 'lodash';
+import { create } from 'zustand';
+
 import { CarbonioModule, SHELL_APP_ID } from '../../types';
 
 type ReporterState = {
@@ -52,4 +53,4 @@ export const useReporter = create<ReporterState>((set) => ({
 			)
 		}));
 	}
-})) as UseBoundStore<ReporterState, StoreApi<ReporterState>>;
+}));

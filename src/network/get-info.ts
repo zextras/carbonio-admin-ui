@@ -5,13 +5,14 @@
  */
 
 import { filter } from 'lodash';
-import { SHELL_APP_ID } from '../constants';
-import { useAppStore } from '../store/app';
-import { normalizeAccount } from '../store/account/normalization';
-import { AccountSettings, GetInfoResponse, CarbonioModule } from '../../types';
-import { goToLogin } from './go-to-login';
+
 import { getSoapFetch } from './fetch';
+import { goToLogin } from './go-to-login';
+import { AccountSettings, GetInfoResponse, CarbonioModule } from '../../types';
+import { SHELL_APP_ID } from '../constants';
 import { useAccountStore } from '../store/account';
+import { normalizeAccount } from '../store/account/normalization';
+import { useAppStore } from '../store/app';
 import { useNetworkStore } from '../store/network';
 
 const parsePollingInterval = (settings: AccountSettings): number => {
@@ -49,12 +50,11 @@ export const getInfo = (): Promise<void> =>
 		.then(() => fetch('/static/iris/components.json'))
 		.then((r: any) => r.json())
 		.then(({ components }: { components: Array<CarbonioModule> }) => {
-			useAppStore.getState().setters.addApps(
-				filter(components, ({ type }) => {
-					if (type === 'shell' || type === 'carbonioAdmin') return true;
-					return false;
-				})
-			);
+			useAppStore
+				.getState()
+				.setters.addApps(
+					filter(components, ({ type }) => !!(type === 'shell' || type === 'carbonioAdmin'))
+				);
 		})
 		.catch((err: unknown) => {
 			console.log('there was an error checking user data');

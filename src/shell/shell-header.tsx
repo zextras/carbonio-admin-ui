@@ -5,36 +5,37 @@
  */
 
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
+
 import {
 	Container,
 	IconButton,
 	Padding,
 	Responsive,
 	useScreenMode,
-	Button,
 	Icon,
 	Text
 } from '@zextras/carbonio-design-system';
-import styled, { keyframes } from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import Logo from '../svg/carbonio-admin-panel.svg';
-import { SearchBar } from '../search/search-bar';
+import styled, { keyframes } from 'styled-components';
+
 import { CreationButton } from './creation-button';
-import { useAppStore } from '../store/app';
 import { AppRoute } from '../../types';
-import { openLink } from '../utility-bar/utils';
-import { useUserAccount, useUserSettings } from '../store/account';
-import { getDomainInformation } from '../network/get-domain-information';
-import { useIsAdvanced } from '../store/advance';
 import {
 	CARBONIO_HELP_ADMIN_URL,
 	CARBONIO_HELP_ADVANCED_URL,
 	CARBONIO_LOGO_URL
 } from '../constants';
+import { useDarkMode } from '../dark-mode/use-dark-mode';
+import { getDomainInformation } from '../network/get-domain-information';
+import { SearchBar } from '../search/search-bar';
+import { useUserAccount, useUserSettings } from '../store/account';
+import { useIsAdvanced } from '../store/advance';
+import { useAppStore } from '../store/app';
+import { useAllConfigStore } from '../store/config';
 import { useDomainInformationStore } from '../store/domain-information';
 import { useLoginConfigStore } from '../store/login/store';
-import { useDarkMode } from '../dark-mode/use-dark-mode';
-import { useAllConfigStore } from '../store/config';
+import Logo from '../svg/carbonio-admin-panel.svg';
+import { openLink } from '../utility-bar/utils';
 
 const CustomImg = styled.img`
 	height: 2rem;
@@ -109,6 +110,7 @@ const ShellHeader: FC<{
 	// };
 
 	const getDomainDetails = useCallback(
+		// eslint-disable-next-line sonarjs/cognitive-complexity
 		(name: any): any => {
 			getDomainInformation('name', name).then((data) => {
 				const domain = data?.domain[0];

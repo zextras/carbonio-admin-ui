@@ -5,16 +5,18 @@
  */
 
 import React, { FC, useEffect, useMemo } from 'react';
+
 import { SnackbarManager, ModalManager } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
+
+import { registerDefaultViews } from './app/default-views';
+import { unloadAllApps } from './app/load-apps';
+import BootstrapperContextProvider from './bootstrapper-provider';
+import BootstrapperRouter from './bootstrapper-router';
 import { init } from './init';
 import { ThemeProvider } from './theme-provider';
-import BootstrapperRouter from './bootstrapper-router';
-import BootstrapperContextProvider from './bootstrapper-provider';
 import I18nFactory from '../i18n/i18n-factory';
 import StoreFactory from '../redux/store-factory';
-import { unloadAllApps } from './app/load-apps';
-import { registerDefaultViews } from './app/default-views';
 import { useBridge } from '../store/context-bridge';
 
 const DefaultViewsRegister: FC = () => {

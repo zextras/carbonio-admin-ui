@@ -3,9 +3,9 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
+import { getSoapFetchRequest } from './fetch';
 import { SHELL_APP_ID } from '../constants';
 import { useAdvanceStore } from '../store/advance';
-import { getSoapFetchRequest } from './fetch';
 
 export const getIsAdvancedSupported = (): Promise<void> =>
 	getSoapFetchRequest(SHELL_APP_ID)('/zx/auth/supported')

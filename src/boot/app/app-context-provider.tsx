@@ -5,12 +5,14 @@
  */
 
 import React, { FC, useMemo } from 'react';
-import { Provider } from 'react-redux';
-import { I18nextProvider } from 'react-i18next';
+
 import { ModalManager, SnackbarManager } from '@zextras/carbonio-design-system';
-import { useStoreFactory, useI18nFactory } from '../bootstrapper-context';
+import { I18nextProvider } from 'react-i18next';
+import { Provider } from 'react-redux';
+
 import AppErrorCatcher from './app-error-catcher';
 import { getApp, getShell } from '../../store/app';
+import { useStoreFactory, useI18nFactory } from '../bootstrapper-context';
 
 const AppContextProvider: FC<{ pkg: string }> = ({ pkg, children }) => {
 	const i18nFactory = useI18nFactory();

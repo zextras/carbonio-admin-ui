@@ -4,9 +4,11 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import produce from 'immer';
+import { produce } from 'immer';
 import { filter, find, findIndex, merge, omit, reduce, sortBy, unionBy, unionWith } from 'lodash';
-import create, { StoreApi, UseBoundStore } from 'zustand';
+import { create } from 'zustand';
+
+import { normalizeApp } from './utils';
 import {
 	AppRouteDescriptor,
 	AppState,
@@ -24,7 +26,6 @@ import {
 	UtilityView
 } from '../../../types';
 import { SHELL_APP_ID } from '../../constants';
-import { normalizeApp } from './utils';
 
 const filterById = <T extends { id: string }>(items: Array<T>, id: string): Array<T> =>
 	filter(items, (item) => item.id !== id);
@@ -84,14 +85,17 @@ export const useAppStore = create<AppState>((set) => ({
 			(context: unknown): void => {
 				set(
 					produce((state: AppState) => {
+						// eslint-disable-next-line no-param-reassign
 						state.appContexts[app] = merge(state.appContexts[app], context);
 					})
 				);
 			},
 		// add route (id route primaryBar secondaryBar app)
+		// eslint-disable-next-line sonarjs/cognitive-complexity
 		addRoute: (routeData: AppRouteDescriptor): string => {
 			set(
 				produce((state: AppState) => {
+					// eslint-disable-next-line no-param-reassign
 					state.routes[routeData.id] = {
 						...routeData,
 						route: routeData.primarybarSection
@@ -99,6 +103,7 @@ export const useAppStore = create<AppState>((set) => ({
 							: routeData.route
 					};
 					if (routeData.primaryBar) {
+						// eslint-disable-next-line no-param-reassign
 						state.views.primaryBar = sortBy(
 							unionWith<PrimaryBarView>(
 								[
@@ -122,6 +127,7 @@ export const useAppStore = create<AppState>((set) => ({
 							),
 							'position'
 						);
+						// eslint-disable-next-line no-param-reassign
 						state.views.primarybarSections = sortBy(
 							unionWith<PrimarybarSection>(
 								routeData?.primarybarSection
@@ -140,6 +146,7 @@ export const useAppStore = create<AppState>((set) => ({
 						);
 					}
 					if (routeData.secondaryBar) {
+						// eslint-disable-next-line no-param-reassign
 						state.views.secondaryBar = unionWith<SecondaryBarView>(
 							[
 								{
@@ -154,6 +161,7 @@ export const useAppStore = create<AppState>((set) => ({
 						);
 					}
 					if (routeData.appView) {
+						// eslint-disable-next-line no-param-reassign
 						state.views.appView = unionWith<AppView>(
 							[
 								{
@@ -178,6 +186,7 @@ export const useAppStore = create<AppState>((set) => ({
 				produce((state: AppState) => {
 					const idx = findIndex(state.views.primaryBar, (view) => view.id === id);
 					if (idx >= 0) {
+						// eslint-disable-next-line no-param-reassign
 						state.views.primaryBar[idx].visible = visible;
 					}
 				})
@@ -188,9 +197,13 @@ export const useAppStore = create<AppState>((set) => ({
 		removeRoute: (id: string): void => {
 			set(
 				produce((state: AppState) => {
+					// eslint-disable-next-line no-param-reassign
 					state.routes = omit(state.routes, [id]);
+					// eslint-disable-next-line no-param-reassign
 					state.views.primaryBar = filterById(state.views.primaryBar, id);
+					// eslint-disable-next-line no-param-reassign
 					state.views.secondaryBar = filterById(state.views.secondaryBar, id);
+					// eslint-disable-next-line no-param-reassign
 					state.views.appView = filterById(state.views.appView, id);
 				})
 			);
@@ -199,6 +212,7 @@ export const useAppStore = create<AppState>((set) => ({
 		addBoardView: (data: BoardView): string => {
 			set(
 				produce((state: AppState) => {
+					// eslint-disable-next-line no-param-reassign
 					state.views.board = unionBy([data], state.views.board, 'id');
 				})
 			);
@@ -209,6 +223,7 @@ export const useAppStore = create<AppState>((set) => ({
 		removeBoardView: (id: string): void => {
 			set(
 				produce((state: AppState) => {
+					// eslint-disable-next-line no-param-reassign
 					state.views.board = filterById(state.views.board, id);
 				})
 			);
@@ -218,6 +233,7 @@ export const useAppStore = create<AppState>((set) => ({
 		addSettingsView: (data: SettingsView): string => {
 			set(
 				produce((state: AppState) => {
+					// eslint-disable-next-line no-param-reassign
 					state.views.settings = sortBy(unionBy([data], state.views.settings, 'id'), 'position');
 				})
 			);
@@ -228,6 +244,7 @@ export const useAppStore = create<AppState>((set) => ({
 		removeSettingsView: (id: string): void => {
 			set(
 				produce((state: AppState) => {
+					// eslint-disable-next-line no-param-reassign
 					state.views.settings = filterById(state.views.settings, id);
 				})
 			);
@@ -237,6 +254,7 @@ export const useAppStore = create<AppState>((set) => ({
 		addSearchView: (data: SearchView): string => {
 			set(
 				produce((state: AppState) => {
+					// eslint-disable-next-line no-param-reassign
 					state.views.search = sortBy(unionBy([data], state.views.search, 'id'), 'position');
 				})
 			);
@@ -246,6 +264,7 @@ export const useAppStore = create<AppState>((set) => ({
 		removeSearchView: (id: string): void => {
 			set(
 				produce((state: AppState) => {
+					// eslint-disable-next-line no-param-reassign
 					state.views.search = filterById(state.views.search, id);
 				})
 			);
@@ -255,6 +274,7 @@ export const useAppStore = create<AppState>((set) => ({
 		addUtilityView: (data: UtilityView): string => {
 			set(
 				produce((state: AppState) => {
+					// eslint-disable-next-line no-param-reassign
 					state.views.utilityBar = sortBy(
 						unionBy([data], state.views.utilityBar, 'id'),
 						'position'
@@ -267,6 +287,7 @@ export const useAppStore = create<AppState>((set) => ({
 		removeUtilityView: (id: string): void => {
 			set(
 				produce((state: AppState) => {
+					// eslint-disable-next-line no-param-reassign
 					state.views.utilityBar = filterById(state.views.utilityBar, id);
 				})
 			);
@@ -276,6 +297,7 @@ export const useAppStore = create<AppState>((set) => ({
 		addPrimaryAccessoryView: (data: PrimaryAccessoryView): string => {
 			set(
 				produce((state: AppState) => {
+					// eslint-disable-next-line no-param-reassign
 					state.views.primaryBarAccessories = unionBy(
 						[data],
 						state.views.primaryBarAccessories,
@@ -289,6 +311,7 @@ export const useAppStore = create<AppState>((set) => ({
 		removePrimaryAccessoryView: (id: string): void => {
 			set(
 				produce((state: AppState) => {
+					// eslint-disable-next-line no-param-reassign
 					state.views.primaryBarAccessories = filterById(state.views.primaryBarAccessories, id);
 				})
 			);
@@ -298,6 +321,7 @@ export const useAppStore = create<AppState>((set) => ({
 		addSecondaryAccessoryView: (data: SecondaryAccessoryView): string => {
 			set(
 				produce((state: AppState) => {
+					// eslint-disable-next-line no-param-reassign
 					state.views.secondaryBarAccessories = unionBy(
 						[data],
 						state.views.secondaryBarAccessories,
@@ -311,6 +335,7 @@ export const useAppStore = create<AppState>((set) => ({
 		removeSecondaryAccessoryView: (id: string): void => {
 			set(
 				produce((state: AppState) => {
+					// eslint-disable-next-line no-param-reassign
 					state.views.secondaryBarAccessories = filterById(state.views.secondaryBarAccessories, id);
 				})
 			);
@@ -320,6 +345,7 @@ export const useAppStore = create<AppState>((set) => ({
 				produce((state: AppState) => {
 					const idx = findIndex(state.views.primaryBar, (bar) => bar.id === id);
 					if (idx >= 0) {
+						// eslint-disable-next-line no-param-reassign
 						state.views.primaryBar[idx].badge = {
 							...state.views.primaryBar[idx].badge,
 							...badge
@@ -333,6 +359,7 @@ export const useAppStore = create<AppState>((set) => ({
 				produce((state: AppState) => {
 					const idx = findIndex(state.views.utilityBar, (bar) => bar.id === id);
 					if (idx >= 0) {
+						// eslint-disable-next-line no-param-reassign
 						state.views.utilityBar[idx].badge = {
 							...state.views.utilityBar[idx].badge,
 							...badge
@@ -342,4 +369,4 @@ export const useAppStore = create<AppState>((set) => ({
 			);
 		}
 	}
-})) as UseBoundStore<AppState, StoreApi<AppState>>;
+}));

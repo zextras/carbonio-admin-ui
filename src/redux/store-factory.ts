@@ -6,6 +6,7 @@
 
 import { Store, configureStore, createSlice } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
+
 import { CarbonioModule } from '../../types';
 
 const _uselessSlice = createSlice({
