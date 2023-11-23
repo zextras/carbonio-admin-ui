@@ -18,7 +18,7 @@
         "no_results": "Aucun résultat trouvé",
         "password": "Mot de passe",
         "primary": "Primaire",
-        "remove": "supprimer",
+        "remove": "enlever",
         "advanced_settings": "Paramètres avancés",
         "delete": "Effacer",
         "delete_permanently": "Supprimer définitivement",
@@ -126,7 +126,9 @@
     "message": {
         "snackbar": {
             "settings_saved": "Modifications enregistrées correctement",
-            "identities_quota_exceeded": "L'identité n'a pas pu être créée car vous avez dépassé votre quota d'identité"
+            "identities_quota_exceeded": "L'identité n'a pas pu être créée car vous avez dépassé votre quota d'identité",
+            "okay_got_it": "Okay, c'est bon",
+            "our_interface_does_not_support_tablets_and_smartphones": "Notre interface n'est pas compatible avec les tablettes et les smartphones, ce qui peut entraîner des problèmes de visualisation. Veuillez utiliser un ordinateur de bureau ou un ordinateur portable pour des performances optimales. Nous travaillons sur la compatibilité mobile pour l'avenir. Nous vous remercions de votre attention."
         },
         "reload": "\tVoulez-vous recharger l'application maintenant pour afficher la nouvelle langue ?\n(Sinon, la nouvelle langue apparaîtra la prochaine fois que vous vous connecterez.)"
     },
