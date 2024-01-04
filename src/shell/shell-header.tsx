@@ -31,7 +31,6 @@ import { SearchBar } from '../search/search-bar';
 import { useUserAccount, useUserSettings } from '../store/account';
 import { useIsAdvanced } from '../store/advance';
 import { useAppStore } from '../store/app';
-import { useAllConfigStore } from '../store/config';
 import { useDomainInformationStore } from '../store/domain-information';
 import { useLoginConfigStore } from '../store/login/store';
 import Logo from '../svg/carbonio-admin-panel.svg';
