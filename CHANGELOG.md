@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.26](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.25...v0.9.26) (2024-02-15)
+
+### [0.9.25](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.24...v0.9.25) (2024-01-04)
+
 ### [0.9.24](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.23...v0.9.24) (2023-11-23)
 
 ### [0.9.23](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.22...v0.9.23) (2023-11-23)
