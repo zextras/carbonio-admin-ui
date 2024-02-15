@@ -2,7 +2,7 @@
     "message": {
         "reload": "\tCzy chcesz uruchomić ponownie aplikację, aby wyświetlał się nowy język?\n(Jeśli nie, nowy język będzie wyświetlał się od momentu następnego zalogowania)",
         "snackbar": {
-            "settings_saved": "Zmiany zostały zapisane pomyślnie",
+            "settings_saved": "Zmiany zostały zapisane",
             "identities_quota_exceeded": "Nie udało się utworzyć tej tożsamości, ponieważ przekroczono ich limit",
             "okay_got_it": "Ok, rozumiem",
             "our_interface_does_not_support_tablets_and_smartphones": "Nasz interfejs nie wspiera tabletów i smartfonów, co może powodować problemy z wyświetlaniem. Aby uzyskać optymalną wydajność, prosimy o użycie komputera lub laptopa. Pracujemy nad kompatybilnością z urz. mobilnymi. Dziękujemy."
@@ -25,7 +25,7 @@
             "labels": {
                 "include_search_in_shared_folder": "Uwzględnij udostępniony folder w wynikach wyszukiwań",
                 "include_search_in_spam_folder": "Uwzględnij folder spamu w wynikach wyszukiwań",
-                "include_search_in_trash_folder": "Uwzględnij Kosz w wynikach wyszukiwań"
+                "include_search_in_trash_folder": "Uwzględnij kosz w wynikach wyszukiwań"
             }
         },
         "out_of_office": {
@@ -66,7 +66,7 @@
         },
         "general": {
             "account": "Konto",
-            "account_logout": "Wylogowywanie się",
+            "account_logout": "Wyloguj się",
             "dark_mode": "Tryb ciemny",
             "general": "Ustawienia ogólne",
             "theme_auto": "Automatycznie",
@@ -98,7 +98,7 @@
         "add_delegate": "Dodaj pełnomocnika",
         "add_new_email": "Dodaj nowy adres e-mail",
         "add_persona": "Dodaj personę",
-        "add_recovery_email": "Dodaj zapasowy adres e-mail",
+        "add_recovery_email": "Dodaj pomocniczy adres e-mail",
         "address": "Adres",
         "advanced_settings": "Ustawienia zaawansowane",
         "choose_account": "Wybierz konto",
@@ -121,17 +121,17 @@
         "persona_settings": "Ustawienia persony",
         "pop3": "POP3",
         "pop_port": "port POP",
-        "primary": "Pierwszorzędny",
+        "primary": "Główne",
         "recipents": "Odbiorcy",
         "remove": "usuń",
-        "recovery_email": "E-mail zapasowy",
+        "recovery_email": "Pomocniczy adres e-mail",
         "save": "Zapisz",
         "save_and_leave": "Zapisz i opuść",
         "save_delegate_folder": "Zapisuj kopię wysyłanych wiadomości do folderu wysłane pełnomocnika",
         "save_to_my_sent_folder": "Zapisuj kopię wysyłanych wiadomości do mojego folderu wysłane",
         "secondary": "Drugorzędny",
         "set_reply_to_field": "Ustaw pole \"Odpowiedź na ten adres\" w wiadomości e-mail na:",
-        "settings_sent_messages": "Ustawienia wysłanych wiadomości",
+        "settings_sent_messages": "Ustawienia wysyłanych wiadomości",
         "test_settings": "Ustawienia testowe",
         "update_view": "Zaktualizuj widok",
         "use_persona": "Użyj tej persony",
