@@ -153,3 +153,5 @@ export const MATOMO_URL = 'https://analytics.zextras.tools/';
 export const MATOMO_SITE_ID = 3;
 export const PRIMARY_BAR_CLOSE = 'pb_close';
 export const PRIMARY_BAR_OPEN = 'pb_open';
+export const PRIMARY_BAR_FEEDBACK = 'pb_feedback';
+export const LOGOUT = 'logout';

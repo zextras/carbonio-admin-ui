@@ -35,7 +35,7 @@ import { getUsersRights } from '../network/get-user-accounts-rights';
 import { useUserAccounts } from '../store/account';
 import { useAppStore } from '../store/app';
 import { useContextBridge } from '../store/context-bridge';
-import { PRIMARY_BAR_CLOSE, PRIMARY_BAR_OPEN } from '../test/constants';
+import { PRIMARY_BAR_CLOSE, PRIMARY_BAR_FEEDBACK, PRIMARY_BAR_OPEN } from '../test/constants';
 import { useUtilityBarStore } from '../utility-bar';
 import { checkRoute } from '../utility-bar/utils';
 
@@ -220,7 +220,6 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 	const [allUserRights, setAllUserRights] = useState();
 	const history = useHistory();
 	const [t] = useTranslation();
-	console.log('__primaryBarViews', primaryBarViews);
 
 	useEffect(() => {
 		setRoutes((r) =>
@@ -350,7 +349,7 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 										<PrimaryBarElement
 											key={item?.id}
 											onClick={(): void => {
-												matomo.trackEvent('Primary Bar', `${view?.trackerLabel}`);
+												matomo.trackEvent('Primary Bar', `${item?.trackerLabel}`);
 												history.push(`/${routes[item?.id]}`);
 											}}
 											view={item}
@@ -368,6 +367,7 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 							width="fill"
 							mainAlignment="flex-start"
 							onClick={(): void => {
+								matomo.trackEvent('Primary Bar', PRIMARY_BAR_FEEDBACK);
 								useContextBridge.getState().packageDependentFunctions?.addBoard('feedbacks')(
 									'/feedback/',
 									{ title: t('label.feedback', 'Feedback') }
