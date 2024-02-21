@@ -103,6 +103,7 @@ export const useAppStore = create<AppState>((set) => ({
 							: routeData.route
 					};
 					if (routeData.primaryBar) {
+						console.log('__state', routeData);
 						// eslint-disable-next-line no-param-reassign
 						state.views.primaryBar = sortBy(
 							unionWith<PrimaryBarView>(
@@ -119,7 +120,8 @@ export const useAppStore = create<AppState>((set) => ({
 										visible: routeData.visible,
 										label: routeData.label,
 										section: routeData.primarybarSection,
-										tooltip: routeData.tooltip
+										tooltip: routeData.tooltip,
+										trackerLabel: routeData?.trackerLabel
 									}
 								],
 								state.views.primaryBar,

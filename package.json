@@ -108,6 +108,7 @@
 		"webpack-merge": "^5.9.0"
 	},
 	"dependencies": {
+		"@datapunt/matomo-tracker-react": "^0.5.1",
 		"@fontsource/roboto": "^5.0.8",
 		"@reduxjs/toolkit": "^1.6.2",
 		"@sentry/browser": "^6.17.7",
