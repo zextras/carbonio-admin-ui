@@ -380,7 +380,7 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 								);
 							}}
 						>
-							<BadgeWrap badge={{ show: false, count: 0 }}>
+							<BadgeWrap badge={{ show: false, count: 0 }} isExpanded={isOpen}>
 								<PrimaryBarIconButton
 									icon="MessageSquareOutline"
 									size="large"
