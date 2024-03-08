@@ -62,6 +62,12 @@ const PrimaryBarIconButton = styled(IconButton)`
 	}
 `;
 
+const CustomText = styled(Text)`
+	width: 75%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+`;
 const ToggleBoardIcon: FC = () => {
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
@@ -128,8 +134,8 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, isExpanded, 
 				onMouseLeave={(): void => setOpen(false)}
 				height="52px"
 			>
-				<PrimaryBarRow width="fill" mainAlignment="flex-start" active={active} onClick={onClick}>
-					<BadgeWrap badge={view.badge}>
+				<PrimaryBarRow width="fill" mainAlignment="flex-start" active={active}>
+					<BadgeWrap badge={view.badge} isExpanded={isExpanded}>
 						{typeof view.component === 'string' ? (
 							<PrimaryBarIconButton
 								icon={view.component}
@@ -141,9 +147,9 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, isExpanded, 
 						)}
 					</BadgeWrap>
 					{isExpanded && (
-						<Text color="text" weight="bold">
+						<CustomText color="text" weight="bold" onClick={onClick}>
 							{view.label}
-						</Text>
+						</CustomText>
 					)}
 				</PrimaryBarRow>
 			</Container>
