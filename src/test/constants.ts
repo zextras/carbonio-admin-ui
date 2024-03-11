@@ -155,3 +155,4 @@ export const PRIMARY_BAR_CLOSE = 'pb_close';
 export const PRIMARY_BAR_OPEN = 'pb_open';
 export const PRIMARY_BAR_FEEDBACK = 'pb_feedback';
 export const LOGOUT = 'logout';
+export const MATOMO_PRIMARY_BAR = 'Primary Bar';
