@@ -148,7 +148,9 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, isExpanded, 
 								onClick={onClick}
 							/>
 						) : (
-							<view.component active={active} />
+							<Text onClick={onClick}>
+								<view.component active={active} />
+							</Text>
 						)}
 					</BadgeWrap>
 					{isExpanded && (
