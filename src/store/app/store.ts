@@ -119,7 +119,8 @@ export const useAppStore = create<AppState>((set) => ({
 										visible: routeData.visible,
 										label: routeData.label,
 										section: routeData.primarybarSection,
-										tooltip: routeData.tooltip
+										tooltip: routeData.tooltip,
+										trackerLabel: routeData?.trackerLabel
 									}
 								],
 								state.views.primaryBar,

@@ -61,7 +61,8 @@ export const normalizeRoute = (
 		secondaryBar: data.secondaryBar,
 		appView: data.appView ?? FallbackView,
 		primarybarSection: data.primarybarSection,
-		tooltip: data?.tooltip
+		tooltip: data?.tooltip,
+		trackerLabel: data?.trackerLabel
 	};
 };
 
