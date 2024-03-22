@@ -17,7 +17,7 @@ import MatomoTracker from '../matomo-tracker';
 import { logout } from '../network/logout';
 import { useUserAccount, useUserAccounts } from '../store/account';
 import { useContextBridge } from '../store/context-bridge';
-import { LOGOUT, OTHER } from '../test/constants';
+import { DASHBOARD, LOGOUT, OTHER } from '../test/constants';
 
 const UtilityBarItem: FC<{ view: UtilityView }> = ({ view }) => {
 	const { mode, setMode, current, setCurrent } = useUtilityBarStore();
@@ -72,7 +72,7 @@ export const ShellUtilityBar: FC = () => {
 				id: 'logout',
 				label: t('label.logout', 'Logout'),
 				click: (): void => {
-					matomo.trackEvent(OTHER, LOGOUT);
+					matomo.trackEvent(DASHBOARD, OTHER, LOGOUT);
 					logout();
 				},
 				icon: 'LogOut'
