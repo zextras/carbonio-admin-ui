@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.27](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.26...v0.9.27) (2024-04-12)
+
+
+### Bug Fixes
+
+* ac-956: fixed double tracking matomo ([64f0d45](https://github.com/zextras/carbonio-admin-ui/commit/64f0d45c53b9ee3193cae8acc44a58a62f0a77c8))
+* ac-956: fixed duplicate tracking matomo ([7aff744](https://github.com/zextras/carbonio-admin-ui/commit/7aff74464a0351431230faa96be6a59ab519aa26))
+* ac-959: providing event name in matomo ([11a5985](https://github.com/zextras/carbonio-admin-ui/commit/11a5985154446098755b74456c66bd0077b031d6))
+
 ### [0.9.26](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.25...v0.9.26) (2024-02-15)
 
 ### [0.9.25](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.24...v0.9.25) (2024-01-04)
