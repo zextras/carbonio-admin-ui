@@ -26,19 +26,26 @@ const MiniBadge = styled(Container)<{ badge: BadgeInfo }>`
 `;
 
 // eslint-disable-next-line react/display-name
-const BadgeWrap: FC<{ badge: BadgeInfo }> = forwardRef(({ badge, children }, ref) => (
-	<Container width={48} height={48} style={{ position: 'relative' }} ref={ref}>
-		{badge.show && (
-			<MiniBadge badge={badge} height="fit" width="fit">
-				{badge.showCount ? (
-					<Text size="extrasmall" style={{ padding: '2px 4px', fontSize: '10px' }} color="gray6">
-						{badge.count ?? 0}
-					</Text>
-				) : null}
-			</MiniBadge>
-		)}
-		{children}
-	</Container>
-));
+const BadgeWrap: FC<{ badge: BadgeInfo; isExpanded: boolean }> = forwardRef(
+	({ badge, children, isExpanded }, ref) => (
+		<Container
+			width={48}
+			height={48}
+			style={{ position: 'relative', width: isExpanded ? '25%' : '100%' }}
+			ref={ref}
+		>
+			{badge.show && (
+				<MiniBadge badge={badge} height="fit" width="fit">
+					{badge.showCount ? (
+						<Text size="extrasmall" style={{ padding: '2px 4px', fontSize: '10px' }} color="gray6">
+							{badge.count ?? 0}
+						</Text>
+					) : null}
+				</MiniBadge>
+			)}
+			{children}
+		</Container>
+	)
+);
 
 export default BadgeWrap;
