@@ -7,7 +7,7 @@
 		"checkJs": false,
 		"resolveJsonModule": true
 	},
-	"include": ["types/**/*.d.ts", "src/**/*.ts", "src/**/*.tsx", "types/workers/index.ts", "src/**/*.json"],
+	"include": ["types/**/*.d.ts", "src/**/*.ts", "src/**/*.tsx", "types/workers/index.ts", "src/**/*.json", "src/*.d.ts"],
 	"exclude": ["node_modules"],
 	"ts-node": {
 		"transpileOnly": true
