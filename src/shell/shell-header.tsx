@@ -15,15 +15,18 @@ import {
 	Icon,
 	Text
 } from '@zextras/carbonio-design-system';
+import { find, get } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import styled, { keyframes } from 'styled-components';
 
 import { CreationButton } from './creation-button';
 import { AppRoute } from '../../types';
 import {
+	CARBONIO_ADMIN_DOCUMENTATION_URL,
 	CARBONIO_HELP_ADMIN_URL,
 	CARBONIO_HELP_ADVANCED_URL,
-	CARBONIO_LOGO_URL
+	CARBONIO_LOGO_URL,
+	CONTENT
 } from '../constants';
 import { useDarkMode } from '../dark-mode/use-dark-mode';
 import { getDomainInformation } from '../network/get-domain-information';
@@ -31,6 +34,7 @@ import { SearchBar } from '../search/search-bar';
 import { useUserAccount, useUserSettings } from '../store/account';
 import { useIsAdvanced } from '../store/advance';
 import { useAppStore } from '../store/app';
+import { useAllConfigStore } from '../store/config';
 import { useDomainInformationStore } from '../store/domain-information';
 import { useLoginConfigStore } from '../store/login/store';
 import Logo from '../svg/carbonio-admin-panel.svg';
@@ -90,6 +94,7 @@ const ShellHeader: FC<{
 }> = ({ activeRoute, mobileNavIsOpen, onMobileMenuClick, children }) => {
 	const screenMode = useScreenMode();
 	const [t] = useTranslation();
+	const configs = useAllConfigStore((c) => c.a);
 	const searchEnabled = useAppStore((s) => s.views.search.length > 0);
 	const [helpCenterURL, setHelpCenterURL] = useState<string>('');
 	const isGlobalAdmin = useUserSettings().attrs?.zimbraIsAdminAccount;
@@ -173,8 +178,11 @@ const ShellHeader: FC<{
 	}, [getDomainDetails, userName]);
 
 	const onHelpCenterClick = useCallback(() => {
-		openLink(helpCenterURL);
-	}, [helpCenterURL]);
+		const url = get(find(configs, { n: CARBONIO_ADMIN_DOCUMENTATION_URL }), CONTENT) || '';
+		if (url) {
+			openLink(url);
+		}
+	}, [configs]);
 
 	const logoSrc = useMemo(() => {
 		if (darkModeEnabled) {
