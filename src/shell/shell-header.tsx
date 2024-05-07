@@ -20,18 +20,11 @@ import styled, { keyframes } from 'styled-components';
 
 import { CreationButton } from './creation-button';
 import { AppRoute } from '../../types';
-import {
-	CARBONIO_ADMIN_DOCUMENTATION_URL,
-	CARBONIO_HELP_ADMIN_URL,
-	CARBONIO_HELP_ADVANCED_URL,
-	CARBONIO_LOGO_URL,
-	CONTENT
-} from '../constants';
+import { CARBONIO_ADMIN_DOCUMENTATION_URL, CARBONIO_LOGO_URL, CONTENT } from '../constants';
 import { useDarkMode } from '../dark-mode/use-dark-mode';
 import { getDomainInformation } from '../network/get-domain-information';
 import { SearchBar } from '../search/search-bar';
-import { useUserAccount, useUserSettings } from '../store/account';
-import { useIsAdvanced } from '../store/advance';
+import { useUserAccount } from '../store/account';
 import { useAppStore } from '../store/app';
 import { useAllConfigStore } from '../store/config';
 import { useDomainInformationStore } from '../store/domain-information';
@@ -102,11 +95,7 @@ const ShellHeader: FC<{
 	const [t] = useTranslation();
 	const configs = useAllConfigStore((c) => c.a);
 	const searchEnabled = useAppStore((s) => s.views.search.length > 0);
-	const [helpCenterURL, setHelpCenterURL] = useState<string>('');
-	const isGlobalAdmin = useUserSettings().attrs?.zimbraIsAdminAccount;
-	const isDelegatedAdmin = useUserSettings().attrs?.zimbraIsDelegatedAdminAccount;
 	const userName = useUserAccount()?.name;
-	const isAdvanced = useIsAdvanced();
 	const { carbonioAdminUiAppLogo, carbonioAdminUiDarkAppLogo, carbonioLogoURL } =
 		useLoginConfigStore();
 	const { darkModeEnabled, darkReaderStatus } = useDarkMode();
@@ -120,43 +109,15 @@ const ShellHeader: FC<{
 	// 	localStorage.setItem('feedback', 'true');
 	// };
 
-	const getDomainDetails = useCallback(
-		// eslint-disable-next-line sonarjs/cognitive-complexity
-		(name: any): any => {
-			getDomainInformation('name', name).then((data) => {
-				const domain = data?.domain[0];
-				if (domain) {
-					useDomainInformationStore.setState({ a: domain?.a, id: domain?.id, name: domain?.name });
-					const domainInformation = domain?.a;
-					const obj: any = {};
-					domainInformation.map((item: any) => {
-						obj[item?.n] = item._content;
-						return '';
-					});
-					if (isAdvanced) {
-						if (isGlobalAdmin) {
-							const zimbraHelpAdvancedURL = obj?.zimbraHelpAdvancedURL
-								? obj?.zimbraHelpAdvancedURL
-								: CARBONIO_HELP_ADVANCED_URL;
-							setHelpCenterURL(zimbraHelpAdvancedURL);
-						}
-						if (isDelegatedAdmin) {
-							const zimbraHelpDelegatedURL = obj?.zimbraHelpDelegatedURL
-								? obj?.zimbraHelpDelegatedURL
-								: CARBONIO_HELP_ADVANCED_URL;
-							setHelpCenterURL(zimbraHelpDelegatedURL);
-						}
-					} else {
-						const zimbraHelpAdminURL = obj?.zimbraHelpAdminURL
-							? obj?.zimbraHelpAdminURL
-							: CARBONIO_HELP_ADMIN_URL;
-						setHelpCenterURL(zimbraHelpAdminURL);
-					}
-				}
-			});
-		},
-		[isAdvanced, isDelegatedAdmin, isGlobalAdmin]
-	);
+	const updateDomainDetails = useCallback(async (name: string): Promise<void> => {
+		const data = await getDomainInformation('name', name);
+
+		const domain = data?.domain[0];
+		if (domain) {
+			useDomainInformationStore.setState({ a: domain?.a, id: domain?.id, name: domain?.name });
+		}
+	}, []);
+
 	// Hide for now because https://app.useberry.com/embed/embed-script.js not working */
 	// useEffect(() => {
 	// 	const storedValue = localStorage.getItem('feedback');
@@ -180,9 +141,9 @@ const ShellHeader: FC<{
 
 	useEffect(() => {
 		if (userName) {
-			getDomainDetails(userName?.split('@')[1]);
+			updateDomainDetails(userName?.split('@')[1]);
 		}
-	}, [getDomainDetails, userName]);
+	}, [updateDomainDetails, userName]);
 
 	const helpDocumentationUrl = useMemo(
 		() => get(find(configs, { n: CARBONIO_ADMIN_DOCUMENTATION_URL }), CONTENT),
