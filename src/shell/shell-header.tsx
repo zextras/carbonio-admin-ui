@@ -12,8 +12,7 @@ import {
 	Padding,
 	Responsive,
 	useScreenMode,
-	Icon,
-	Text
+	Button
 } from '@zextras/carbonio-design-system';
 import { find, get } from 'lodash';
 import { useTranslation } from 'react-i18next';
@@ -87,6 +86,13 @@ const FeedbackContainer = styled.a`
 	z-index: 4;
 `;
 
+const FloatingActionButton = styled(Button)`
+	position: fixed;
+	bottom: 2rem;
+	right: 2rem;
+	z-index: 4;
+`;
+
 const ShellHeader: FC<{
 	activeRoute: AppRoute;
 	mobileNavIsOpen: boolean;
@@ -104,6 +110,7 @@ const ShellHeader: FC<{
 	const { carbonioAdminUiAppLogo, carbonioAdminUiDarkAppLogo, carbonioLogoURL } =
 		useLoginConfigStore();
 	const { darkModeEnabled, darkReaderStatus } = useDarkMode();
+	const [isHelpDocButtonExpanded, setIsHelpDocButtonExpanded] = useState(false);
 	// Hide for now because https://app.useberry.com/embed/embed-script.js not working */
 	// const [feedbackVisible, setFeedbackVisible] = useState(true);
 	// const configs = useAllConfigStore((c) => c.a);
@@ -177,12 +184,10 @@ const ShellHeader: FC<{
 		}
 	}, [getDomainDetails, userName]);
 
-	const onHelpCenterClick = useCallback(() => {
-		const url = get(find(configs, { n: CARBONIO_ADMIN_DOCUMENTATION_URL }), CONTENT) || '';
-		if (url) {
-			openLink(url);
-		}
-	}, [configs]);
+	const helpDocumentationUrl = useMemo(
+		() => get(find(configs, { n: CARBONIO_ADMIN_DOCUMENTATION_URL }), CONTENT),
+		[configs]
+	);
 
 	const logoSrc = useMemo(() => {
 		if (darkModeEnabled) {
@@ -250,38 +255,25 @@ const ShellHeader: FC<{
 					crossAlignment="center"
 					width="100%"
 				>
-					{/* <Container width="100%">
-						<Input
-							label={t('search.app', 'Search')}
-							CustomIcon={(): any => <Icon icon="SearchOutline" size="large" color="text" />}
+					{helpDocumentationUrl && (
+						<FloatingActionButton
+							type="outlined"
+							shape="round"
+							label={
+								isHelpDocButtonExpanded ? t('labels.open_documentation', 'Open Documentation') : ''
+							}
+							icon={isHelpDocButtonExpanded ? undefined : 'QuestionMarkOutline'}
+							iconPlacement="left"
+							size="medium"
+							onMouseEnter={(): void => {
+								setIsHelpDocButtonExpanded(true);
+							}}
+							onMouseLeave={(): void => {
+								setIsHelpDocButtonExpanded(false);
+							}}
+							onClick={(): void => openLink(helpDocumentationUrl)}
 						/>
-					</Container> */}
-					<Container
-						orientation="horizontal"
-						mainAlignment="flex-start"
-						crossAlignment="center"
-						width="100%"
-						padding={{
-							all: 'large'
-						}}
-					>
-						<Text
-							color="primary"
-							size="regular"
-							onClick={onHelpCenterClick}
-							style={{ cursor: 'pointer' }}
-						>
-							{t('labels.help_center', 'Help Center')}
-						</Text>
-						<Padding left="medium" onClick={onHelpCenterClick}>
-							<Icon
-								icon="QuestionMarkCircleOutline"
-								size="medium"
-								color="primary"
-								style={{ cursor: 'pointer' }}
-							/>
-						</Padding>
-					</Container>
+					)}
 				</Container>
 				<Responsive mode="desktop">
 					{searchEnabled && (
