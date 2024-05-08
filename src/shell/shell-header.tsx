@@ -84,6 +84,11 @@ const FloatingActionButton = styled(Button)`
 	bottom: 2rem;
 	right: 2rem;
 	z-index: 4;
+	width: ${(props: any): any => (props.isHelpDocButtonExpanded ? '13rem' : '2.2rem')};
+	height: 2.2rem;
+	transition: all 0.3s ease-in-out;
+	border-width: 0.125rem;
+	text-align: right;
 `;
 
 const ShellHeader: FC<{
@@ -218,7 +223,7 @@ const ShellHeader: FC<{
 				>
 					{helpDocumentationUrl && (
 						<FloatingActionButton
-							type="outlined"
+							type={isHelpDocButtonExpanded ? 'outlined' : 'default'}
 							shape="round"
 							label={
 								isHelpDocButtonExpanded ? t('labels.open_documentation', 'Open Documentation') : ''
@@ -233,6 +238,7 @@ const ShellHeader: FC<{
 								setIsHelpDocButtonExpanded(false);
 							}}
 							onClick={(): void => openLink(helpDocumentationUrl)}
+							isHelpDocButtonExpanded={isHelpDocButtonExpanded}
 						/>
 					)}
 				</Container>
