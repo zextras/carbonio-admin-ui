@@ -107,3 +107,5 @@ export const SEND_FEEDBACK_URL =
 export const FORUM_URL = 'https://community.zextras.com/forum/';
 export const OPEN_TICKET_URL = 'https://helpdesk.zextras.com/hc/en-us';
 export const CONFIG = 'config';
+export const CARBONIO_ADMIN_DOCUMENTATION_URL = 'carbonioAdminDocumentationUrl';
+export const CONTENT = '_content';

@@ -23,7 +23,7 @@
 		"build": "sdk build --admin",
 		"deploy": "sdk deploy --admin",
 		"start": "sdk watch --admin",
-		"build:dev": "sdk build --dev --pkgRel $(date +%s)"
+		"build:dev": "sdk build --dev --pkgRel $(date +%s) --admin"
 	},
 	"files": [
 		"dist/",
