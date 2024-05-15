@@ -5,8 +5,8 @@
 	"main": "dist/zapp-shell.bundle.js",
 	"types": "./types/index.d.ts",
 	"engines": {
-		"node": "v16",
-		"npm": "v8"
+		"node": "v18",
+		"npm": "v10"
 	},
 	"scripts": {
 		"build:clean": "rm -rf lib && rm -rf dist && rm -rf pkg",
@@ -71,7 +71,7 @@
 		"@types/ua-parser-js": "^0.7.37",
 		"@types/webpack-env": "^1.18.0",
 		"@zextras/carbonio-ui-configs": "^0.1.13",
-		"@zextras/carbonio-ui-sdk": "^1.7.0",
+		"@zextras/carbonio-ui-sdk": "^1.7.2",
 		"autoprefixer": "^10.4.15",
 		"babel-jest": "29.7.0",
 		"babel-loader": "^9.1.3",
