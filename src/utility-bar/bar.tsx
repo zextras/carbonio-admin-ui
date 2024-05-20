@@ -6,16 +6,17 @@
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Container, Tooltip, IconButton, Dropdown, Text } from '@zextras/carbonio-design-system';
-import { map } from 'lodash';
+import { find, get, map } from 'lodash';
 import { useTranslation } from 'react-i18next';
 
 import { useUtilityBarStore } from './store';
-import { useUtilityViews } from './utils';
+import { openLink, useUtilityViews } from './utils';
 import { UtilityView } from '../../types/apps';
-import { SHELL_APP_ID } from '../constants';
+import { CARBONIO_ADMIN_DOCUMENTATION_URL, CONTENT, SHELL_APP_ID } from '../constants';
 import MatomoTracker from '../matomo-tracker';
 import { logout } from '../network/logout';
 import { useUserAccount, useUserAccounts } from '../store/account';
+import { useAllConfigStore } from '../store/config';
 import { useContextBridge } from '../store/context-bridge';
 import { DASHBOARD, LOGOUT, OTHER } from '../test/constants';
 
@@ -55,7 +56,12 @@ export const ShellUtilityBar: FC = () => {
 	const [accountName, setAccountName] = useState('');
 	const views = useUtilityViews();
 	const acct = useUserAccount();
+	const configs = useAllConfigStore((c) => c.a);
 	const [t] = useTranslation();
+	const helpDocumentationUrl = useMemo(
+		() => get(find(configs, { n: CARBONIO_ADMIN_DOCUMENTATION_URL }), CONTENT),
+		[configs]
+	);
 	const accountItems = useMemo(
 		() => [
 			{
@@ -69,6 +75,12 @@ export const ShellUtilityBar: FC = () => {
 				icon: 'MessageSquareOutline'
 			},
 			{
+				id: 'help',
+				label: t('label.help_and_documentation', 'Help & Documentation'),
+				click: () => openLink(helpDocumentationUrl),
+				icon: 'QuestionMarkOutline'
+			},
+			{
 				id: 'logout',
 				label: t('label.logout', 'Logout'),
 				click: (): void => {
@@ -78,7 +90,7 @@ export const ShellUtilityBar: FC = () => {
 				icon: 'LogOut'
 			}
 		],
-		[matomo, t]
+		[helpDocumentationUrl, matomo, t]
 	);
 
 	const clipTextAfterWords = (text: string): string => {
