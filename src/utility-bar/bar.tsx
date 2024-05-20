@@ -6,13 +6,13 @@
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Container, Tooltip, IconButton, Dropdown, Text } from '@zextras/carbonio-design-system';
-import { find, get, map } from 'lodash';
+import { map } from 'lodash';
 import { useTranslation } from 'react-i18next';
 
 import { useUtilityBarStore } from './store';
 import { openLink, useUtilityViews } from './utils';
 import { UtilityView } from '../../types/apps';
-import { CARBONIO_ADMIN_DOCUMENTATION_URL, CONTENT, SHELL_APP_ID } from '../constants';
+import { CARBONIO_ADMIN_DOCUMENTATION_URL, SHELL_APP_ID } from '../constants';
 import MatomoTracker from '../matomo-tracker';
 import { logout } from '../network/logout';
 import { useUserAccount, useUserAccounts } from '../store/account';
@@ -56,12 +56,10 @@ export const ShellUtilityBar: FC = () => {
 	const [accountName, setAccountName] = useState('');
 	const views = useUtilityViews();
 	const acct = useUserAccount();
-	const configs = useAllConfigStore((c) => c.a);
-	const [t] = useTranslation();
-	const helpDocumentationUrl = useMemo(
-		() => get(find(configs, { n: CARBONIO_ADMIN_DOCUMENTATION_URL }), CONTENT),
-		[configs]
+	const helpDocumentationUrl = useAllConfigStore((state) =>
+		state.getConfigByKey(CARBONIO_ADMIN_DOCUMENTATION_URL)
 	);
+	const [t] = useTranslation();
 	const accountItems = useMemo(
 		() => [
 			{
