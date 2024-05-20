@@ -13,11 +13,9 @@ import { useUtilityBarStore } from './store';
 import { useUtilityViews } from './utils';
 import { UtilityView } from '../../types/apps';
 import { SHELL_APP_ID } from '../constants';
-import MatomoTracker from '../matomo-tracker';
 import { logout } from '../network/logout';
-import { useUserAccount, useUserAccounts } from '../store/account';
+import { useUserAccount } from '../store/account';
 import { useContextBridge } from '../store/context-bridge';
-import { DASHBOARD, LOGOUT, OTHER } from '../test/constants';
 
 const UtilityBarItem: FC<{ view: UtilityView }> = ({ view }) => {
 	const { mode, setMode, current, setCurrent } = useUtilityBarStore();
@@ -42,16 +40,6 @@ const UtilityBarItem: FC<{ view: UtilityView }> = ({ view }) => {
 };
 
 export const ShellUtilityBar: FC = () => {
-	const [userId, setuserId] = useState<string>('');
-	const accounts = useUserAccounts();
-	useEffect(() => {
-		if (accounts?.length !== 0) {
-			const { id } = accounts[0];
-			setuserId(id);
-		}
-	}, [accounts]);
-
-	const matomo = useMemo(() => new MatomoTracker(userId), [userId]);
 	const [accountName, setAccountName] = useState('');
 	const views = useUtilityViews();
 	const acct = useUserAccount();
@@ -72,13 +60,12 @@ export const ShellUtilityBar: FC = () => {
 				id: 'logout',
 				label: t('label.logout', 'Logout'),
 				click: (): void => {
-					matomo.trackEvent(DASHBOARD, OTHER, LOGOUT);
 					logout();
 				},
 				icon: 'LogOut'
 			}
 		],
-		[matomo, t]
+		[t]
 	);
 
 	const clipTextAfterWords = (text: string): string => {
