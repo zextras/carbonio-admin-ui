@@ -106,14 +106,6 @@ const ShellHeader: FC<{
 		useLoginConfigStore();
 	const { darkModeEnabled, darkReaderStatus } = useDarkMode();
 	const [isHelpDocButtonExpanded, setIsHelpDocButtonExpanded] = useState(false);
-	// Hide for now because https://app.useberry.com/embed/embed-script.js not working */
-	// const [feedbackVisible, setFeedbackVisible] = useState(true);
-	// const configs = useAllConfigStore((c) => c.a);
-	// const [feedbackConfig, setFeedbackConfig] = useState('FALSE');
-
-	// const saveToLocalStorage = (): void => {
-	// 	localStorage.setItem('feedback', 'true');
-	// };
 
 	const updateDomainDetails = useCallback(async (name: string): Promise<void> => {
 		const data = await getDomainInformation('name', name);

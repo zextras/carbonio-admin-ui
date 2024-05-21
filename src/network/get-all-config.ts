@@ -7,7 +7,7 @@
 import { getSoapFetch } from './fetch';
 import { ConfigAttributesState, GetAllConfigResponse } from '../../types';
 import { SHELL_APP_ID } from '../constants';
-import { useAllConfigStore, useConfigStore } from '../store/config';
+import { useConfigStore } from '../store/config';
 
 export const getAllConfig = (): Promise<void> =>
 	getSoapFetch(SHELL_APP_ID)<{ _jsns: string }, GetAllConfigResponse>('GetAllConfig', {
@@ -15,7 +15,6 @@ export const getAllConfig = (): Promise<void> =>
 	})
 		.then((res: any): void => {
 			if (res && res?.a && Array.isArray(res?.a)) {
-				useAllConfigStore.setState({ a: res?.a });
 				useConfigStore.setState((prev: ConfigAttributesState) => ({
 					...prev,
 					globalAttributes: res?.a

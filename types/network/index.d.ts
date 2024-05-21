@@ -196,11 +196,6 @@ export type GetAllConfigResponse = {
 	a: Array<Attribute>;
 };
 
-export type ConfigState = {
-	a: Array<Attribute>;
-	getConfigByKey: (key: string) => string;
-};
-
 export type ConfigAttributesState = {
 	globalAttributes: Array<Attribute>;
 	domainAttributes: Array<Attribute>;
