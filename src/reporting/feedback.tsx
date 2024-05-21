@@ -4,15 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import React, {
-	useEffect,
-	useState,
-	useCallback,
-	useReducer,
-	useMemo,
-	FC,
-	useContext
-} from 'react';
+import React, { useEffect, useState, useCallback, useReducer, useMemo, FC } from 'react';
 
 import { Severity, Event } from '@sentry/browser';
 import {
@@ -21,14 +13,12 @@ import {
 	Container,
 	Row,
 	Icon,
-	SnackbarManagerContext,
 	Padding,
 	Divider,
 	Switch,
 	Link
 } from '@zextras/carbonio-design-system';
-import { filter, find, map } from 'lodash';
-import { TFunction, Trans, useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 import { feedback } from './functions';
@@ -42,11 +32,10 @@ import {
 	getXmlSoapFetch
 } from '../network/fetch';
 import { getAllConfig } from '../network/get-all-config';
-import { useRemoveCurrentBoard } from '../shell/boards/board-hooks';
-import { useUserAccount, useAccountStore } from '../store/account';
+import { useUserAccount } from '../store/account';
 import { getIsAdvanced } from '../store/advance';
-import { useAppList } from '../store/app';
 import { useAllConfigStore } from '../store/config/store';
+import { TRUE } from '../test/constants';
 
 const CustomIcon = styled(Icon)`
 	width: 20px;
@@ -70,12 +59,6 @@ const TextArea = styled.textarea<{ size?: string }>`
 		background: ${({ theme }): string => theme.palette.gray4.regular};
 		outline: none;
 	}
-`;
-
-const TextContainer = styled(Container)`
-	text-align: justify;
-	align-items: left;
-	width: 80%;
 `;
 
 const ButtonContainer = styled(Container)`
@@ -131,22 +114,13 @@ function reducer(state: Event, { type, payload }: { type: string; payload: any }
 	}
 }
 
-const getTopics = (t: TFunction): Array<{ label: string; value: string }> => [
-	{ label: t('feedback.user_interface', 'User interface'), value: 'UserInterface' },
-	{ label: t('feedback.behaviors', 'Behaviors'), value: 'Behaviors' },
-	{ label: t('feedback.missing_features', 'Missing features'), value: 'MissingFeatures' },
-	{ label: t('feedback.other', 'Other'), value: 'Other' }
-];
-
 const Feedback: FC = () => {
 	const [t] = useTranslation();
-	const topics = useMemo(() => getTopics(t), [t]);
-	const allApps = useAppList();
 	const feedbackPermission = useAllConfigStore(
 		(state) =>
-			state.getConfigByKey('carbonioSendFullErrorStack') === 'TRUE' &&
-			state.getConfigByKey('carbonioSendAnalytics') === 'TRUE' &&
-			state.getConfigByKey('carbonioAllowFeedback') === 'TRUE'
+			state.getConfigByKey('carbonioSendFullErrorStack') === TRUE &&
+			state.getConfigByKey('carbonioSendAnalytics') === TRUE &&
+			state.getConfigByKey('carbonioAllowFeedback') === TRUE
 	);
 	const [feedbackSentData, setFeedbackSentData] = useState('');
 	const [toggleFeedback, setToggleFeedback] = useState(false);
@@ -157,42 +131,12 @@ const Feedback: FC = () => {
 	const [isForum, setIsForum] = useState(false);
 	const isAdvanced = getIsAdvanced();
 	const carbonioAdminUIVersion = packageJson?.version || '0.9.12';
-	const apps = useMemo(
-		() => filter(allApps, (app) => !!app.sentryDsn),
 
-		[allApps]
-	);
-	const appItems = useMemo(
-		() =>
-			map(apps, (app) => ({
-				label: app.display,
-				value: app.name
-			})),
-		[apps]
-	);
 	const acct = useUserAccount();
-	const accountStore = useAccountStore();
 
 	const [event, dispatch] = useReducer(reducer, emptyEvent);
 	const [showErr, setShowErr] = useState(false);
 	const [limit, setLimit] = useState(0);
-
-	const onAppSelect = useCallback(
-		(ev) =>
-			dispatch({
-				type: 'select-app',
-				payload: {
-					app: ev,
-					version: find(apps, ['name', ev])?.version
-				}
-			}),
-		[apps]
-	);
-
-	const onTopicSelect = useCallback((ev) => {
-		setShowErr(false);
-		dispatch({ type: 'select-topic', payload: ev });
-	}, []);
 
 	const getBackendVersion = useCallback(() => {
 		getCarbonioBackendVersion()
@@ -246,10 +190,6 @@ const Feedback: FC = () => {
 		},
 		[setShowErr, event]
 	);
-
-	const closeBoard = useRemoveCurrentBoard();
-
-	const createSnackbar = useContext(SnackbarManagerContext) as (snackbar: any) => void;
 
 	const confirmHandler = useCallback(() => {
 		const feedbackData = feedback(event, {
