@@ -142,7 +142,12 @@ const Feedback: FC = () => {
 	const [t] = useTranslation();
 	const topics = useMemo(() => getTopics(t), [t]);
 	const allApps = useAppList();
-	const [feedbackPermission, setFeedbackPermission] = useState(false);
+	const feedbackPermission = useAllConfigStore(
+		(state) =>
+			state.getConfigByKey('carbonioSendFullErrorStack') === 'TRUE' &&
+			state.getConfigByKey('carbonioSendAnalytics') === 'TRUE' &&
+			state.getConfigByKey('carbonioAllowFeedback') === 'TRUE'
+	);
 	const [feedbackSentData, setFeedbackSentData] = useState('');
 	const [toggleFeedback, setToggleFeedback] = useState(false);
 	const [carbonioBackendVersion, setCarbonioBackendVersion] = useState('');
@@ -150,29 +155,8 @@ const Feedback: FC = () => {
 	const [totalDomains, setTotalDomains] = useState('');
 	const [totalServers, setTotalServers] = useState('');
 	const [isForum, setIsForum] = useState(false);
-	const configs = useAllConfigStore((c) => c.a);
 	const isAdvanced = getIsAdvanced();
 	const carbonioAdminUIVersion = packageJson?.version || '0.9.12';
-	useEffect(() => {
-		if (configs && configs.length > 0) {
-			const carbonioSendFullErrorStack = configs.find(
-				(item: any) => item?.n === 'carbonioSendFullErrorStack'
-			);
-			const carbonioSendAnalytics = configs.find(
-				(item: any) => item?.n === 'carbonioSendAnalytics'
-			);
-			const carbonioAllowFeedback = configs.find(
-				(item: any) => item?.n === 'carbonioAllowFeedback'
-			);
-			if (
-				carbonioSendFullErrorStack?._content === 'TRUE' &&
-				carbonioSendAnalytics?._content === 'TRUE' &&
-				carbonioAllowFeedback?._content === 'TRUE'
-			) {
-				setFeedbackPermission(true);
-			}
-		}
-	}, [configs]);
 	const apps = useMemo(
 		() => filter(allApps, (app) => !!app.sentryDsn),
 
