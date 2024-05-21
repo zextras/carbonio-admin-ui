@@ -16,7 +16,7 @@ import { CARBONIO_ADMIN_DOCUMENTATION_URL, SHELL_APP_ID } from '../constants';
 import MatomoTracker from '../matomo-tracker';
 import { logout } from '../network/logout';
 import { useUserAccount, useUserAccounts } from '../store/account';
-import { useAllConfigStore } from '../store/config';
+import { useConfigStore } from '../store/config';
 import { useContextBridge } from '../store/context-bridge';
 import { DASHBOARD, LOGOUT, OTHER } from '../test/constants';
 
@@ -56,8 +56,8 @@ export const ShellUtilityBar: FC = () => {
 	const [accountName, setAccountName] = useState('');
 	const views = useUtilityViews();
 	const acct = useUserAccount();
-	const helpDocumentationUrl = useAllConfigStore((state) =>
-		state.getConfigByKey(CARBONIO_ADMIN_DOCUMENTATION_URL)
+	const helpDocumentationUrl = useConfigStore((state) =>
+		state.getConfigAttribute(CARBONIO_ADMIN_DOCUMENTATION_URL)
 	);
 	const [t] = useTranslation();
 	const accountItems = useMemo(
