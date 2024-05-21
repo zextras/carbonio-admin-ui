@@ -201,6 +201,12 @@ export type ConfigState = {
 	getConfigByKey: (key: string) => string;
 };
 
+export type ConfigAttributesState = {
+	globalAttributes: Array<Attribute>;
+	domainAttributes: Array<Attribute>;
+	getConfigAttribute: (key: string) => string;
+};
+
 export type AdvanceState = {
 	maxApiVersion: number;
 	minApiVersion: number;
