@@ -11,8 +11,12 @@ import { CONTENT } from '../../constants';
 
 export const useConfigStore = create<ConfigAttributesState>((set, get) => ({
 	globalAttributes: [],
-	domainAttributes: [],
+	domainInformation: {
+		id: '',
+		name: '',
+		a: []
+	},
 	getConfigAttribute: (key: string): string =>
-		_get(find(get().domainAttributes, { n: key }), CONTENT) ??
+		_get(find(get().domainInformation.a, { n: key }), CONTENT) ??
 		_get(find(get().globalAttributes, { n: key }), CONTENT)
 }));

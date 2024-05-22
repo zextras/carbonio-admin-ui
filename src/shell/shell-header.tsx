@@ -26,7 +26,6 @@ import { SearchBar } from '../search/search-bar';
 import { useUserAccount } from '../store/account';
 import { useAppStore } from '../store/app';
 import { useConfigStore } from '../store/config';
-import { useDomainInformationStore } from '../store/domain-information';
 import { useLoginConfigStore } from '../store/login/store';
 import Logo from '../svg/carbonio-admin-panel.svg';
 import { openLink } from '../utility-bar/utils';
@@ -111,10 +110,9 @@ const ShellHeader: FC<{
 		const data = await getDomainInformation('name', name);
 		const domain = data?.domain[0];
 		if (domain) {
-			useDomainInformationStore.setState({ a: domain.a, id: domain.id, name: domain.name });
 			useConfigStore.setState((prev: ConfigAttributesState) => ({
 				...prev,
-				domainAttributes: domain.a
+				domainInformation: { a: domain.a, id: domain.id, name: domain.name }
 			}));
 		}
 	}, []);
