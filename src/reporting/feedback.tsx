@@ -25,7 +25,7 @@ import styled from 'styled-components';
 import { feedback } from './functions';
 import Logo from '../../assets/carbonio_feedback.svg';
 import packageJson from '../../package.json';
-import { OPEN_TICKET_URL, SHELL_APP_ID, FORUM_URL } from '../constants';
+import { OPEN_TICKET_URL, SHELL_APP_ID, FORUM_URL, TRUE } from '../constants';
 import {
 	getCarbonioBackendVersion,
 	searchDirectoryListCount,
@@ -126,9 +126,9 @@ const Feedback: FC = () => {
 	const allApps = useAppList();
 	const feedbackPermission = useConfigStore(
 		(state) =>
-			state.getConfigAttribute('carbonioSendFullErrorStack') === 'TRUE' &&
-			state.getConfigAttribute('carbonioSendAnalytics') === 'TRUE' &&
-			state.getConfigAttribute('carbonioAllowFeedback') === 'TRUE'
+			state.getConfigAttribute('carbonioSendFullErrorStack') === TRUE &&
+			state.getConfigAttribute('carbonioSendAnalytics') === TRUE &&
+			state.getConfigAttribute('carbonioAllowFeedback') === TRUE
 	);
 	const [toggleFeedback, setToggleFeedback] = useState(false);
 	const [carbonioBackendVersion, setCarbonioBackendVersion] = useState('');
