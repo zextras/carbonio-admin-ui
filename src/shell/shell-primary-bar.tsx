@@ -30,18 +30,10 @@ import { Collapser } from './collapser';
 import { AppRoute, PrimaryAccessoryView, PrimaryBarView, Right } from '../../types';
 import AppContextProvider from '../boot/app/app-context-provider';
 import { CONFIG } from '../constants';
-import MatomoTracker from '../matomo-tracker';
 import { getUsersRights } from '../network/get-user-accounts-rights';
 import { useUserAccounts } from '../store/account';
 import { useAppStore } from '../store/app';
 import { useContextBridge } from '../store/context-bridge';
-import {
-	DASHBOARD,
-	MATOMO_PRIMARY_BAR,
-	PRIMARY_BAR_CLOSE,
-	PRIMARY_BAR_FEEDBACK,
-	PRIMARY_BAR_OPEN
-} from '../test/constants';
 import { useUtilityBarStore } from '../utility-bar';
 import { checkRoute } from '../utility-bar/utils';
 
@@ -209,25 +201,11 @@ const PrimaryBarAccessoryElement: FC<PrimaryBarAccessoryItemProps> = ({ view }) 
 );
 
 const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
-	const [userId, setuserId] = useState<string>('');
 	const isOpen = useUtilityBarStore((s) => s.primaryBarState);
 	const accounts = useUserAccounts();
-	useEffect(() => {
-		if (accounts?.length !== 0) {
-			const { id } = accounts[0];
-			setuserId(id);
-		}
-	}, [accounts]);
 
-	const matomo = useMemo(() => new MatomoTracker(userId), [userId]);
 	const setIsOpen = useUtilityBarStore((s) => s.setPrimaryBarState);
 	const onCollapserClick = useCallback(() => {
-		// eslint-disable-next-line sonarjs/no-duplicate-string
-		matomo.trackEvent(
-			DASHBOARD,
-			MATOMO_PRIMARY_BAR,
-			`${isOpen ? PRIMARY_BAR_CLOSE : PRIMARY_BAR_OPEN}`
-		);
 		setIsOpen(!isOpen);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isOpen, setIsOpen]);
@@ -330,10 +308,7 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 								{view?.section === undefined && (
 									<PrimaryBarElement
 										key={view?.id}
-										onClick={(): void => {
-											matomo.trackEvent(DASHBOARD, MATOMO_PRIMARY_BAR, view?.trackerLabel);
-											history.push(`/${routes[view?.id]}`);
-										}}
+										onClick={(): void => history.push(`/${routes[view?.id]}`)}
 										view={view}
 										isExpanded={isOpen}
 										active={activeRoute?.id === view?.id}
@@ -367,7 +342,6 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 										<PrimaryBarElement
 											key={item?.id}
 											onClick={(): void => {
-												matomo.trackEvent(DASHBOARD, MATOMO_PRIMARY_BAR, `${item?.trackerLabel}`);
 												history.push(`/${routes[item?.id]}`);
 											}}
 											view={item}
@@ -385,7 +359,6 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 							width="fill"
 							mainAlignment="flex-start"
 							onClick={(): void => {
-								matomo.trackEvent(DASHBOARD, MATOMO_PRIMARY_BAR, PRIMARY_BAR_FEEDBACK);
 								useContextBridge.getState().packageDependentFunctions?.addBoard('feedbacks')(
 									'/feedback/',
 									{ title: t('label.feedback', 'Feedback') }
