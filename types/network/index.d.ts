@@ -198,6 +198,7 @@ export type GetAllConfigResponse = {
 
 export type ConfigState = {
 	a: Array<Attribute>;
+	getConfigByKey: (key: string) => string;
 };
 
 export type AdvanceState = {
