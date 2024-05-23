@@ -10,11 +10,12 @@ import { map } from 'lodash';
 import { useTranslation } from 'react-i18next';
 
 import { useUtilityBarStore } from './store';
-import { useUtilityViews } from './utils';
+import { openLink, useUtilityViews } from './utils';
 import { UtilityView } from '../../types/apps';
-import { SHELL_APP_ID } from '../constants';
+import { CARBONIO_ADMIN_DOCUMENTATION_URL, SHELL_APP_ID } from '../constants';
 import { logout } from '../network/logout';
 import { useUserAccount } from '../store/account';
+import { useAllConfigStore } from '../store/config';
 import { useContextBridge } from '../store/context-bridge';
 
 const UtilityBarItem: FC<{ view: UtilityView }> = ({ view }) => {
@@ -43,6 +44,9 @@ export const ShellUtilityBar: FC = () => {
 	const [accountName, setAccountName] = useState('');
 	const views = useUtilityViews();
 	const acct = useUserAccount();
+	const helpDocumentationUrl = useAllConfigStore((state) =>
+		state.getConfigByKey(CARBONIO_ADMIN_DOCUMENTATION_URL)
+	);
 	const [t] = useTranslation();
 	const accountItems = useMemo(
 		() => [
@@ -57,6 +61,12 @@ export const ShellUtilityBar: FC = () => {
 				icon: 'MessageSquareOutline'
 			},
 			{
+				id: 'help',
+				label: t('label.help_and_documentation', 'Help & Documentation'),
+				click: () => openLink(helpDocumentationUrl),
+				icon: 'QuestionMarkOutline'
+			},
+			{
 				id: 'logout',
 				label: t('label.logout', 'Logout'),
 				click: (): void => {
@@ -65,7 +75,7 @@ export const ShellUtilityBar: FC = () => {
 				icon: 'LogOut'
 			}
 		],
-		[t]
+		[helpDocumentationUrl, t]
 	);
 
 	const clipTextAfterWords = (text: string): string => {

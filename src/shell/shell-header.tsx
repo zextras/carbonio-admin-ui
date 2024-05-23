@@ -14,13 +14,12 @@ import {
 	useScreenMode,
 	Button
 } from '@zextras/carbonio-design-system';
-import { find, get } from 'lodash';
 import { useTranslation } from 'react-i18next';
 import styled, { keyframes } from 'styled-components';
 
 import { CreationButton } from './creation-button';
 import { AppRoute } from '../../types';
-import { CARBONIO_ADMIN_DOCUMENTATION_URL, CARBONIO_LOGO_URL, CONTENT } from '../constants';
+import { CARBONIO_ADMIN_DOCUMENTATION_URL, CARBONIO_LOGO_URL } from '../constants';
 import { useDarkMode } from '../dark-mode/use-dark-mode';
 import { getDomainInformation } from '../network/get-domain-information';
 import { SearchBar } from '../search/search-bar';
@@ -98,7 +97,9 @@ const ShellHeader: FC<{
 }> = ({ activeRoute, mobileNavIsOpen, onMobileMenuClick, children }) => {
 	const screenMode = useScreenMode();
 	const [t] = useTranslation();
-	const configs = useAllConfigStore((c) => c.a);
+	const helpDocumentationUrl = useAllConfigStore((state) =>
+		state.getConfigByKey(CARBONIO_ADMIN_DOCUMENTATION_URL)
+	);
 	const searchEnabled = useAppStore((s) => s.views.search.length > 0);
 	const userName = useUserAccount()?.name;
 	const { carbonioAdminUiAppLogo, carbonioAdminUiDarkAppLogo, carbonioLogoURL } =
@@ -149,11 +150,6 @@ const ShellHeader: FC<{
 			updateDomainDetails(userName?.split('@')[1]);
 		}
 	}, [updateDomainDetails, userName]);
-
-	const helpDocumentationUrl = useMemo(
-		() => get(find(configs, { n: CARBONIO_ADMIN_DOCUMENTATION_URL }), CONTENT),
-		[configs]
-	);
 
 	const logoSrc = useMemo(() => {
 		if (darkModeEnabled) {
