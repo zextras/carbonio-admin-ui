@@ -24,7 +24,7 @@ import styled from 'styled-components';
 import { feedback } from './functions';
 import Logo from '../../assets/carbonio_feedback.svg';
 import packageJson from '../../package.json';
-import { OPEN_TICKET_URL, SHELL_APP_ID, FORUM_URL } from '../constants';
+import { OPEN_TICKET_URL, SHELL_APP_ID, FORUM_URL, TRUE } from '../constants';
 import {
 	getCarbonioBackendVersion,
 	searchDirectoryListCount,
@@ -35,7 +35,6 @@ import { getAllConfig } from '../network/get-all-config';
 import { useUserAccount } from '../store/account';
 import { getIsAdvanced } from '../store/advance';
 import { useAllConfigStore } from '../store/config/store';
-import { TRUE } from '../test/constants';
 
 const CustomIcon = styled(Icon)`
 	width: 20px;

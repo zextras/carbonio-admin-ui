@@ -158,4 +158,3 @@ export const LOGOUT = 'logout';
 export const MATOMO_PRIMARY_BAR = 'PrimaryBar';
 export const OTHER = 'Other';
 export const DASHBOARD = 'dashboard';
-export const TRUE = 'TRUE';
