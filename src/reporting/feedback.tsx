@@ -18,7 +18,6 @@ import {
 	Switch,
 	Link
 } from '@zextras/carbonio-design-system';
-import { filter } from 'lodash';
 import { Trans, useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
@@ -60,12 +59,6 @@ const TextArea = styled.textarea<{ size?: string }>`
 		background: ${({ theme }): string => theme.palette.gray4.regular};
 		outline: none;
 	}
-`;
-
-const TextContainer = styled(Container)`
-	text-align: justify;
-	align-items: left;
-	width: 80%;
 `;
 
 const ButtonContainer = styled(Container)`
@@ -138,11 +131,6 @@ const Feedback: FC = () => {
 	const [isForum, setIsForum] = useState(false);
 	const isAdvanced = getIsAdvanced();
 	const carbonioAdminUIVersion = packageJson?.version || '0.9.12';
-	const apps = useMemo(
-		() => filter(allApps, (app) => !!app.sentryDsn),
-
-		[allApps]
-	);
 
 	const acct = useUserAccount();
 
