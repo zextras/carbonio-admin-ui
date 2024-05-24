@@ -18,15 +18,14 @@ import { useTranslation } from 'react-i18next';
 import styled, { keyframes } from 'styled-components';
 
 import { CreationButton } from './creation-button';
-import { AppRoute } from '../../types';
+import { AppRoute, ConfigAttributesState } from '../../types';
 import { CARBONIO_ADMIN_DOCUMENTATION_URL, CARBONIO_LOGO_URL } from '../constants';
 import { useDarkMode } from '../dark-mode/use-dark-mode';
 import { getDomainInformation } from '../network/get-domain-information';
 import { SearchBar } from '../search/search-bar';
 import { useUserAccount } from '../store/account';
 import { useAppStore } from '../store/app';
-import { useAllConfigStore } from '../store/config';
-import { useDomainInformationStore } from '../store/domain-information';
+import { useConfigStore } from '../store/config';
 import { useLoginConfigStore } from '../store/login/store';
 import Logo from '../svg/carbonio-admin-panel.svg';
 import { openLink } from '../utility-bar/utils';
@@ -97,8 +96,8 @@ const ShellHeader: FC<{
 }> = ({ activeRoute, mobileNavIsOpen, onMobileMenuClick, children }) => {
 	const screenMode = useScreenMode();
 	const [t] = useTranslation();
-	const helpDocumentationUrl = useAllConfigStore((state) =>
-		state.getConfigByKey(CARBONIO_ADMIN_DOCUMENTATION_URL)
+	const helpDocumentationUrl = useConfigStore((state) =>
+		state.getConfigAttribute(CARBONIO_ADMIN_DOCUMENTATION_URL)
 	);
 	const searchEnabled = useAppStore((s) => s.views.search.length > 0);
 	const userName = useUserAccount()?.name;
@@ -106,21 +105,15 @@ const ShellHeader: FC<{
 		useLoginConfigStore();
 	const { darkModeEnabled, darkReaderStatus } = useDarkMode();
 	const [isHelpDocButtonExpanded, setIsHelpDocButtonExpanded] = useState(false);
-	// Hide for now because https://app.useberry.com/embed/embed-script.js not working */
-	// const [feedbackVisible, setFeedbackVisible] = useState(true);
-	// const configs = useAllConfigStore((c) => c.a);
-	// const [feedbackConfig, setFeedbackConfig] = useState('FALSE');
-
-	// const saveToLocalStorage = (): void => {
-	// 	localStorage.setItem('feedback', 'true');
-	// };
 
 	const updateDomainDetails = useCallback(async (name: string): Promise<void> => {
 		const data = await getDomainInformation('name', name);
-
 		const domain = data?.domain[0];
 		if (domain) {
-			useDomainInformationStore.setState({ a: domain?.a, id: domain?.id, name: domain?.name });
+			useConfigStore.setState((prev: ConfigAttributesState) => ({
+				...prev,
+				domainInformation: { a: domain.a, id: domain.id, name: domain.name }
+			}));
 		}
 	}, []);
 

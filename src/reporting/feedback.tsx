@@ -34,7 +34,8 @@ import {
 import { getAllConfig } from '../network/get-all-config';
 import { useUserAccount } from '../store/account';
 import { getIsAdvanced } from '../store/advance';
-import { useAllConfigStore } from '../store/config/store';
+import { useAppList } from '../store/app';
+import { useConfigStore } from '../store/config/store';
 
 const CustomIcon = styled(Icon)`
 	width: 20px;
@@ -115,13 +116,13 @@ function reducer(state: Event, { type, payload }: { type: string; payload: any }
 
 const Feedback: FC = () => {
 	const [t] = useTranslation();
-	const feedbackPermission = useAllConfigStore(
+	const allApps = useAppList();
+	const feedbackPermission = useConfigStore(
 		(state) =>
-			state.getConfigByKey('carbonioSendFullErrorStack') === TRUE &&
-			state.getConfigByKey('carbonioSendAnalytics') === TRUE &&
-			state.getConfigByKey('carbonioAllowFeedback') === TRUE
+			state.getConfigAttribute('carbonioSendFullErrorStack') === TRUE &&
+			state.getConfigAttribute('carbonioSendAnalytics') === TRUE &&
+			state.getConfigAttribute('carbonioAllowFeedback') === TRUE
 	);
-	const [feedbackSentData, setFeedbackSentData] = useState('');
 	const [toggleFeedback, setToggleFeedback] = useState(false);
 	const [carbonioBackendVersion, setCarbonioBackendVersion] = useState('');
 	const [totalAccounts, setTotalAccounts] = useState('');
@@ -134,7 +135,6 @@ const Feedback: FC = () => {
 	const acct = useUserAccount();
 
 	const [event, dispatch] = useReducer(reducer, emptyEvent);
-	const [showErr, setShowErr] = useState(false);
 	const [limit, setLimit] = useState(0);
 
 	const getBackendVersion = useCallback(() => {
@@ -176,22 +176,8 @@ const Feedback: FC = () => {
 		}
 	}, []);
 
-	const checkTopicSelect = useCallback(
-		(ev) => {
-			if (event.extra?.topic === '0') setShowErr(true);
-			else setShowErr(false);
-			// eslint-disable-next-line sonarjs/no-collapsible-if
-			if (ev.keyCode === 8) {
-				if (event.message?.length === 0) {
-					setShowErr(false);
-				}
-			}
-		},
-		[setShowErr, event]
-	);
-
 	const confirmHandler = useCallback(() => {
-		const feedbackData = feedback(event, {
+		feedback(event, {
 			carbonioBackendVersion,
 			totalAccounts,
 			totalDomains,
@@ -199,7 +185,6 @@ const Feedback: FC = () => {
 			carbonioAdminUIVersion
 		});
 		setToggleFeedback(true);
-		setFeedbackSentData(feedbackData);
 		// closeBoard();
 	}, [
 		carbonioAdminUIVersion,
@@ -501,7 +486,6 @@ const Feedback: FC = () => {
 							<TAContainer crossAlignment="flex-end">
 								<TextArea
 									value={event.message}
-									onKeyUp={checkTopicSelect}
 									onChange={onInputChange}
 									placeholder={t(
 										'feedback.write_here_placeholder_text',

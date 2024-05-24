@@ -15,7 +15,7 @@ import { UtilityView } from '../../types/apps';
 import { CARBONIO_ADMIN_DOCUMENTATION_URL, SHELL_APP_ID } from '../constants';
 import { logout } from '../network/logout';
 import { useUserAccount } from '../store/account';
-import { useAllConfigStore } from '../store/config';
+import { useConfigStore } from '../store/config';
 import { useContextBridge } from '../store/context-bridge';
 
 const UtilityBarItem: FC<{ view: UtilityView }> = ({ view }) => {
@@ -44,8 +44,8 @@ export const ShellUtilityBar: FC = () => {
 	const [accountName, setAccountName] = useState('');
 	const views = useUtilityViews();
 	const acct = useUserAccount();
-	const helpDocumentationUrl = useAllConfigStore((state) =>
-		state.getConfigByKey(CARBONIO_ADMIN_DOCUMENTATION_URL)
+	const helpDocumentationUrl = useConfigStore((state) =>
+		state.getConfigAttribute(CARBONIO_ADMIN_DOCUMENTATION_URL)
 	);
 	const [t] = useTranslation();
 	const accountItems = useMemo(
