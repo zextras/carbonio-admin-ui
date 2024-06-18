@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.29](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.28...v0.9.29) (2024-06-18)
+
+
+### Features
+
+* ac-1055: help and documentation button in profile tab ([0e5f152](https://github.com/zextras/carbonio-admin-ui/commit/0e5f152f8fea71f677619b006fb1b168e0e6cb9a))
+* ac-413: made help documentation url coming from whitelabel setting ([72df96a](https://github.com/zextras/carbonio-admin-ui/commit/72df96a722830cba952a928cd29ce7faa1b9cc83))
+* ac-870: added posthog and tested survey and auto captures ([686ef15](https://github.com/zextras/carbonio-admin-ui/commit/686ef15aebd01256de6ca7b1a304ec623be814e4))
+
+
+### Bug Fixes
+
+* ac-1055: code duplication removed ([4b3b1ed](https://github.com/zextras/carbonio-admin-ui/commit/4b3b1ed3dda55bd26f3772238cfe5c4e1c36e703))
+* ac-1081: fixed bar documentation url from domain else global ([9d4332a](https://github.com/zextras/carbonio-admin-ui/commit/9d4332a16c5bf35b808e67f650275e4ec9883695))
+* ac-1081: fixed fab documentation url from domain if available else global ([b6f49f4](https://github.com/zextras/carbonio-admin-ui/commit/b6f49f4954e1ca2fd74b7268c34625dbc3755ed8))
+* devel package build issue ([52c2233](https://github.com/zextras/carbonio-admin-ui/commit/52c2233df82bebbe43ea0ac9b8ad9dc97d315c03))
+
 ### [0.9.28](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.27...v0.9.28) (2024-05-20)
 
 ### [0.9.27](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.26...v0.9.27) (2024-04-12)
