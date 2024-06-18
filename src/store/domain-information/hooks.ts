@@ -5,10 +5,12 @@
  */
 import { useMemo } from 'react';
 
-import { useDomainInformationStore } from './store';
-import { DomainInformationState } from '../../../types';
+import { ConfigAttributesState, DomainInformationState } from '../../../types';
+import { useConfigStore } from '../config';
 
 export const useDomainInformation = (): DomainInformationState => {
-	const info: DomainInformationState = useDomainInformationStore((s: any) => s);
+	const info: DomainInformationState = useConfigStore(
+		(s: ConfigAttributesState) => s.domainInformation
+	);
 	return useMemo(() => info || {}, [info]);
 };

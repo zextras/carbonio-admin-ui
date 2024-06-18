@@ -3,13 +3,20 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-
+import { find, get as _get } from 'lodash';
 import { create } from 'zustand';
 
-import { ConfigState } from '../../../types';
+import { ConfigAttributesState } from '../../../types';
+import { CONTENT } from '../../constants';
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-export const useAllConfigStore = create<ConfigState>(() => ({
-	a: []
+export const useConfigStore = create<ConfigAttributesState>((set, get) => ({
+	globalAttributes: [],
+	domainInformation: {
+		id: '',
+		name: '',
+		a: []
+	},
+	getConfigAttribute: (key: string): string =>
+		_get(find(get().domainInformation.a, { n: key }), CONTENT) ??
+		_get(find(get().globalAttributes, { n: key }), CONTENT)
 }));
