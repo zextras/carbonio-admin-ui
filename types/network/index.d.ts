@@ -196,8 +196,10 @@ export type GetAllConfigResponse = {
 	a: Array<Attribute>;
 };
 
-export type ConfigState = {
-	a: Array<Attribute>;
+export type ConfigAttributesState = {
+	globalAttributes: Array<Attribute>;
+	domainInformation: DomainInformationState;
+	getConfigAttribute: (key: string) => string;
 };
 
 export type AdvanceState = {

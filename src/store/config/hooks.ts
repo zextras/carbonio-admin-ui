@@ -5,10 +5,10 @@
  */
 import { useMemo } from 'react';
 
-import { useAllConfigStore } from './store';
+import { useConfigStore } from './store';
 import { Attribute } from '../../../types';
 
 export const useAllConfig = (): Array<Attribute> => {
-	const config = useAllConfigStore((s) => s.a);
+	const config = useConfigStore((s) => s.globalAttributes);
 	return useMemo(() => config || [], [config]);
 };
