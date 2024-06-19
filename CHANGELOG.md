@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.30](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.29...v0.9.30) (2024-06-19)
+
+
+### Bug Fixes
+
+* co-1205 ask feedback for carbonio ce and carbonioAllowFeedback is enabled ([d655305](https://github.com/zextras/carbonio-admin-ui/commit/d6553050712661bfa2ad593b45dc6287cc23d441))
+
 ### [0.9.29](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.28...v0.9.29) (2024-06-18)
 
 
