@@ -7,6 +7,7 @@
 import React, { FC, useEffect, useMemo } from 'react';
 
 import { SnackbarManager, ModalManager } from '@zextras/carbonio-design-system';
+import posthog from 'posthog-js';
 import { useTranslation } from 'react-i18next';
 
 import { registerDefaultViews } from './app/default-views';
@@ -15,8 +16,12 @@ import BootstrapperContextProvider from './bootstrapper-provider';
 import BootstrapperRouter from './bootstrapper-router';
 import { init } from './init';
 import { ThemeProvider } from './theme-provider';
+import { ConfigAttributesState } from '../../types';
+import { PH_API_HOST, PH_PROJECT_API_KEY, TRUE } from '../constants';
 import I18nFactory from '../i18n/i18n-factory';
 import StoreFactory from '../redux/store-factory';
+import { useAdvanceStore } from '../store/advance';
+import { useConfigStore } from '../store/config';
 import { useBridge } from '../store/context-bridge';
 
 const DefaultViewsRegister: FC = () => {
@@ -40,6 +45,21 @@ const TBridge: FC<{ i18nFactory: I18nFactory }> = ({ i18nFactory }) => {
 const Bootstrapper: FC = () => {
 	const i18nFactory = useMemo(() => new I18nFactory(), []);
 	const storeFactory = useMemo(() => new StoreFactory(), []);
+	const feedbackPermission = useConfigStore(
+		(state: ConfigAttributesState) => state.getConfigAttribute('carbonioAllowFeedback') === TRUE
+	);
+	const { isAdvanced } = useAdvanceStore();
+	const showPostHog = useMemo(
+		() => !isAdvanced && feedbackPermission,
+		[isAdvanced, feedbackPermission]
+	);
+
+	if (showPostHog) {
+		posthog.init(PH_PROJECT_API_KEY, {
+			api_host: PH_API_HOST
+		});
+	}
+
 	useEffect(() => {
 		init(i18nFactory, storeFactory);
 		return () => {
