@@ -5,13 +5,14 @@
  */
 import React, { FC } from 'react';
 
-import { IconButton } from '@zextras/carbonio-design-system';
+import { Button } from '@zextras/carbonio-design-system';
 
 import { SHELL_APP_ID } from '../../types';
 import { useContextBridge } from '../store/context-bridge';
 
 const DevBoardTrigger: FC = () => (
-	<IconButton
+	<Button
+		type="ghost"
 		icon="Code"
 		size="large"
 		onClick={(): void =>

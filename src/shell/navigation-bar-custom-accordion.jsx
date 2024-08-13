@@ -11,13 +11,13 @@ import {
 	Text,
 	Divider,
 	Icon,
-	IconButton,
 	Padding,
 	Collapse,
 	useCombinedRefs,
 	useKeyboard,
 	getKeyboardPreset,
-	pseudoClasses
+	pseudoClasses,
+	Button
 } from '@zextras/carbonio-design-system';
 import styled from 'styled-components';
 
@@ -91,7 +91,8 @@ const NavigationBarAccordion = React.forwardRef(function NavigationBarAccordionC
 						{label}
 					</Text>
 				</Container>
-				<IconButton
+				<Button
+					type="ghost"
 					customSize={{ iconSize: 'large', paddingSize: 0 }}
 					onClick={expandOnIconClick}
 					icon={open ? 'ArrowIosUpward' : 'ArrowIosDownward'}

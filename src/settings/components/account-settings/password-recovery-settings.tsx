@@ -27,7 +27,7 @@ interface PasswordRecoverySettingsProps {
 	createSnackbar: (arg: {
 		key: string;
 		replace: boolean;
-		type: string;
+		severity: string;
 		label: string;
 		autoHideTimeout: number;
 		hideButton: boolean;
@@ -74,7 +74,7 @@ const PasswordRecoverySettings = ({
 			createSnackbar({
 				key: `new`,
 				replace: true,
-				type: 'error',
+				severity: 'error',
 				label: t('snackbar.error', 'Something went wrong, please try again'),
 				autoHideTimeout: 3000,
 				hideButton: true

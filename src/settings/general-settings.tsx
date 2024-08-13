@@ -47,7 +47,7 @@ const GeneralSettings: FC = () => {
 				createSnackbar({
 					key: `new`,
 					replace: true,
-					type: 'info',
+					severity: 'info',
 					label: t('message.snackbar.settings_saved', 'Edits saved correctly'),
 					autoHideTimeout: 3000,
 					hideButton: true
@@ -57,7 +57,7 @@ const GeneralSettings: FC = () => {
 				createSnackbar({
 					key: `new`,
 					replace: true,
-					type: 'error',
+					severity: 'error',
 					label: t('snackbar.error', 'Something went wrong, please try again'),
 					autoHideTimeout: 3000,
 					hideButton: true

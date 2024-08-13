@@ -7,13 +7,13 @@
 import React, { useCallback, useContext } from 'react';
 
 import {
-	IconButton,
 	Text,
 	Row,
 	Padding,
 	Icon,
 	Container,
-	Tooltip
+	Tooltip,
+	Button
 } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
@@ -78,7 +78,8 @@ export default function AppBoardTab({ idx, icon, iconSize }) {
 				</Row>
 				<Padding right="small" />
 				<Tooltip label={t('board.close_tab', 'Close Tab')} placement="top">
-					<IconButton
+					<Button
+						type="ghost"
 						iconColor="secondary"
 						icon="Close"
 						onClick={onRemove}
