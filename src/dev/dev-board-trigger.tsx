@@ -13,6 +13,7 @@ import { useContextBridge } from '../store/context-bridge';
 const DevBoardTrigger: FC = () => (
 	<Button
 		type="ghost"
+		color={'text'}
 		icon="Code"
 		size="large"
 		onClick={(): void =>

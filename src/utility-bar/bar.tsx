@@ -30,8 +30,8 @@ const UtilityBarItem: FC<{ view: UtilityView }> = ({ view }) => {
 			<Tooltip label={view.label} placement="bottom-end">
 				<Button
 					type="ghost"
+					color={current === view.id ? 'primary' : 'text'}
 					icon={view.button}
-					iconColor={current === view.id ? 'primary' : 'text'}
 					onClick={onClick}
 					size="large"
 				/>
@@ -105,6 +105,7 @@ export const ShellUtilityBar: FC = () => {
 				<Dropdown items={accountItems}>
 					<Button
 						type="ghost"
+						color={'text'}
 						icon="AvatarOutline"
 						customSize={{ iconSize: '1.5rem', paddingSize: 'medium' }}
 						iconColor="primary"

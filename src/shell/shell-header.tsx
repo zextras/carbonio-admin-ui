@@ -176,6 +176,7 @@ const ShellHeader: FC<{
 				<Padding right="small">
 					<Button
 						type="ghost"
+						color={'text'}
 						icon={mobileNavIsOpen ? 'Close' : 'Menu'}
 						onClick={onMobileMenuClick}
 					/>

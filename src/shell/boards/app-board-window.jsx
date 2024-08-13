@@ -179,6 +179,7 @@ export default function AppBoardWindow() {
 							<Padding right="extrasmall">
 								<Button
 									type="ghost"
+									color={'text'}
 									icon={'DiagonalArrowRightUp'}
 									onClick={boards[currentBoard]?.context?.onReturnToApp}
 								/>
@@ -200,6 +201,7 @@ export default function AppBoardWindow() {
 							>
 								<Button
 									type="ghost"
+									color={'text'}
 									icon={largeView ? 'CollapseOutline' : 'ExpandOutline'}
 									onClick={toggleLargeView}
 								/>

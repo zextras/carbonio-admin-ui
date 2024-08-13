@@ -93,7 +93,8 @@ const NavigationBarAccordion = React.forwardRef(function NavigationBarAccordionC
 				</Container>
 				<Button
 					type="ghost"
-					customSize={{ iconSize: 'large', paddingSize: 0 }}
+					color={'text'}
+					size={'extralarge'}
 					onClick={expandOnIconClick}
 					icon={open ? 'ArrowIosUpward' : 'ArrowIosDownward'}
 					style={{ cursor: 'pointer' }}

@@ -80,7 +80,7 @@ export default function AppBoardTab({ idx, icon, iconSize }) {
 				<Tooltip label={t('board.close_tab', 'Close Tab')} placement="top">
 					<Button
 						type="ghost"
-						iconColor="secondary"
+						color={'secondary'}
 						icon="Close"
 						onClick={onRemove}
 						style={{ padding: '2px', width: '24px', height: '24px' }}

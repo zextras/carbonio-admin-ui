@@ -79,7 +79,7 @@ const ToggleBoardIcon: FC = () => {
 		<Container orientation="horizontal" mainAlignment="flex-start" background="transparent">
 			<Button
 				type="ghost"
-				iconColor="primary"
+				color={'primary'}
 				icon={minimized ? 'BoardOpen' : 'BoardCollapse'}
 				onClick={toggleMinimized}
 				size="large"
@@ -138,9 +138,10 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, isExpanded, 
 						{typeof view.component === 'string' ? (
 							<PrimaryBarButton
 								type="ghost"
+								color={'text'}
 								icon={view.component}
-								customSize={{ iconSize: 'large', paddingSize: 'medium' }}
 								onClick={onClick}
+								size={'extralarge'}
 							/>
 						) : (
 							<Text onClick={onClick}>
@@ -190,6 +191,7 @@ const PrimaryBarAccessoryElement: FC<PrimaryBarAccessoryItemProps> = ({ view }) 
 			{typeof view.component === 'string' ? (
 				<Button
 					type="ghost"
+					color={'text'}
 					icon={view.component}
 					backgroundColor="gray6"
 					iconColor="text"
@@ -371,6 +373,7 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 							<BadgeWrap badge={{ show: false, count: 0 }} isExpanded={isOpen}>
 								<PrimaryBarButton
 									type="ghost"
+									color={'text'}
 									icon="MessageSquareOutline"
 									size="large"
 									onClick={(): void => {

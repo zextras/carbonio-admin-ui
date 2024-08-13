@@ -508,7 +508,7 @@ export const SearchBar: FC<SearchBarProps> = ({
 									type="ghost"
 									disabled={disableClearButton}
 									icon="BackspaceOutline"
-									iconColor="primary"
+									color="primary"
 									onClick={clearSearch}
 								/>
 							</Tooltip>
@@ -527,7 +527,7 @@ export const SearchBar: FC<SearchBarProps> = ({
 								icon="Search"
 								disabled={!(searchIsEnabled && inputState.length > 0)}
 								backgroundColor="primary"
-								iconColor="gray6"
+								color="gray6"
 								onClick={onSearch}
 							/>
 						</Tooltip>
