@@ -8,7 +8,6 @@ import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 
 import {
 	Container,
-	IconButton,
 	Padding,
 	Responsive,
 	useScreenMode,
@@ -175,7 +174,12 @@ const ShellHeader: FC<{
 		>
 			<Responsive mode="mobile">
 				<Padding right="small">
-					<IconButton icon={mobileNavIsOpen ? 'Close' : 'Menu'} onClick={onMobileMenuClick} />
+					<Button
+						type="ghost"
+						color={'text'}
+						icon={mobileNavIsOpen ? 'Close' : 'Menu'}
+						onClick={onMobileMenuClick}
+					/>
 				</Padding>
 			</Responsive>
 			<Container

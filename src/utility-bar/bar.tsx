@@ -5,7 +5,7 @@
  */
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 
-import { Container, Tooltip, IconButton, Dropdown, Text } from '@zextras/carbonio-design-system';
+import { Container, Tooltip, Dropdown, Text, Button } from '@zextras/carbonio-design-system';
 import { map } from 'lodash';
 import { useTranslation } from 'react-i18next';
 
@@ -28,9 +28,10 @@ const UtilityBarItem: FC<{ view: UtilityView }> = ({ view }) => {
 	if (typeof view.button === 'string') {
 		return (
 			<Tooltip label={view.label} placement="bottom-end">
-				<IconButton
+				<Button
+					type="ghost"
+					color={current === view.id ? 'primary' : 'text'}
 					icon={view.button}
-					iconColor={current === view.id ? 'primary' : 'text'}
 					onClick={onClick}
 					size="large"
 				/>
@@ -102,7 +103,9 @@ export const ShellUtilityBar: FC = () => {
 			</Container>
 			<Tooltip label={t('label.account_menu', 'Account menu')} placement="left-end">
 				<Dropdown items={accountItems}>
-					<IconButton
+					<Button
+						type="ghost"
+						color={'text'}
 						icon="AvatarOutline"
 						customSize={{ iconSize: '1.5rem', paddingSize: 'medium' }}
 						iconColor="primary"

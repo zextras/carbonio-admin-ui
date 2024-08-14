@@ -6,7 +6,7 @@
 
 import React, { FC, useMemo } from 'react';
 
-import { Accordion, Tooltip, IconButton } from '@zextras/carbonio-design-system';
+import { Accordion, Tooltip, Button } from '@zextras/carbonio-design-system';
 import { map, startsWith } from 'lodash';
 import { useHistory, useLocation } from 'react-router-dom';
 
@@ -46,11 +46,12 @@ export const SettingsSidebar: FC<{ expanded: boolean }> = ({ expanded }) => {
 		() =>
 			settingsViews.map((v) => (
 				<Tooltip label={v.label} placement="right" key={v.id}>
-					<IconButton
+					<Button
+						type="ghost"
 						icon={v.icon}
 						onClick={(): void => history.push(`/${SETTINGS_APP_ID}/${v.route}`)}
 						size="large"
-						iconColor={
+						color={
 							startsWith(location.pathname, `/${SETTINGS_APP_ID}/${v.route}`) ? 'primary' : 'text'
 						}
 					/>

@@ -6,7 +6,7 @@
 
 import React, { FC, useContext } from 'react';
 
-import { SnackbarManagerContext, ModalManagerContext } from '@zextras/carbonio-design-system';
+import { ModalManagerContext, useSnackbar } from '@zextras/carbonio-design-system';
 import { BrowserRouter, useHistory } from 'react-router-dom';
 
 import AppLoaderMounter from './app/app-loader-mounter';
@@ -18,8 +18,7 @@ import { useBridge } from '../store/context-bridge';
 
 const ContextBridge: FC = () => {
 	const history = useHistory();
-	// eslint-disable-next-line @typescript-eslint/ban-types
-	const createSnackbar = useContext(SnackbarManagerContext) as Function;
+	const createSnackbar = useSnackbar();
 	// eslint-disable-next-line @typescript-eslint/ban-types
 	const createModal = useContext(ModalManagerContext) as Function;
 	useBridge({

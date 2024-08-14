@@ -9,7 +9,6 @@ import React, { useContext, useRef, useMemo, useLayoutEffect } from 'react';
 import {
 	Container,
 	Divider,
-	IconButton,
 	Row,
 	Padding,
 	Dropdown,
@@ -130,7 +129,7 @@ const BoardHeader = styled(Row)``;
 const BoardDetailContainer = styled(Row)`
 	min-height: 0;
 `;
-const BackButton = styled(IconButton)``;
+const BackButton = styled(Button)``;
 const Actions = styled(Row)``;
 
 export default function AppBoardWindow() {
@@ -165,7 +164,7 @@ export default function AppBoardWindow() {
 				<BoardHeader background="gray5">
 					<Padding all="extrasmall">
 						<Tooltip label={t('board.hide', 'Hide board')} placement="top">
-							<BackButton icon="BoardCollapseOutline" onClick={toggleMinimized} />
+							<BackButton type="ghost" icon="BoardCollapseOutline" onClick={toggleMinimized} />
 						</Tooltip>
 					</Padding>
 					<TabsList
@@ -178,7 +177,9 @@ export default function AppBoardWindow() {
 					<Actions padding={{ all: 'extrasmall' }}>
 						{boards[currentBoard]?.context?.onReturnToApp && (
 							<Padding right="extrasmall">
-								<IconButton
+								<Button
+									type="ghost"
+									color={'text'}
 									icon={'DiagonalArrowRightUp'}
 									onClick={boards[currentBoard]?.context?.onReturnToApp}
 								/>
@@ -198,14 +199,16 @@ export default function AppBoardWindow() {
 								}
 								placement="top"
 							>
-								<IconButton
+								<Button
+									type="ghost"
+									color={'text'}
 									icon={largeView ? 'CollapseOutline' : 'ExpandOutline'}
 									onClick={toggleLargeView}
 								/>
 							</Tooltip>
 						</Padding>
 						<Tooltip label={t('board.close_tabs', 'Close all your tabs')} placement="top">
-							<IconButton icon="CloseOutline" onClick={removeAllBoards} />
+							<Button type="ghost" icon="CloseOutline" onClick={removeAllBoards} />
 						</Tooltip>
 					</Actions>
 				</BoardHeader>
