@@ -67,7 +67,7 @@ function TabsList({ tabs, currentBoard, setCurrentBoard, largeView, t }) {
 								id: tab.key,
 								label: tab.title,
 								icon: tab.icon,
-								click: () => setCurrentBoard(tab.key),
+								onClick: () => setCurrentBoard(tab.key),
 								selected: tab.key === currentBoard
 							}))}
 						>
