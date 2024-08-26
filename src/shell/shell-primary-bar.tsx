@@ -8,7 +8,7 @@ import React, { useContext, FC, useState, useEffect, useMemo, useCallback, useRe
 
 import {
 	Container,
-	IconButton,
+	Button,
 	Row,
 	Tooltip,
 	Text,
@@ -54,7 +54,7 @@ const PrimaryBarRow = styled(Row)<{ active: boolean }>`
 	}
 `;
 
-const PrimaryBarIconButton = styled(IconButton)`
+const PrimaryBarButton = styled(Button)`
 	&:hover {
 		background: transparent;
 	}
@@ -77,8 +77,9 @@ const ToggleBoardIcon: FC = () => {
 	if (isEmpty(boards)) return null;
 	return (
 		<Container orientation="horizontal" mainAlignment="flex-start" background="transparent">
-			<IconButton
-				iconColor="primary"
+			<Button
+				type="ghost"
+				color={'primary'}
 				icon={minimized ? 'BoardOpen' : 'BoardCollapse'}
 				onClick={toggleMinimized}
 				size="large"
@@ -135,10 +136,12 @@ const PrimaryBarElement: FC<PrimaryBarItemProps> = ({ view, active, isExpanded, 
 				<PrimaryBarRow width="fill" mainAlignment="flex-start" active={active}>
 					<BadgeWrap badge={view.badge} isExpanded={isExpanded}>
 						{typeof view.component === 'string' ? (
-							<PrimaryBarIconButton
+							<PrimaryBarButton
+								type="ghost"
+								color={'text'}
 								icon={view.component}
-								customSize={{ iconSize: 'large', paddingSize: 'medium' }}
 								onClick={onClick}
+								size={'extralarge'}
 							/>
 						) : (
 							<Text onClick={onClick}>
@@ -186,7 +189,9 @@ const PrimaryBarAccessoryElement: FC<PrimaryBarAccessoryItemProps> = ({ view }) 
 	<Tooltip label={view.label} placement="right" key={view.id}>
 		<AppContextProvider key={view.id} pkg={view.app}>
 			{typeof view.component === 'string' ? (
-				<IconButton
+				<Button
+					type="ghost"
+					color={'text'}
 					icon={view.component}
 					backgroundColor="gray6"
 					iconColor="text"
@@ -366,7 +371,9 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 							}}
 						>
 							<BadgeWrap badge={{ show: false, count: 0 }} isExpanded={isOpen}>
-								<PrimaryBarIconButton
+								<PrimaryBarButton
+									type="ghost"
+									color={'text'}
 									icon="MessageSquareOutline"
 									size="large"
 									onClick={(): void => {

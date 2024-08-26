@@ -5,7 +5,7 @@
  */
 import React from 'react';
 
-import { Divider, Text, Row, IconButton, Padding } from '@zextras/carbonio-design-system';
+import { Divider, Text, Row, Padding, Button } from '@zextras/carbonio-design-system';
 
 type ModalHeaderProps = {
 	title: string;
@@ -20,7 +20,8 @@ const ModalHeader = ({
 		<Text weight="bold" size="large">
 			{title}
 		</Text>
-		<IconButton
+		<Button
+			type="ghost"
 			size="medium"
 			style={{ padding: 0, margin: 0 }}
 			onClick={onClose}
