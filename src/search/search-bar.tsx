@@ -11,14 +11,14 @@ import React, { useContext, useState, useCallback, useEffect, useMemo, FC, useRe
 import {
 	ChipInput,
 	Container,
-	IconButton,
 	Tooltip,
 	ThemeContext,
 	Select,
 	Row,
 	Icon,
 	Text,
-	Padding
+	Padding,
+	Button
 } from '@zextras/carbonio-design-system';
 import { filter, find, map, reduce } from 'lodash';
 import { useTranslation } from 'react-i18next';
@@ -31,7 +31,7 @@ import { SEARCH_APP_ID } from '../constants';
 import { useLocalStorage } from '../shell/hooks';
 import { useAppStore } from '../store/app';
 
-const OutlinedIconButton = styled(IconButton)`
+const OutlinedButton = styled(Button)`
 	border: 1px solid
 		${({ theme, disabled }): string =>
 			disabled ? theme.palette.primary.disabled : theme.palette.primary.regular};
@@ -504,10 +504,11 @@ export const SearchBar: FC<SearchBarProps> = ({
 					{!disableClearButton && (
 						<Padding left="small">
 							<Tooltip label={clearButtonPlaceholder} placement="bottom">
-								<OutlinedIconButton
+								<OutlinedButton
+									type="ghost"
 									disabled={disableClearButton}
 									icon="BackspaceOutline"
-									iconColor="primary"
+									color="primary"
 									onClick={clearSearch}
 								/>
 							</Tooltip>
@@ -521,11 +522,12 @@ export const SearchBar: FC<SearchBarProps> = ({
 							label={searchBtnTooltipLabel}
 							placement="bottom"
 						>
-							<IconButton
+							<Button
+								type="ghost"
 								icon="Search"
 								disabled={!(searchIsEnabled && inputState.length > 0)}
 								backgroundColor="primary"
-								iconColor="gray6"
+								color="gray6"
 								onClick={onSearch}
 							/>
 						</Tooltip>

@@ -66,7 +66,7 @@ export const CreationButton: FC<{ activeRoute?: AppRoute }> = ({ activeRoute }) 
 			style={{ height: '2.625rem' }}
 			background="primary"
 			label={primaryAction?.label ?? t('new', 'New')}
-			onClick={primaryAction?.click}
+			onClick={primaryAction?.onClick}
 			items={secondaryActions}
 			disabled={!primaryAction || primaryAction?.disabled}
 		/>

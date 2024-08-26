@@ -5,7 +5,7 @@
  */
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 
-import { Container, Tooltip, IconButton, Dropdown, Text } from '@zextras/carbonio-design-system';
+import { Container, Tooltip, Dropdown, Text, Button } from '@zextras/carbonio-design-system';
 import { map } from 'lodash';
 import { useTranslation } from 'react-i18next';
 
@@ -28,9 +28,10 @@ const UtilityBarItem: FC<{ view: UtilityView }> = ({ view }) => {
 	if (typeof view.button === 'string') {
 		return (
 			<Tooltip label={view.label} placement="bottom-end">
-				<IconButton
+				<Button
+					type="ghost"
+					color={current === view.id ? 'primary' : 'text'}
 					icon={view.button}
-					iconColor={current === view.id ? 'primary' : 'text'}
 					onClick={onClick}
 					size="large"
 				/>
@@ -53,7 +54,7 @@ export const ShellUtilityBar: FC = () => {
 			{
 				id: 'feedback',
 				label: t('label.feedback', 'Feedback'),
-				click: () =>
+				onClick: () =>
 					useContextBridge.getState().packageDependentFunctions?.addBoard(SHELL_APP_ID)(
 						'/feedback/',
 						{ title: t('label.feedback', 'Feedback') }
@@ -63,13 +64,13 @@ export const ShellUtilityBar: FC = () => {
 			{
 				id: 'help',
 				label: t('label.help_and_documentation', 'Help & Documentation'),
-				click: () => openLink(helpDocumentationUrl),
+				onClick: () => openLink(helpDocumentationUrl),
 				icon: 'QuestionMarkOutline'
 			},
 			{
 				id: 'logout',
 				label: t('label.logout', 'Logout'),
-				click: (): void => {
+				onClick: (): void => {
 					logout();
 				},
 				icon: 'LogOut'
@@ -102,11 +103,7 @@ export const ShellUtilityBar: FC = () => {
 			</Container>
 			<Tooltip label={t('label.account_menu', 'Account menu')} placement="left-end">
 				<Dropdown items={accountItems}>
-					<IconButton
-						icon="AvatarOutline"
-						customSize={{ iconSize: '1.5rem', paddingSize: 'medium' }}
-						iconColor="primary"
-					/>
+					<Button type="ghost" icon="AvatarOutline" size={'extralarge'} color="primary" />
 				</Dropdown>
 			</Tooltip>
 		</Container>
