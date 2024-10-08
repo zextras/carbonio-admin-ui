@@ -49,14 +49,19 @@ const Bootstrapper: FC = () => {
 		(state: ConfigAttributesState) => state.getConfigAttribute('carbonioAllowFeedback') === TRUE
 	);
 	const { isAdvanced } = useAdvanceStore();
-	const showPostHog = useMemo(
+	const showPostHogSurveys = useMemo(
 		() => !isAdvanced && feedbackPermission,
 		[isAdvanced, feedbackPermission]
 	);
+	const carbonioSendAnalyticsEnabled = useConfigStore(
+		(state: ConfigAttributesState) => state.getConfigAttribute('carbonioSendAnalytics') === TRUE
+	);
 
-	if (showPostHog) {
+	if (carbonioSendAnalyticsEnabled) {
 		posthog.init(PH_PROJECT_API_KEY, {
-			api_host: PH_API_HOST
+			api_host: PH_API_HOST,
+			mask_all_text: true,
+			disable_surveys: !showPostHogSurveys
 		});
 	}
 
