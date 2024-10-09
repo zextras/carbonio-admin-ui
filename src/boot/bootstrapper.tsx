@@ -20,6 +20,7 @@ import { ConfigAttributesState } from '../../types';
 import { PH_API_HOST, PH_PROJECT_API_KEY, TRUE } from '../constants';
 import I18nFactory from '../i18n/i18n-factory';
 import StoreFactory from '../redux/store-factory';
+import { useAccountStore } from '../store/account';
 import { useAdvanceStore } from '../store/advance';
 import { useConfigStore } from '../store/config';
 import { useBridge } from '../store/context-bridge';
@@ -56,6 +57,7 @@ const Bootstrapper: FC = () => {
 	const carbonioSendAnalyticsEnabled = useConfigStore(
 		(state: ConfigAttributesState) => state.getConfigAttribute('carbonioSendAnalytics') === TRUE
 	);
+	const { account } = useAccountStore.getState();
 
 	if (carbonioSendAnalyticsEnabled) {
 		posthog.init(PH_PROJECT_API_KEY, {
@@ -63,6 +65,7 @@ const Bootstrapper: FC = () => {
 			mask_all_text: true,
 			disable_surveys: !showPostHogSurveys
 		});
+		posthog.identify(account?.id, { is_ce: !isAdvanced });
 	}
 
 	useEffect(() => {
