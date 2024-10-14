@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.32](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.31...v0.9.32) (2024-10-14)
+
+
+### Bug Fixes
+
+* avoid collecting personal data and carboniosendanalytics is enabled ([8005923](https://github.com/zextras/carbonio-admin-ui/commit/800592317b7e762bb3659defce75b1b187cc8e4d))
+
 ### [0.9.31](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.30...v0.9.31) (2024-08-26)
 
 
