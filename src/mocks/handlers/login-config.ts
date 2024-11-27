@@ -3,18 +3,17 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { ResponseResolver, RestContext, RestRequest } from 'msw';
+import type { HttpResponseResolver } from 'msw';
+import { HttpResponse } from 'msw';
 
 import { LoginConfigStore } from '../../../types/loginConfig';
 
-export const getLoginConfig: ResponseResolver<
-	RestRequest<never, never>,
-	RestContext,
+export const getLoginConfig: HttpResponseResolver<
+	never,
+	never,
 	Partial<Omit<LoginConfigStore, 'loaded'>>
-> = (req, res, ctx) =>
-	res(
-		ctx.json({
-			carbonioAdminUiTitle: 'Carbonio Client',
-			carbonioWebUiFavicon: `${BASE_PATH}favicon.png`
-		})
-	);
+> = () =>
+	HttpResponse.json({
+		carbonioAdminUiTitle: 'Carbonio Admin',
+		carbonioWebUiFavicon: `${BASE_PATH}favicon.png`
+	});
