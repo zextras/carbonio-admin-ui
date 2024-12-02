@@ -32,7 +32,7 @@ const PersonaSettings = ({ t, items, updateIdentities }: PersonaSettingsProps): 
 	}, [items.identityName]);
 
 	const onChange = useCallback(
-		(ev) => {
+		(ev: MouseEvent & { target: HTMLButtonElement }) => {
 			setPersonaValue(ev.target.value);
 			const modifyProp = {
 				id: items.identityId,

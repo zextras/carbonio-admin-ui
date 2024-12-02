@@ -59,7 +59,7 @@ const OutOfOfficeView: FC<{
 	const [createAppointment, setCreateAppointment] = useState<boolean>(true);
 
 	const updatePrefs = useCallback(
-		(v, p) => {
+		(v: any, p: any) => {
 			addMod('prefs', p, v);
 		},
 		[addMod]

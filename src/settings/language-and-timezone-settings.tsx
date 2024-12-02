@@ -35,7 +35,7 @@ const LanguageAndTimeZone: FC<{
 	const locales = useMemo(() => localeList(t), [t]);
 	const timezones = useMemo(() => timeZoneList(t), [t]);
 	const updatePrefs = useCallback(
-		(v, p) => {
+		(v: any, p: string) => {
 			addMod('prefs', p, v);
 		},
 		[addMod]

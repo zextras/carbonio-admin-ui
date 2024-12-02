@@ -11,7 +11,7 @@ import { endSessionRequest } from './handlers/endSessionRequest';
 import { getInfoRequest } from './handlers/getInfoRequest';
 import { getRightsRequest } from './handlers/getRightsRequest';
 import { getLoginConfig } from './handlers/login-config';
-import { rootHandler } from './handlers/rootHandler';
+import { logout } from './handlers/logout';
 
 const handlers: RequestHandler[] = [
 	http.get('/static/iris/components.json', getComponentsJson),
@@ -19,7 +19,7 @@ const handlers: RequestHandler[] = [
 	http.post('/service/soap/GetRightsRequest', getRightsRequest),
 	http.post('/service/soap/EndSessionRequest', endSessionRequest),
 	http.get(LOGIN_V3_CONFIG_PATH, getLoginConfig),
-	http.get('/', rootHandler),
+	http.get('/logout', logout),
 	http.get('/i18n/en.json', () => HttpResponse.json({}))
 ];
 

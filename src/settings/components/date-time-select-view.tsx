@@ -48,7 +48,7 @@ const DateTimeSelect: FC<{
 	const [allDayDisabled, setAllDayDisabled] = useState<boolean>(false);
 	const [timeDisabled, setTimeDisabled] = useState<boolean>(false);
 	const updatePrefs = useCallback(
-		(v, p) => {
+		(v: any, p: any) => {
 			addMod('prefs', p, v);
 		},
 		[addMod]

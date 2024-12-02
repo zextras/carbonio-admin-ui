@@ -78,6 +78,7 @@ export const useI18nStore = create<I18nState & I18nActions>()((set) => ({
 	setLocale: (locale: string): void => {
 		set(
 			produce((state: I18nState) => {
+				// eslint-disable-next-line no-param-reassign
 				state.locale = locale;
 				forEach(state.instances, (i18nInst) => i18nInst.changeLanguage(locale));
 			})
@@ -87,6 +88,7 @@ export const useI18nStore = create<I18nState & I18nActions>()((set) => ({
 		const appsWithShell = addShell(apps);
 		set(
 			produce((state: I18nState) => {
+				// eslint-disable-next-line no-param-reassign
 				state.instances = reduce<CarbonioModule, Record<string, i18n>>(
 					appsWithShell,
 					(acc, app): Record<string, i18n> => {
@@ -113,7 +115,9 @@ export const useI18nStore = create<I18nState & I18nActions>()((set) => ({
 					},
 					{}
 				);
+				// eslint-disable-next-line no-param-reassign
 				state.defaultI18n.t = state.instances[SHELL_APP_ID].t;
+				// eslint-disable-next-line no-param-reassign
 				state.locale = locale;
 			})
 		);

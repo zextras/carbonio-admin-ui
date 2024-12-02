@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import { Store, configureStore, createSlice } from '@reduxjs/toolkit';
+import { Middleware, Store, configureStore, createSlice } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 
 import { CarbonioModule } from '../../types';
@@ -26,11 +26,10 @@ export default class StoreFactory {
 						name: pkg.name
 				  }
 				: false,
-			middleware: __CARBONIO_DEV__
-				? // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-				  (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
-				: // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-				  (getDefaultMiddleware) => getDefaultMiddleware(),
+			middleware: (getDefaultMiddleware) => {
+				const baseMiddleware = getDefaultMiddleware();
+				return __CARBONIO_DEV__ ? baseMiddleware.concat(logger as Middleware) : baseMiddleware;
+			},
 			reducer: {
 				_useless: _uselessSlice.reducer
 			}

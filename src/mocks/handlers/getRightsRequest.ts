@@ -4,34 +4,44 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import { faker } from '@faker-js/faker';
-import { type ResponseResolver, type RestContext, type RestRequest } from 'msw';
+import type { HttpResponseResolver } from 'msw';
+import { HttpResponse } from 'msw';
 
-import { GetRightsResponse } from '../../../types';
-
-export type GetRightsRequestBody = {
-	GetRightsRequest: {
-		_jsns: string;
-		ace: Array<{ right: string }>;
-	};
-};
+export interface GetRightsRequestBody {
+	GetRightsRequest: string;
+}
 
 export type GetRightsResponseBody = {
 	Body: {
-		GetRightsResponse: GetRightsResponse;
+		GetRightsResponse: {
+			ace: Array<{ right: string; d: string; zid: string; gt: string }>;
+		};
 		Fault?: { Detail?: { Error?: { Code?: string; Detail?: string } }; Reason?: { Text: string } };
 	};
 };
-export const getRightsRequest: ResponseResolver<
-	RestRequest<GetRightsRequestBody, never>,
-	RestContext,
+
+export const getRightsRequest: HttpResponseResolver<
+	GetRightsRequestBody,
+	never,
 	GetRightsResponseBody
-> = (request, response, context) =>
-	response(
-		context.json({
+> = () =>
+	HttpResponse.json(
+		{
 			Body: {
 				GetRightsResponse: {
-					ace: [{ right: 'sendAs', d: faker.internet.email(), zid: faker.string.uuid(), gt: 'usr' }]
+					ace: [
+						{
+							right: 'sendAs',
+							d: faker.internet.email(),
+							zid: faker.string.uuid(),
+							gt: 'usr'
+						}
+					]
 				}
 			}
-		})
+		},
+		{
+			status: 200,
+			statusText: 'OK'
+		}
 	);

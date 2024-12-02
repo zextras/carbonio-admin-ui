@@ -162,7 +162,7 @@ export const getSoapFetch =
 					version: zimbraVersion
 				},
 				targetServer: targetServer || undefined,
-				authToken: [{ _content: authToken }] || undefined
+				authToken: authToken ? [{ _content: authToken }] : undefined
 			}
 		};
 		if (noSession) {

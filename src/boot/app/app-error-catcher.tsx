@@ -8,7 +8,7 @@ import React, { FC, useCallback } from 'react';
 
 import { Catcher } from '@zextras/carbonio-design-system';
 
-const AppErrorCatcher: FC = ({ children }: React.PropsWithChildren) => {
+const AppErrorCatcher: FC<{ children: React.ReactNode }> = ({ children }) => {
 	const onError = useCallback((error: unknown) => {
 		console.error(error);
 		// ({event: 'report-exception',data: { exception: error }});

@@ -26,8 +26,8 @@ const MiniBadge = styled(Container)<{ badge: BadgeInfo }>`
 `;
 
 // eslint-disable-next-line react/display-name
-const BadgeWrap: FC<{ badge: BadgeInfo; isExpanded: boolean }> = forwardRef(
-	({ badge, children, isExpanded }, ref) => (
+const BadgeWrap: FC<{ badge: BadgeInfo; isExpanded: boolean; children?: React.ReactNode }> =
+	forwardRef(({ badge, children, isExpanded }, ref) => (
 		<Container
 			width={48}
 			height={48}
@@ -45,7 +45,6 @@ const BadgeWrap: FC<{ badge: BadgeInfo; isExpanded: boolean }> = forwardRef(
 			)}
 			{children}
 		</Container>
-	)
-);
-
+	));
+BadgeWrap.displayName = 'BadgeWrap';
 export default BadgeWrap;

@@ -69,7 +69,7 @@ const Composer: FC<ComposerProps> = ({
 	const [content, setContent] = useState(initialValue);
 
 	const _onEditorChange = useCallback(
-		(newContent, editor) => {
+		(newContent: string, editor: any) => {
 			setContent(newContent);
 			onEditorChange?.([
 				editor.getContent({ format: 'text' }),

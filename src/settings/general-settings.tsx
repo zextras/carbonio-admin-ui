@@ -27,15 +27,18 @@ const GeneralSettings: FC = () => {
 	const [t] = useTranslation();
 	const settings = useUserSettings();
 	const [open, setOpen] = useState(false);
-	const addMod = useCallback((type: 'props' | 'prefs', key, value) => {
-		setMods((m) => ({
-			...m,
-			[type]: {
-				...m?.[type],
-				[key]: value
-			}
-		}));
-	}, []);
+	const addMod = useCallback(
+		(type: 'props' | 'prefs', key: string, value: { value: any; app: string }) => {
+			setMods((m) => ({
+				...m,
+				[type]: {
+					...m?.[type],
+					[key]: value
+				}
+			}));
+		},
+		[]
+	);
 	const createSnackbar = useSnackbar();
 
 	const onSave = useCallback(() => {

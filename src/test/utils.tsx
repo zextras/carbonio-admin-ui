@@ -3,9 +3,9 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-
 import React, { type ReactElement, useMemo } from 'react';
 
+import { jest } from '@jest/globals';
 import {
 	type ByRoleMatcher,
 	type ByRoleOptions,
@@ -175,17 +175,15 @@ export function controlConsoleError(expectedMessage: string): void {
 	// eslint-disable-next-line no-console
 	const actualConsoleError = console.error;
 	// eslint-disable-next-line no-console
-	console.error = jest.fn<ReturnType<typeof console.error>, Parameters<typeof console.error>>(
-		(error, ...restParameter) => {
-			if (
-				(typeof error === 'string' && error === expectedMessage) ||
-				(error instanceof Error && error.message === expectedMessage)
-			) {
-				// eslint-disable-next-line no-console
-				console.error('Controlled error', error, ...restParameter);
-			} else {
-				actualConsoleError(error, ...restParameter);
-			}
+	console.error = jest.fn((error: unknown, ...restParameter: unknown[]) => {
+		if (
+			(typeof error === 'string' && error === expectedMessage) ||
+			(error instanceof Error && error.message === expectedMessage)
+		) {
+			// eslint-disable-next-line no-console
+			console.error('Controlled error', error, ...restParameter);
+		} else {
+			actualConsoleError(error, ...restParameter);
 		}
-	);
+	});
 }

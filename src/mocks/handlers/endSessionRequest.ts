@@ -3,7 +3,9 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { type ResponseResolver, type RestContext, type RestRequest } from 'msw';
+
+import type { HttpResponseResolver } from 'msw';
+import { HttpResponse } from 'msw';
 
 type EndSessionRequestBody = {
 	EndSessionRequest: {
@@ -17,15 +19,13 @@ type EndSessionResponseBody = {
 	};
 };
 
-export const endSessionRequest: ResponseResolver<
-	RestRequest<EndSessionRequestBody, never>,
-	RestContext,
+export const endSessionRequest: HttpResponseResolver<
+	never,
+	EndSessionRequestBody,
 	EndSessionResponseBody
-> = (request, response, context) =>
-	response(
-		context.json({
-			Body: {
-				EndSessionResponse: {}
-			}
-		})
-	);
+> = () =>
+	HttpResponse.json({
+		Body: {
+			EndSessionResponse: {}
+		}
+	});
