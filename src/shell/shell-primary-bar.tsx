@@ -226,7 +226,7 @@ const ShellPrimaryBar: FC<{ activeRoute: AppRoute }> = ({ activeRoute }) => {
 		setRoutes((r) =>
 			primaryBarViews.reduce((acc, v) => {
 				// eslint-disable-next-line no-param-reassign
-				if (!acc[v?.id]) acc[v?.id] = v.route;
+				acc[v?.id] = v.route;
 				return acc;
 			}, r)
 		);
