@@ -7,7 +7,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* THIS FILE CONTAINS HOOKS, BUT ESLINT IS DUMB */
 
-import React, { useMemo, FC, FunctionComponent, useCallback } from 'react';
+import React, { useMemo, FunctionComponent, useCallback } from 'react';
 
 import { compact, map } from 'lodash';
 
@@ -33,7 +33,7 @@ export const useIntegratedComponent = (id: string): [FunctionComponent<unknown>,
 	const Integration = useIntegrationsStore((s) => s.components?.[id]);
 	return useMemo(() => {
 		if (Integration) {
-			const C: FC = (props: unknown) => (
+			const C: FunctionComponent<unknown> = (props: unknown) => (
 				<AppContextProvider pkg={Integration.app}>
 					{/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
 					{/* @ts-ignore */}

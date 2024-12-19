@@ -103,7 +103,8 @@ export default {
 	// A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
 	moduleNameMapper: {
 		'^react-pdf': 'react-pdf/dist/cjs/entry.jest',
-		'\\.(css|less)$': 'identity-obj-proxy'
+		'\\.(css|less)$': 'identity-obj-proxy',
+		'^msw/node$': '<rootDir>/node_modules/msw/node'
 	},
 
 	// An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -160,7 +161,31 @@ export default {
 	// snapshotSerializers: [],
 
 	// The test environment that will be used for testing
-	testEnvironment: 'jsdom',
+	// testEnvironment: 'jsdom',
+	// The test environment that will be used for testing
+	/**
+	 * @note Override test environment to set again Request, Response, TextEncoder and other
+	 * fields
+	 * @see https://mswjs.io/docs/migrations/1.x-to-2.x#requestresponsetextencoder-is-not-defined-jest
+	 * @see https://github.com/mswjs/msw/issues/1916#issuecomment-1919965699
+	 */
+	testEnvironment: '<rootDir>/src/test/jsdom-extended.ts',
+
+	// Options that will be passed to the testEnvironment
+	testEnvironmentOptions: {
+		/**
+		 * @note Opt-out from JSDOM using browser-style resolution
+		 * for dependencies. This is simply incorrect, as JSDOM is
+		 * not a browser, and loading browser-oriented bundles in
+		 * Node.js will break things.
+		 *
+		 * Consider migrating to a more modern test runner if you
+		 * don't want to deal with this.
+		 * @see https://mswjs.io/docs/migrations/1.x-to-2.x#cannot-find-module-mswnode-jsdom
+		 * @see https://github.com/mswjs/msw/issues/1786#issuecomment-1782559851
+		 */
+		customExportConditions: ['']
+	},
 
 	// Options that will be passed to the testEnvironment
 	// testEnvironmentOptions: {},

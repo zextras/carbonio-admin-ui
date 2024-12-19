@@ -19,7 +19,8 @@ import {
 	AccountRightTarget,
 	SoapFetch,
 	SoapFetchPost,
-	SoapFetchExternal
+	SoapFetchExternal,
+	SoapFetchRequest
 } from '../account';
 import {
 	AppRoute,
@@ -133,7 +134,7 @@ declare const useBoardConfig: <T>() => T;
 
 declare const useIsMobile: () => boolean;
 declare const soapFetch: SoapFetch;
-declare const getSoapFetchRequest: SoapFetch;
+declare const getSoapFetchRequest: SoapFetchRequest;
 declare const postSoapFetchRequest: SoapFetchPost;
 declare const fetchExternalSoap: SoapFetchExternal;
 declare const xmlSoapFetch: SoapFetch;
