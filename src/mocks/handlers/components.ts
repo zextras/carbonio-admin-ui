@@ -3,17 +3,16 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import type { HttpResponseResolver } from 'msw';
-import { HttpResponse } from 'msw';
+import { ResponseResolver, RestContext, RestRequest } from 'msw';
 
 import { CarbonioModule } from '../../../types';
 
 export type GetComponentsJsonResponseBody = { components: Array<CarbonioModule> };
-export const getComponentsJson: HttpResponseResolver<
-	never,
-	never,
+export const getComponentsJson: ResponseResolver<
+	RestRequest<never, never>,
+	RestContext,
 	GetComponentsJsonResponseBody
-> = () => {
+> = (request, response, context) => {
 	const componentsJson: GetComponentsJsonResponseBody = {
 		components: [
 			{
@@ -31,5 +30,5 @@ export const getComponentsJson: HttpResponseResolver<
 			}
 		]
 	};
-	return HttpResponse.json(componentsJson);
+	return response(context.json(componentsJson));
 };

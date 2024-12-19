@@ -3,18 +3,11 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
+import { ResponseResolver, RestContext, RestRequest } from 'msw';
 
-import type { HttpResponseResolver } from 'msw';
-import { HttpResponse } from 'msw';
-
-export const logout: HttpResponseResolver<never, never, never> = () =>
-	HttpResponse.json(
-		{},
-		{
-			status: 307,
-			statusText: 'Temporary Redirect',
-			headers: {
-				Location: 'https://localhost:6071/static/login/'
-			}
-		}
+export const logout: ResponseResolver<RestRequest, RestContext> = (req, res, ctx) =>
+	res(
+		ctx.status(304, 'Temporary Redirect'),
+		ctx.json({}),
+		ctx.set('location', 'https://localhost:6071/static/login/')
 	);

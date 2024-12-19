@@ -1,12 +1,11 @@
 /*
- * SPDX-FileCopyrightText: 2024 Zextras <https://www.zextras.com>
+ * SPDX-FileCopyrightText: 2023 Zextras <https://www.zextras.com>
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import type { HttpResponseResolver } from 'msw';
-import { HttpResponse } from 'msw';
+import { type ResponseResolver, type RestContext, type RestRequest } from 'msw';
 
-import type { GetInfoResponse } from '../../../types';
+import { type GetInfoResponse } from '../../../types';
 import { LOGGED_USER } from '../../test/constants';
 
 type GetInfoRequestBody = {
@@ -22,10 +21,13 @@ type GetInfoResponseBody = {
 		Fault?: { Detail?: { Error?: { Code?: string; Detail?: string } }; Reason?: { Text: string } };
 	};
 };
-
-export const getInfoRequest: HttpResponseResolver<never, never, GetInfoResponseBody> = () =>
-	HttpResponse.json(
-		{
+export const getInfoRequest: ResponseResolver<
+	RestRequest<GetInfoRequestBody, never>,
+	RestContext,
+	GetInfoResponseBody
+> = (request, response, context) =>
+	response(
+		context.json({
 			Body: {
 				GetInfoResponse: {
 					id: LOGGED_USER.id,
@@ -42,9 +44,5 @@ export const getInfoRequest: HttpResponseResolver<never, never, GetInfoResponseB
 					zimlets: { zimlet: [] }
 				}
 			}
-		},
-		{
-			status: 200,
-			statusText: 'OK'
-		}
+		})
 	);

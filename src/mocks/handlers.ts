@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { type RequestHandler, HttpResponse, http } from 'msw';
+import { type RequestHandler, rest } from 'msw';
 
 import { LOGIN_V3_CONFIG_PATH } from '../constants';
 import { getComponentsJson } from './handlers/components';
@@ -14,13 +14,13 @@ import { getLoginConfig } from './handlers/login-config';
 import { logout } from './handlers/logout';
 
 const handlers: RequestHandler[] = [
-	http.get('/static/iris/components.json', getComponentsJson),
-	http.post('/service/soap/GetInfoRequest', getInfoRequest),
-	http.post('/service/soap/GetRightsRequest', getRightsRequest),
-	http.post('/service/soap/EndSessionRequest', endSessionRequest),
-	http.get(LOGIN_V3_CONFIG_PATH, getLoginConfig),
-	http.get('/logout', logout),
-	http.get('/i18n/en.json', () => HttpResponse.json({}))
+	rest.get('/static/iris/components.json', getComponentsJson),
+	rest.post('/service/soap/GetInfoRequest', getInfoRequest),
+	rest.post('/service/soap/GetRightsRequest', getRightsRequest),
+	rest.post('/service/soap/EndSessionRequest', endSessionRequest),
+	rest.get(LOGIN_V3_CONFIG_PATH, getLoginConfig),
+	rest.get('/logout', logout),
+	rest.get('/i18n/en.json', (request, response, context) => response(context.json({})))
 ];
 
 export default handlers;
