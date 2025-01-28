@@ -123,7 +123,6 @@ declare const store: {
 declare const useNotify: () => Array<SoapNotify>;
 declare const useRefresh: () => SoapRefresh;
 declare const Applink: FC<LinkProps>;
-declare const Spinner: FC;
 declare const useAddBoardCallback: () => (
 	path: string,
 	context?: { app?: string; title?: string }
