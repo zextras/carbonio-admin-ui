@@ -16,6 +16,7 @@ import I18nFactory from '../i18n/i18n-factory';
 import StoreFactory from '../redux/store-factory';
 import BoardContextProvider from '../shell/boards/board-context-provider';
 import { useI18nStore } from '../store/i18n/store';
+import { TrackerProvider } from '../tracker/provider';
 
 const BootstrapperContextProvider: FC<{
 	i18nFactory: I18nFactory;
@@ -31,7 +32,9 @@ const BootstrapperContextProvider: FC<{
 			}}
 		>
 			<I18nextProvider i18n={i18n}>
-				<BoardContextProvider>{children}</BoardContextProvider>
+				<TrackerProvider>
+					<BoardContextProvider>{children}</BoardContextProvider>
+				</TrackerProvider>
 			</I18nextProvider>
 		</BootstrapperContext.Provider>
 	);
