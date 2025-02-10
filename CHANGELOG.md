@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.33](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.32...v0.9.33) (2025-02-10)
+
+
+### Features
+
+* remove Spinner ([#143](https://github.com/zextras/carbonio-admin-ui/issues/143)) ([b4e8d0b](https://github.com/zextras/carbonio-admin-ui/commit/b4e8d0b0352071ffb4eb6c6becade294c68d2e8b)), closes [zextras/carbonio-shell-ui#544](https://github.com/zextras/carbonio-shell-ui/issues/544)
+
 ### [0.9.32](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.31...v0.9.32) (2024-10-14)
 
 
