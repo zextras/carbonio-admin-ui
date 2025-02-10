@@ -92,6 +92,7 @@ const ShellHeader: FC<{
 	activeRoute: AppRoute;
 	mobileNavIsOpen: boolean;
 	onMobileMenuClick: () => void;
+	children?: React.ReactNode;
 }> = ({ activeRoute, mobileNavIsOpen, onMobileMenuClick, children }) => {
 	const screenMode = useScreenMode();
 	const [t] = useTranslation();

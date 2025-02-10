@@ -47,7 +47,7 @@ const AppearanceSettings: FC<{
 		[drMode, items]
 	);
 	const onSelectionChange = useCallback(
-		(v) => {
+		(v: DRPropValues) => {
 			if (v !== drMode) {
 				setDrMode((old) => (v !== old ? v : old));
 				// setDarkReaderState(v);

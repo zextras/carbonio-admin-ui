@@ -263,7 +263,7 @@ export const SearchBar: FC<SearchBarProps> = ({
 	);
 
 	const onQueryChange = useCallback(
-		(newQuery) => {
+		(newQuery: Array<QueryChip>) => {
 			if (
 				newQuery[newQuery.length - 1]?.label &&
 				moduleSelection?.value &&
@@ -296,7 +296,7 @@ export const SearchBar: FC<SearchBarProps> = ({
 	);
 
 	const onInputType = useCallback(
-		(ev) => {
+		(ev: any) => {
 			if (ev.target.textContent === '') {
 				setIsTyping(false);
 			} else if (!isTyping) {
@@ -320,7 +320,7 @@ export const SearchBar: FC<SearchBarProps> = ({
 	}, [appSuggestions, moduleSelection?.value]);
 
 	const onSelectionChange = useCallback(
-		(newVal) => {
+		(newVal: string) => {
 			setModuleSelection(find(moduleSelectorItems, (item) => item.value === newVal));
 			// setInputState([]);
 			// updateQuery([]);

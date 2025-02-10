@@ -27,7 +27,7 @@ const SearchSettingsView: FC<{
 		settings.prefs.zimbraPrefIncludeSharedItemsInSearch === 'TRUE'
 	);
 	const setMode = useCallback(
-		(v, p) => {
+		(v: boolean, p: string) => {
 			const value: any = v ? 'TRUE' : 'FALSE';
 			addMod('prefs', p, value);
 		},

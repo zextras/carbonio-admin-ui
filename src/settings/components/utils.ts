@@ -189,16 +189,6 @@ export const localeList = (
 		}),
 		value: 'pt'
 	},
-	{
-		id: 'pt_BR',
-		name: 'português (Brasil)',
-		localName: t('locale.portuguese_brazil', 'Portuguese (Brazil)'),
-		label: t('locale.label_portuguese_brazil', {
-			value: 'português (Brasil)',
-			defaultValue: 'Portuguese - {{value}}'
-		}),
-		value: 'pt_BR'
-	},
 
 	{
 		id: 'ro',

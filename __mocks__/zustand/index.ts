@@ -3,8 +3,9 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
+import { act } from 'react';
+
 import { StateCreator, StoreApi, UseBoundStore } from 'zustand';
-import { act } from '@testing-library/react';
 
 const { create: actualCreate } = jest.requireActual<typeof import('zustand')>('zustand');
 

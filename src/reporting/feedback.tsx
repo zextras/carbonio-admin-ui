@@ -165,7 +165,7 @@ const Feedback: FC = () => {
 		});
 	}, []);
 
-	const onInputChange = useCallback((ev) => {
+	const onInputChange = useCallback((ev: any) => {
 		// eslint-disable-next-line no-param-reassign
 		ev.target.style.height = 'auto';
 		// eslint-disable-next-line no-param-reassign

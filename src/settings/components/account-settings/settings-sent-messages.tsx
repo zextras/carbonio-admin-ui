@@ -105,7 +105,7 @@ const SettingsSentMessages = ({
 	);
 
 	const onChangeFromAddress = useCallback(
-		(newVal) => {
+		(newVal: string) => {
 			setFromAddress(filter(fromAddressArray, (item) => item.value === newVal)[0]);
 			const modifyProp = {
 				id: items.identityId,
@@ -168,7 +168,7 @@ const SettingsSentMessages = ({
 	);
 
 	const onChangeReplyToAddress = useCallback(
-		(ev) => {
+		(ev: MouseEvent & { target: HTMLButtonElement }) => {
 			setReplyToAddress(ev.target.value);
 			const modifyProp = {
 				id: items.identityId,
