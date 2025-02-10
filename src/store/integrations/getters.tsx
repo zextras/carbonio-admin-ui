@@ -7,7 +7,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* THIS FILE CONTAINS HOOKS, BUT ESLINT IS DUMB */
 
-import React, { FC, FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 
 import { compact, map } from 'lodash';
 
@@ -32,7 +32,7 @@ export const getIntegratedFunction = (id: string): [Function, boolean] => {
 export const getIntegratedComponent = (id: string): [FunctionComponent<unknown>, boolean] => {
 	const Integration = useIntegrationsStore.getState().components?.[id];
 	if (Integration) {
-		const C: FC = (props: unknown) => (
+		const C: FunctionComponent<unknown> = (props: unknown) => (
 			<AppContextProvider pkg={Integration.app}>
 				{/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
 				{/* @ts-ignore */}

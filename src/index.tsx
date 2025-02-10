@@ -7,9 +7,9 @@
 /* eslint-disable import/no-import-module-exports */
 
 import './index.css';
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense, lazy } from 'react';
 
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom/client';
 
 import LoadingView from './boot/splash';
 import '@fontsource/roboto/300.css';
@@ -38,10 +38,13 @@ window.addEventListener('contextmenu', (ev) => {
 window.__CARBONIO_DEV__ = !!new URL(window.location).searchParams.get('dev');
 const Bootstrapper = lazy(() => import('./boot/bootstrapper'));
 
-if (module.hot) module.hot.accept();
-render(
+if (module.hot) {
+	module.hot.accept();
+}
+
+const root = ReactDOM.createRoot(document.getElementById('app')!);
+root.render(
 	<Suspense fallback={<LoadingView />}>
 		<Bootstrapper key="boot" />
-	</Suspense>,
-	document.getElementById('app')
+	</Suspense>
 );

@@ -11,7 +11,7 @@ import { isEmpty, map } from 'lodash';
 import AppContextProvider from './app-context-provider';
 import { useAppStore } from '../../store/app';
 
-const Mounter: FC<{ appId: string }> = ({ children, appId }) => (
+const Mounter: FC<{ children: React.ReactNode; appId: string }> = ({ children, appId }) => (
 	<div key={appId} id={appId}>
 		<AppContextProvider key={appId} pkg={appId}>
 			<Suspense fallback={''}>{children}</Suspense>

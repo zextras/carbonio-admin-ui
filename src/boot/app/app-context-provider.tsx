@@ -14,7 +14,10 @@ import AppErrorCatcher from './app-error-catcher';
 import { getApp, getShell } from '../../store/app';
 import { useStoreFactory, useI18nFactory } from '../bootstrapper-context';
 
-const AppContextProvider: FC<{ pkg: string }> = ({ pkg, children }) => {
+const AppContextProvider: FC<{ pkg: string; children: React.ReactNode | React.ReactNode[] }> = ({
+	pkg,
+	children
+}) => {
 	const i18nFactory = useI18nFactory();
 	const storeFactory = useStoreFactory();
 	const app = useMemo(() => getApp(pkg)() ?? getShell(), [pkg]);

@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.33](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.32...v0.9.33) (2025-02-10)
+
+
+### Features
+
+* remove Spinner ([#143](https://github.com/zextras/carbonio-admin-ui/issues/143)) ([b4e8d0b](https://github.com/zextras/carbonio-admin-ui/commit/b4e8d0b0352071ffb4eb6c6becade294c68d2e8b)), closes [zextras/carbonio-shell-ui#544](https://github.com/zextras/carbonio-shell-ui/issues/544)
+
+### [0.9.32](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.31...v0.9.32) (2024-10-14)
+
+
+### Bug Fixes
+
+* avoid collecting personal data and carboniosendanalytics is enabled ([8005923](https://github.com/zextras/carbonio-admin-ui/commit/800592317b7e762bb3659defce75b1b187cc8e4d))
+
+### [0.9.31](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.30...v0.9.31) (2024-08-26)
+
+
+### Bug Fixes
+
+* dropdown item click ([8b31be8](https://github.com/zextras/carbonio-admin-ui/commit/8b31be8c68a05841f73e344f8d49f9270d4bdf4d))
+
 ### [0.9.30](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.29...v0.9.30) (2024-06-19)
 
 

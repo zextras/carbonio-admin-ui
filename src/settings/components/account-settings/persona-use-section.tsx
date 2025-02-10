@@ -72,7 +72,11 @@ const PersonaUseSection = ({
 	);
 
 	const onChangeWhenSentToAddresses = useCallback(
-		(ev) => {
+		(
+			ev: MouseEvent & {
+				target: HTMLButtonElement;
+			}
+		) => {
 			setWhenSentToAddresses(ev.target.value);
 			const modifyProp = {
 				id: items.identityId,
