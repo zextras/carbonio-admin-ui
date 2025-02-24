@@ -109,6 +109,4 @@ export const OPEN_TICKET_URL = 'https://helpdesk.zextras.com/hc/en-us';
 export const CONFIG = 'config';
 export const CARBONIO_ADMIN_DOCUMENTATION_URL = 'carbonioAdminDocumentationUrl';
 export const CONTENT = '_content';
-export const PH_PROJECT_API_KEY = 'phc_fMgU1UPSHulWuJCHXbrjyqoEoXwcb7rZJy69HdD7x2h';
-export const PH_API_HOST = 'https://stats.zextras.tools';
 export const TRUE = 'TRUE';
