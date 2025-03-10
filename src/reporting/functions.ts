@@ -3,7 +3,8 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { Event, EventHint, Severity } from '@sentry/browser';
+import { Event, EventHint } from '@sentry/browser';
+import { PostHog } from 'posthog-js';
 
 import { useReporter } from './store';
 import { getIsAdvanced } from '../store/advance';
@@ -19,38 +20,23 @@ export const report =
 		return eventId;
 	};
 
-export const feedback = (message: Event, data: unknown): string => {
-	const reporter = useReporter.getState();
+export const feedback = (posthog: PostHog, message: Event, data: Record<string, any>): string => {
 	const isAdvanced = getIsAdvanced();
-
-	const eventId = reporter.clients.feedbacks.captureEvent({
+	const res = posthog.capture('admin_user_send_feedback', {
 		...message,
-		level: Severity.Info,
-		tags: {
-			// carbonio_ui_version: '',
-			// carbonio_admin_version: '',
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			carbonio_backend_version: data?.carbonioBackendVersion || '',
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			carbonio_admin_UI_version: data?.carbonioAdminUIVersion || '',
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			total_accounts: data?.totalAccounts || '',
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			total_domains: data?.totalDomains || '',
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			// @ts-ignore
-			total_servers: data?.totalServers || '',
-			carbonio_ce: !isAdvanced
-		}
+		carbonio_backend_version: data?.carbonioBackendVersion || '',
+		carbonio_admin_UI_version: data?.carbonioAdminUIVersion || '',
+		total_accounts: data?.totalAccounts || '',
+		total_domains: data?.totalDomains || '',
+		total_servers: data?.totalServers || '',
+		carbonio_ce: !isAdvanced
 	});
+
+	const eventId = res && res.uuid;
+
 	if (eventId) {
 		console.info('Feedback ', eventId, ' sent, Thank you');
 	}
-	// return eventId;
 	return JSON.stringify({
 		eventId,
 		// carbonio_ui_version: '',

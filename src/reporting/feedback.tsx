@@ -18,6 +18,7 @@ import {
 	Switch,
 	Link
 } from '@zextras/carbonio-design-system';
+import { usePostHog } from 'posthog-js/react';
 import { Trans, useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
@@ -176,8 +177,10 @@ const Feedback: FC = () => {
 		}
 	}, []);
 
+	const posthog = usePostHog();
+
 	const confirmHandler = useCallback(() => {
-		feedback(event, {
+		feedback(posthog, event, {
 			carbonioBackendVersion,
 			totalAccounts,
 			totalDomains,
@@ -192,7 +195,8 @@ const Feedback: FC = () => {
 		event,
 		totalAccounts,
 		totalDomains,
-		totalServers
+		totalServers,
+		posthog
 	]);
 
 	const enableFeedback = useCallback(() => {
