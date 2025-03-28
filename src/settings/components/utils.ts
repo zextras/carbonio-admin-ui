@@ -178,7 +178,13 @@ export const localeList = (
 		label: t('locale.label_japanese', { value: '日本語', defaultValue: 'Japanese - {{value}}' }),
 		value: 'ja'
 	},
-
+	{
+		id: 'ky',
+		name: 'Кыргыз',
+		localName: t('locale.kyrgyz', 'Kyrgyz'),
+		label: t('locale.label_kyrgyz', { value: 'Кыргыз', defaultValue: 'Kyrgyz - {{value}}' }),
+		value: 'ky'
+	},
 	{
 		id: 'pt',
 		name: 'português',
