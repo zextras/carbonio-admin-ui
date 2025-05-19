@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.35](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.34...v0.9.35) (2025-05-19)
+
+
+### Features
+
+* kyrgyz language support added to language settings ([#153](https://github.com/zextras/carbonio-admin-ui/issues/153)) ([e7c9518](https://github.com/zextras/carbonio-admin-ui/commit/e7c951802009d42aa5b6ff6d767d8e73917124d2))
+
+
+### Bug Fixes
+
+* removed infinite loop NoOp ([9359703](https://github.com/zextras/carbonio-admin-ui/commit/93597039330d2c61e6a812dc59b84038d95dd393))
+
 ### [0.9.34](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.33...v0.9.34) (2025-02-24)
 
 ### [0.9.33](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.32...v0.9.33) (2025-02-10)
