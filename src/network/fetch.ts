@@ -92,11 +92,12 @@ const normalizeContext = (context: any): SoapContext => {
 };
 
 const handleResponse = (api: string, res: SoapResponse<any>): any => {
-	const { pollingInterval, context, noOpTimeout } = useNetworkStore.getState();
+	const { context, noOpTimeout } = useNetworkStore.getState();
 	const { usedQuota } = useAccountStore.getState();
 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 	// @ts-ignore
-	clearTimeout(noOpTimeout);
+	if (noOpTimeout) clearTimeout(noOpTimeout);
+
 	if (res?.Body?.Fault) {
 		if (
 			find(
@@ -125,7 +126,6 @@ const handleResponse = (api: string, res: SoapResponse<any>): any => {
 			usedQuota: responseUsedQuota ?? usedQuota
 		});
 		useNetworkStore.setState({
-			noOpTimeout: setTimeout(() => noOp(), pollingInterval),
 			context: {
 				...context,
 				...res?.Header?.context
