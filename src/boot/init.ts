@@ -33,7 +33,6 @@ export const init = (
 			initialCalls = getInfo();
 		}
 		return initialCalls
-			.catch((error: Error) => ({ error: error.message }))
 			.then(() => {
 				_i18nFactory.setLocale(
 					(
@@ -42,5 +41,6 @@ export const init = (
 					)?.split?.('_')?.[0] ?? 'en'
 				);
 				loadApps(_storeFactory, Object.values(useAppStore.getState().apps));
-			});
+			})
+			.catch((error: Error) => ({ error: error.message }));
 	});

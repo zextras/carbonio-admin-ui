@@ -43,9 +43,9 @@ describe('init', () => {
 		expect(await result.current).toHaveProperty('error');
 	});
 
-	it('should return error when advanced supported but other APIs fail', async () => {
+	it('should return error when advanced supported true but other APIs fail', async () => {
 		jest.spyOn(mockGoToLogin, 'goToLogin').mockImplementation(jest.fn());
-		advancedSupportedApi(HttpResponse.error);
+		advancedSupportedApi(() => HttpResponse.json({ supported: true }, { status: 200 }));
 		minMaxVersionApi(HttpResponse.error);
 		loginConfigApi(HttpResponse.error);
 		getInfoRequestApi(HttpResponse.error);
