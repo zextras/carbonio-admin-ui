@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { type RequestHandler, rest } from 'msw';
+import { type RequestHandler } from 'msw';
 
 import { LOGIN_V3_CONFIG_PATH } from '../constants';
 import { getComponentsJson } from './handlers/components';

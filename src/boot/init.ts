@@ -6,7 +6,7 @@
 
 import { loadApps } from './app/load-apps';
 import I18nFactory from '../i18n/i18n-factory';
-import { getIsAdvancedSupported } from '../network/get-advance';
+import { getMinMaxAPIVersion } from '../network/get-min-max-api-version';
 import { getAllConfig } from '../network/get-all-config';
 import { getInfo } from '../network/get-info';
 import { loginConfig } from '../network/login-config';
@@ -26,5 +26,5 @@ export const init = (_i18nFactory: I18nFactory, _storeFactory: StoreFactory): vo
 	});
 
 	getAllConfig().then();
-	getIsAdvancedSupported().then();
+	getMinMaxAPIVersion().then();
 };

@@ -8,6 +8,9 @@ import { act, configure } from '@testing-library/react';
 import dotenv from 'dotenv';
 import failOnConsole from 'jest-fail-on-console';
 import { noop } from 'lodash';
+import { DefaultBodyType, http, StrictRequest } from 'msw';
+import { HttpResponse } from 'msw/lib/core/HttpResponse';
+import { SetupServer } from 'msw/node';
 
 import server from './mocks/server';
 
@@ -75,3 +78,32 @@ afterEach(() => {
 
 jest.mock<typeof import('./reporting/functions')>('./reporting/functions');
 jest.mock<typeof import('./reporting/store')>('./reporting/store');
+
+export const getSetupServer = (): SetupServer => server;
+
+export type APIInterceptor = {
+	getLastRequest: () => StrictRequest<DefaultBodyType>;
+	getCalledTimes: () => number;
+};
+
+export const createAPIInterceptor = (
+	method: 'get' | 'post',
+	url: string,
+	response: () => HttpResponse
+): APIInterceptor => {
+	let calledTimes = 0;
+	const requests: Array<StrictRequest<DefaultBodyType>> = [];
+
+	getSetupServer().use(
+		http[method](url, async ({ request }) => {
+			calledTimes += 1;
+			requests.push(request);
+			return response();
+		})
+	);
+
+	return {
+		getLastRequest: () => requests[requests.length - 1],
+		getCalledTimes: () => calledTimes
+	};
+};
