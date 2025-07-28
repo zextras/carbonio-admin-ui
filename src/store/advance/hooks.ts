@@ -5,5 +5,5 @@
  */
 import { useAdvanceStore } from './store';
 
-export const useIsAdvanced = (): boolean => useAdvanceStore((s) => !s);
-export const getIsAdvanced = (): boolean => !useAdvanceStore.getState();
+export const useIsAdvanced = (): boolean => useAdvanceStore((s) => !!s);
+export const getIsAdvanced = (): boolean => !!useAdvanceStore.getState();
