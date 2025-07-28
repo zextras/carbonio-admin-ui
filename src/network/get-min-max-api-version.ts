@@ -7,7 +7,6 @@ import { getSoapFetchRequest } from './fetch';
 import { SHELL_APP_ID } from '../constants';
 import { useAdvanceStore } from '../store/advance';
 
-// TODO: this is not just an api call, this is logic
 export const getMinMaxAPIVersion = (): Promise<void> =>
 	getSoapFetchRequest(SHELL_APP_ID)('/zx/auth/supported')
 		// eslint-disable-next-line consistent-return

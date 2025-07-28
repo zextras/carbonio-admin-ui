@@ -6,11 +6,8 @@
 
 import { HttpResponse } from 'msw';
 
-import { APIInterceptor, createAPIInterceptor } from '../../jest-env-setup';
+import { advancedSupportedApi } from '../../jest-env-setup';
 import { isAdvancedSupported } from '../isAdvancedSupported';
-
-const advancedSupportedApi = (supplier: () => HttpResponse): APIInterceptor =>
-	createAPIInterceptor('get', '/advanced/supported', supplier);
 
 describe('isAdvancedSupported', () => {
 	it('Should return true when the isAdvancedSupported is true', async () => {

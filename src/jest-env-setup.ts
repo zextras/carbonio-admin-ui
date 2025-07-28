@@ -107,3 +107,6 @@ export const createAPIInterceptor = (
 		getCalledTimes: () => calledTimes
 	};
 };
+
+export const advancedSupportedApi = (supplier: () => HttpResponse): APIInterceptor =>
+	createAPIInterceptor('get', '/advanced/supported', supplier);
