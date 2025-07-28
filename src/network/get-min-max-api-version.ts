@@ -16,14 +16,8 @@ export const getMinMaxAPIVersion = (): Promise<void> =>
 					maxApiVersion: data?.maxApiVersion,
 					minApiVersion: data?.minApiVersion,
 					version: data?.version,
-					domain: data?.domain,
-					isAdvanced: true
+					domain: data?.domain
 				});
-			} else {
-				useAdvanceStore.setState({ isAdvanced: false });
 			}
-		})
-		.catch((err: unknown) => {
-			useAdvanceStore.setState({ isAdvanced: false });
-			// console.error(err);
+			throw Error('No domain found in /zx/auth/supported API');
 		});

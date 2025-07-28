@@ -13,6 +13,7 @@ import { isAdvancedSupported } from '../network/isAdvancedSupported';
 import { loginConfig } from '../network/login-config';
 import StoreFactory from '../redux/store-factory';
 import { useAccountStore } from '../store/account';
+import { useProductVersionStore } from '../store/advance';
 import { useAppStore } from '../store/app';
 
 type InitError = {
@@ -21,20 +22,28 @@ type InitError = {
 export const init = (
 	_i18nFactory: I18nFactory,
 	_storeFactory: StoreFactory
-): Promise<InitError | undefined> =>
-	isAdvancedSupported().then((response): InitError | undefined => {
+): Promise<InitError | void> =>
+	isAdvancedSupported().then(async (response): Promise<InitError | void> => {
 		if ('errorMessage' in response) {
 			return { error: response.errorMessage };
 		}
-		Promise.all([loginConfig(), getInfo()]).finally(() => {
-			_i18nFactory.setLocale(
-				(
-					(useAccountStore.getState().settings?.prefs?.zimbraPrefLocale as string) ??
-					(useAccountStore.getState().settings?.attrs?.zimbraLocale as string)
-				)?.split?.('_')?.[0] ?? 'en'
-			);
-			loadApps(_storeFactory, Object.values(useAppStore.getState().apps));
-		});
-		getAllConfig().then();
-		getMinMaxAPIVersion().then();
+		const advancedSupported = response.supported;
+		useProductVersionStore.setState({ isAdvanced: advancedSupported });
+		let initialCalls;
+		if (advancedSupported) {
+			initialCalls = Promise.all([getInfo(), loginConfig(), getAllConfig(), getMinMaxAPIVersion()]);
+		} else {
+			initialCalls = getInfo();
+		}
+		return initialCalls
+			.catch((error: Error) => ({ error: '' }))
+			.then(() => {
+				_i18nFactory.setLocale(
+					(
+						(useAccountStore.getState().settings?.prefs?.zimbraPrefLocale as string) ??
+						(useAccountStore.getState().settings?.attrs?.zimbraLocale as string)
+					)?.split?.('_')?.[0] ?? 'en'
+				);
+				loadApps(_storeFactory, Object.values(useAppStore.getState().apps));
+			});
 	});

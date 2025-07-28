@@ -6,14 +6,15 @@
 
 import { create } from 'zustand';
 
-import { AdvanceState } from '../../../types';
+import { AdvanceState, IsAdvancedState } from '../../../types';
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 export const useAdvanceStore = create<AdvanceState>(() => ({
 	maxApiVersion: 1,
 	minApiVersion: 1,
 	version: '',
-	domain: '',
+	domain: ''
+}));
+
+export const useProductVersionStore = create<IsAdvancedState>(() => ({
 	isAdvanced: false
 }));

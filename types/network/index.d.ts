@@ -207,6 +207,8 @@ export type AdvanceState = {
 	minApiVersion: number;
 	version: string;
 	domain: string;
+};
+export type IsAdvancedState = {
 	isAdvanced: boolean;
 };
 

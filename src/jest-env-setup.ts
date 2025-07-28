@@ -77,7 +77,6 @@ afterEach(() => {
 });
 
 jest.mock<typeof import('./reporting/functions')>('./reporting/functions');
-jest.mock<typeof import('./reporting/store')>('./reporting/store');
 
 export const getSetupServer = (): SetupServer => server;
 
@@ -110,3 +109,15 @@ export const createAPIInterceptor = (
 
 export const advancedSupportedApi = (supplier: () => HttpResponse): APIInterceptor =>
 	createAPIInterceptor('get', '/advanced/supported', supplier);
+
+export const minMaxVersionApi = (supplier: () => HttpResponse): APIInterceptor =>
+	createAPIInterceptor('get', '/zx/auth/supported', supplier);
+
+export const loginConfigApi = (supplier: () => HttpResponse): APIInterceptor =>
+	createAPIInterceptor('get', '/zx/login/v3/config', supplier);
+
+export const getInfoRequestApi = (supplier: () => HttpResponse): APIInterceptor =>
+	createAPIInterceptor('post', '/service/admin/soap/GetInfoRequest', supplier);
+
+export const getAllConfigRequestApi = (supplier: () => HttpResponse): APIInterceptor =>
+	createAPIInterceptor('post', '/service/admin/soap/GetAllConfigRequest', supplier);

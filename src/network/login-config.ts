@@ -22,7 +22,4 @@ export const loginConfig = (): Promise<void> =>
 			if (data.carbonioAdminUiTitle) {
 				document.title = data.carbonioAdminUiTitle;
 			}
-		})
-		.catch((reason) => {
-			console.warn(reason);
 		});
