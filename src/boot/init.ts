@@ -9,7 +9,6 @@ import I18nFactory from '../i18n/i18n-factory';
 import { getAllConfig } from '../network/get-all-config';
 import { getInfo } from '../network/get-info';
 import { getMinMaxAPIVersion } from '../network/get-min-max-api-version';
-import { goToLogin } from '../network/go-to-login';
 import { isAdvancedSupported } from '../network/isAdvancedSupported';
 import { loginConfig } from '../network/login-config';
 import StoreFactory from '../redux/store-factory';
@@ -34,10 +33,7 @@ export const init = (
 			initialCalls = getInfo();
 		}
 		return initialCalls
-			.catch((error: Error) => {
-				goToLogin();
-				return { error: error.message };
-			})
+			.catch((error: Error) => ({ error: error.message }))
 			.then(() => {
 				_i18nFactory.setLocale(
 					(

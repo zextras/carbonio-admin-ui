@@ -5,7 +5,6 @@
  */
 
 import { renderHook } from '@testing-library/react';
-import { noop } from 'lodash';
 import { HttpResponse } from 'msw';
 
 import { init } from './init';
@@ -18,9 +17,7 @@ import {
 	minMaxVersionApi
 } from '../jest-env-setup';
 import * as mockGoToLogin from '../network/go-to-login';
-import { goToLogin } from '../network/go-to-login';
 import StoreFactory from '../redux/store-factory';
-import * as reporter from '../reporting/functions';
 import { useIsAdvanced } from '../store/advance';
 
 jest.mock('../network/go-to-login', () => ({
@@ -46,6 +43,18 @@ describe('init', () => {
 		expect(await result.current).toHaveProperty('error');
 	});
 
+	it('should return error when advanced supported but other APIs fail', async () => {
+		jest.spyOn(mockGoToLogin, 'goToLogin').mockImplementation(jest.fn());
+		advancedSupportedApi(HttpResponse.error);
+		minMaxVersionApi(HttpResponse.error);
+		loginConfigApi(HttpResponse.error);
+		getInfoRequestApi(HttpResponse.error);
+		getAllConfigRequestApi(HttpResponse.error);
+
+		const { result } = renderHook(() => init(mocki18n, mockStore));
+		expect(await result.current).toHaveProperty('error');
+	});
+
 	it('should set advanced true only when all api succeed', async () => {
 		jest.spyOn(mockGoToLogin, 'goToLogin').mockImplementation(jest.fn());
 		advancedSupportedApi(() => HttpResponse.json({ supported: true }, { status: 200 }));
@@ -60,19 +69,5 @@ describe('init', () => {
 
 		const { result: advancedResult } = renderHook(() => useIsAdvanced());
 		expect(advancedResult.current).toBeTruthy();
-	});
-
-	it('should call go to login advanced true and minMaxApiFails', async () => {
-		jest.spyOn(reporter, 'report').mockImplementation((): any => noop);
-		advancedSupportedApi(() => HttpResponse.json({ supported: true }, { status: 200 }));
-		minMaxVersionApi(HttpResponse.error);
-		loginConfigApi(HttpResponse.error);
-		getInfoRequestApi(HttpResponse.error);
-		getAllConfigRequestApi(HttpResponse.error);
-
-		const { result } = renderHook(() => init(mocki18n, mockStore));
-		await result.current;
-
-		expect(goToLogin as jest.Mock).toHaveBeenCalled();
 	});
 });
