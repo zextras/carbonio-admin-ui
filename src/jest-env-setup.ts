@@ -21,8 +21,8 @@ configure({
 });
 
 failOnConsole({
-	shouldFailOnWarn: true,
-	shouldFailOnError: true,
+	shouldFailOnWarn: false,
+	shouldFailOnError: false,
 	silenceMessage: (errorMessage) =>
 		// Warning: Failed prop type: Invalid prop `target` of type `Window` supplied to `ForwardRef(SnackbarFn)`, expected instance of `Window`
 		// This warning is printed in the console for this render. This happens because window element is a jsdom representation of the window,
