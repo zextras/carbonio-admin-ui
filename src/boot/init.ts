@@ -6,9 +6,9 @@
 
 import { loadApps } from './app/load-apps';
 import I18nFactory from '../i18n/i18n-factory';
-import { getMinMaxAPIVersion } from '../network/get-min-max-api-version';
 import { getAllConfig } from '../network/get-all-config';
 import { getInfo } from '../network/get-info';
+import { getMinMaxAPIVersion } from '../network/get-min-max-api-version';
 import { loginConfig } from '../network/login-config';
 import StoreFactory from '../redux/store-factory';
 import { useAccountStore } from '../store/account';
