@@ -26,5 +26,5 @@ export const getMinMaxAPIVersion = (): Promise<void> =>
 		})
 		.catch((err: unknown) => {
 			useAdvanceStore.setState({ isAdvanced: false });
-			console.error(err);
+			// console.error(err);
 		});

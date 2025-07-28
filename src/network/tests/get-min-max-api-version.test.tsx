@@ -5,15 +5,18 @@
  */
 
 import { renderHook } from '@testing-library/react';
+import { noop } from 'lodash';
 import { HttpResponse } from 'msw';
 
 import { createAPIInterceptor } from '../../jest-env-setup';
+import * as reporter from '../../reporting/functions';
 import { useAdvanceStore } from '../../store/advance';
 import { getMinMaxAPIVersion } from '../get-min-max-api-version';
 
 describe('getMinMaxApiVersion', () => {
+	const advancedSupportedUrl = '/zx/auth/supported';
 	it('sets advanced as true if domain present in response', async () => {
-		createAPIInterceptor('get', '/zx/auth/supported', () =>
+		createAPIInterceptor('get', advancedSupportedUrl, () =>
 			HttpResponse.json(
 				{
 					minApiVersion: 2,
@@ -29,7 +32,7 @@ describe('getMinMaxApiVersion', () => {
 	});
 
 	it('sets advanced as false if no domain present in response', async () => {
-		createAPIInterceptor('get', '/zx/auth/supported', () =>
+		createAPIInterceptor('get', advancedSupportedUrl, () =>
 			HttpResponse.json(
 				{
 					minApiVersion: 2,
@@ -38,6 +41,14 @@ describe('getMinMaxApiVersion', () => {
 				{ status: 200 }
 			)
 		);
+		await getMinMaxAPIVersion();
+		const { result } = renderHook(() => useAdvanceStore());
+		expect(result.current.isAdvanced).toBeFalsy();
+	});
+
+	it('sets advanced as false if api fails', async () => {
+		jest.spyOn(reporter, 'report').mockImplementation((): any => noop);
+		createAPIInterceptor('get', advancedSupportedUrl, () => HttpResponse.error());
 		await getMinMaxAPIVersion();
 		const { result } = renderHook(() => useAdvanceStore());
 		expect(result.current.isAdvanced).toBeFalsy();
