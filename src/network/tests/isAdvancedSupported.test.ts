@@ -28,4 +28,12 @@ describe('isAdvancedSupported', () => {
 
 		expect(advancedSupported).toEqual({ supported: false });
 	});
+
+	it('Should return error when the API fails', async () => {
+		advancedSupportedApi(() => HttpResponse.error());
+
+		const advancedSupported = await isAdvancedSupported();
+
+		expect(advancedSupported).toHaveProperty('errorMessage');
+	});
 });

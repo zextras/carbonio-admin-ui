@@ -11,13 +11,15 @@ type Error = {
 	errorMessage: string;
 };
 export const isAdvancedSupported = (): Promise<Supported | Error> =>
-	fetch('/advanced/supported').then(async (response: Response) => {
-		if (!response.ok) {
-			return {
-				errorMessage: 'Error'
-			};
-		}
-		const data = await response.json();
-		if ('supported' in data) return { supported: data.supported };
-		return { errorMessage: '' };
-	});
+	fetch('/advanced/supported')
+		.then(async (response: Response) => {
+			if (!response.ok) {
+				return {
+					errorMessage: 'Error'
+				};
+			}
+			const data = await response.json();
+			if ('supported' in data) return { supported: data.supported };
+			return { errorMessage: '' };
+		})
+		.catch(() => ({ errorMessage: 'Network error' }));
