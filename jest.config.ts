@@ -185,7 +185,8 @@ export default {
 		 * @see https://mswjs.io/docs/migrations/1.x-to-2.x#cannot-find-module-mswnode-jsdom
 		 * @see https://github.com/mswjs/msw/issues/1786#issuecomment-1782559851
 		 */
-		customExportConditions: ['']
+		customExportConditions: [''],
+		url: 'http://localhost:6071/carbonioAdmin'
 	},
 
 	// Options that will be passed to the testEnvironment
