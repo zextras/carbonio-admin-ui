@@ -14,7 +14,6 @@ import { isAdvancedSupported } from '../network/isAdvancedSupported';
 import { loginConfig } from '../network/login-config';
 import StoreFactory from '../redux/store-factory';
 import { useAccountStore } from '../store/account';
-import { useProductVersionStore } from '../store/advance';
 import { useAppStore } from '../store/app';
 
 type InitError = {
@@ -28,10 +27,8 @@ export const init = (
 		if ('errorMessage' in response) {
 			return { error: response.errorMessage };
 		}
-		const advancedSupported = response.supported;
-		useProductVersionStore.setState({ isAdvanced: advancedSupported });
 		let initialCalls;
-		if (advancedSupported) {
+		if (response.supported) {
 			initialCalls = Promise.all([getInfo(), loginConfig(), getAllConfig(), getMinMaxAPIVersion()]);
 		} else {
 			initialCalls = getInfo();

@@ -14,7 +14,7 @@ import { useAdvanceStore } from '../../store/advance';
 import { getMinMaxAPIVersion } from '../get-min-max-api-version';
 
 describe('getMinMaxApiVersion', () => {
-	it('sets fields as true if domain present in response', async () => {
+	it('sets fields in advanced store if domain present in response', async () => {
 		minMaxVersionApi(() =>
 			HttpResponse.json(
 				{
@@ -27,12 +27,14 @@ describe('getMinMaxApiVersion', () => {
 		);
 		await getMinMaxAPIVersion();
 		const { result } = renderHook(() => useAdvanceStore());
-		expect(result.current.minApiVersion).toBe(2);
-		expect(result.current.maxApiVersion).toBe(3);
-		expect(result.current.domain).toBe('test.com');
+		expect(result.current).toEqual({
+			minApiVersion: 2,
+			maxApiVersion: 3,
+			domain: 'test.com'
+		});
 	});
 
-	it('return error if no domain present in response', async () => {
+	it('throw error if no domain present in response', async () => {
 		minMaxVersionApi(() =>
 			HttpResponse.json(
 				{
@@ -42,14 +44,14 @@ describe('getMinMaxApiVersion', () => {
 				{ status: 200 }
 			)
 		);
-		const response = await getMinMaxAPIVersion();
-		expect(response).toHaveProperty('errorMessage');
+
+		await expect(getMinMaxAPIVersion).rejects.toThrow();
 	});
 
 	it('return error if api fails', async () => {
 		jest.spyOn(reporter, 'report').mockImplementation((): any => noop);
 		minMaxVersionApi(HttpResponse.error);
-		const response = await getMinMaxAPIVersion();
-		expect(response).toHaveProperty('errorMessage');
+
+		await expect(getMinMaxAPIVersion).rejects.toThrow();
 	});
 });

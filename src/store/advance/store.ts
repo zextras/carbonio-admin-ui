@@ -6,15 +6,6 @@
 
 import { create } from 'zustand';
 
-import { AdvanceState, IsAdvancedState } from '../../../types';
+import { AdvanceState } from '../../../types';
 
-export const useAdvanceStore = create<AdvanceState>(() => ({
-	maxApiVersion: 1,
-	minApiVersion: 1,
-	version: '',
-	domain: ''
-}));
-
-export const useProductVersionStore = create<IsAdvancedState>(() => ({
-	isAdvanced: false
-}));
+export const useAdvanceStore = create<AdvanceState>(() => undefined);

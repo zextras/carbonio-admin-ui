@@ -46,13 +46,15 @@ describe('init', () => {
 		expect(await result.current).toHaveProperty('error');
 	});
 
-	it('should set advanced true when advanced supported is true', async () => {
+	it('should set advanced true only when all api succeed', async () => {
 		jest.spyOn(mockGoToLogin, 'goToLogin').mockImplementation(jest.fn());
 		advancedSupportedApi(() => HttpResponse.json({ supported: true }, { status: 200 }));
-		minMaxVersionApi(HttpResponse.error);
-		loginConfigApi(HttpResponse.error);
-		getInfoRequestApi(HttpResponse.error);
-		getAllConfigRequestApi(HttpResponse.error);
+		minMaxVersionApi(() =>
+			HttpResponse.json({ minApiVersion: 1, maxApiVersion: 2, domain: 'test.com' }, { status: 200 })
+		);
+		loginConfigApi(() => HttpResponse.json({}, { status: 200 }));
+		getInfoRequestApi(() => HttpResponse.json({}, { status: 200 }));
+		getAllConfigRequestApi(() => HttpResponse.json({}, { status: 200 }));
 
 		await init(new I18nFactory(), new StoreFactory());
 

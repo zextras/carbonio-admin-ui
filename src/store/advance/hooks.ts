@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { useProductVersionStore } from './store';
+import { useAdvanceStore } from './store';
 
-export const useIsAdvanced = (): boolean => useProductVersionStore((s) => s.isAdvanced);
-export const getIsAdvanced = (): boolean => useProductVersionStore.getState().isAdvanced;
+export const useIsAdvanced = (): boolean => useAdvanceStore((s) => !s);
+export const getIsAdvanced = (): boolean => !useAdvanceStore.getState();
