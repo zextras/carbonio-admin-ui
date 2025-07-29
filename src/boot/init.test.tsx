@@ -38,14 +38,14 @@ const mockStore: any = {
 
 describe('init', () => {
 	it('should return error when advanced supported fails', async () => {
-		advancedSupportedApi(HttpResponse.error);
+		advancedSupportedApi.withError();
 		const { result } = renderHook(() => init(mocki18n, mockStore));
 		expect(await result.current).toHaveProperty('error');
 	});
 
 	it('should return error when advanced supported true but other APIs fail', async () => {
 		jest.spyOn(mockGoToLogin, 'goToLogin').mockImplementation(jest.fn());
-		advancedSupportedApi(() => HttpResponse.json({ supported: true }, { status: 200 }));
+		advancedSupportedApi.withAdvancedSupported();
 		minMaxVersionApi(HttpResponse.error);
 		loginConfigApi(HttpResponse.error);
 		getInfoRequestApi(HttpResponse.error);
@@ -57,7 +57,7 @@ describe('init', () => {
 
 	it('should set advanced true only when all api succeed', async () => {
 		jest.spyOn(mockGoToLogin, 'goToLogin').mockImplementation(jest.fn());
-		advancedSupportedApi(() => HttpResponse.json({ supported: true }, { status: 200 }));
+		advancedSupportedApi.withAdvancedSupported();
 		minMaxVersionApi(() =>
 			HttpResponse.json({ minApiVersion: 1, maxApiVersion: 2, domain: 'test.com' }, { status: 200 })
 		);

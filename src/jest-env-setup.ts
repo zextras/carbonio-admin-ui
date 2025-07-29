@@ -8,8 +8,7 @@ import { act, configure } from '@testing-library/react';
 import dotenv from 'dotenv';
 import failOnConsole from 'jest-fail-on-console';
 import { noop } from 'lodash';
-import { DefaultBodyType, http, StrictRequest } from 'msw';
-import { HttpResponse } from 'msw/lib/core/HttpResponse';
+import { DefaultBodyType, http, StrictRequest, HttpResponse } from 'msw';
 import { SetupServer } from 'msw/node';
 
 import server from './mocks/server';
@@ -107,8 +106,21 @@ export const createAPIInterceptor = (
 	};
 };
 
-export const advancedSupportedApi = (supplier: () => HttpResponse): APIInterceptor =>
-	createAPIInterceptor('get', '/advanced/supported', supplier);
+const advancedSupportedURL = '/advanced/supported';
+export const advancedSupportedApi = {
+	withError: (): APIInterceptor =>
+		createAPIInterceptor('get', advancedSupportedURL, HttpResponse.error),
+	withResponse: (supplier: () => HttpResponse): APIInterceptor =>
+		createAPIInterceptor('get', advancedSupportedURL, supplier),
+	withAdvancedSupported: (): APIInterceptor =>
+		createAPIInterceptor('get', advancedSupportedURL, () =>
+			HttpResponse.json({ supported: true }, { status: 200 })
+		),
+	withAdvancedNotSupported: (): APIInterceptor =>
+		createAPIInterceptor('get', advancedSupportedURL, () =>
+			HttpResponse.json({ supported: false }, { status: 200 })
+		)
+};
 
 export const minMaxVersionApi = (supplier: () => HttpResponse): APIInterceptor =>
 	createAPIInterceptor('get', '/zx/auth/supported', supplier);

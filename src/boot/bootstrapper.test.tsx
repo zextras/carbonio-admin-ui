@@ -20,7 +20,7 @@ import { setup } from '../test/utils';
 
 describe('Bootstrapper', () => {
 	it('should display error when is advanced supported api fails', async () => {
-		advancedSupportedApi(HttpResponse.error);
+		advancedSupportedApi.withError();
 		minMaxVersionApi(HttpResponse.error);
 		loginConfigApi(HttpResponse.error);
 		getInfoRequestApi(HttpResponse.error);
@@ -31,7 +31,9 @@ describe('Bootstrapper', () => {
 	});
 
 	it('should display error when is advanced true and login config api fails', async () => {
-		advancedSupportedApi(() => HttpResponse.json({ supported: true }, { status: 200 }));
+		advancedSupportedApi.withResponse(() =>
+			HttpResponse.json({ supported: true }, { status: 200 })
+		);
 		minMaxVersionApi(HttpResponse.error);
 		loginConfigApi(HttpResponse.error);
 		getInfoRequestApi(HttpResponse.error);
