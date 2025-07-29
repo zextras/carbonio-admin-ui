@@ -74,9 +74,7 @@ export default {
 		url: 'http://localhost:6071/carbonioAdmin'
 	},
 
-	testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
-
-	testPathIgnorePatterns: ['/node_modules/', '/__mocks__/', '/mocks/', '/tests/'],
+	testPathIgnorePatterns: ['/node_modules/', '/__mocks__/', '/mocks/'],
 
 	transform: {
 		'^.+\\.(ts|tsx|js|jsx)$': ['babel-jest', { configFile: './babel.config.jest.js' }],
