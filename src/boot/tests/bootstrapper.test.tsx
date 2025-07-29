@@ -31,9 +31,7 @@ describe('Bootstrapper', () => {
 	});
 
 	it('should display error when is advanced true and login config api fails', async () => {
-		advancedSupportedApi.withResponse(() =>
-			HttpResponse.json({ supported: true }, { status: 200 })
-		);
+		advancedSupportedApi.withAdvancedSupported();
 		minMaxVersionApi(HttpResponse.error);
 		loginConfigApi(HttpResponse.error);
 		getInfoRequestApi(HttpResponse.error);

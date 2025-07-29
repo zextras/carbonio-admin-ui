@@ -106,19 +106,17 @@ export const createAPIInterceptor = (
 	};
 };
 
-const advancedSupportedURL = '/advanced/supported';
+const advancedSupportedURL = '/services/catalog/services';
 export const advancedSupportedApi = {
 	withError: (): APIInterceptor =>
 		createAPIInterceptor('get', advancedSupportedURL, HttpResponse.error),
-	withResponse: (supplier: () => HttpResponse): APIInterceptor =>
-		createAPIInterceptor('get', advancedSupportedURL, supplier),
 	withAdvancedSupported: (): APIInterceptor =>
 		createAPIInterceptor('get', advancedSupportedURL, () =>
-			HttpResponse.json({ supported: true }, { status: 200 })
+			HttpResponse.json({ items: ['carbonio-advanced'] }, { status: 200 })
 		),
 	withAdvancedNotSupported: (): APIInterceptor =>
 		createAPIInterceptor('get', advancedSupportedURL, () =>
-			HttpResponse.json({ supported: false }, { status: 200 })
+			HttpResponse.json({ items: ['carbonio-preview', 'carbonio-mailbox'] }, { status: 200 })
 		)
 };
 
