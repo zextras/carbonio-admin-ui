@@ -27,7 +27,7 @@ describe('Bootstrapper', () => {
 		getAllConfigRequestApi(HttpResponse.error);
 
 		setup(<Bootstrapper />);
-		await screen.findByText('Error');
+		await screen.findByText('We’re sorry, but there was an error trying to load this page.');
 	});
 
 	it('should display error when is advanced true and login config api fails', async () => {
@@ -38,6 +38,6 @@ describe('Bootstrapper', () => {
 		getAllConfigRequestApi(HttpResponse.error);
 
 		setup(<Bootstrapper />);
-		await screen.findByText('Error');
+		await screen.findByText('We’re sorry, but there was an error trying to load this page.');
 	});
 });

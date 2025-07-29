@@ -13,6 +13,7 @@ import { registerDefaultViews } from './app/default-views';
 import { unloadAllApps } from './app/load-apps';
 import BootstrapperContextProvider from './bootstrapper-provider';
 import BootstrapperRouter from './bootstrapper-router';
+import { ErrorPage } from './error-page';
 import { init } from './init';
 import { ThemeProvider } from './theme-provider';
 import I18nFactory from '../i18n/i18n-factory';
@@ -54,7 +55,7 @@ const Bootstrapper: FC = () => {
 	return (
 		<>
 			{error ? (
-				<div>Error</div>
+				<ErrorPage />
 			) : (
 				<ThemeProvider>
 					<SnackbarManager>
