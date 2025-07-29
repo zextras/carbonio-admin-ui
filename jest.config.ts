@@ -22,15 +22,25 @@ export default {
 
 	// An array of glob patterns indicating a set of files for which coverage information should be collected
 	collectCoverageFrom: [
-		'src/**/*.{js,ts}(x)?',
-		'!src/**/mocks/**/*', // exclude msw handlers
-		'!src/mocks/**/*', // exclude msw handlers
-		'!**/(test|mock)*.ts(x)?', // exclude file which name starts with test or mock
-		'!src/**/types/*', // exclude types
-		'!src/**/*.d.ts', // exclude declarations
-		'!src/test/*', // exclude test folder
-		'!**/__mocks__/**/*', // exclude manual mocks
-		'!src/workers/*' // FIXME: exclude worker folder which throws error because of the esm syntax
+		// Include all JS/TS files (including React files)
+		'src/**/*.{js,ts,jsx,tsx}',
+
+		// Exclude mocks and handlers
+		'!src/**/mocks/**',
+		'!src/**/__mocks__/**',
+
+		// Exclude test-related files and folders
+		'!src/test/**',
+		'!src/**/__tests__/**',
+		'!**/*.{test,spec}.{js,jsx,ts,tsx}',
+		'!**/(test|mock)*.{ts,tsx,js,jsx}',
+
+		// Exclude type and declaration files
+		'!src/**/types/**',
+		'!src/**/*.d.ts',
+
+		// Exclude web workers or ESM incompatible modules
+		'!src/workers/**'
 	],
 
 	// The directory where Jest should output its coverage files
