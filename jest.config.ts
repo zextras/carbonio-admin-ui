@@ -71,8 +71,6 @@ export default {
 		url: 'http://localhost:6071/carbonioAdmin'
 	},
 
-	testPathIgnorePatterns: ['/node_modules/', '/__mocks__/', '/mocks/'],
-
 	transform: {
 		'^.+\\.(ts|tsx|js|jsx)$': ['babel-jest', { configFile: './babel.config.jest.js' }],
 		'\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
