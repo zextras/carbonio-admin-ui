@@ -7,20 +7,20 @@
 import { renderHook } from '@testing-library/react';
 import { HttpResponse } from 'msw';
 
-import { init } from './init';
-import I18nFactory from '../i18n/i18n-factory';
+import I18nFactory from '../../i18n/i18n-factory';
 import {
 	advancedSupportedApi,
 	getAllConfigRequestApi,
 	getInfoRequestApi,
 	loginConfigApi,
 	minMaxVersionApi
-} from '../jest-env-setup';
-import * as mockGoToLogin from '../network/go-to-login';
-import StoreFactory from '../redux/store-factory';
-import { useIsAdvanced } from '../store/advance';
+} from '../../jest-env-setup';
+import * as mockGoToLogin from '../../network/go-to-login';
+import StoreFactory from '../../redux/store-factory';
+import { useIsAdvanced } from '../../store/advance';
+import { init } from '../init';
 
-jest.mock('../network/go-to-login', () => ({
+jest.mock('../../network/go-to-login', () => ({
 	goToLogin: jest.fn()
 }));
 

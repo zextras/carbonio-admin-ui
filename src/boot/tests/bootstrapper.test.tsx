@@ -14,9 +14,9 @@ import {
 	getInfoRequestApi,
 	loginConfigApi,
 	minMaxVersionApi
-} from '../jest-env-setup';
-import Bootstrapper from './bootstrapper';
-import { setup } from '../test/utils';
+} from '../../jest-env-setup';
+import { setup } from '../../test/utils';
+import Bootstrapper from '../bootstrapper';
 
 describe('Bootstrapper', () => {
 	it('should display error when is advanced supported api fails', async () => {
