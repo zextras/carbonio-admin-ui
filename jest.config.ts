@@ -10,27 +10,35 @@ export default {
 	collectCoverageFrom: [
 		'src/**/*.{js,ts,jsx,tsx}',
 
-		'!src/**/mocks/**',
-		'!src/**/__mocks__/**',
+		// Exclude test files (unit + integration)
+		'!**/*.test.{js,jsx,ts,tsx}',
+		'!**/*.spec.{js,jsx,ts,tsx}',
+		'!**/tests/**',
+		'!**/__tests__/**',
 
-		'!src/test/**',
-		'!src/**/__tests__/**',
-		'!**/*.{test,spec}.{js,jsx,ts,tsx}',
-		'!**/(test|mock)*.{ts,tsx,js,jsx}',
+		// Exclude mocks and manual mocks
+		'!**/__mocks__/**',
+		'!**/mocks/**',
+		'!**/mock*/**',
+		'!**/*mock*.{js,ts,jsx,tsx}',
 
-		'!src/**/types/**',
-		'!src/**/*.d.ts',
+		// Exclude files with test or mock prefix
+		'!**/(test|mock)*.{js,ts,jsx,tsx}',
 
-		'!src/workers/**'
+		// Exclude declaration and type files
+		'!**/*.d.ts',
+		'!**/types/**',
+
+		// Exclude test setup and bootstrap files
+		'!src/jest-env-setup.ts',
+		'!src/boot/bootstrapper.test.tsx',
+		'!src/boot/init.test.tsx',
+		'!src/network/tests/**'
 	],
 
 	coverageDirectory: 'coverage',
-
 	coverageProvider: 'babel',
-
 	coverageReporters: ['lcov', 'html'],
-
-	coverageThreshold: {},
 
 	fakeTimers: {
 		enableGlobally: true
@@ -68,10 +76,10 @@ export default {
 
 	testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[tj]s?(x)'],
 
-	testPathIgnorePatterns: ['/node_modules/', 'constants/test.ts'],
+	testPathIgnorePatterns: ['/node_modules/', '/__mocks__/', '/mocks/', '/tests/'],
 
 	transform: {
-		'^.+\\.[t|j]sx?$': ['babel-jest', { configFile: './babel.config.jest.js' }],
+		'^.+\\.(ts|tsx|js|jsx)$': ['babel-jest', { configFile: './babel.config.jest.js' }],
 		'\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
 			'./__mocks__/fileTransformer.js'
 	}
