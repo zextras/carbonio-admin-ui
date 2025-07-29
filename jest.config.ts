@@ -10,30 +10,26 @@ export default {
 	collectCoverageFrom: [
 		'src/**/*.{js,ts,jsx,tsx}',
 
-		// Exclude test files (unit + integration)
-		'!**/*.test.{js,jsx,ts,tsx}',
-		'!**/*.spec.{js,jsx,ts,tsx}',
-		'!**/tests/**',
-		'!**/__tests__/**',
+		// Exclude all test files and folders
+		'!src/**/*.test.{js,ts,jsx,tsx}',
+		'!src/**/*.spec.{js,ts,jsx,tsx}',
+		'!src/**/__tests__/**',
+		'!src/**/tests/**',
 
-		// Exclude mocks and manual mocks
-		'!**/__mocks__/**',
-		'!**/mocks/**',
-		'!**/mock*/**',
-		'!**/*mock*.{js,ts,jsx,tsx}',
+		// Exclude all mock files and folders
+		'!src/**/__mocks__/**',
+		'!src/**/mocks/**',
+		'!__mocks__/**',
 
-		// Exclude files with test or mock prefix
-		'!**/(test|mock)*.{js,ts,jsx,tsx}',
+		// Exclude any file with mock or test prefix
+		'!src/**/(test|mock)*.{js,ts,jsx,tsx}',
 
-		// Exclude declaration and type files
-		'!**/*.d.ts',
-		'!**/types/**',
+		// Exclude types and declarations
+		'!src/**/*.d.ts',
+		'!src/**/types/**',
 
-		// Exclude test setup and bootstrap files
-		'!src/jest-env-setup.ts',
-		'!src/boot/bootstrapper.test.tsx',
-		'!src/boot/init.test.tsx',
-		'!src/network/tests/**'
+		// Exclude test setup
+		'!src/jest-env-setup.ts'
 	],
 
 	coverageDirectory: 'coverage',
