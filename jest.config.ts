@@ -11,16 +11,13 @@ export default {
 		'src/**/*.{js,ts,jsx,tsx}',
 
 		// Exclude all test files and folders
-		'!src/**/*.test.{js,ts,jsx,tsx}',
+
+		'!**/__mocks__/**', // Exclude mock files
+		'!**/__tests__/**', // Exclude test files
 		'!**/*.test.{js,jsx,ts,tsx}', // Exclude test files
 		'!**/*.spec.{js,jsx,ts,tsx}', // Exclude test files
-		'!src/**/__tests__/**',
-		'!src/**/tests/**',
-
-		// Exclude all mock files and folders
-		'!src/**/__mocks__/**',
-		'!src/**/mocks/**',
-		'!__mocks__/**',
+		'!src/tests/**', // Exclude test files from src/tests
+		'!src/**/test/mocks/**', // Exclude test files from src/**/test/mocks
 
 		// Exclude any file with mock or test prefix
 		'!src/**/(test|mock)*.{js,ts,jsx,tsx}',
