@@ -11,7 +11,7 @@ import { noop } from 'lodash';
 import ErrorSVG from '../svg/carbonio-load-app-error.svg';
 
 export const ErrorPage = (): React.JSX.Element => (
-	<Container orientation={'vertical'} mainAlignment={'center'} background={'gray5'}>
+	<Container gap={'10px'} orientation={'vertical'} mainAlignment={'center'} background={'gray5'}>
 		<Container gap={'70px'} orientation={'horizontal'} height={'fit'} mainAlignment={'center'}>
 			<Container width={'fit'}>
 				<ErrorSVG />
@@ -37,7 +37,7 @@ export const ErrorPage = (): React.JSX.Element => (
 		</Container>
 		<Container mainAlignment={'center'} height={'fit'}>
 			<Row gap={'16px'}>
-				<Text size={'large'} color={'secondary'}>
+				<Text style={{ fontSize: '24px' }} weight={'light'} color={'secondary'}>
 					Contact support or try refreshing the page
 				</Text>
 				<Button
