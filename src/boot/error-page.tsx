@@ -7,11 +7,12 @@ import React from 'react';
 
 import { Text } from '@zextras/carbonio-design-system';
 
-import Helmet from '../svg/carbonio-head.svg';
+import ErrorSVG from '../svg/carbonio-load-app-error.svg';
 
 export const ErrorPage = (): React.JSX.Element => (
-	<div style={{ backgroundColor: '#F5F6F8' }}>
-		<Helmet fill="#A3AEBC" />
+	<div>
+		<ErrorSVG />
 		<Text>We’re sorry, but there was an error trying to load this page.</Text>
+		<Text>Contact support or try refreshing the page</Text>
 	</div>
 );

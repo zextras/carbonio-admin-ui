@@ -53,23 +53,21 @@ const Bootstrapper: FC = () => {
 		};
 	}, [i18nFactory, storeFactory]);
 	return (
-		<>
+		<ThemeProvider>
 			{error ? (
 				<ErrorPage />
 			) : (
-				<ThemeProvider>
-					<SnackbarManager>
-						<ModalManager>
-							<BootstrapperContextProvider i18nFactory={i18nFactory} storeFactory={storeFactory}>
-								<TBridge i18nFactory={i18nFactory} />
-								<DefaultViewsRegister />
-								<BootstrapperRouter />
-							</BootstrapperContextProvider>
-						</ModalManager>
-					</SnackbarManager>
-				</ThemeProvider>
+				<SnackbarManager>
+					<ModalManager>
+						<BootstrapperContextProvider i18nFactory={i18nFactory} storeFactory={storeFactory}>
+							<TBridge i18nFactory={i18nFactory} />
+							<DefaultViewsRegister />
+							<BootstrapperRouter />
+						</BootstrapperContextProvider>
+					</ModalManager>
+				</SnackbarManager>
 			)}
-		</>
+		</ThemeProvider>
 	);
 };
 
