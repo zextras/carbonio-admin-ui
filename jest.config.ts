@@ -12,8 +12,8 @@ export default {
 
 		// Exclude all test files and folders
 		'!src/**/*.test.{js,ts,jsx,tsx}',
-		'!src/*.test.{js,ts,jsx,tsx}',
-		'!src/**/*.spec.{js,ts,jsx,tsx}',
+		'!**/*.test.{js,jsx,ts,tsx}', // Exclude test files
+		'!**/*.spec.{js,jsx,ts,tsx}', // Exclude test files
 		'!src/**/__tests__/**',
 		'!src/**/tests/**',
 
