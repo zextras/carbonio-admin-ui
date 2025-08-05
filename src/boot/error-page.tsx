@@ -6,7 +6,6 @@
 import React from 'react';
 
 import { Button, Container, Row, Text } from '@zextras/carbonio-design-system';
-import { noop } from 'lodash';
 import { useTranslation } from 'react-i18next';
 
 import ErrorSVG from '../svg/carbonio-load-app-error.svg';
@@ -51,7 +50,7 @@ export const ErrorPage = (): React.JSX.Element => {
 						icon="Refresh"
 						label={t('button.refresh_page', 'REFRESH')}
 						type={'outlined'}
-						onClick={noop}
+						onClick={(): void => window.location.reload()}
 						color="primary"
 					/>
 				</Row>
