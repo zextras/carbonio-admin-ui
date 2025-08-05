@@ -22,7 +22,6 @@ import {
 	SearchView,
 	SecondaryAccessoryView,
 	SecondaryBarView,
-	SettingsView,
 	UtilityView
 } from '../../../types';
 import { SHELL_APP_ID } from '../../constants';
@@ -53,7 +52,6 @@ export const useAppStore = create<AppState>((set) => ({
 		appView: [],
 		board: [],
 		utilityBar: [],
-		settings: [],
 		search: [],
 		primaryBarAccessories: [],
 		secondaryBarAccessories: [],
@@ -226,27 +224,6 @@ export const useAppStore = create<AppState>((set) => ({
 				produce((state: AppState) => {
 					// eslint-disable-next-line no-param-reassign
 					state.views.board = filterById(state.views.board, id);
-				})
-			);
-		},
-
-		// add settings
-		addSettingsView: (data: SettingsView): string => {
-			set(
-				produce((state: AppState) => {
-					// eslint-disable-next-line no-param-reassign
-					state.views.settings = sortBy(unionBy([data], state.views.settings, 'id'), 'position');
-				})
-			);
-			return data.id;
-		},
-
-		// remove settings
-		removeSettingsView: (id: string): void => {
-			set(
-				produce((state: AppState) => {
-					// eslint-disable-next-line no-param-reassign
-					state.views.settings = filterById(state.views.settings, id);
 				})
 			);
 		},

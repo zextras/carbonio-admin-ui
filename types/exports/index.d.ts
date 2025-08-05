@@ -31,7 +31,6 @@ import {
 	PrimaryAccessoryView,
 	SearchView,
 	SecondaryAccessoryView,
-	SettingsView,
 	UtilityView
 } from '../apps';
 import { ActionFactory, AnyFunction, CombinedActionFactory, Action } from '../integrations';
@@ -65,7 +64,6 @@ declare const FOLDERS: {
 	[name: string]: string;
 };
 export const SHELL_APP_ID = 'carbonio-admin-ui';
-export const SETTINGS_APP_ID = 'settings';
 export const SEARCH_APP_ID = 'search';
 declare const ACTION_TYPES: {
 	[name: string]: string;
@@ -166,11 +164,6 @@ declare const updateUtilityBadge: (badge: Partial<BadgeInfo>, id: string) => voi
 declare const addBoardView: (data: Object & Partial<BoardView>) => string;
 // remove board
 declare const removeBoardView: (id: string) => void;
-//
-// add settings
-declare const addSettingsView: (data: Partial<SettingsView>) => string;
-// remove settings
-declare const removeSettingsView: (id: string) => void;
 //
 // add search
 declare const addSearchView: (data: Partial<SearchView>) => string;

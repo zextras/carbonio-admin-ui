@@ -41,8 +41,6 @@ export const FOLDERS = {
 };
 
 export const SHELL_APP_ID = 'carbonio-admin-ui';
-export const SETTINGS_APP_ID = 'settings';
-export const ACCOUNTS_APP_ID = 'accounts';
 export const SEARCH_APP_ID = 'search';
 export const ACTION_TYPES = {
 	CONVERSATION: 'conversation',
