@@ -20,40 +20,49 @@ export const ErrorPage = (): React.JSX.Element => {
 				</Container>
 				<Container
 					width={'fit'}
+					gap={'104px'}
 					orientation={'column'}
 					crossAlignment={'flex-start'}
 					mainAlignment={'space-evenly'}
+					style={{ marginTop: '64px' }}
 				>
-					<Text style={{ fontSize: '64px' }} weight={'light'} color={'primary'}>
-						{t('error.something_went_wrong', 'Something went wrong')}
-					</Text>
-					<Text
-						overflow={'break-word'}
-						style={{ fontSize: '36px' }}
-						weight={'light'}
-						color={'secondary'}
+					<Container
+						width={'fit'}
+						gap={'32px'}
+						orientation={'column'}
+						crossAlignment={'flex-start'}
 					>
-						{t(
-							'error.loading_page',
-							'We’re sorry, but there was an error trying to load this page.'
-						)}
-					</Text>
+						<Text style={{ fontSize: '64px' }} weight={'medium'} color={'primary'}>
+							{t('error.something_went_wrong', 'Something went wrong')}
+						</Text>
+						<Text
+							overflow={'break-word'}
+							style={{ fontSize: '40px' }}
+							weight={'light'}
+							color={'secondary'}
+						>
+							{t(
+								'error.loading_page',
+								'We’re sorry, but there was an error trying to load this page.'
+							)}
+						</Text>
+					</Container>
+					<Container crossAlignment={'flex-start'} height={'fit'}>
+						<Row gap={'16px'}>
+							<Text style={{ fontSize: '24px' }} weight={'regular'} color={'secondary'}>
+								{t('error.contact_support', 'Contact support or try refreshing the page')}
+							</Text>
+							<Button
+								iconPlacement={'left'}
+								icon="Refresh"
+								label={t('button.refresh_page', 'REFRESH')}
+								type={'outlined'}
+								onClick={(): void => window.location.reload()}
+								color="primary"
+							/>
+						</Row>
+					</Container>
 				</Container>
-			</Container>
-			<Container mainAlignment={'center'} height={'fit'}>
-				<Row gap={'16px'}>
-					<Text style={{ fontSize: '24px' }} weight={'light'} color={'secondary'}>
-						{t('error.contact_support', 'Contact support or try refreshing the page')}
-					</Text>
-					<Button
-						iconPlacement={'left'}
-						icon="Refresh"
-						label={t('button.refresh_page', 'REFRESH')}
-						type={'outlined'}
-						onClick={(): void => window.location.reload()}
-						color="primary"
-					/>
-				</Row>
 			</Container>
 		</Container>
 	);
