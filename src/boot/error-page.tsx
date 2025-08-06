@@ -10,6 +10,9 @@ import { useTranslation } from 'react-i18next';
 
 import ErrorSVG from '../svg/carbonio-load-app-error.svg';
 
+// Very silly that lint asks me to not duplicate this constant
+const flexStart = 'flex-start';
+
 export const ErrorPage = (): React.JSX.Element => {
 	const [t] = useTranslation();
 	return (
@@ -22,16 +25,11 @@ export const ErrorPage = (): React.JSX.Element => {
 					width={'fit'}
 					gap={'104px'}
 					orientation={'column'}
-					crossAlignment={'flex-start'}
+					crossAlignment={flexStart}
 					mainAlignment={'space-evenly'}
 					style={{ marginTop: '64px' }}
 				>
-					<Container
-						width={'fit'}
-						gap={'32px'}
-						orientation={'column'}
-						crossAlignment={'flex-start'}
-					>
+					<Container width={'fit'} gap={'32px'} orientation={'column'} crossAlignment={flexStart}>
 						<Text style={{ fontSize: '64px' }} weight={'medium'} color={'primary'}>
 							{t('error.something_went_wrong', 'Something went wrong')}
 						</Text>
@@ -47,7 +45,7 @@ export const ErrorPage = (): React.JSX.Element => {
 							)}
 						</Text>
 					</Container>
-					<Container crossAlignment={'flex-start'} height={'fit'}>
+					<Container crossAlignment={flexStart} height={'fit'}>
 						<Row gap={'16px'}>
 							<Text style={{ fontSize: '24px' }} weight={'regular'} color={'secondary'}>
 								{t('error.contact_support', 'Contact support or try refreshing the page')}
