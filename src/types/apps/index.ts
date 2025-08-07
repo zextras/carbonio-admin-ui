@@ -10,7 +10,7 @@ export type CarbonioModule = {
 	name: string;
 	priority: number;
 	version: string;
-	type: 'carbonio' | 'shell';
+	type: 'carbonio' | 'shell' | 'carbonioAdmin';
 	attrKey?: string;
 	icon: string;
 	display: string;

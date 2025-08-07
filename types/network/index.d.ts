@@ -202,13 +202,14 @@ export type ConfigAttributesState = {
 	getConfigAttribute: (key: string) => string;
 };
 
-export type AdvanceState = {
-	maxApiVersion: number;
-	minApiVersion: number;
-	version: string;
-	domain: string;
-	isAdvanced: boolean;
-};
+export type AdvanceState =
+	| {
+			maxApiVersion: number;
+			minApiVersion: number;
+			version: string;
+			domain: string;
+	  }
+	| undefined;
 
 export type DomainInformationState = {
 	id: string;

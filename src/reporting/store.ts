@@ -8,7 +8,8 @@ import { BrowserClient, Hub } from '@sentry/browser';
 import { reduce } from 'lodash';
 import { create } from 'zustand';
 
-import { CarbonioModule, SHELL_APP_ID } from '../../types';
+import { SHELL_APP_ID } from '../constants';
+import { CarbonioModule } from '../types/apps';
 
 type ReporterState = {
 	clients: Record<string, Hub>;
