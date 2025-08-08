@@ -7,7 +7,7 @@ import React, { FC } from 'react';
 
 import { Button } from '@zextras/carbonio-design-system';
 
-import { SHELL_APP_ID } from '../../types';
+import { SHELL_APP_ID } from '../constants';
 import { useContextBridge } from '../store/context-bridge';
 
 const DevBoardTrigger: FC = () => (
