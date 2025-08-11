@@ -63,7 +63,6 @@ export type PrimaryBarComponentProps = { active: boolean };
 export type SecondaryBarComponentProps = { expanded: boolean };
 export type AppViewComponentProps = {};
 export type BoardViewComponentProps = {};
-export type SettingsViewProps = {};
 export type SearchViewProps = {
 	useQuery: () => [QueryChip[], Function];
 	ResultsHeader: FC<{ label: string }>;
@@ -96,13 +95,6 @@ export type UtilityView = CarbonioAccessoryView<UtilityBarComponentProps> & {
 	component: ComponentType<UtilityBarComponentProps>;
 	badge: BadgeInfo;
 	label: string;
-};
-export type SettingsSubSection = { label: string; id: string };
-export type SettingsView = CarbonioView<SettingsViewProps> & {
-	icon: string;
-	label: string;
-	position: number;
-	subSections?: Array<SettingsSubSection>;
 };
 
 export type SearchView = CarbonioView<SearchViewProps> & {
@@ -151,11 +143,6 @@ export type AppSetters = {
 	// remove board
 	removeBoardView: (id: string) => void;
 	//
-	// add settings
-	addSettingsView: (data: SettingsView) => string;
-	// remove settings
-	removeSettingsView: (id: string) => void;
-	//
 	// add search
 	addSearchView: (data: SearchView) => string;
 	// remove search
@@ -188,7 +175,6 @@ export type AppState = {
 		appView: Array<AppView>;
 		board: Array<BoardView>;
 		utilityBar: Array<UtilityView>;
-		settings: Array<SettingsView>;
 		search: Array<SearchView>;
 		primaryBarAccessories: Array<PrimaryAccessoryView>;
 		secondaryBarAccessories: Array<SecondaryAccessoryView>;

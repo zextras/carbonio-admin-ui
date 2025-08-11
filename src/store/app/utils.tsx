@@ -16,7 +16,6 @@ import {
 	PrimaryAccessoryView,
 	SearchView,
 	SecondaryAccessoryView,
-	SettingsView,
 	UtilityView
 } from '../../../types';
 
@@ -66,22 +65,6 @@ export const normalizeRoute = (
 	};
 };
 
-export const normalizeSettingsView = (
-	data: Partial<SettingsView>,
-	app: CarbonioModule
-): SettingsView => {
-	const route = trim(data.route ?? app.name, '/');
-	return {
-		app: app.name,
-		route,
-		id: data?.id ?? route,
-		component: data?.component ?? FallbackView,
-		label: data.label ?? app.display,
-		icon: data.icon ?? app.icon,
-		position: data.position ?? app.priority ?? 99,
-		subSections: data.subSections ?? []
-	};
-};
 export const normalizeSearchView = (data: Partial<SearchView>, app: CarbonioModule): SearchView => {
 	const route = trim(data.route ?? app.name, '/');
 	return {

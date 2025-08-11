@@ -13,14 +13,12 @@ import {
 	PrimaryAccessoryView,
 	SearchView,
 	SecondaryAccessoryView,
-	SettingsView,
 	UtilityView
 } from '../../../types';
 import { getEditSettingsForApp } from '../../network/edit-settings';
 import { useAppStore } from '../../store/app';
 import {
 	normalizeRoute,
-	normalizeSettingsView,
 	normalizeSearchView,
 	normalizeUtilityView,
 	normalizePrimaryAccessoryView,
@@ -47,12 +45,6 @@ export const getAppSetters = (pkg: CarbonioModule): Record<string, Function> => 
 			appSetters.addBoardView(normalizeBoardView(data, pkg)),
 		// remove board
 		removeBoardView: appSetters.removeBoardView,
-		//
-		// add settings
-		addSettingsView: (data: Partial<SettingsView>) =>
-			appSetters.addSettingsView(normalizeSettingsView(data, pkg)),
-		// remove settings
-		removeSettingsView: appSetters.removeSettingsView,
 		//
 		// add search
 		addSearchView: (data: Partial<SearchView>) =>
