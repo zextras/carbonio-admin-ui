@@ -11,7 +11,8 @@ import { forEach, omit, reduce } from 'lodash';
 import { create } from 'zustand';
 
 import Composer from './composer';
-import { ActionFactory, AnyFunction, IntegrationsState, SHELL_APP_ID } from '../../../types';
+import { ActionFactory, AnyFunction, IntegrationsState } from '../../../types';
+import { SHELL_APP_ID } from '../../constants';
 
 export const useIntegrationsStore = create<IntegrationsState>((set) => ({
 	actions: {},

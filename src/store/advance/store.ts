@@ -8,12 +8,4 @@ import { create } from 'zustand';
 
 import { AdvanceState } from '../../../types';
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-export const useAdvanceStore = create<AdvanceState>(() => ({
-	maxApiVersion: 1,
-	minApiVersion: 1,
-	version: '',
-	domain: '',
-	isAdvanced: false
-}));
+export const useAdvanceStore = create<AdvanceState>(() => undefined);
