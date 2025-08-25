@@ -8,6 +8,8 @@ import { act, configure } from '@testing-library/react';
 import dotenv from 'dotenv';
 import failOnConsole from 'jest-fail-on-console';
 import { noop } from 'lodash';
+import { DefaultBodyType, http, StrictRequest, HttpResponse } from 'msw';
+import { SetupServer } from 'msw/node';
 
 import server from './mocks/server';
 
@@ -74,4 +76,58 @@ afterEach(() => {
 });
 
 jest.mock<typeof import('./reporting/functions')>('./reporting/functions');
-jest.mock<typeof import('./reporting/store')>('./reporting/store');
+
+export const getSetupServer = (): SetupServer => server;
+
+export type APIInterceptor = {
+	getLastRequest: () => StrictRequest<DefaultBodyType>;
+	getCalledTimes: () => number;
+};
+
+export const createAPIInterceptor = (
+	method: 'get' | 'post',
+	url: string,
+	response: () => HttpResponse
+): APIInterceptor => {
+	let calledTimes = 0;
+	const requests: Array<StrictRequest<DefaultBodyType>> = [];
+
+	getSetupServer().use(
+		http[method](url, async ({ request }) => {
+			calledTimes += 1;
+			requests.push(request);
+			return response();
+		})
+	);
+
+	return {
+		getLastRequest: () => requests[requests.length - 1],
+		getCalledTimes: () => calledTimes
+	};
+};
+
+const advancedSupportedURL = '/services/catalog/services';
+export const advancedSupportedApi = {
+	withError: (): APIInterceptor =>
+		createAPIInterceptor('get', advancedSupportedURL, HttpResponse.error),
+	withAdvancedSupported: (): APIInterceptor =>
+		createAPIInterceptor('get', advancedSupportedURL, () =>
+			HttpResponse.json({ items: ['carbonio-advanced'] }, { status: 200 })
+		),
+	withAdvancedNotSupported: (): APIInterceptor =>
+		createAPIInterceptor('get', advancedSupportedURL, () =>
+			HttpResponse.json({ items: ['carbonio-preview', 'carbonio-mailbox'] }, { status: 200 })
+		)
+};
+
+export const minMaxVersionApi = (supplier: () => HttpResponse): APIInterceptor =>
+	createAPIInterceptor('get', '/zx/auth/supported', supplier);
+
+export const loginConfigApi = (supplier: () => HttpResponse): APIInterceptor =>
+	createAPIInterceptor('get', '/zx/login/v3/config', supplier);
+
+export const getInfoRequestApi = (supplier: () => HttpResponse): APIInterceptor =>
+	createAPIInterceptor('post', '/service/admin/soap/GetInfoRequest', supplier);
+
+export const getAllConfigRequestApi = (supplier: () => HttpResponse): APIInterceptor =>
+	createAPIInterceptor('post', '/service/admin/soap/GetAllConfigRequest', supplier);

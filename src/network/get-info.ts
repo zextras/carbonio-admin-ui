@@ -7,7 +7,6 @@
 import { filter } from 'lodash';
 
 import { getSoapFetch } from './fetch';
-import { goToLogin } from './go-to-login';
 import { AccountSettings, GetInfoResponse, CarbonioModule } from '../../types';
 import { SHELL_APP_ID } from '../constants';
 import { useAccountStore } from '../store/account';
@@ -55,9 +54,4 @@ export const getInfo = (): Promise<void> =>
 				.setters.addApps(
 					filter(components, ({ type }) => !!(type === 'shell' || type === 'carbonioAdmin'))
 				);
-		})
-		.catch((err: unknown) => {
-			console.log('there was an error checking user data');
-			console.error(err);
-			goToLogin();
 		});

@@ -22,10 +22,6 @@ export function loadApps(storeFactory: StoreFactory, apps: Array<CarbonioModule>
 		if (app.name === SHELL_APP_ID) return false;
 		return !(app.attrKey && getUserSetting('attrs', app.attrKey) !== 'TRUE');
 	});
-	console.log(
-		'%cLOADING APPS',
-		'color: white; background: #2b73d2;padding: 4px 8px 2px 4px; font-family: sans-serif; border-radius: 12px; width: 100%'
-	);
 	useReporter.getState().setClients(appsToLoad);
 	Promise.allSettled(map(appsToLoad, (app) => loadApp(app, storeFactory)));
 }

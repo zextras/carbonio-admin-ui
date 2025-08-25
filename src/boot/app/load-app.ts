@@ -17,7 +17,6 @@ import { IShellWindow, CarbonioModule } from '../../../types';
 import * as CONSTANTS from '../../constants';
 import StoreFactory from '../../redux/store-factory';
 import { report } from '../../reporting';
-import SettingsHeader from '../../settings/components/settings-header';
 import { useAppStore } from '../../store/app';
 import { AppLink } from '../../ui-extras/app-link';
 
@@ -61,7 +60,6 @@ function loadAppModule(appPkg: CarbonioModule, store: Store<any>): Promise<Carbo
 				},
 				report: report(appPkg.name),
 				AppLink,
-				SettingsHeader,
 				...getAppSetters(appPkg),
 				...getAppFunctions(appPkg),
 				...CONSTANTS

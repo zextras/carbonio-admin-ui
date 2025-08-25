@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.36](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.35...v0.9.36) (2025-08-25)
+
+
+### Bug Fixes
+
+* [CO-2243] advanced detection ([ca6f1ce](https://github.com/zextras/carbonio-admin-ui/commit/ca6f1ce00c612591ce3807144e9bc3bc282a6a92))
+
 ### [0.9.35](https://github.com/zextras/carbonio-admin-ui/compare/v0.9.34...v0.9.35) (2025-05-19)
 
 
