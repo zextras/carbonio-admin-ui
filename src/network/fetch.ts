@@ -304,7 +304,8 @@ export const postSoapFetchRequest =
 		apiURL: string,
 		body: Request,
 		api?: string,
-		otherAccount?: string
+		otherAccount?: string,
+		server?: string
 	): Promise<Response> => {
 		const { zimbraVersion, account } = useAccountStore.getState();
 		const { context } = useNetworkStore.getState();
@@ -334,6 +335,7 @@ export const postSoapFetchRequest =
 							  }
 							: undefined,
 						session: context?.session ?? {},
+						targetServer: server,
 						account: fetchAccount(account as Account, otherAccount),
 						userAgent: {
 							name: userAgent,
