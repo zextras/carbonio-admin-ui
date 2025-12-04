@@ -101,7 +101,7 @@
 		"pinst": "2.1.6",
 		"postcss-loader": "^7.3.3",
 		"prop-types": "15.8.1",
-		"rollup": "2.66.1",
+		"rollup": "2.79.2",
 		"semver": "7.3.5",
 		"styled-components": "^5.3.9",
 		"ts-node": "^10.9.1",
