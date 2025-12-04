@@ -97,7 +97,7 @@
 		"jest-styled-components": "^7.1.1",
 		"mini-css-extract-plugin": "^2.7.6",
 		"msw": "2.3.1",
-		"node-fetch": "2.6.6",
+		"node-fetch": "2.6.7",
 		"pinst": "2.1.6",
 		"postcss-loader": "^7.3.3",
 		"prop-types": "15.8.1",
